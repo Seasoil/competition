@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>农事节气可视化系统</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to bottom, #f0f9eb, #c8e6c9);
+            font-family: 'Microsoft YaHei', sans-serif;
+        }
+        .main-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 80px;
+            background: rgba(124, 169, 56, 0.95);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            padding: 0 40px;
+            backdrop-filter: blur(6px);
+        }
+
+        .nav-buttons {
+            display: flex;
+            gap: 25px;
+            margin-left: auto;
+        }
+
+        .nav-button {
+            padding: 12px 28px;
+            border-radius: 30px;
+            background: rgba(172, 226, 174, 0.12);
+            color: #04532c;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .nav-button:hover {
+            background: #1eb323;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(76, 175, 80, 0.25);
+        }
+
+        .nav-button i {
+            font-size: 18px;
+        }
+        #chart-container {
+            margin-top: 100px; /* 给导航栏留出空间 */
+            height: calc(100vh - 100px);
+        }
+
+        #time-axis {
+            position: fixed;
+            right: 40px;
+            top: 50%;
+            transform: translateY(-50%);
+            height: 70vh;
+            width: 50px;
+            background: #fff;
+            border-radius: 25px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            z-index: 2;
+            padding: 15px 5px;
+        }
+
+        #time-slider {
+            -webkit-appearance: slider-vertical;
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            cursor: pointer;
+            background: transparent;
+            transition: transform 0.1s ease-out;
+        }
+
+        #time-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 24px;
+            height: 24px;
+            background: #0c9d10;
+            border-radius: 50%;
+            border: 3px solid #fff;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+        }
+
+        .term-tooltip {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.98);
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+            width: 280px;
+            pointer-events: none;
+            opacity: 0;
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            transform-origin: center;
+            border: 1px solid #eee;
+            z-index: 3;
+        }
+
+        .term-tooltip h3 {
+            color: #098949;
+            margin: 0 0 12px 0;
+            font-size: 20px;
+        }
+
+        .term-tooltip p {
+            color: #666;
+            margin: 8px 0;
+            line-height: 1.6;
+            font-size: 14px;
+        }
+    </style>
+    <script src="./js/echarts (2).js"></script>
+    <script src="./js/anime.min.js"></script>
+    <script src="./js/lodash.min.js"></script>
+</head>
+
+<body>
+    <nav class="main-nav">
+        <h1 style="color: #2c7a53; font-size: 24px;">农事节气可视化系统</h1>
+        <div class="nav-buttons">
+            <button class="nav-button" onclick="window.location.href='../主界面.html'">
+                <i>📊</i>主界面
+            </button>
+            <button class="nav-button" onclick="window.location.href='../第二界面/关系图.html'">
+                <i>🌾</i>第二界面
+            </button>
+            <button class="nav-button" onclick="window.location.href='../第三界面/人界面.html'">
+                <i>📅</i>第三界面
+            </button>
+            <button class="nav-button" onclick="window.location.href='./节气界面/农谚.html'">
+                <i>🌱</i>农谚界面
+            </button>
+        </div>
+    </nav>
+
+    <div id="chart-container"></div>
+    <div id="time-axis">
+        <input type="range" id="time-slider" min="0" max="365" value="0" orient="vertical">
+    </div>
+    <div id="term-tooltip" class="term-tooltip"></div>
+
+    <script>
+        // 季节颜色映射
+        const seasonColors = {
+            '春': '#8bc34a',
+            '夏': '#ffb74d',
+            '秋': '#f44336',
+            '冬': '#2196f3'
+        };
+        const navButtons = document.querySelectorAll('.nav-button');
+
+            navButtons.forEach(button => {
+                button.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    // 添加页面过渡动画
+                    anime({
+                        targets: 'body',
+                        opacity: 0,
+                        duration: 400,
+                        easing: 'easeInOutQuad',
+                        complete: () => {
+                            window.location.href = button.onclick.toString().match(/'(.*?)'/)[1];
+                        }
+                    });
+                });
+            });
+        // 节气数据
+        const solarTermsData = [
+            { name: '立春', season: '春', date: '2月3-5日', desc: '春耕备耕开始，检查农具，准备早稻育秧' },
+            { name: '雨水', season: '春', date: '2月18-20日', desc: '冬小麦开始返青，江南地区油菜追肥' },
+            { name: '惊蛰', season: '春', date: '3月5-7日', desc: '春耕全面展开，防治越冬害虫，果树修剪' },
+            { name: '春分', season: '春', date: '3月20-22日', desc: '春播作物播种关键期，小麦进入拔节期' },
+            { name: '清明', season: '春', date: '4月4-6日', desc: '早稻插秧，玉米播种，茶园春管关键期' },
+            { name: '谷雨', season: '春', date: '4月19-21日', desc: '水稻移栽，棉花播种，防治小麦赤霉病' },
+
+            { name: '立夏', season: '夏', date: '5月5-7日', desc: '夏收作物灌浆关键期，早稻分蘖肥施用' },
+            { name: '小满', season: '夏', date: '5月20-22日', desc: '小麦籽粒饱满，油菜收获，水稻晒田控蘖' },
+            { name: '芒种', season: '夏', date: '6月5-7日', desc: '夏收夏种关键期，抢收小麦，播种晚稻' },
+            { name: '夏至', season: '夏', date: '6月21-22日', desc: '中稻追肥，棉花整枝，防治水稻纹枯病' },
+            { name: '小暑', season: '夏', date: '7月6-8日', desc: '早稻收割，晚稻移栽，玉米追肥' },
+            { name: '大暑', season: '夏', date: '7月22-24日', desc: '双季稻区抢收抢种，抗旱保苗关键期' },
+
+            { name: '立秋', season: '秋', date: '8月7-9日', desc: '水稻孕穗期管理，玉米授粉期，棉花打顶' },
+            { name: '处暑', season: '秋', date: '8月22-24日', desc: '水稻防早衰，玉米灌浆期管理，果园施肥' },
+            { name: '白露', season: '秋', date: '9月7-9日', desc: '晚稻抽穗扬花期，冬小麦备耕，采摘秋茶' },
+            { name: '秋分', season: '秋', date: '9月22-24日', desc: '秋收秋种关键期，收获中稻，播种冬小麦' },
+            { name: '寒露', season: '秋', date: '10月8-9日', desc: '收获晚稻，播种油菜，果树秋季修剪' },
+            { name: '霜降', season: '秋', date: '10月23-24日', desc: '冬小麦出苗管理，蔬菜大棚防寒准备' },
+
+            { name: '立冬', season: '冬', date: '11月7-8日', desc: '农田水利建设，油菜越冬管理，果树培土' },
+            { name: '小雪', season: '冬', date: '11月22-23日', desc: '冬小麦冬灌，蔬菜储藏，果园清园消毒' },
+            { name: '大雪', season: '冬', date: '12月6-8日', desc: '农田休耕养地，温室大棚温度调控' },
+            { name: '冬至', season: '冬', date: '12月21-23日', desc: '积肥造肥，果树防冻，冬季修剪' },
+            { name: '小寒', season: '冬', date: '1月5-7日', desc: '越冬作物防冻害，温室作物光照管理' },
+            { name: '大寒', season: '冬', date: '1月20-21日', desc: '农业机械保养，春耕物资准备，土壤改良' }
+        ];
+
+        // 初始化图表
+        const chart = echarts.init(document.getElementById('chart-container'));
+        let activeTerm = null;
+        let isAnimating = false;
+        let hoverTimer = null;
+
+        const slider = document.getElementById('time-slider');
+        const tooltip = document.getElementById('term-tooltip');
+
+        // 优化时间轴交互
+        slider.addEventListener('input', _.throttle(e => {
+            if (isAnimating) return;
+            isAnimating = true;
+
+            const day = parseInt(e.target.value);
+            const term = findNearestTerm(day);
+
+            anime({
+                targets: slider,
+                value: getTermDay(term.date),
+                duration: 400,
+                easing: 'easeOutQuad',
+                round: true
+            });
+
+            updateHighlight(term);
+            showTooltip(term, day);
+
+            setTimeout(() => isAnimating = false, 150);
+        }, 20));
+
+        // 鼠标悬停交互
+        chart.on('mouseover', ({ name }) => {
+            const term = solarTermsData.find(t => t.name === name);
+            clearTimeout(hoverTimer);
+            showTooltip(term, getTermDay(term.date));
+        });
+
+        chart.on('mouseout', () => {
+            hoverTimer = setTimeout(() => {
+                anime({
+                    targets: tooltip,
+                    opacity: 0,
+                    scale: 0.9,
+                    duration: 200
+                });
+            }, 200);
+        });
+
+        // 点击跳转功能
+        chart.on('click', ({ name }) => {
+            const term = solarTermsData.find(t => t.name === name);
+            window.location.href = `./节气界面/${encodeURIComponent(term.name)}.html`;
+        });
+
+        // 核心功能函数
+        function updateHighlight(term) {
+            chart.dispatchAction({
+                type: 'highlight',
+                name: term.name,
+                animation: { duration: 300, easing: 'quadraticOut' }
+            });
+            if (activeTerm) {
+                chart.dispatchAction({ type: 'downplay', name: activeTerm });
+            }
+            activeTerm = term.name;
+        }
+
+        function showTooltip(term, day) {
+            clearTimeout(hoverTimer);
+            const angle = (day / 365) * 360 - 90;
+            const x = Math.cos(angle * Math.PI / 180) * 200 + window.innerWidth / 2;
+            const y = Math.sin(angle * Math.PI / 180) * 200 + window.innerHeight / 2;
+
+            anime({
+                targets: tooltip,
+                left: `${x}px`,
+                top: `${y}px`,
+                opacity: 1,
+                scale: [0.95, 1],
+                duration: 300,
+                easing: 'easeOutBack',
+                begin: () => {
+                    tooltip.innerHTML = `
+                        <h3 style="color:${seasonColors[term.season]}">${term.name}</h3>
+                        <p>📅 ${term.date}</p>
+                        <p>${term.desc}</p>
+                    `;
+                }
+            });
+        }
+
+        // 工具函数
+        function getTermDay(dateStr) {
+            const [month, days] = dateStr.split('月');
+            const [startDay] = days.replace('日', '').split('-').map(Number);
+            return (parseInt(month) - 1) * 30 + startDay;
+        }
+
+        function findNearestTerm(day) {
+            return solarTermsData.reduce((nearest, term) =>
+                Math.abs(getTermDay(term.date) - day) <
+                    Math.abs(getTermDay(nearest.date) - day) ? term : nearest
+            );
+        }
+
+        // ECharts配置
+        const option = {
+            title: {
+                text: '农事节气时间分布',
+                subtext: '滑动右侧时间轴探索节气',
+                left: 'center',
+                textStyle: {
+                    color: '#2c7a53',
+                    fontSize: 24,
+                    fontWeight: 'bold'
+                }
+            },
+            series: [{
+                type: 'pie',
+                radius: ['20%', '75%'],
+                roseType: 'radius',
+                itemStyle: {
+                    color: ({ data }) => seasonColors[data.season],
+                    borderWidth: 2,
+                    borderColor: '#fff',
+                    shadowBlur: 10,
+                    shadowColor: 'rgba(0, 0, 0, 0.1)'
+                },
+                label: {
+                    show: true,
+                    formatter: '{b}',
+                    fontSize: 14,
+                    fontWeight: 'bold',
+                    color: '#333'
+                },
+                emphasis: {
+                    scale: true,
+                    scaleSize: 15,
+                    itemStyle: {
+                        shadowBlur: 20,
+                        shadowColor: 'rgba(0, 0, 0, 0.2)'
+                    },
+                    label: {
+                        fontSize: 16,
+                        color: '#2c7a53'
+                    }
+                },
+                data: solarTermsData.map(term => ({
+                    name: term.name,
+                    value: 15,
+                    season: term.season
+                })),
+                animationType: 'scale',
+                animationEasing: 'elasticOut',
+                animationDuration: 600
+            }]
+        };
+
+        chart.setOption(option);
+        window.addEventListener('resize', () => chart.resize());
+    </script>
+</body>
+
+</html>

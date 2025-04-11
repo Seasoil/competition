@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html style="height: 100%">
+
+<head>
+    <meta charset="utf-8">
+    <title>WebKit 依赖关系图</title>
+    <!-- 引入 ECharts -->
+    <script src="./js/echarts (2).js"></script>
+    <!-- 引入 jQuery -->
+    <script src="./js/jquery.min.js"></script>
+    <style>
+        /* 页面背景样式 */
+        body {
+            margin: 0;
+            height: 100%;
+            background: url('https://img.zcool.cn/community/01b2fc5d3ae145a8012051cdd9607e.jpg') no-repeat center center fixed;
+            background-size: cover;
+        }
+
+        /* 图表容器样式 */
+        #main {
+            width: 100%;
+            height: 100vh;
+            background-color: rgba(255, 255, 255, 0.3);
+            /* 半透明背景 */
+        }
+
+        /* 返回按钮样式 */
+        .back-button {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            padding: 10px 20px;
+            background: rgba(0, 128, 255, 0.8);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            z-index: 1000;
+            transition: background 0.3s;
+        }
+
+        .back-button:hover {
+            background: rgba(0, 128, 255, 1);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 返回按钮 -->
+    <a href="../主界面.html" class="back-button">返回主界面</a>
+
+    <!-- 图表容器 -->
+    <div id="main"></div>
+
+    <script type="text/javascript">
+    var myChart = echarts.init(document.getElementById('main'));
+
+    // 自定义数据（示例）
+    const agricultureData = {
+        nodes: [
+            {id: 0, name: '齐民要术', category: 0, symbolSize: 50},
+            {id: 1, name: '贾思勰', category: 1, symbolSize: 40},
+            {id: 2, name: '北魏', category: 4, symbolSize: 30},
+            {id: 3, name: '农政全书', category: 0, symbolSize: 45},
+            {id: 4, name: '徐光启', category: 1, symbolSize: 40},
+            {id: 5, name: '代田法', category: 2, symbolSize: 35},
+            {id: 6, name: '赵过', category: 1, symbolSize: 35},
+            {id: 7, name: '天工开物', category: 0, symbolSize: 45},
+            {id: 8, name: '宋应星', category: 1, symbolSize: 35},
+            {id: 9, name: '耕田法', category: 2, symbolSize: 30},
+            {id: 10, name: '农桑辑要', category: 0, symbolSize: 40},
+            {id: 11, name: '王祯', category: 1, symbolSize: 35},
+            {id: 12, name: '农器图谱', category: 3, symbolSize: 35}
+        ],
+        links: [
+            {source: 1, target: 0},
+            {source: 0, target: 2},
+            {source: 4, target: 3},
+            {source: 6, target: 5},
+            {source: 8, target: 7},
+            {source: 0, target: 9},
+            {source: 11, target: 10},
+            {source: 11, target: 12},
+            {source: 0, target: 5},
+            {source: 3, target: 12}
+        ],
+        categories: [
+            {name: '农书'},
+            {name: '农学家'},
+            {name: '农业技术'},
+            {name: '农业工具'},
+            {name: '历史朝代'}
+        ]
+    };
+
+    const option = {
+        legend: {
+            data: ['农书', '农学家', '农业技术', '农业工具', '历史朝代'],
+            textStyle: { color: '#2c2c2c' }
+        },
+        series: [{
+            type: 'graph',
+            layout: 'force',
+            animation: true,
+            label: {
+                show: true,
+                position: 'right',
+                color: '#1a1a1a'
+            },
+            data: agricultureData.nodes,
+            categories: agricultureData.categories,
+            force: {
+                edgeLength: 50,
+                repulsion: 100,
+                gravity: 0.1
+            },
+            edges: agricultureData.links,
+            lineStyle: {
+                color: 'rgba(100, 100, 100, 0.4)'
+            },
+            emphasis: {
+                focus: 'adjacency',
+                label: {
+                    show: true,
+                    fontSize: 16
+                }
+            }
+        }],
+        color: ['#4e79a7', '#59a14f', '#e15759', '#edc948', '#af7aa1']
+    };
+
+    myChart.setOption(option);
+
+    window.onresize = function() {
+        myChart.resize();
+    };
+</script>
+</body>
+
+</html>

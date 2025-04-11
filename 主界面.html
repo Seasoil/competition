@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>农学</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            background: url('./第三界面/img/bg.png') no-repeat center center fixed;
+            background-size: cover;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        .dashboard {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            width: 100%;
+        }
+
+        .window {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            padding: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: #333;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .window:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+            background: rgba(255, 255, 255, 1);
+        }
+
+        .window h2 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 24px;
+        }
+
+        .window p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* 不同窗口的个性装饰 */
+        .window:nth-child(1) {
+            border-left: 5px solid #3498db;
+        }
+
+        .window:nth-child(2) {
+            border-left: 5px solid #e74c3c;
+        }
+
+        .window:nth-child(3) {
+            border-left: 5px solid #2ecc71;
+        }
+
+        @media (max-width: 768px) {
+            .dashboard {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="dashboard">
+            <a href="./第一界面/1界面.html" class="window">
+                <h2>天</h2>
+                <p>点击查看复杂的节点关系网络可视化分析，支持动态交互和详细数据钻取。</p>
+            </a>
+
+            <a href="./第二界面/关系图.html" class="window">
+                <h2>人</h2>
+                <p>进入多维数据图表分析界面，提供柱状图、折线图等多种可视化形式。</p>
+            </a>
+
+            <a href="./第三界面/人界面.html" class="window">
+                <h2>地</h2>
+                <p>查看基于地理信息的数据分布可视化，支持地图下钻和热力图展示。</p>
+            </a>
+        </div>
+    </div>
+</body>
+
+</html>

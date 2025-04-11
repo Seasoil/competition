@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>农业科学知识图谱</title>
+    <script src="./js/echarts (2).js"></script>
+    <script src="./js/jquery.min.js"></script>
+    <style>
+        body {
+            margin: 0;
+            padding: 60px 0 0;
+            height: 100vh;
+            background: url('../第三界面/img/bg.png') no-repeat center center fixed;
+            background-size: cover;
+            font-family: 'Microsoft YaHei', Arial, sans-serif;
+        }
+
+        #nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 12px 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+        }
+
+        .nav-button {
+            margin: 0 15px;
+            padding: 12px 25px;
+            background: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 16px;
+            letter-spacing: 1px;
+        }
+
+        .nav-button:hover {
+            background: #45a049;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        #chart-container {
+            width: 90%;
+            height: calc(100vh - 80px);
+            background: rgba(255, 255, 255, 0.88);
+            border-radius: 15px;
+            margin: 20px auto;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+        }
+    </style>
+</head>
+
+<body>
+    <div id="nav">
+        <center>
+            <button class="nav-button" onclick="window.location.href='../主界面.html'">主界面</button>
+            <button class="nav-button" onclick="window.location.href='../第一界面/1界面.html'">第一界面</button>
+            <button class="nav-button" onclick="window.location.href='../第三界面/土地界面.html'">第三界面</button>
+            <button class="nav-button" onclick="window.location.href='./农学文化界面.html'">农学文化联系</button>
+            <button class="nav-button" onclick="window.location.href='./种植+畜牧.html'">暂定</button>
+        </center>
+    </div>
+    
+    <div id="chart-container"></div>
+    <script>
+        var myChart = echarts.init(document.getElementById('chart-container'));
+
+        // 农业科学数据
+        const agriData = {
+            name: "农业科学体系",
+            children: [
+                {
+                    name: "作物分类",
+                    children: [
+                        {
+                            name: "粮食作物",
+                            children: [
+                                { name: "水稻\n（Oryza sativa）", value: 120 },
+                                { name: "小麦\n（Triticum aestivum）", value: 90 },
+                                { name: "玉米\n（Zea mays）", value: 110 }
+                            ]
+                        },
+                        {
+                            name: "经济作物",
+                            children: [
+                                { name: "棉花\n（Gossypium）", value: 75 },
+                                { name: "大豆\n（Glycine max）", value: 85 },
+                                { name: "油菜\n（Brassica napus）", value: 65 }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    name: "栽培技术",
+                    children: [
+                        { name: "轮作制度\n（三年两熟制）", value: 40 },
+                        { name: "间作套种\n（玉米大豆套种）", value: 55 },
+                        { name: "节水灌溉\n（滴灌技术）", value: 70 }
+                    ]
+                },
+                {
+                    name: "土壤管理",
+                    children: [
+                        { name: "土壤检测\n（NPK含量分析）", value: 60 },
+                        {
+                            name: "施肥技术",
+                            children: [
+                                { name: "有机肥\n（堆肥/绿肥）", value: 45 },
+                                { name: "复合肥\n（N-P-K配比）", value: 50 }
+                            ]
+                        },
+                        { name: "酸碱度调节\n（石灰施用）", value: 35 }
+                    ]
+                },
+                {
+                    name: "病虫害防治",
+                    children: [
+                        { name: "生物防治\n（天敌昆虫）", value: 55 },
+                        { name: "化学防治\n（农药使用）", value: 65 },
+                        { name: "物理防治\n（诱虫灯）", value: 40 }
+                    ]
+                }
+            ]
+        };
+
+        // 配置图表
+        myChart.setOption({
+            tooltip: {
+                trigger: 'item',
+                triggerOn: 'mousemove',
+                formatter: function (params) {
+                    return `${params.name}<br/>${params.value ? '技术指数: ' + params.value : ''}`;
+                }
+            },
+            series: [{
+                type: 'tree',
+                data: [agriData],
+                top: '5%',
+                left: '10%',
+                bottom: '5%',
+                right: '10%',
+                symbolSize: 12,
+                label: {
+                    position: 'left',
+                    verticalAlign: 'middle',
+                    align: 'right',
+                    fontSize: 14,
+                    color: '#2d573a',
+                    lineHeight: 20
+                },
+                leaves: {
+                    label: {
+                        position: 'right',
+                        verticalAlign: 'middle',
+                        align: 'left',
+                        color: '#3e6b4f'
+                    }
+                },
+                lineStyle: {
+                    color: '#6d8f7a',
+                    width: 2,
+                    curveness: 0.3
+                },
+                itemStyle: {
+                    color: '#8abf97',
+                    borderWidth: 1.5
+                },
+                emphasis: {
+                    focus: 'descendant',
+                    itemStyle: {
+                        color: '#a5d6a7'
+                    }
+                },
+                expandAndCollapse: true,
+                animationDuration: 600
+            }]
+        });
+
+        // 窗口自适应
+        window.addEventListener('resize', function () {
+            myChart.resize();
+        });
+    </script>
+</body>
+
+</html>
