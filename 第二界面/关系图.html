@@ -7,182 +7,419 @@
     <script src="./js/echarts (2).js"></script>
     <script src="./js/jquery.min.js"></script>
     <style>
+        /* 全局样式 */
         body {
             margin: 0;
-            padding: 60px 0 0;
             height: 100vh;
+            overflow: hidden;
             background: url('../第三界面/img/bg.png') no-repeat center center fixed;
             background-size: cover;
             font-family: 'Microsoft YaHei', Arial, sans-serif;
         }
 
+        /* 导航栏样式 */
         #nav {
             position: fixed;
-            top: 0;
-            width: 100%;
-            background: rgba(255, 255, 255, 0.95);
-            padding: 12px 0;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            top: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 15px;
+            padding: 8px;
+            backdrop-filter: blur(8px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
             z-index: 1000;
+            display: flex;
+            gap: 6px;
         }
 
         .nav-button {
-            margin: 0 15px;
-            padding: 12px 25px;
-            background: #4CAF50;
+            padding: 8px 20px;
+            background: linear-gradient(135deg, rgba(76, 175, 80, 0.9), rgba(69, 160, 73, 0.9));
             color: white;
             border: none;
-            border-radius: 25px;
+            border-radius: 20px;
             cursor: pointer;
             transition: all 0.3s;
-            font-size: 16px;
-            letter-spacing: 1px;
+            font-size: 14px;
+            letter-spacing: 0.5px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
         }
 
         .nav-button:hover {
-            background: #45a049;
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transform: translateY(-1px);
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+            background: linear-gradient(135deg, #4CAF50, #45a049);
         }
 
+        /* 图表容器 */
         #chart-container {
-            width: 90%;
-            height: calc(100vh - 80px);
-            background: rgba(255, 255, 255, 0.88);
-            border-radius: 15px;
+            width: 95%;
+            height: 90vh;
             margin: 20px auto;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+            background: transparent;
         }
     </style>
 </head>
 
 <body>
     <div id="nav">
-        <center>
-            <button class="nav-button" onclick="window.location.href='../index.html'">主界面</button>
-            <button class="nav-button" onclick="window.location.href='../第一界面/1界面.html'">第一界面</button>
-            <button class="nav-button" onclick="window.location.href='../第三界面/土地界面.html'">第三界面</button>
-            <button class="nav-button" onclick="window.location.href='./农学文化界面.html'">农学文化联系</button>
-            <button class="nav-button" onclick="window.location.href='./种植+畜牧.html'">暂定</button>
-        </center>
+        <button class="nav-button" onclick="window.location.href='../index.html'">主界面</button>
+        <button class="nav-button" onclick="window.location.href='../第一界面/1界面.html'">第一界面</button>
+        <button class="nav-button" onclick="window.location.href='../第三界面/人界面.html'">第三界面</button>
+        <button class="nav-button" onclick="window.location.href='./农学文化界面.html'">文化联系</button>
     </div>
-    
+
     <div id="chart-container"></div>
+
     <script>
+        // 初始化ECharts实例
         var myChart = echarts.init(document.getElementById('chart-container'));
 
-        // 农业科学数据
+        // 完整农业知识体系数据
         const agriData = {
-            name: "农业科学体系",
+            name: "农业生产体系",
             children: [
                 {
-                    name: "作物分类",
+                    name: "农政制度",
                     children: [
                         {
-                            name: "粮食作物",
+                            name: "重农政策",
                             children: [
-                                { name: "水稻\n（Oryza sativa）", value: 120 },
-                                { name: "小麦\n（Triticum aestivum）", value: 90 },
-                                { name: "玉米\n（Zea mays）", value: 110 }
+                                { name: "历代帝王劝农诏令" },
+                                { name: "田赋制度\n（井田/均田/租佃）" }
                             ]
                         },
                         {
-                            name: "经济作物",
+                            name: "荒政体系",
                             children: [
-                                { name: "棉花\n（Gossypium）", value: 75 },
-                                { name: "大豆\n（Glycine max）", value: 85 },
-                                { name: "油菜\n（Brassica napus）", value: 65 }
+                                { name: "常平仓制度" },
+                                { name: "社仓义仓" },
+                                { name: "救荒本草\n（可食草木分类）" }
+                            ]
+                        },
+                        {
+                            name: "农书编撰",
+                            children: [
+                                { name: "综合性农书" },
+                                { name: "专题农书\n（蚕桑/水利专论）" }
                             ]
                         }
                     ]
                 },
                 {
-                    name: "栽培技术",
+                    name: "天时农事",
                     children: [
-                        { name: "轮作制度\n（三年两熟制）", value: 40 },
-                        { name: "间作套种\n（玉米大豆套种）", value: 55 },
-                        { name: "节水灌溉\n（滴灌技术）", value: 70 }
-                    ]
-                },
-                {
-                    name: "土壤管理",
-                    children: [
-                        { name: "土壤检测\n（NPK含量分析）", value: 60 },
                         {
-                            name: "施肥技术",
+                            name: "天文历法",
                             children: [
-                                { name: "有机肥\n（堆肥/绿肥）", value: 45 },
-                                { name: "复合肥\n（N-P-K配比）", value: 50 }
+                                { name: "二十四节气应用" },
+                                { name: "农事月令体系" }
                             ]
                         },
-                        { name: "酸碱度调节\n（石灰施用）", value: 35 }
+                        {
+                            name: "气象占候",
+                            children: [
+                                { name: "星象农谚\n（如'箕星好风'）" },
+                                { name: "云霞雷电预测" },
+                                { name: "物候观测\n（候雁北/蚯蚓出）" }
+                            ]
+                        }
                     ]
                 },
                 {
-                    name: "病虫害防治",
+                    name: "土地管理",
                     children: [
-                        { name: "生物防治\n（天敌昆虫）", value: 55 },
-                        { name: "化学防治\n（农药使用）", value: 65 },
-                        { name: "物理防治\n（诱虫灯）", value: 40 }
+                        {
+                            name: "土壤分类",
+                            children: [
+                                { name: "九州土性体系" },
+                                { name: "燥湿肥瘠辨" }
+                            ]
+                        },
+                        {
+                            name: "耕作制度",
+                            children: [
+                                { name: "畎亩法（垄作）" },
+                                { name: "代田法" },
+                                { name: "区田法" }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    name: "水利工程",
+                    children: [
+                        {
+                            name: "水利理论",
+                            children: [
+                                { name: "治水策略\n（疏/浚/障/蓄）" },
+                                { name: "水文测量\n（水平仪/测深竿）" }
+                            ]
+                        },
+                        {
+                            name: "水利实践",
+                            children: [
+                                { name: "大型工程\n（都江堰/郑国渠）" },
+                                {
+                                    name: "灌溉工具",
+                                    children: [
+                                        { name: "翻车\n（龙骨水车）" },
+                                        { name: "筒车" },
+                                        { name: "桔槔" }
+                                    ]
+                                },
+                                { name: "圩田/梯田体系" }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    name: "作物体系",
+                    children: [
+                        {
+                            name: "粮食作物",
+                            children: [
+                                {
+                                    name: "稻作",
+                                    children: [
+                                        { name: "水稻\n（秈/粳）" },
+                                        { name: "陆稻" }
+                                    ]
+                                },
+                                { name: "麦类\n（小麦/大麦/燕麦）" },
+                                { name: "粟黍稷" }
+                            ]
+                        },
+                        {
+                            name: "经济作物",
+                            children: [
+                                { name: "纤维作物\n（麻/葛/棉）" },
+                                { name: "染料作物\n（蓝/茜/紫草）" },
+                                { name: "油料作物\n（芝麻/荏子）" }
+                            ]
+                        },
+                        {
+                            name: "蔬菜园艺",
+                            children: [
+                                { name: "瓜类\n（瓠/匏/冬瓜）" },
+                                { name: "叶菜\n（葵/韭/菘）" },
+                                { name: "根茎\n（芋/薯蓣/芜菁）" }
+                            ]
+                        },
+                        {
+                            name: "果树栽培",
+                            children: [
+                                { name: "北方果树\n（枣/梨/桃）" },
+                                { name: "南方果树\n（柑橘/荔枝/龙眼）" }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    name: "蚕桑纺织",
+                    children: [
+                        {
+                            name: "桑树栽培",
+                            children: [
+                                { name: "地桑/树桑" },
+                                { name: "桑园管理\n（嫁接/剪枝）" }
+                            ]
+                        },
+                        {
+                            name: "养蚕缫丝",
+                            children: [
+                                { name: "蚕种保育" },
+                                { name: "蚕室环境调控" },
+                                { name: "缫丝工艺\n（热釜/冷盆）" }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    name: "畜牧养殖",
+                    children: [
+                        {
+                            name: "大家畜",
+                            children: [
+                                { name: "耕牛养护" },
+                                { name: "马政\n（军马/驿马）" }
+                            ]
+                        },
+                        {
+                            name: "小家畜",
+                            children: [
+                                { name: "猪羊育肥" },
+                                { name: "家禽\n（鸡鸭鹅）" }
+                            ]
+                        },
+                        {
+                            name: "特种养殖",
+                            children: [
+                                { name: "养蜂采蜜" },
+                                { name: "水产养殖\n（鱼塘/葑田）" }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    name: "农器演进",
+                    children: [
+                        {
+                            name: "耕作器具",
+                            children: [
+                                { name: "犁具\n（直辕犁/曲辕犁）" },
+                                { name: "耙劳工具\n（方耙/人字耙）" }
+                            ]
+                        },
+                        {
+                            name: "收获工具",
+                            children: [
+                                { name: "镰刀\n（艾/銍）" },
+                                { name: "连枷/碌碡" }
+                            ]
+                        },
+                        {
+                            name: "加工器械",
+                            children: [
+                                { name: "碾硙\n（水碾/畜力碾）" },
+                                { name: "榨油器具\n（木榨/石磨）" }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    name: "农产品加工",
+                    children: [
+                        {
+                            name: "食品加工",
+                            children: [
+                                { name: "谷物贮藏\n（窖藏/曝晒）" },
+                                { name: "酿造工艺\n（酒/醋/酱）" },
+                                { name: "腌制干制\n（脯/腊/鲊）" }
+                            ]
+                        },
+                        {
+                            name: "手工制造",
+                            children: [
+                                { name: "纺织\n（麻布/棉布）" },
+                                { name: "造纸\n（楮皮/竹纸）" }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    name: "生态农法",
+                    children: [
+                        {
+                            name: "肥料体系",
+                            children: [
+                                { name: "绿肥\n（苕草/绿豆）" },
+                                { name: "粪肥\n（厩肥/河泥）" }
+                            ]
+                        },
+                        {
+                            name: "灾害防治",
+                            children: [
+                                { name: "治蝗八法" },
+                                { name: "驱鸟护粮术" }
+                            ]
+                        }
                     ]
                 }
             ]
         };
 
-        // 配置图表
+        // 高级图表配置
         myChart.setOption({
+            backgroundColor: 'transparent',
             tooltip: {
                 trigger: 'item',
-                triggerOn: 'mousemove',
                 formatter: function (params) {
-                    return `${params.name}<br/>${params.value ? '技术指数: ' + params.value : ''}`;
+                    return `<div style="
+                        background: linear-gradient(145deg, rgba(240,255,244,0.95), rgba(200,230,201,0.95));
+                        padding: 8px 12px;
+                        border-radius: 6px;
+                        box-shadow: 2px 2px 8px rgba(0,0,0,0.1);
+                        color: #2d573a;
+                        font-weight:500;
+                        border: 1px solid rgba(255,255,255,0.3);
+                        backdrop-filter: blur(2px)">
+                        ${params.name.replace(/\n/g, '<br>')}
+                        </div>`;
                 }
             },
             series: [{
                 type: 'tree',
                 data: [agriData],
-                top: '5%',
-                left: '10%',
-                bottom: '5%',
-                right: '10%',
-                symbolSize: 12,
-                label: {
-                    position: 'left',
-                    verticalAlign: 'middle',
-                    align: 'right',
-                    fontSize: 14,
-                    color: '#2d573a',
-                    lineHeight: 20
-                },
-                leaves: {
-                    label: {
-                        position: 'right',
-                        verticalAlign: 'middle',
-                        align: 'left',
-                        color: '#3e6b4f'
-                    }
-                },
+                top: '15%',
+                left: '5%',
+                right: '20%',
+                bottom: '15%',
+                orient: 'horizontal',
+                symbol: 'circle',
+                symbolSize: 16,
+                expandAndCollapse: true,
+                initialTreeDepth: 2,
                 lineStyle: {
                     color: '#6d8f7a',
                     width: 2,
-                    curveness: 0.3
+                    curveness: 0.15,
+                    shadowBlur: 3,
+                    shadowColor: 'rgba(0,0,0,0.08)'
                 },
-                itemStyle: {
-                    color: '#8abf97',
-                    borderWidth: 1.5
-                },
-                emphasis: {
-                    focus: 'descendant',
-                    itemStyle: {
-                        color: '#a5d6a7'
+                label: {
+                    position: 'top',
+                    verticalAlign: 'middle',
+                    align: 'center',
+                    fontSize: 14,
+                    color: '#2d573a',
+                    fontWeight: 600,
+                    lineHeight: 20,
+                    formatter: function (params) {
+                        return params.name.replace(/（/g, '\n（');
                     }
                 },
-                expandAndCollapse: true,
-                animationDuration: 600
+                leaves: {
+                    label: {
+                        position: 'bottom',
+                        align: 'center',
+                        color: '#3e6b4f',
+                        fontSize: 13,
+                        fontWeight: 500
+                    }
+                },
+                itemStyle: {
+                    color: {
+                        type: 'radial',
+                        x: 0.5,
+                        y: 0.5,
+                        r: 0.5,
+                        colorStops: [
+                            { offset: 0, color: '#a5d6a7' },
+                            { offset: 1, color: '#81c784' }
+                        ]
+                    },
+                    borderWidth: 2,
+                    borderColor: 'rgba(76,175,80,0.8)'
+                },
+                emphasis: {
+                    itemStyle: {
+                        color: '#c8e6c9',
+                        borderWidth: 3
+                    },
+                    label: {
+                        color: '#1b5e20',
+                        fontSize: 15,
+                        fontWeight: 600
+                    }
+                },
+                animationDuration: 800,
+                animationEasing: 'cubicInOut'
             }]
         });
 
-        // 窗口自适应
+        // 响应式处理
         window.addEventListener('resize', function () {
             myChart.resize();
         });
