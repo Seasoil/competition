@@ -1,141 +1,324 @@
 <!DOCTYPE html>
-<html style="height: 100%">
+<html>
 
 <head>
     <meta charset="utf-8">
-    <title>WebKit 依赖关系图</title>
-    <!-- 引入 ECharts -->
-    <script src="./js/echarts (2).js"></script>
-    <!-- 引入 jQuery -->
+    <title>精致农业知识图谱</title>
     <script src="./js/jquery.min.js"></script>
+    <script src="./js/echarts.min.js"></script>
     <style>
-        /* 页面背景样式 */
+        html,
         body {
-            margin: 0;
+            width: 100%;
             height: 100%;
-            background: url('https://img.zcool.cn/community/01b2fc5d3ae145a8012051cdd9607e.jpg') no-repeat center center fixed;
-            background-size: cover;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            font-family: 'Microsoft YaHei', sans-serif;
         }
 
-        /* 图表容器样式 */
         #main {
             width: 100%;
             height: 100vh;
-            background-color: rgba(255, 255, 255, 0.3);
-            /* 半透明背景 */
+            background: url('../第三界面/img/bg.png') center/cover;
+            position: relative;
         }
 
-        /* 返回按钮样式 */
-        .back-button {
+        #node-info {
+            position: absolute;
+            display: none;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 8px 12px;
+            border-radius: 4px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+            border: 1px solid #ddd;
+            pointer-events: none;
+            font-size: 14px;
+            color: #333;
+            max-width: 200px;
+            word-wrap: break-word;
+            backdrop-filter: blur(2px);
+        }
+
+        .nav-buttons {
             position: fixed;
-            top: 20px;
-            left: 20px;
-            padding: 10px 20px;
-            background: rgba(0, 128, 255, 0.8);
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
+            top: 15px;
+            right: 15px;
             z-index: 1000;
-            transition: background 0.3s;
+            display: flex;
+            gap: 10px;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 8px 12px;
+            border-radius: 6px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
         }
 
-        .back-button:hover {
-            background: rgba(0, 128, 255, 1);
+        .nav-btn {
+            cursor: pointer;
+            padding: 6px 12px;
+            border-radius: 4px;
+            background: rgba(245, 245, 245, 0.9);
+            border: 1px solid #ddd;
+            transition: all 0.2s;
+            font-size: 12px;
+            color: #333;
+        }
+
+        .nav-btn:hover {
+            background: #fff;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+            transform: translateY(-1px);
         }
     </style>
 </head>
 
 <body>
-    <!-- 返回按钮 -->
-    <a href="../index.html" class="back-button">返回主界面</a>
+    <div class="nav-buttons">
+        <div class="nav-btn" onclick="location.href='./关系图.html'">农学关系图</div>
+        <div class="nav-btn" onclick="location.href='./农学文化界面.html'">农学文化细览</div>
+        <div class="nav-btn" onclick="location.href='../第一界面/1界面.html'">第一界面</div>
+        <div class="nav-btn" onclick="location.href='../第三界面/人界面.html'">第三界面</div>
+    </div>
 
-    <!-- 图表容器 -->
     <div id="main"></div>
+    <div id="node-info"></div>
 
-    <script type="text/javascript">
-    var myChart = echarts.init(document.getElementById('main'));
+    <script>
+        let myChart = echarts.init(document.getElementById('main'));
+        myChart.showLoading();
 
-    // 自定义数据（示例）
-    const agricultureData = {
-        nodes: [
-            {id: 0, name: '齐民要术', category: 0, symbolSize: 50},
-            {id: 1, name: '贾思勰', category: 1, symbolSize: 40},
-            {id: 2, name: '北魏', category: 4, symbolSize: 30},
-            {id: 3, name: '农政全书', category: 0, symbolSize: 45},
-            {id: 4, name: '徐光启', category: 1, symbolSize: 40},
-            {id: 5, name: '代田法', category: 2, symbolSize: 35},
-            {id: 6, name: '赵过', category: 1, symbolSize: 35},
-            {id: 7, name: '天工开物', category: 0, symbolSize: 45},
-            {id: 8, name: '宋应星', category: 1, symbolSize: 35},
-            {id: 9, name: '耕田法', category: 2, symbolSize: 30},
-            {id: 10, name: '农桑辑要', category: 0, symbolSize: 40},
-            {id: 11, name: '王祯', category: 1, symbolSize: 35},
-            {id: 12, name: '农器图谱', category: 3, symbolSize: 35}
-        ],
-        links: [
-            {source: 1, target: 0},
-            {source: 0, target: 2},
-            {source: 4, target: 3},
-            {source: 6, target: 5},
-            {source: 8, target: 7},
-            {source: 0, target: 9},
-            {source: 11, target: 10},
-            {source: 11, target: 12},
-            {source: 0, target: 5},
-            {source: 3, target: 12}
-        ],
-        categories: [
-            {name: '农书'},
-            {name: '农学家'},
-            {name: '农业技术'},
-            {name: '农业工具'},
-            {name: '历史朝代'}
-        ]
-    };
-
-    const option = {
-        legend: {
-            data: ['农书', '农学家', '农业技术', '农业工具', '历史朝代'],
-            textStyle: { color: '#2c2c2c' }
-        },
-        series: [{
-            type: 'graph',
-            layout: 'force',
-            animation: true,
-            label: {
-                show: true,
-                position: 'right',
-                color: '#1a1a1a'
-            },
-            data: agricultureData.nodes,
-            categories: agricultureData.categories,
-            force: {
-                edgeLength: 50,
-                repulsion: 100,
-                gravity: 0.1
-            },
-            edges: agricultureData.links,
-            lineStyle: {
-                color: 'rgba(100, 100, 100, 0.4)'
-            },
-            emphasis: {
-                focus: 'adjacency',
-                label: {
-                    show: true,
-                    fontSize: 16
+        const agricultureData = {
+            categories: [
+                { name: '农事占候', color: '#5470c6' },
+                { name: '农器', color: '#91cc75' },
+                { name: '树艺', color: '#fac858' },
+                { name: '木本植物', color: '#ee6666' },
+                { name: '牧养六畜', color: '#73c0de' },
+                { name: '救荒本草', color: '#3ba272' },
+                { name: '境外作物', color: '#fc8452' }
+            ],
+            nodes: [
+                {
+                    name: '一、农事占候',
+                    children: [
+                        { name: '时间', children: ['正月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月'] },
+                        { name: '天象', children: ['日', '月', '星', '风', '雨', '云', '雾', '霞', '虹', '雷', '电'] },
+                        { name: '自然现象', children: ['冰', '霜', '雪', '潮'] },
+                        { name: '地理', children: ['山', '地', '水'] },
+                        { name: '动植物指征', children: ['草', '花', '木', '飞禽走兽', '龙鱼杂虫'] }
+                    ]
+                },
+                {
+                    name: '二、农器',
+                    children: ["犁", "木犁", "铁犁", "牛犁", "曲辕犁", "蜈蚣犁", "双股犁", "耒", "耜", "耧", "耠", "锄", "锄头", "锹", "铲", "镢头", "磙", "石磙", "碌碡", "铁耱", "耙", "木耙", "铁齿耙", "牛脚耙", "打地棍", "独轮耧", "三铧犁", "四铧犁", "耧车", "耧耠车", "脚踏耧", "手摇耧", "翻车", "筒车", "桔槔", "踏车", "鱼骨车", "提水筒", "吊桶", "畚箕", "箩筐", "簸箕", "筛子", "风车", "风扇车", "连枷", "打谷棒", "碓", "碓臼", "舂米碓", "杵", "石臼", "石磨", "转盘磨", "手磨", "碾子", "碾盘", "磨盘", "磨杵", "竹筐", "谷囤", "粮囤", "木仓", "地窖", "储粮罐", "草垛叉", "木叉", "扁担", "独轮车", "木牛流马", "推车", "肩挑架", "麻绳", "谷袋", "草帘", "割刀", "镰刀", "割禾刀", "收割刀", "割草刀", "柴刀", "砍刀", "小斧", "大斧", "锯子", "粪叉", "粪筐", "浇水壶", "秧针", "插秧夹", "栽秧叉", "移栽板", "育秧箱", "苗床帘", "引水沟", "灌溉槽", "疏水铲", "排涝筒", "木拍水器", "流板", "水漏", "草帘蓑", "猪槽", "牛槽", "食桶", "饮水桶", "料斗", "圈栏门", "牲口牵绳", "马鞍", "犁铧", "犁壁", "犁架", "犁柄", "耕绳", "牛轭", "轭肩", "稻叉", "麦钩", "弹棉弓", "纺锤", "纺车", "布机", "轧花机", "收花筐", "打棉拍", "风谷箱", "晒谷架", "晒场耙", "翻晒杈", "穗剪", "掰棒器", "种子罐", "藏种坛", "种仓", "漂种筒"]
+                },
+                {
+                    name: '三、树艺',
+                    children: [
+                        { name: '3.1 谷部上', children: ['粱', '黍', '梁', '术', '稷', '薥秫', '稻', '椑附'] },
+                        { name: '3.2 谷部下', children: ['大豆', '豌豆', '小豆', '豇豆', '菉豆', '藊豆', '赤豆', '刀豆', '蚕豆', '黎豆', '麦', '荞麦', '胡麻'] },
+                        { name: '3.3 蓏部', children: ['黄瓜', '茄子', '瓠', '王瓜', '芋', '丝瓜', '香芋', '西瓜', '莲', '菱', '芡', '乌芋', '慈姑', '菰', '山药', '甘𫉄', '萝菔', '胡萝菔'] },
+                        {
+                            name: '3.4 蔬部',
+                            children: [
+                                { name: '葵属', children: ['乌松', '蜀葵', '夏松', '龙葵', '廿祘', '蔠葵'] },
+                                { name: '辛菜类', children: ['葱', '蔓菁', '韭', '薤', '姜', '芥'] },
+                                { name: '香菜与其他', children: ['蒝荽', '芸云', '萱室', '菠菜', '苋', '茼蒿', '甜菜', '芹', '蘧', '苜蓿', '紫苏', '蓼', '兰', '香蘘荷', '菌类'] }
+                            ]
+                        },
+                        {
+                            name: '3.5 果部',
+                            children: [
+                                { name: '核果与仁果', children: ['束束梨', '桃', '栗', '李', '榛', '梅', '木示', '木口', '林檎', '柿', '椑柿', '君迁子', '安石榴'] },
+                                { name: '热带与浆果类', children: ['荔枝', '野葡萄', '龙眼', '橘', '杨梅', '枇杷', '柑', '葡萄', '银杏', '柚', '佛手柑', '金橘', '桑椹', '木瓜'] }
+                            ]
+                        },
+                        { name: '3.6 蚕桑类', children: ['蚕桑类'] }
+                    ]
+                },
+                {
+                    name: '四、木本植物',
+                    children: [
+                        '榆', '桧', '梓', '椿', '松', '梧桐', '杉', '椒', '柏', '谷', '槐', '杨', '柳', '白杨', '女贞', '冬青', '水槿', '楮', '乌臼', '漆', '白十荚', '棕榈', '柞', '楝', '棠梨', '海红', '椰', '栀子', '楂',
+                        { name: '杂项植物', children: ['竹', '茶', '菊', '红花', '决明', '蓝', '黄精', '紫草', '百合', '枸杞', '薏苡', '茱萸', '芭蕉', '萱', '芥蓝', '莼', '苇', '蒲席草', '灯草'] }
+                    ]
+                },
+                { name: '五、牧养六畜', children: ['马', '牛', '羊', '猪', '鸡', '狗', '猫', '驴', '鹅', '鸭', '鱼', '蜜蜂'] },
+                { name: '六、救荒本草', children: [] },
+                {
+                    name: '七、境外作物',
+                    children: [
+                        { name: '稀见果蔬', children: ['郁', '芡', '𫉄', '薁', '杨梅', '沙棠', '柤', '椰', '槟榔', '廉姜', '枸橼', '鬼目', '橄榄', '龙眼', '椹'] },
+                        { name: '境外果蓏类', children: ['稻', '禾', '麦', '豆', '枣', '桃', '李', '梨', '柰', '橙', '橘甘', '柚', '枷', '栗', '枇杷', '椑', '菱', '棪', '益智', '桶', '蒳子', '豆蔻', '榠', '余甘', '蒟子', '芭蕉', '扶留'] }
+                    ]
                 }
+            ]
+        };
+
+        function generateNodes() {
+            let nodes = [], links = [], idCounter = 0;
+
+            const createNode = (name, category, depth = 0) => {
+                const node = {
+                    id: idCounter++,
+                    name: name,
+                    category: category,
+                    symbolSize: Math.max(8 - depth * 1.2, 3),
+                    itemStyle: {
+                        borderWidth: 0,
+                        color: agricultureData.categories[category].color + 'CC',
+                        opacity: 0.9
+                    }
+                };
+                nodes.push(node);
+                return node.id;
+            };
+
+            const processNode = (data, parentId = null, depth = 0, category = 0) => {
+                if (Array.isArray(data)) {
+                    data.forEach(item => {
+                        if (typeof item === 'object') {
+                            processNode(item, parentId, depth, category);
+                        } else {
+                            const currentId = createNode(item, category, depth + 1);
+                            links.push({ source: parentId, target: currentId });
+                        }
+                    });
+                    return;
+                }
+
+                const currentId = createNode(data.name || data, category, depth);
+                if (parentId !== null) links.push({ source: parentId, target: currentId });
+                if (data.children) processNode(data.children, currentId, depth + 1, category);
+            };
+
+            agricultureData.nodes.forEach((mainCategory, index) => {
+                const mainId = createNode(mainCategory.name, index);
+                if (mainCategory.children) processNode(mainCategory.children, mainId, 1, index);
+            });
+
+            return { nodes, links };
+        }
+
+        const graphData = generateNodes();
+        const option = {
+            title: {
+                text: '农业知识全景图谱',
+                left: 'center',
+                textStyle: {
+                    fontSize: 30,
+                    color: '#2c3e50',
+                    fontWeight: 'bold',
+                    textShadow: '0 2px 2px rgba(255,255,255,0.5)'
+                }
+            },
+            legend: {
+                data: agricultureData.categories.map(c => c.name),
+                orient: 'vertical',
+                right: 5,
+                top: 'middle',
+                itemWidth: 10,
+                itemHeight: 10,
+                textStyle: {
+                    color: '#333',
+                    fontSize: 12,
+                    textShadow: '0 1px 2px rgba(255,255,255,0.8)'
+                }
+            },
+            tooltip: { show: false },
+            series: [{
+                type: 'graph',
+                layout: 'force',
+                roam: true,
+                draggable: true,
+                scaleLimit: { min: 0.5, max: 2 },
+                edgeSymbol: ['none', 'arrow'],
+                edgeSymbolSize: 4,
+                label: { show: false },
+                categories: agricultureData.categories,
+                data: graphData.nodes,
+                links: graphData.links,
+                force: {
+                    repulsion: 320,
+                    edgeLength: 10,
+                    gravity: 0.35,
+                    friction: 0.28,
+                    layoutAnimation: true
+                },
+                lineStyle: {
+                    color: 'source',
+                    curveness: 0.1,
+                    width: 0.4,
+                    opacity: 0.15
+                },
+                emphasis: {
+                    itemStyle: {
+                        shadowBlur: 8,
+                        shadowColor: 'rgba(0,0,0,0.2)'
+                    }
+                }
+            }]
+        };
+
+        myChart.setOption(option);
+        myChart.hideLoading();
+
+        // 节点点击交互
+        const infoDiv = document.getElementById('node-info');
+        myChart.on('click', 'series.graph', function (params) {
+            if (params.data) {
+                infoDiv.style.display = 'block';
+                infoDiv.style.left = params.event.event.pageX + 15 + 'px';
+                infoDiv.style.top = params.event.event.pageY + 15 + 'px';
+                infoDiv.textContent = params.data.name;
             }
-        }],
-        color: ['#4e79a7', '#59a14f', '#e15759', '#edc948', '#af7aa1']
-    };
+        });
 
-    myChart.setOption(option);
+        // 点击空白处隐藏信息
+        myChart.getZr().on('click', (event) => {
+            if (!event.target) {
+                infoDiv.style.display = 'none';
+            }
+        });
 
-    window.onresize = function() {
-        myChart.resize();
-    };
-</script>
+        // 窗口自适应
+        window.addEventListener('resize', () => myChart.resize());
+
+        // 初始缩放
+        setTimeout(() => {
+            myChart.dispatchAction({
+                type: 'zoom',
+                scale: 0.1,
+                origin: [myChart.getWidth() / 2, myChart.getHeight() / 2]
+            });
+            myChart.dispatchAction({ type: 'restore' });
+        }, 8);
+
+        // 拖拽优化
+        let dragNode = null;
+        myChart.on('mousedown', { seriesIndex: 0 }, (e) => {
+            dragNode = {
+                id: e.data.id,
+                x: e.event.offsetX,
+                y: e.event.offsetY
+            };
+        });
+        myChart.getZr().on('mousemove', (e) => {
+            if (dragNode) {
+                const dx = e.offsetX - dragNode.x;
+                const dy = e.offsetY - dragNode.y;
+                myChart.dispatchAction({
+                    type: 'dragNode',
+                    dataIndex: dragNode.id,
+                    dx: dx * 0.7,
+                    dy: dy * 0.7
+                });
+                dragNode.x = e.offsetX;
+                dragNode.y = e.offsetY;
+            }
+        });
+        myChart.getZr().on('mouseup', () => dragNode = null);
+    </script>
 </body>
 
 </html>

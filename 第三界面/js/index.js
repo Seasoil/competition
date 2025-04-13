@@ -1,3 +1,4 @@
+
 var bookData = dataOne().bookData;
 console.log(bookData)
 
@@ -76,34 +77,36 @@ $(function() {
   });
   // 复制第一个ul
   var parentWrap = $(".aside-left .top .over-wrap");
-  var ulClone = $(".aside-left .top ul")
-    .eq(0)
-    .clone(true);
-  parentWrap.append(ulClone);
+  Month.forEach((month, index) => {
+  var newUl = $("<ul>").addClass("con");
+  // 填充实际数据到 newUl
+  parentWrap.append(newUl);
+});
 
 	//   添加点击事件
   $(".aside-left .top").on('click', 'li', function(el) {
-		var curItem = $(el.currentTarget);
-		var bookName = curItem.find('.name').text().trim();
-		var hasBook = false;
-		var index = 0;
-    console.log(bookName)
-		for(var i = 0; i < bookData.length; i++) {
-      console.log(bookData[i]["BookInformation"]["bookName"])
-			if (bookData[i]["BookInformation"]["bookName"] === bookName) {
-				index = i;
-				hasBook = true;
-				break;
-			}
-		}
+  var curItem = $(el.currentTarget);
+  var bookName = curItem.find('.name').text().trim();
+  var index = -1;
 
-		if (!hasBook) return false;
+  // 遍历 bookData 并匹配书名
+  bookData.forEach((book, i) => {
+    if (book.BookInformation.bookName === bookName) {
+      index = i;
+    }
+  });
 
-		var curHref = window.location.href;
-		var str = curHref.indexOf("index.html");
-		var newHref = curHref.substr(0, str) + "four.html?index=" + index;
-		window.location.href = newHref;
-	})
+  if (index === -1) return;
+
+  // 生成正确路径
+  var basePath = window.location.origin + window.location.pathname.split('/').slice(0, -1).join('/');
+  var newHref = `${basePath}/four.html?index=${index}`;
+
+  // four.js 使用事件委托
+  $(".aside-left").on("click", "ul li", function() {
+    // 处理点击逻辑
+  });
+});
 
   //   获取行高
   var topSpan = $(".aside-left .top .book-rank span");
