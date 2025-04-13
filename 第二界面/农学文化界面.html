@@ -206,7 +206,7 @@
                 text: '农业知识全景图谱',
                 left: 'center',
                 textStyle: {
-                    fontSize: 30,
+                    fontSize: 50,
                     color: '#2c3e50',
                     fontWeight: 'bold',
                     textShadow: '0 2px 2px rgba(255,255,255,0.5)'
@@ -217,11 +217,11 @@
                 orient: 'vertical',
                 right: 5,
                 top: 'middle',
-                itemWidth: 10,
-                itemHeight: 10,
+                itemWidth: 20,
+                itemHeight: 20,
                 textStyle: {
                     color: '#333',
-                    fontSize: 12,
+                    fontSize: 30,
                     textShadow: '0 1px 2px rgba(255,255,255,0.8)'
                 }
             },
@@ -231,24 +231,24 @@
                 layout: 'force',
                 roam: true,
                 draggable: true,
-                scaleLimit: { min: 0.5, max: 2 },
+                scaleLimit: { min: 2, max: 3 },
                 edgeSymbol: ['none', 'arrow'],
-                edgeSymbolSize: 4,
+                edgeSymbolSize: 2,
                 label: { show: false },
                 categories: agricultureData.categories,
                 data: graphData.nodes,
                 links: graphData.links,
                 force: {
-                    repulsion: 320,
+                    repulsion: 10,
                     edgeLength: 10,
-                    gravity: 0.35,
+                    gravity: 0.25,
                     friction: 0.28,
                     layoutAnimation: true
                 },
                 lineStyle: {
                     color: 'source',
-                    curveness: 0.1,
-                    width: 0.4,
+                    curveness: 0.000001,
+                    width: 0.5,
                     opacity: 0.15
                 },
                 emphasis: {
@@ -288,7 +288,7 @@
         setTimeout(() => {
             myChart.dispatchAction({
                 type: 'zoom',
-                scale: 0.1,
+                scale: 0.01,
                 origin: [myChart.getWidth() / 2, myChart.getHeight() / 2]
             });
             myChart.dispatchAction({ type: 'restore' });

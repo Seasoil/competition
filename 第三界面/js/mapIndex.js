@@ -1792,7 +1792,7 @@ var ListenTr = function(bNum){
 }
 var numGoFn = function(monthIndex){
     //   将月份填入
-    var curTime = '2017年' + (monthIndex+1) + '月';
+    var curTime = '数据(1911年以前)';
     $('.month-tip').text(curTime);
     //   全国数据关联月份
     var newBData,oldBData,newVData,oldVData,newMData,oldMData,newSData,oldSData;
