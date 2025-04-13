@@ -425,483 +425,404 @@ var Month = [
 ];
 // 省份数据
 var itemStyleD = [
+    // === itemStyleD 部分（核心省份） ===
     {   
         name: '湖南',
+        uploadcnt: "丘陵、水田、湖区", 
+        uploadpzs: "水稻、棉花、甘蔗",
+        xsmy: "亚热带湿润气候，潮湿多雨",
+        kcmy: "米饭、腊肉、鱼类",
         itemStyle: {
-            normal: {                       
-                areaColor: '#0554E4'
-            },
-            emphasis: {
-                areaColor: "#0554E4"
-            }                      
+            normal: { areaColor: '#0554E4' },
+            emphasis: { areaColor: "#0554E4" }
         }        
     },
     {   
         name: '上海',
+        uploadcnt: "冲积平原、河网密布",
+        uploadpzs: "水稻、棉花、蔬菜",
+        xsmy: "亚热带季风气候，湿润温暖",
+        kcmy: "米饭、小笼包、河鲜",
         itemStyle: {
-            normal: {                       
-                areaColor: '#27E9FD'
-            },
-            emphasis: {
-                areaColor: "#27E9FD"
-            }                      
+            normal: { areaColor: '#27E9FD' },
+            emphasis: { areaColor: "#27E9FD" }
         }        
     },
     {   
         name: '云南',
+        uploadcnt: "高原、山地、河谷",
+        uploadpzs: "水稻、玉米、烟草",
+        xsmy: "高原山地气候，干湿分明",
+        kcmy: "米线、野菜、腊肉",
         itemStyle: {
-            normal: {                       
-                areaColor: '#20CAF8'
-            },
-            emphasis: {
-                areaColor: "#20CAF8"
-            }                      
+            normal: { areaColor: '#20CAF8' },
+            emphasis: { areaColor: "#20CAF8" }
         }        
     },
     {   
         name: '湖北',
+        uploadcnt: "湖泊、平原、水田",
+        uploadpzs: "水稻、油菜、棉花",
+        xsmy: "亚热带湿润气候，雨多湿热",
+        kcmy: "米饭、鱼、藕汤",
         itemStyle: {
-            normal: {                       
-                areaColor: '#005ce5'
-            },
-            emphasis: {
-                areaColor: "#005ce5"
-            }                      
+            normal: { areaColor: '#005ce5' },
+            emphasis: { areaColor: "#005ce5" }
         }        
     },
     {   
         name: '江苏',
+        uploadcnt: "冲积平原、水网密布",
+        uploadpzs: "水稻、小麦、蚕桑",
+        xsmy: "亚热带湿润季风气候，温暖多雨",
+        kcmy: "米饭、面条、鱼虾",
         itemStyle: {
-            normal: {                       
-                areaColor: '#00b6f6'
-            },
-            emphasis: {
-                areaColor: "#00b6f6"
-            }                      
+            normal: { areaColor: '#00b6f6' },
+            emphasis: { areaColor: "#00b6f6" }
         }        
     },
     {   
         name: '江西',
+        uploadcnt: "丘陵、湖泊、水田",
+        uploadpzs: "水稻、甘蔗、棉花",
+        xsmy: "亚热带湿润气候，四季分明",
+        kcmy: "米饭、藜蒿、鸭肉",
         itemStyle: {
-            normal: {                       
-                areaColor: '#01a4f1'
-            },
-            emphasis: {
-                areaColor: "#01a4f1"
-            }                      
+            normal: { areaColor: '#01a4f1' },
+            emphasis: { areaColor: "#01a4f1" }
         }        
     },
     {   
         name: '内蒙古',
+        uploadcnt: "草原、沙地、丘陵",
+        uploadpzs: "燕麦、黍、马铃薯",
+        xsmy: "温带草原气候，干冷风大",
+        kcmy: "奶制品、牛羊肉、面食",
         itemStyle: {
-            normal: {                       
-                areaColor: '#00ccf7'
-            },
-            emphasis: {
-                areaColor: "#00ccf7"
-            }                      
+            normal: { areaColor: '#00ccf7' },
+            emphasis: { areaColor: "#00ccf7" }
         }        
     },
     {   
         name: '四川',
+        uploadcnt: "盆地、山地、丘陵",
+        uploadpzs: "水稻、小麦、油菜",
+        xsmy: "亚热带湿润气候，炎热多雨",
+        kcmy: "米饭、麻辣火锅、豆瓣酱",
         itemStyle: {
-            normal: {                       
-                areaColor: '#0069e8'
-            },
-            emphasis: {
-                areaColor: "#0069e8"
-            }                      
+            normal: { areaColor: '#0069e8' },
+            emphasis: { areaColor: "#0069e8" }
         }        
     },
     {   
         name: '浙江',
+        uploadcnt: "丘陵、水田",
+        uploadpzs: "水稻、茶叶、蚕桑",
+        xsmy: "亚热带季风气候，温暖湿润",
+        kcmy: "米饭、鱼干、蔬菜",
         itemStyle: {
-            normal: {                       
-                areaColor: '#00b6f6'
-            },
-            emphasis: {
-                areaColor: "#00b6f6"
-            }                      
+            normal: { areaColor: '#00b6f6' },
+            emphasis: { areaColor: "#00b6f6" }
         }        
-    }
-]
+    },
+];
+
 var noneData = [
+    // === noneData 部分（其他省份） ===
     {
         name: '广东', 
-        uploadcnt: 25.1,
-        uploadpzs: 1.3,
-        xsmy: 902,
-        kcmy: 343,                    
+        uploadcnt: "丘陵、盆地、平原",
+        uploadpzs: "水稻、甘蔗、香蕉",
+        xsmy: "南亚热带季风气候，炎热多雨",
+        kcmy: "米饭、粥、海鲜",
         itemStyle: {
-          normal: {                        
-              areaColor: '#00d9fc'                           
-          },
-          emphasis: {
-              areaColor: "#00d9fc"                            
-          }       
+            normal: { areaColor: '#00d9fc' },
+            emphasis: { areaColor: "#00d9fc" }       
         }
     },    
     {
         name: '甘肃', 
-        uploadcnt: 12.7,
-        uploadpzs: 1.4,
-        xsmy: 834,
-        kcmy: 379,                    
+        uploadcnt: "山地、沙地、绿洲",
+        uploadpzs: "小麦、玉米、马铃薯",
+        xsmy: "温带干旱半干旱气候，少雨多风",
+        kcmy: "馍馍、牛羊肉、粉条",
         itemStyle: {
-          normal: {                        
-              areaColor: '#0042df'
-          },
-          emphasis: {
-              areaColor: "#0042df"
-          }
+            normal: { areaColor: '#0042df' },
+            emphasis: { areaColor: "#0042df" }
         }                    
     },
     {
         name: '河北', 
-        uploadcnt: 52.7,
-        uploadpzs: 2.3,
-        xsmy: 1034,
-        kcmy: 460,                    
+        uploadcnt: "黄土平原、冲积平原",
+        uploadpzs: "小麦、谷子、高粱",
+        xsmy: "温带季风气候，冬季寒冷干燥",
+        kcmy: "面食（饼、馒头）、杂粮粥",
         itemStyle: {
-          normal: {                        
-              areaColor: '#034DE4'
-          },
-          emphasis: {
-              areaColor: "#034DE4"
-          }
+            normal: { areaColor: '#034DE4' },
+            emphasis: { areaColor: "#034DE4" }
         }                                       
     },
     {
         name: '河南', 
-        uploadcnt: 52.7,
-        uploadpzs: 1.1,
-        xsmy: 824,
-        kcmy: 402,                    
+        uploadcnt: "黄土平原、河谷地",
+        uploadpzs: "小麦、棉花、芝麻",
+        xsmy: "温带季风气候，春暖夏热",
+        kcmy: "馒头、杂粮粥、豆腐",
         itemStyle: {
-          normal: {                        
-              areaColor: '#034DE4'
-          },
-          emphasis: {
-              areaColor: "#034DE4"
-          }
+            normal: { areaColor: '#034DE4' },
+            emphasis: { areaColor: "#034DE4" }
         }                    
     },
     {
-      name: '黑龙江', 
-      uploadcnt: 32.7,
-      uploadpzs: 1.4,
-      xsmy: 1240,
-      kcmy: 645,                    
-      itemStyle: {
-          normal: {                        
-              areaColor: '#17A3F1'
-          },
-          emphasis: {
-              areaColor: "#17A3F1"
-          }                          
-      }
+        name: '黑龙江', 
+        uploadcnt: "黑土平原、林地",
+        uploadpzs: "大豆、小麦、马铃薯",
+        xsmy: "寒温带气候，严寒漫长",
+        kcmy: "大豆制品、牛羊肉、杂粮",
+        itemStyle: {
+            normal: { areaColor: '#17A3F1' },
+            emphasis: { areaColor: "#17A3F1" }                          
+        }
     },
     {
         name: '山东', 
-        uploadcnt: 42.7,
-        uploadpzs: 1.3,
-        xsmy: 1732,
-        kcmy: 734,                    
+        uploadcnt: "平原、丘陵、沿海",
+        uploadpzs: "小麦、花生、高粱",
+        xsmy: "温带季风气候，春旱夏雨",
+        kcmy: "面食、地瓜、海鲜",
         itemStyle: {
-          normal: {                        
-              areaColor: '#4BFFFF'
-          },
-          emphasis: {
-              areaColor: "#4BFFFF"                            
-          }       
+            normal: { areaColor: '#4BFFFF' },
+            emphasis: { areaColor: "#4BFFFF" }       
         }
     },
     {
         name: '新疆', 
-        uploadcnt: 32.1,
-        uploadpzs: 1.4,
-        xsmy: 1324,
-        kcmy: 509,
+        uploadcnt: "盆地、山地、绿洲",
+        uploadpzs: "小麦、棉花、葡萄",
+        xsmy: "温带大陆性干旱气候，昼夜温差大",
+        kcmy: "馕、抓饭、牛羊肉",
         itemStyle: {
-          normal: {                        
-              areaColor: '#17A3F1'
-          },
-          emphasis: {
-              areaColor: "#17A3F1"
-          }       
+            normal: { areaColor: '#17A3F1' },
+            emphasis: { areaColor: "#17A3F1" }       
         }
     },    
     {
-      name: '宁夏', 
-      itemStyle: {
-          normal: {                        
-              areaColor: '#01b0f3'                            
-          },
-          emphasis: {
-              areaColor: "#01b0f3",
-              opacity: 0.2                            
-          }       
-      },
-      label: {
-          show: false
-      }                                         
+        name: '宁夏', 
+        uploadcnt: "黄土台地、河套平原",
+        uploadpzs: "小麦、水稻、枸杞",
+        xsmy: "温带大陆性干旱气候",
+        kcmy: "面食、羊肉、粥类",
+        itemStyle: {
+            normal: { areaColor: '#01b0f3' },
+            emphasis: { areaColor: "#01b0f3", opacity: 0.2 }       
+        },
+        label: { show: false }                                         
     },
     {
-      name: '海南', 
-      itemStyle: {
-          normal: {                        
-              areaColor: '#00f0ff'
-          },
-          emphasis: {
-              areaColor: "#00f0ff",
-              opacity: 0.2                            
-          }
-      },
-      label: {
-          show: false
-      }                                         
+        name: '海南', 
+        uploadcnt: "火山地、平原、丘陵",
+        uploadpzs: "水稻、甘蔗、热带水果",
+        xsmy: "热带季风气候，全年高温",
+        kcmy: "米饭、椰子饭、热带果品",
+        itemStyle: {
+            normal: { areaColor: '#00f0ff' },
+            emphasis: { areaColor: "#00f0ff", opacity: 0.2 }
+        },
+        label: { show: false }                                         
     },
     {
-      name: '台湾',                   
-      itemStyle: {
-          normal: {                       
-              areaColor: '#0067e7'
-          },
-          emphasis: {
-              areaColor: "#0067e7",
-              opacity: 0.2
-          }
-      },
-      label: {
-          show: false
-      }                     
+        name: '台湾',  
+        uploadcnt: "山地、平原、海岸",
+        uploadpzs: "水稻、甘蔗、热带水果",
+        xsmy: "热带和亚热带季风气候",
+        kcmy: "米饭、海产、水果",
+        itemStyle: {
+            normal: { areaColor: '#0067e7' },
+            emphasis: { areaColor: "#0067e7", opacity: 0.2 }
+        },
+        label: { show: false }                     
     },
     {
-      name: '香港',                   
-      itemStyle: {
-          normal: {                        
-              areaColor: '#00dafa'
-          },
-          emphasis: {
-              areaColor: "#00dafa",
-              opacity: 0.2                            
-          }
-      },
-      label: {
-          show: false
-      }                                                              
+        name: '香港',  
+        uploadcnt: "丘陵、海港、填海地",
+        uploadpzs: "蔬菜、甘蔗、水稻（少量）",
+        xsmy: "亚热带季风气候，炎热潮湿",
+        kcmy: "粥粉面饭、海鲜、点心",
+        itemStyle: {
+            normal: { areaColor: '#00dafa' },
+            emphasis: { areaColor: "#00dafa", opacity: 0.2 }
+        },
+        label: { show: false }                                                              
     },
     {
-      name: '澳门', 
-      itemStyle: {
-          normal: {                        
-              areaColor: '#00dafa'
-          },
-          emphasis: {
-              areaColor: "#00dafa",
-              opacity: 0.2                            
-          }
-      },
-      label: {
-          show: false
-      }                                                              
+        name: '澳门', 
+        uploadcnt: "海岛、丘陵",
+        uploadpzs: "蔬菜、水稻（少量）",
+        xsmy: "亚热带季风气候，温暖湿润",
+        kcmy: "葡式米饭、点心、鱼虾",
+        itemStyle: {
+            normal: { areaColor: '#00dafa' },
+            emphasis: { areaColor: "#00dafa", opacity: 0.2 }
+        },
+        label: { show: false }                                                              
     },
     {
-      name: '北京', 
-      itemStyle: {
-          normal: {
-            areaColor: '#034DE4'                            
-          },
-          emphasis: {
-            areaColor: "#034DE4",
-            opacity: 0.2
-          }
-      },
-      label: {
-          show: false
-      }                      
+        name: '北京', 
+        uploadcnt: "山地、平原",
+        uploadpzs: "小麦、玉米、豆类",
+        xsmy: "温带季风气候，四季分明",
+        kcmy: "面条、豆汁、驴打滚",
+        itemStyle: {
+            normal: { areaColor: '#034DE4' },
+            emphasis: { areaColor: "#034DE4", opacity: 0.2 }
+        },
+        label: { show: false }                      
     },
     {
         name: '天津', 
+        uploadcnt: "冲积平原、滨海湿地",
+        uploadpzs: "小麦、玉米、蔬菜",
+        xsmy: "温带季风气候，冬冷夏热",
+        kcmy: "煎饼果子、面食、海鲜",
         itemStyle: {
-            normal: {
-                areaColor: '#034DE4'                          
-            },
-            emphasis: {
-                areaColor: "#034DE4",
-                opacity: 0.2  
-            }
+            normal: { areaColor: '#034DE4' },
+            emphasis: { areaColor: "#034DE4", opacity: 0.2 }
         },
-       label: {
-            show: false
-       }                      
+        label: { show: false }                      
     },
     {
         name: '重庆', 
+        uploadcnt: "丘陵、山地",
+        uploadpzs: "水稻、甘蔗、蔬菜",
+        xsmy: "亚热带湿润气候，闷热潮湿",
+        kcmy: "米饭、火锅、小面",
         itemStyle: {
-        normal: {                        
-            areaColor: '#0E7DEB'
+            normal: { areaColor: '#0E7DEB' },
+            emphasis: { areaColor: "#0E7DEB", opacity: 0.2 }         
         },
-        emphasis: {
-            areaColor: "#0E7DEB",
-            opacity: 0.2                            
-        }         
-        },
-        label: {
-            show: false
-        }                                         
+        label: { show: false }                                         
     },      
     {
         name: '辽宁', 
+        uploadcnt: "山地、平原、丘陵",
+        uploadpzs: "小麦、高粱、粟",
+        xsmy: "温带季风气候，寒冷干燥",
+        kcmy: "面食、杂粮粥、鱼类",
         itemStyle: {
-            normal: {                        
-                areaColor: '#034DE4'                          
-            },
-            emphasis: {
-                areaColor: "#034DE4",
-                opacity: 0.2  
-            }
+            normal: { areaColor: '#034DE4' },
+            emphasis: { areaColor: "#034DE4", opacity: 0.2 }
         },
-        label: {
-            show: false
-        }                      
+        label: { show: false }                      
     },
     {
-        name: '安徽',                    
+        name: '安徽', 
+        uploadcnt: "山地、平原、湖泊",
+        uploadpzs: "水稻、小麦、油菜",
+        xsmy: "亚热带季风气候，雨量充沛",
+        kcmy: "米饭、杂粮、鱼肉",                   
         itemStyle: {
-        normal: {                        
-            areaColor: '#27E8FD'
+            normal: { areaColor: '#27E8FD' },
+            emphasis: { areaColor: "#27E8FD", opacity: 0.2 }
         },
-        emphasis: {
-            areaColor: "#27E8FD",
-            opacity: 0.2                            
-        }
-        },
-        label: {
-            show: false
-        }                                          
+        label: { show: false }                                          
     },      
     {
         name: '广西', 
+        uploadcnt: "喀斯特丘陵、河谷",
+        uploadpzs: "水稻、玉米、甘蔗",
+        xsmy: "南亚热带湿润气候，湿热多雨",
+        kcmy: "米饭、螺蛳粉、豆豉菜",
         itemStyle: {
-        normal: {                        
-            areaColor: '#0088ec'
+            normal: { areaColor: '#0088ec' },
+            emphasis: { areaColor: "#0088ec", opacity: 0.2 }       
         },
-        emphasis: {
-            areaColor: "#0088ec",
-            opacity: 0.2  
-        }       
-        },
-        label: {
-            show: false
-        }                      
+        label: { show: false }                      
     },      
     {
-        name: '山西',                   
+        name: '山西', 
+        uploadcnt: "黄土高原",
+        uploadpzs: "谷子、黍、高粱",
+        xsmy: "温带大陆性气候，寒冷干燥",
+        kcmy: "杂粮、窝头、豆类制品",                  
         itemStyle: {
-        normal: {                        
-            areaColor: '#01d0fa'
+            normal: { areaColor: '#01d0fa' },
+            emphasis: { areaColor: "#01d0fa", opacity: 0.2 }
         },
-        emphasis: {
-            areaColor: "#01d0fa",
-            opacity: 0.2                            
-        }
-        },
-        label: {
-            show: false
-        }                      
+        label: { show: false }                      
     },
     {
         name: '陕西', 
+        uploadcnt: "关中平原、黄土高原",
+        uploadpzs: "小麦、玉米、棉花",
+        xsmy: "温带大陆性气候，四季分明",
+        kcmy: "面食、凉皮、杂粮",
         itemStyle: {
-        normal: {                        
-            areaColor: '#01b0f3'
+            normal: { areaColor: '#01b0f3' },
+            emphasis: { areaColor: "#01b0f3", opacity: 0.2 }
         },
-        emphasis: {
-            areaColor: "#01b0f3",
-            opacity: 0.2                            
-        }
-        },
-        label: {
-            show: false
-        }                                                                                                                          
+        label: { show: false }                                                                                                                          
     },
     {
-        name: '吉林',                    
+        name: '吉林', 
+        uploadcnt: "山地、丘陵、平原",
+        uploadpzs: "大豆、粟、马铃薯",
+        xsmy: "温带季风气候，严寒多雪",
+        kcmy: "豆制品、粟米饭、野菜",                  
         itemStyle: {
-        normal: {                        
-            areaColor: '#0051e1'                           
+            normal: { areaColor: '#0051e1' },
+            emphasis: { areaColor: "#0051e1", opacity: 0.2 }
         },
-        emphasis: {
-            areaColor: "#0051e1",
-            opacity: 0.2 
-        }
-        },
-        label: {
-            show: false
-        }                                                            
+        label: { show: false }                                                            
     },
     {
         name: '福建', 
+        uploadcnt: "山地、丘陵、水田",
+        uploadpzs: "水稻、甘蔗、茶叶",
+        xsmy: "亚热带季风气候，湿润多雨",
+        kcmy: "米饭、番薯、海产",
         itemStyle: {
-            normal: {                       
-            areaColor: '#0158e3'
+            normal: { areaColor: '#0158e3' },
+            emphasis: { areaColor: "#0158e3", opacity: 0.2 }
         },
-        emphasis: {
-            areaColor: "#0158e3",
-            opacity: 0.2                            
-        }
-        },
-        label: {
-            show: false
-        }                                        
+        label: { show: false }                                        
     },
     {
         name: '贵州', 
+        uploadcnt: "喀斯特高原、山地",
+        uploadpzs: "玉米、马铃薯、稻谷",
+        xsmy: "亚热带湿润气候，湿润凉爽",
+        kcmy: "酸汤饭、腊肉、米豆腐",
         itemStyle: {
-        normal: {                        
-            areaColor: '#0199ef'                          
+            normal: { areaColor: '#0199ef' },
+            emphasis: { areaColor: "#0199ef", opacity: 0.2 }
         },
-        emphasis: {
-            areaColor: "#0199ef",
-            opacity: 0.2  
-        }
-        },
-        label: {
-            show: false
-        }                                       
+        label: { show: false }                                       
     },      
     {
-        name: '青海',                   
+        name: '青海', 
+        uploadcnt: "高原、山地、草原",
+        uploadpzs: "青稞、马铃薯、豆类",
+        xsmy: "高原大陆性气候，寒冷干燥",
+        kcmy: "糌粑、奶制品、牛羊肉",                  
         itemStyle: {
-            normal: {                        
-                areaColor: '#005ae4'                           
-            },
-            emphasis: {
-                areaColor: "#005ae4",
-                opacity: 0.2 
-            }
+            normal: { areaColor: '#005ae4' },
+            emphasis: { areaColor: "#005ae4", opacity: 0.2 }
         },
-        label: {
-            show: false
-        }                                                             
+        label: { show: false }                                                             
     },
     {
-        name: '西藏',                    
+        name: '西藏', 
+        uploadcnt: "高原、山地",
+        uploadpzs: "青稞、豌豆、马铃薯",
+        xsmy: "高原气候，寒冷干燥",
+        kcmy: "糌粑、酥油茶、牦牛肉",                  
         itemStyle: {
-            normal: {                        
-            areaColor: '#01e9fd'                           
-            },
-            emphasis: {
-            areaColor: "#01e9fd",
-            opacity: 0.2                            
-            }       
+            normal: { areaColor: '#01e9fd' },
+            emphasis: { areaColor: "#01e9fd", opacity: 0.2 }       
         },
-        label: {
-            show: false
-        } 
+        label: { show: false }
     }
-  ] 
+];
 
 
 for(key in mapData){
@@ -932,10 +853,10 @@ function formatterShow (params){
     var formatterStr = '';
     var paramsData =  [
         //     '{a|' + params.name + '}' + '\n',
-        "上传条数：" + data.uploadcnt + '条',
-        "品种数量：" + data.uploadpzs + '种',
-        "销售码洋：" + data.xsmy + '万元',
-        "库存码洋：" + data.kcmy + '万元'
+        "土地类型:" + data.uploadcnt ,
+        "主要作物:" + data.uploadpzs ,
+        "气候:" + data.xsmy ,
+        "主要食物:" + data.kcmy 
     ]
 
     if(data.uploadcnt != undefined && data.uploadcnt != ''){
@@ -1975,7 +1896,7 @@ var stockRankFn = function(monthIndex){
                     '<span class="bar">' +
                         '<b class="bar-in" style="width: ' + (val / 12) + '%"></b>' +
                     '</span>' +
-                    '<span class="rank-value">' + val + '万' + '</span>' +
+                    '<span class="rank-value">' +(i+1)+'' + '</span>' +
                 '</li>'
 
     }

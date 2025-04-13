@@ -31,6 +31,7 @@ $(function() {
     "Oct",
     "Nov",
     "Dec"
+
   ];
   var bookName = "";
   var pressName = "";
@@ -128,7 +129,7 @@ var optionBar = {
     bottom: "20%"
   },
   legend: {
-    data: ["销售码洋", "同比增长"],
+    data: ["发展程度", "同比增长"],//"农业发展程度", "农业发展增长"
     right: "5%",
     itemWidth: 18,
     itemHeight: 12,
@@ -137,22 +138,12 @@ var optionBar = {
     }
   },
   xAxis: {
-    data: [
-      "1月",
-      "2月",
-      "3月",
-      "4月",
-      "5月",
-      "6月",
-      "7月",
-      "8月",
-      "9月",
-      "10月",
-      "11月",
-      "12月"
+    data:[
+      "夏商周", "春秋", "战国",
+      "秦", "汉", "三国", "魏晋", "隋", "唐", "宋", "元", "明", "清"
     ],
     axisLine: {
-      show: false,
+      show: true,
       lineStyle: {
         color: "#07bffb"
       }
@@ -166,9 +157,9 @@ var optionBar = {
   },
   yAxis: [
     {
-      name: "码洋(/千万)",
+      name: "农业指数",
       axisLine: {
-        show: false,
+        show: true,
         lineStyle: {
           color: "#07bffb"
         }
@@ -177,17 +168,17 @@ var optionBar = {
         show: false
       },
       axisTick: {
-        show: false
+        show: true
       },
-      interval: 5,
+      interval: 20,
       min: 0,
-      max: 20,
+      max: 100,
       position: "left"
     },
     {
       name: "同比增长(%)",
       max: 100,
-      min: 0,
+      min: -100,
       axisLabel: {
         formatter: "{value}"
       },
@@ -208,9 +199,9 @@ var optionBar = {
   ],
   series: [
     {
-      name: "销售码洋",
+      name: "发展程度",
       type: "bar",
-      barWidth: "40%",
+      barWidth: "100%",
       barGap: 5,
       itemStyle: {
         normal: {
@@ -233,7 +224,7 @@ var optionBar = {
           )
         }
       },
-      data: [2.5, 5.4, 6.4, 4.4, 5.7, 11, 12, 10, 8, 14, 18, 19]
+      data: [5, 15, 25, 20, 30, 25, 35, 40, 65, 75, 70, 85, 95]
     },
     {
       name: "同比增长",
@@ -242,7 +233,7 @@ var optionBar = {
         color: "#fff"
       },
       yAxisIndex: 1,
-      data: [10, 8, 36, 12, 24, 16, 48, 32, 18, 14, 66, 70]
+      data: [100, 100,  66.7, -20, 50, -16.7, 40, 25, 62.5, 15.4, -6.7, 21.4, 11.8]
     }
   ]
 };

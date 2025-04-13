@@ -480,7 +480,13 @@ var data = [
     ],
     PurchaseRe: [{ libraryName: "敦煌藏经洞", address: "甘肃敦煌莫高窟第17窟" }],
     borrowRe: [],
-    comment: [{ userName: "农史考据学者", con: "现存最早完整农书，北魏农业生产标准教程" }]
+      comment: [{ userName: "耕作制度", con: "详载春耕秋收、轮作换茬之法，强调因地制宜、顺时播种" },
+        { userName: "作物栽培", con: "记述粟、麦、稻、豆、麻等数十种农作物的品种、种植方法与病虫防治" },
+        { userName: "园艺果蔬", con: "载有百余种蔬菜、果木的培育方法，如种瓜艺豆、嫁接梨枣，体现古代园艺技术之成熟" },
+        { userName: "养殖畜牧", con: "介绍牛、马、猪、羊、鸡等饲养管理" },
+        { userName: "贮藏加工", con: "论粮食储藏、防潮防虫之术" },
+      { userName: "农家生活与经验总结", con: "多援引乡村经验，兼载医药、节令、蚕桑等内容，务实接地气" }
+    ]
   },
 
   // 2. 吕氏春秋·上农四篇（战国）
@@ -545,7 +551,12 @@ var data = [
     ],
     PurchaseRe: [],
     borrowRe: [{ libraryName: "云梦秦简库", address: "湖北云梦睡虎地" }],
-    comment: [{ userName: "先秦史专家", con: "战国农政思想的源头，月令体系的早期实践记录" }]
+    comment: [{ userName: "农政", con: "农政为立国之根基" },
+      { userName: "农时节令", con: "“因天时而作务”，谓“四时失序，五谷不成”" },
+      { userName: "农具农艺", con:"“神农作耒耜以利天下” "},
+      { userName: "农业与社会", con: "仓廪实而知礼节，衣食足而知荣辱" },
+      { userName: "贤农尚勤", con: "“惰者不食”“四体不勤，五谷不分，孰为夫子？”" },
+    ]
   },
 
   // 3. 农政全书（明代）
@@ -610,7 +621,12 @@ var data = [
     ],
     PurchaseRe: [{ libraryName: "天一阁", address: "浙江宁波" }],
     borrowRe: [],
-    comment: [{ userName: "科技史学者", con: "集古代农学大成，明代农业政策与实践的权威文献" }]
+    comment: [{ userName: "农政思想", con: "“农为政首”“本本之业”" },
+      { userName: "农时与气候", con: "天时不顺需辅以人力弥补" },
+      { userName: "农艺与作物", con: "涵盖五谷（稻、麦、黍、豆、麻）、经济作物（棉花、甘蔗等），包括播种、育苗、田间管理、收获储藏等全流程" },
+      { userName: "水利与农具", con: "主张“因地制宜”，提出合理轮作与地力恢复方案，详列肥料种类（人畜粪、草木灰、绿肥等）及其施用方法" },
+      { userName: "农政社会", con: "以农立国，安农则安天下" }
+    ]
   },
 
   // 4. 授时通考（清代）
@@ -675,7 +691,11 @@ var data = [
     ],
     PurchaseRe: [{ libraryName: "文渊阁", address: "北京故宫" }],
     borrowRe: [],
-    comment: [{ userName: "历法研究学者", con: "清代农时规范的集大成者，天文与农事结合的典范" }]
+    comment: [{ userName: "农时制度化", con: "将农时与精密历法相结合" },
+      { userName: "授时系统", con: "设27座观测台，如大都、登封、杭州等地" },
+      { userName: "历法", con: "主张“岁首应合节气”,改“旧历”以助农耕" },
+      { userName: "校准经验农学", con: "统一农书时间基准" }
+    ]
   },
 
   // 5. 四民月令（东汉）
@@ -740,7 +760,13 @@ var data = [
     ],
     PurchaseRe: [{ libraryName: "居延汉简库", address: "内蒙古额济纳旗" }],
     borrowRe: [],
-    comment: [{ userName: "经济史学者", con: "汉代庄园经济的珍贵实录，月令体农书的早期范本" }]
+    comment: [
+  { userName: "田庄管理", con: "详载汉代田庄的作物布局、劳力分配与收益核算，展现庄园经济运作模式" },
+  { userName: "纺织技术", con: "记录养蚕缫丝、麻布织造等家庭手工业流程，反映东汉纺织技术进步" },
+  { userName: "农时安排", con: "按月规划农事：正月修农具，三月种粳稻，八月收芜菁，体现精细农时管理" },
+  { userName: "家庭经济", con: "兼记粜籴买卖、酿酒制酱等经营活动，呈现自给自足的经济形态" },
+  { userName: "节气民俗", con: "载有社日祭祀、冬至腊祭等农事相关礼仪，体现农耕文化传统" }
+]
   },
 
   // 6. 氾胜之书（西汉）
@@ -805,7 +831,13 @@ var data = [
     ],
     PurchaseRe: [{ libraryName: "武威汉墓", address: "甘肃武威" }],
     borrowRe: [],
-    comment: [{ userName: "农技史专家", con: "西汉农业技术的里程碑，区田法至今影响旱作农业" }]
+    comment: [
+  { userName: "区田法", con: "首创代田区种，深挖作沟，集中施肥，旱作保墒的典范" },
+  { userName: "溲种技术", con: "以骨汁粪汁浸种，增强抗病抗旱能力，早期种子处理技术代表" },
+  { userName: "耕作三原则", con: "'趋时、和土、务粪泽'理论奠定传统农学基础" },
+  { userName: "麦作技术", con: "详述冬麦播种量、行距及田间管理，反映黄河中游麦作体系成熟" },
+  { userName: "嫁接创新", con: "记载瓠苗嫁接增产法，开创我国园艺嫁接技术先河" }
+]
   },
 
   // 7. 王祯农书（元代）
@@ -870,7 +902,13 @@ var data = [
     ],
     PurchaseRe: [{ libraryName: "永乐大典残卷库", address: "中国国家图书馆" }],
     borrowRe: [],
-    comment: [{ userName: "技术史学者", con: "农器研究的开山之作，元代农业机械化的珍贵记录" }]
+    comment: [
+  { userName: "农器革命", con: "图释水转大纺车、木棉搅车等机械，展现元代纺织器具重大革新" },
+  { userName: "南北融合", con: "比较北方旱作与江南稻作技术，首倡全国性农业技术整合" },
+  { userName: "梯田开发", con: "系统总结'叠石相次包土成田'的山地开发模式" },
+  { userName: "灌溉体系", con: "设计水闸、连筒、架槽等水利设施，完善农田灌溉网络" },
+  { userName: "木活字创新", con: "附载造活字印书法，体现农书与印刷技术的跨界融合" }
+]
   },
 
   // 8. 群芳谱及广群芳谱（明/清）
@@ -935,7 +973,13 @@ var data = [
     ],
     PurchaseRe: [{ libraryName: "四库全书阁", address: "北京、杭州等地" }],
     borrowRe: [],
-    comment: [{ userName: "博物学家", con: "古代植物学百科全书，明清园艺技术的集大成者" }]
+    comment: [
+  { userName: "植物分类", con: "将花卉分为牡丹、芍药等12谱，建立园艺植物分类体系" },
+  { userName: "栽培技艺", con: "详述熏花促开、曲枝造形等观赏植物培育技术" },
+  { userName: "引种记录", con: "记载番薯、玉米等美洲作物在明代的引种推广过程" },
+  { userName: "药用植物", con: "收录三七、曼陀罗等药材种植法，兼具医药学价值" },
+  { userName: "园林美学", con: "提倡'借景、对景'等造园手法，反映明清园林艺术理念" }
+]
   },
 
   // 9. 月令七十二候集解（元代）
@@ -1000,7 +1044,13 @@ var data = [
     ],
     PurchaseRe: [{ libraryName: "元代天文台遗址", address: "河南登封" }],
     borrowRe: [],
-    comment: [{ userName: "历法学家", con: "月令体系的科学化阐释，元代农时理论的巅峰之作" }]
+    comment: [
+  { userName: "物候体系", con: "将每节气分为三候，形成全年72候的精细物候观测系统" },
+  { userName: "农事占验", con: "'冬至晴年必旱，重阳无雨一冬晴'等农谚的科学性总结" },
+  { userName: "天文对应", con: "结合二十八宿运行规律，建立星象与农时的关联体系" },
+  { userName: "阴阳调和", con: "阐释'春生夏长秋收冬藏'的阴阳消长规律对农耕时序的影响" },
+  { userName: "民俗整合", con: "系统整理立春鞭土牛、清明插柳等节气民俗的农业内涵" }
+]
   },
 
   // 10. 夏小正（先秦）
@@ -1065,632 +1115,1149 @@ var data = [
     ],
     PurchaseRe: [{ libraryName: "安阳殷墟", address: "河南安阳" }],
     borrowRe: [],
-    comment: [{ userName: "考古学家", con: "华夏农耕文明的活化石，先秦历法研究的核心文献" }]
+    comment: [
+  { userName: "星象物候", con: "'正月启蛰雁北乡'体现夏代星象与物候对应观测水平" },
+  { userName: "祭祀农事", con: "'二月往耰黍墠'反映原始宗教与农业生产的紧密结合" },
+  { userName: "历法雏形", con: "十月太阳历遗存，每月36日的特殊纪日法研究" },
+  { userName: "畜牧记载", con: "'四月执驹攻特'包含早期马匹驯养技术记录" },
+  { userName: "文化密码", con: "'五月煮梅为豆实'揭示先民食物加工与储藏智慧" }
+]
   },
 
 // 11.月令广义（明代）
 {
-  BookInformation: {
-    bookName: "月令广义",
-    author: "冯应京",
-    era: "明代",
-    press: "明代民间书坊",
-    year: "万历三十年",
-    Binding: "木刻线装",
-    folio: "二十五卷",
-    ISBN: "11",
-    imgUrl: "../img/月令广义.png",
-    authorIntro: "明代学者，融合月令传统与地方民俗，重构农事指导体系。",
-    bookLabel: ["节气民俗", "地方农事", "明代月令"],
-    themaWords: ["迎春仪式", "占岁习俗", "田家杂占"],
-    contentSummary: "整合节气规范与地方农俗，详述立春鞭牛等耕作启动仪式。",
-    catalogues: ["春令卷", "夏令卷", "秋令卷", "冬令卷"]
-  },
-  similarBook: [
-    {
-      bookName: "岁时广记",
-      author: "陈元靓",
-      press: "南宋建阳书坊",
-      year: "宝祐四年",
-      ISBN: "15",
-      imgUrl: "../img/岁时广记.png"
-    }
-  ],
-  PurchaseRe: [{
-    libraryName: "宁波天一阁",
-    address: "浙江宁波"
-  }],
-  borrowRe: [],
-  comment: [{
-    userName: "民俗学者",
-    con: "明代节气文化的百科全书，农事与民俗交融的典范"
-  }]
-},
-
-// 12.陈旉农书（宋代）
-{
-  BookInformation: {
-    bookName: "陈旉农书",
-    author: "陈旉",
-    era: "宋代",
-    press: "南宋临安书铺",
-    year: "绍兴十九年",
-    Binding: "蝴蝶装",
-    folio: "三卷",
-    ISBN: "12",
-    imgUrl: "../img/陈旉农书.png",
-    authorIntro: "南宋隐士，隐居扬州务农，总结南方水田耕作技术。",
-    bookLabel: ["江南农事", "土壤改良", "宋代农学"],
-    themaWords: ["地力常新", "耕耨之法", "六种之宜"],
-    contentSummary: "首部南方农书，强调因地制宜，提出地力常新壮理论。",
-    catalogues: ["天时之宜篇", "地势之宜篇", "耕耨之宜篇"]
-  },
-  similarBook: [
-    {
-      bookName: "沈氏农书",
-      author: "沈氏",
-      press: "明末江南书坊",
-      year: "崇祯末年",
-      ISBN: "18",
-      imgUrl: "../img/沈氏农书.png"
-    }
-  ],
-  PurchaseRe: [{
-    libraryName: "临安府库残卷",
-    address: "浙江杭州"
-  }],
-  borrowRe: [],
-  comment: [{
-    userName: "农业生态学者",
-    con: "宋代生态农学的先驱，地力理论的系统性阐述"
-  }]
-},
-
-// 13.农桑辑要（元代）
-{
-  BookInformation: {
-    bookName: "农桑辑要",
-    author: "司农司",
-    era: "元代",
-    press: "元代官刻本",
-    year: "至元十年",
-    Binding: "官版线装",
-    folio: "七卷",
-    ISBN: "13",
-    imgUrl: "../img/农桑辑要.png",
-    authorIntro: "元代官方农书，由司农司编纂，强调农桑为立国之本。",
-    bookLabel: ["官修农书", "蚕桑技术", "元代农政"],
-    themaWords: ["栽桑法", "养蚕术", "棉麻种植"],
-    contentSummary: "辑录历代农书精华，推广北方蚕桑与棉麻种植技术。",
-    catalogues: ["典训卷", "耕垦卷", "栽桑卷", "养蚕卷"]
-  },
-  similarBook: [
-    {
-      bookName: "授时通考",
-      author: "鄂尔泰",
-      press: "清代武英殿",
-      year: "乾隆七年",
-      ISBN: "4",
-      imgUrl: "../img/授时通考.png"
-    }
-  ],
-  PurchaseRe: [{
-    libraryName: "元代大都档案库",
-    address: "北京"
-  }],
-  borrowRe: [],
-  comment: [{
-    userName: "政策史研究者",
-    con: "元代重农政策的直接体现，北方蚕桑推广的指导手册"
-  }]
-    },
-    // 14.天工开物（明代）
-{
-  BookInformation: {
-    bookName: "天工开物",
-    author: "宋应星",
-    era: "明代",
-    press: "明代书林堂",
-    year: "崇祯十年",
-    Binding: "竹纸刻本",
-    folio: "十八卷",
-    ISBN: "14",
-    imgUrl: "../img/天工开物.png",
-    authorIntro: "明代科学家，记录手工业与农业技术，被誉为技术的百科全书。",
-    bookLabel: ["手工业", "农业技术", "明代科技"],
-    themaWords: ["乃粒篇", "粹精篇", "陶埏篇"],
-    contentSummary: "涵盖农业、手工业各领域，详细记载作物栽培、纺织、冶炼等技术。",
-    catalogues: ["乃粒卷", "乃服卷", "彰施卷", "陶埏卷"]
-  },
-  similarBook: [
-    {
-      bookName: "农政全书",
-      author: "徐光启",
-      press: "明代司农监",
-      year: "崇祯年间",
-      ISBN: "3",
-      imgUrl: "../img/农政全书.png"
-    }
-  ],
-  PurchaseRe: [{
-    libraryName: "涂本初刻本",
-    address: "江西奉新"
-  }],
-  borrowRe: [],
-  comment: [{
-    userName: "科技史专家",
-    con: "17世纪中国工艺技术的全景图，农业与手工业并重的奇书"
-  }]
-},
-
-// 15.岁时广记（宋代）
-{
-  BookInformation: {
-    bookName: "岁时广记",
-    author: "陈元靓",
-    era: "宋代",
-    press: "南宋建阳书坊",
-    year: "宝祐四年",
-    Binding: "册页本",
-    folio: "四十二卷",
-    ISBN: "15",
-    imgUrl: "../img/岁时广记.png",
-    authorIntro: "宋代民俗学家，广泛采集民间岁时节令资料。",
-    bookLabel: ["节气民俗", "宋代节庆", "农事占候"],
-    themaWords: ["立春鞭牛", "社日祭神", "冬至数九"],
-    contentSummary: "辑录宋代节气习俗与农事占验，反映民间时间观与农业信仰。",
-    catalogues: ["元旦卷", "立春卷", "社日卷", "冬至卷"]
-  },
-  similarBook: [
-    {
+    BookInformation: {
       bookName: "月令广义",
       author: "冯应京",
+      era: "明代",
       press: "明代民间书坊",
       year: "万历三十年",
+      Binding: "木刻线装",
+      folio: "二十五卷",
       ISBN: "11",
-      imgUrl: "../img/月令广义.png"
-    }
-  ],
-  PurchaseRe: [{
-    libraryName: "宋代闽刻本",
-    address: "福建建阳"
-  }],
-  borrowRe: [],
-  comment: [{
-    userName: "民俗史学家",
-    con: "宋代岁时文化的活字典，农事与节庆交织的民俗志"
-  }]
-},
-
-// 16.淮南子·时则训（西汉）
-{
-  BookInformation: {
-    bookName: "淮南子·时则训",
-    author: "刘安",
-    era: "西汉",
-    press: "西汉淮南王府",
-    year: "公元前二世纪",
-    Binding: "帛书卷轴",
-    folio: "一篇",
-    ISBN: "16",
-    imgUrl: "../img/淮南子时则训.png",
-    authorIntro: "淮南王刘安主持编纂，融合道家思想与月令体系。",
-    bookLabel: ["月令体系", "西汉哲学", "农时政令"],
-    themaWords: ["五行配时", "天文历法", "刑德理论"],
-    contentSummary: "以阴阳五行学说阐释农时规范，构建天人相应的耕作时序。",
-    catalogues: ["孟春纪", "仲夏纪", "季秋纪", "孟冬纪"]
+      imgUrl: "../img/月令广义.png",
+      authorIntro: "明代学者，融合月令传统与地方民俗，重构农事指导体系。",
+      bookLabel: ["节气民俗", "地方农事", "明代月令"],
+      themaWords: ["迎春仪式", "占岁习俗", "田家杂占"],
+      contentSummary: "整合节气规范与地方农俗，详述立春鞭牛等耕作启动仪式。",
+      catalogues: ["春令卷", "夏令卷", "秋令卷", "冬令卷"]
+    },
+    similarBook: [
+      {
+        bookName: "岁时广记",
+        author: "陈元靓",
+        press: "南宋建阳书坊",
+        year: "宝祐四年",
+        ISBN: "15",
+        imgUrl: "../img/岁时广记.png"
+      },
+      {
+        bookName: "四民月令",
+        author: "崔寔",
+        press: "东汉太学府",
+        year: "二世纪中叶",
+        ISBN: "5",
+        imgUrl: "../img/四民月令.png"
+      },
+      {
+        bookName: "夏小正",
+        author: "佚名",
+        press: "西周王室",
+        year: "约公元前十世纪",
+        ISBN: "10",
+        imgUrl: "../img/夏小正.png"
+      },
+      {
+        bookName: "农桑衣食撮要",
+        author: "鲁明善",
+        press: "元代畏兀儿文坊",
+        year: "延祐元年",
+        ISBN: "20",
+        imgUrl: "../img/农桑衣食撮要.png"
+      },
+      {
+        bookName: "知本提纲·农则",
+        author: "杨屾",
+        press: "清代关中书院",
+        year: "乾隆十二年",
+        ISBN: "24",
+        imgUrl: "../img/知本提纲农则.png"
+      }
+    ],
+    PurchaseRe: [{ libraryName: "宁波天一阁", address: "浙江宁波" }],
+    borrowRe: [],
+    comment: [
+  { userName: "节气民俗", con: "详细图解立春迎气、东郊鞭春等官方劝农仪典" },
+  { userName: "地方农俗", con: "收录江南'浸稻种'、岭南'烧畲'等特色耕作习俗" },
+  { userName: "占岁文化", con: "系统整理'元旦观风云，立春看八风'等年景预测方法" },
+  { userName: "农具改良", con: "记载明代代耕架、风力水车等新式农具应用情况" },
+  { userName: "饮食养生", con: "按节气推荐食疗方案，如清明饮明前茶除湿" }
+]
   },
-  similarBook: [
-    {
-      bookName: "吕氏春秋·上农四篇",
-      author: "吕不韦",
-      press: "秦国相府刊行",
-      year: "公元前239年",
-      ISBN: "2",
-      imgUrl: "../img/吕氏春秋.png"
-    }
-  ],
-  PurchaseRe: [{
-    libraryName: "马王堆汉墓帛书库",
-    address: "湖南长沙"
-  }],
-  borrowRe: [],
-  comment: [{
-    userName: "哲学史学者",
-    con: "西汉月令哲学的代表作，农时理论与宇宙观的深度结合"
-  }]
-},
 
-// 17.礼记·月令（西汉）
-{
-  BookInformation: {
-    bookName: "礼记·月令",
-    author: "戴圣",
-    era: "西汉",
-    press: "西汉太常寺",
-    year: "公元前一世纪",
-    Binding: "简牍本",
-    folio: "一篇",
-    ISBN: "17",
-    imgUrl: "../img/礼记月令.png",
-    authorIntro: "戴圣编订礼记，整合先秦礼仪文献，确立月令经典地位。",
-    bookLabel: ["经典月令", "礼制农时", "西汉经学"],
-    themaWords: ["天子迎春", "土牛劝耕", "禁忌月令"],
-    contentSummary: "规范天子与百姓的农事活动，将农耕纳入礼制框架。",
-    catalogues: ["孟春之月", "仲夏之月", "季秋之月", "孟冬之月"]
-  },
-  similarBook: [
-    {
-      bookName: "夏小正",
-      author: "佚名",
-      press: "西周王室",
-      year: "约公元前十世纪",
-      ISBN: "10",
-      imgUrl: "../img/夏小正.png"
-    }
-  ],
-  PurchaseRe: [{
-    libraryName: "武威汉简库",
-    address: "甘肃武威"
-  }],
-  borrowRe: [],
-  comment: [{
-    userName: "经学研究者",
-    con: "月令文本的经典化标志，农事礼制化的权威文献"
-  }]
-},
-
-// 18.沈氏农书（明代）
-{
-  BookInformation: {
-    bookName: "沈氏农书",
-    author: "沈氏",
-    era: "明代",
-    press: "明末江南书坊",
-    year: "崇祯末年",
-    Binding: "稿本",
-    folio: "一卷",
-    ISBN: "18",
-    imgUrl: "../img/沈氏农书.png",
-    authorIntro: "明末湖州沈氏，总结江南地区水稻种植与桑蚕技术。",
-    bookLabel: ["江南农技", "水稻种植", "明代蚕桑"],
-    themaWords: ["看苗施肥", "桑园管理", "织造工艺"],
-    contentSummary: "详述江南水田耕作细节，提出精细化田间管理方法。",
-    catalogues: ["运田地法", "蚕务卷", "家常日用"]
-  },
-  similarBook: [
-    {
+  // 12. 陈旉农书（宋代）
+  {
+    BookInformation: {
       bookName: "陈旉农书",
       author: "陈旉",
+      era: "宋代",
       press: "南宋临安书铺",
       year: "绍兴十九年",
+      Binding: "蝴蝶装",
+      folio: "三卷",
       ISBN: "12",
-      imgUrl: "../img/陈旉农书.png"
-    }
-  ],
-  PurchaseRe: [{
-    libraryName: "湖州民间藏书",
-    address: "浙江湖州"
-  }],
-  borrowRe: [],
-  comment: [{
-    userName: "江南农史学者",
-    con: "明末江南农业的显微镜，小农经济运作的实证记录"
-  }]
-},
+      imgUrl: "../img/陈旉农书.png",
+      authorIntro: "南宋隐士，隐居扬州务农，总结南方水田耕作技术。",
+      bookLabel: ["江南农事", "土壤改良", "宋代农学"],
+      themaWords: ["地力常新", "耕耨之法", "六种之宜"],
+      contentSummary: "首部南方农书，强调因地制宜，提出地力常新壮理论。",
+      catalogues: ["天时之宜篇", "地势之宜篇", "耕耨之宜篇"]
+    },
+    similarBook: [
+      {
+        bookName: "沈氏农书",
+        author: "沈氏",
+        press: "明末江南书坊",
+        year: "崇祯末年",
+        ISBN: "18",
+        imgUrl: "../img/沈氏农书.png"
+      },
+      {
+        bookName: "农政全书",
+        author: "徐光启",
+        press: "明代司农监",
+        year: "崇祯年间",
+        ISBN: "3",
+        imgUrl: "../img/农政全书.png"
+      },
+      {
+        bookName: "农桑辑要",
+        author: "司农司",
+        press: "元代官刻本",
+        year: "至元十年",
+        ISBN: "13",
+        imgUrl: "../img/农桑辑要.png"
+      },
+      {
+        bookName: "三农纪",
+        author: "张宗法",
+        press: "清代四川刻本",
+        year: "乾隆二十五年",
+        ISBN: "19",
+        imgUrl: "../img/三农纪.png"
+      },
+      {
+        bookName: "农圃便览",
+        author: "丁宜曾",
+        press: "清代山东刻本",
+        year: "乾隆二十年",
+        ISBN: "25",
+        imgUrl: "../img/农圃便览.png"
+      }
+    ],
+    PurchaseRe: [{ libraryName: "临安府库残卷", address: "浙江杭州" }],
+    borrowRe: [],
+    comment: [
+  { userName: "地力理论", con: "'地力常新壮'说突破地方渐衰论，提出施肥养地方案" },
+  { userName: "耕耨之法", con: "强调'早田刈获才毕，随即耕治晒暴'的整地要诀" },
+  { userName: "水稻育秧", con: "首创烤田技术，'湿种水耕，曝根拔节'培育壮秧" },
+  { userName: "六种之宜", con: "根据地形高低安排作物，建立立体农业模式" },
+  { userName: "牛力运用", con: "提出'农器牛力皆须及时调习'的畜力管理思想" }
+]
+  },
 
-// 19.三农纪（清代）
-{
-  BookInformation: {
-    bookName: "三农纪",
-    author: "张宗法",
-    era: "清代",
-    press: "清代四川刻本",
-    year: "乾隆二十五年",
-    Binding: "木刻本",
-    folio: "二十四卷",
-    ISBN: "19",
-    imgUrl: "../img/三农纪.png",
-    authorIntro: "清代四川农学家，结合巴蜀地理特点编写综合性农书。",
-    bookLabel: ["山区农业", "巴蜀农技", "清代农学"],
-    themaWords: ["梯田开垦", "山地灌溉", "杂粮轮作"],
-    contentSummary: "针对西南山区农业特点，系统记载旱作、水利与畜牧技术。",
-    catalogues: ["天时卷", "地利卷", "耕获卷", "畜牧卷"]
+  // 13. 农桑辑要（元代）
+  {
+    BookInformation: {
+      bookName: "农桑辑要",
+      author: "司农司",
+      era: "元代",
+      press: "元代官刻本",
+      year: "至元十年",
+      Binding: "官版线装",
+      folio: "七卷",
+      ISBN: "13",
+      imgUrl: "../img/农桑辑要.png",
+      authorIntro: "元代官方农书，由司农司编纂，强调农桑为立国之本。",
+      bookLabel: ["官修农书", "蚕桑技术", "元代农政"],
+      themaWords: ["栽桑法", "养蚕术", "棉麻种植"],
+      contentSummary: "辑录历代农书精华，推广北方蚕桑与棉麻种植技术。",
+      catalogues: ["典训卷", "耕垦卷", "栽桑卷", "养蚕卷"]
+    },
+    similarBook: [
+      {
+        bookName: "授时通考",
+        author: "鄂尔泰",
+        press: "清代武英殿",
+        year: "乾隆七年",
+        ISBN: "4",
+        imgUrl: "../img/授时通考.png"
+      },
+      {
+        bookName: "齐民要术",
+        author: "贾思勰",
+        press: "北魏",
+        year: "六世纪中叶",
+        ISBN: "1",
+        imgUrl: "../img/齐民要术.png"
+      },
+      {
+        bookName: "王祯农书",
+        author: "王祯",
+        press: "元代司农司",
+        year: "皇庆二年",
+        ISBN: "7",
+        imgUrl: "../img/王祯农书.png"
+      },
+      {
+        bookName: "农政全书",
+        author: "徐光启",
+        press: "明代司农监",
+        year: "崇祯年间",
+        ISBN: "3",
+        imgUrl: "../img/农政全书.png"
+      },
+      {
+        bookName: "农桑衣食撮要",
+        author: "鲁明善",
+        press: "元代畏兀儿文坊",
+        year: "延祐元年",
+        ISBN: "20",
+        imgUrl: "../img/农桑衣食撮要.png"
+      }
+    ],
+    PurchaseRe: [{ libraryName: "元代大都档案库", address: "北京" }],
+    borrowRe: [],
+    comment: [
+  { userName: "政策导向", con: "元政府'重北轻南'政策下推广北方蚕桑的技术指南" },
+  { userName: "纺织革新", con: "系统总结'择茧、缫丝、络纬、织造'全套工艺标准" },
+  { userName: "棉业先驱", con: "最早官方记载木棉栽培技术的农书，推动元代棉纺革命" },
+  { userName: "救荒作物", con: "大力推广蔓菁、苜蓿等耐旱作物的种植技术" },
+  { userName: "编译特色", con: "畏兀儿文与汉文对照版本促进多民族农业交流" }
+]
   },
-  similarBook: [
-    {
-      bookName: "农圃便览",
-      author: "丁宜曾",
-      press: "清代山东刻本",
-      year: "乾隆二十年",
-      ISBN: "25",
-      imgUrl: "../img/农圃便览.png"
-    }
-  ],
-  PurchaseRe: [{
-    libraryName: "四川民间藏书楼",
-    address: "四川成都"
-  }],
-  borrowRe: [],
-  comment: [{
-    userName: "区域农史专家",
-    con: "西南山地农业的全景图，清代地方农书的杰出代表"
-  }]
-},
 
-// 20.农桑衣食撮要（元代）
-{
-  BookInformation: {
-    bookName: "农桑衣食撮要",
-    author: "鲁明善",
-    era: "元代",
-    press: "元代畏兀儿文坊",
-    year: "延祐元年",
-    Binding: "册页本",
-    folio: "二卷",
-    ISBN: "20",
-    imgUrl: "../img/农桑衣食撮要.png",
-    authorIntro: "元代畏兀儿农学家，任寿春郡监时编撰月令体农书。",
-    bookLabel: ["月令体", "民族农学", "元代技术"],
-    themaWords: ["按月农事", "果蔬贮藏", "家庭副业"],
-    contentSummary: "按月编排农事活动，涵盖耕作、蚕桑、食品加工等实用技术。",
-    catalogues: ["正月事宜", "四月事宜", "七月事宜", "十月事宜"]
+  // 14. 天工开物（明代）
+  {
+    BookInformation: {
+      bookName: "天工开物",
+      author: "宋应星",
+      era: "明代",
+      press: "明代书林堂",
+      year: "崇祯十年",
+      Binding: "竹纸刻本",
+      folio: "十八卷",
+      ISBN: "14",
+      imgUrl: "../img/天工开物.png",
+      authorIntro: "明代科学家，记录手工业与农业技术，被誉为技术的百科全书。",
+      bookLabel: ["手工业", "农业技术", "明代科技"],
+      themaWords: ["乃粒篇", "粹精篇", "陶埏篇"],
+      contentSummary: "涵盖农业、手工业各领域，详细记载作物栽培、纺织、冶炼等技术。",
+      catalogues: ["乃粒卷", "乃服卷", "彰施卷", "陶埏卷"]
+    },
+    similarBook: [
+      {
+        bookName: "农政全书",
+        author: "徐光启",
+        press: "明代司农监",
+        year: "崇祯年间",
+        ISBN: "3",
+        imgUrl: "../img/农政全书.png"
+      },
+      {
+        bookName: "王祯农书",
+        author: "王祯",
+        press: "元代司农司",
+        year: "皇庆二年",
+        ISBN: "7",
+        imgUrl: "../img/王祯农书.png"
+      },
+      {
+        bookName: "群芳谱及广群芳谱",
+        author: "王象晋/汪灏",
+        press: "明代文林阁/清代武英殿",
+        year: "1621年/1708年",
+        ISBN: "8",
+        imgUrl: "../img/群芳谱.png"
+      },
+      {
+        bookName: "授时通考",
+        author: "鄂尔泰",
+        press: "清代武英殿",
+        year: "乾隆七年",
+        ISBN: "4",
+        imgUrl: "../img/授时通考.png"
+      },
+      {
+        bookName: "农桑辑要",
+        author: "司农司",
+        press: "元代官刻本",
+        year: "至元十年",
+        ISBN: "13",
+        imgUrl: "../img/农桑辑要.png"
+      }
+    ],
+    PurchaseRe: [{ libraryName: "涂本初刻本", address: "江西奉新" }],
+    borrowRe: [],
+    comment: [
+  { userName: "农业革命", con: "'乃粒'篇详述水稻杂交、麦类移栽等突破性技术" },
+  { userName: "纺织图谱", con: "图释花机、腰机等复杂织机结构，保留明代纺织机械细节" },
+  { userName: "冶炼技术", con: "记载灌钢法、锌冶炼等冶金工艺的世界领先成就" },
+  { userName: "陶瓷工艺", con: "从采土到烧窑完整记录景德镇制瓷技术体系" },
+  { userName: "海舟制造", con: "详述福船水密隔舱设计与抗沉性能技术关键" }
+]
   },
-  similarBook: [
-    {
-      bookName: "四民月令",
-      author: "崔寔",
-      press: "东汉太学府",
-      year: "二世纪中叶",
-      ISBN: "5",
-      imgUrl: "../img/四民月令.png"
-    }
-  ],
-  PurchaseRe: [{
-    libraryName: "西域文献库",
-    address: "新疆吐鲁番"
-  }],
-  borrowRe: [],
-  comment: [{
-    userName: "民族史学者",
-    con: "多民族农业智慧的结晶，月令体农书的通俗化范本"
-  }]
-},
 
-// 21.田家五行（元代）
-{
-  BookInformation: {
-    bookName: "田家五行",
-    author: "娄元礼",
-    era: "元代",
-    press: "元代江浙书坊",
-    year: "至正年间",
-    Binding: "木刻本",
-    folio: "三卷",
-    ISBN: "21",
-    imgUrl: "../img/田家五行.png",
-    authorIntro: "元代气象学家，长期观测太湖流域天气与农事关系。",
-    bookLabel: ["气象农谚", "占候术", "元代江南"],
-    themaWords: ["看云识雨", "观星测晴", "动物兆候"],
-    contentSummary: "收录五百余条农谚，系统总结天气预测与农事占验经验。",
-    catalogues: ["天文类", "地理类", "草木类", "鸟兽类"]
+  // 15. 岁时广记（宋代）
+  {
+    BookInformation: {
+      bookName: "岁时广记",
+      author: "陈元靓",
+      era: "宋代",
+      press: "南宋建阳书坊",
+      year: "宝祐四年",
+      Binding: "册页本",
+      folio: "四十二卷",
+      ISBN: "15",
+      imgUrl: "../img/岁时广记.png",
+      authorIntro: "宋代民俗学家，广泛采集民间岁时节令资料。",
+      bookLabel: ["节气民俗", "宋代节庆", "农事占候"],
+      themaWords: ["立春鞭牛", "社日祭神", "冬至数九"],
+      contentSummary: "辑录宋代节气习俗与农事占验，反映民间时间观与农业信仰。",
+      catalogues: ["元旦卷", "立春卷", "社日卷", "冬至卷"]
+    },
+    similarBook: [
+      {
+        bookName: "月令广义",
+        author: "冯应京",
+        press: "明代民间书坊",
+        year: "万历三十年",
+        ISBN: "11",
+        imgUrl: "../img/月令广义.png"
+      },
+      {
+        bookName: "四民月令",
+        author: "崔寔",
+        press: "东汉太学府",
+        year: "二世纪中叶",
+        ISBN: "5",
+        imgUrl: "../img/四民月令.png"
+      },
+      {
+        bookName: "淮南子·时则训",
+        author: "刘安",
+        press: "西汉淮南王府",
+        year: "公元前二世纪",
+        ISBN: "16",
+        imgUrl: "../img/淮南子时则训.png"
+      },
+      {
+        bookName: "农候杂占",
+        author: "梁章钜",
+        press: "明代福建书坊",
+        year: "万历四十年",
+        ISBN: "22",
+        imgUrl: "../img/农候杂占.png"
+      },
+      {
+        bookName: "田家五行",
+        author: "娄元礼",
+        press: "元代江浙书坊",
+        year: "至正年间",
+        ISBN: "21",
+        imgUrl: "../img/田家五行.png"
+      }
+    ],
+    PurchaseRe: [{ libraryName: "宋代闽刻本", address: "福建建阳" }],
+    borrowRe: [],
+    comment: [
+  { userName: "节气溯源", con: "考证寒食禁火、端午竞渡等习俗的农业起源" },
+  { userName: "占验体系", con: "系统整理'春甲子雨，赤地千里'等天气预测经验" },
+  { userName: "饮食文化", con: "记录冬至馄饨、腊八粥等节气饮食的养生智慧" },
+  { userName: "农具演进", con: "图解宋代踏犁、秧马等新式农具使用场景" },
+  { userName: "市井百业", con: "载有立春卖春牛图、清明卖稠饧等农业相关商业活动" }
+]
   },
-  similarBook: [
-    {
-      bookName: "农候杂占",
-      author: "梁章钜",
-      press: "明代福建书坊",
-      year: "万历四十年",
-      ISBN: "22",
-      imgUrl: "../img/农候杂占.png"
-    }
-  ],
-  PurchaseRe: [{
-    libraryName: "太湖民间藏书",
-    address: "江苏苏州"
-  }],
-  borrowRe: [],
-  comment: [{
-    userName: "气象史专家",
-    con: "古代气象农谚的集大成者，民间智慧的生动体现"
-  }]
-},
-  // 22.农候杂占（明代）
-{
-  BookInformation: {
-    bookName: "农候杂占",
-    author: "梁章钜",
-    era: "明代",
-    press: "明代福建书坊",
-    year: "万历四十年",
-    Binding: "线装本",
-    folio: "四卷",
-    ISBN: "22",
-    imgUrl: "../img/农候杂占.png",
-    authorIntro: "明代农学家，专研农事占候，结合地方经验编撰此书。",
-    bookLabel: ["占候术", "农事预测", "明代农谚"],
-    themaWords: ["立春占验", "梅雨预测", "霜期推算"],
-    contentSummary: "系统分析节气与农事关系，提出基于物候的耕作时序理论。",
-    catalogues: ["卷一·天部", "卷二·地部", "卷三·人部", "卷四·物部"]
+
+  // 16. 淮南子·时则训（西汉）
+  {
+    BookInformation: {
+      bookName: "淮南子·时则训",
+      author: "刘安",
+      era: "西汉",
+      press: "西汉淮南王府",
+      year: "公元前二世纪",
+      Binding: "帛书卷轴",
+      folio: "一篇",
+      ISBN: "16",
+      imgUrl: "../img/淮南子时则训.png",
+      authorIntro: "淮南王刘安主持编纂，融合道家思想与月令体系。",
+      bookLabel: ["月令体系", "西汉哲学", "农时政令"],
+      themaWords: ["五行配时", "天文历法", "刑德理论"],
+      contentSummary: "以阴阳五行学说阐释农时规范，构建天人相应的耕作时序。",
+      catalogues: ["孟春纪", "仲夏纪", "季秋纪", "孟冬纪"]
+    },
+    similarBook: [
+      {
+        bookName: "吕氏春秋·上农四篇",
+        author: "吕不韦",
+        press: "秦国相府刊行",
+        year: "公元前239年",
+        ISBN: "2",
+        imgUrl: "../img/吕氏春秋.png"
+      },
+      {
+        bookName: "礼记·月令",
+        author: "戴圣",
+        press: "西汉太常寺",
+        year: "公元前一世纪",
+        ISBN: "17",
+        imgUrl: "../img/礼记月令.png"
+      },
+      {
+        bookName: "夏小正",
+        author: "佚名",
+        press: "西周王室",
+        year: "约公元前十世纪",
+        ISBN: "10",
+        imgUrl: "../img/夏小正.png"
+      },
+      {
+        bookName: "月令七十二候集解",
+        author: "吴澄",
+        press: "元代钦天监",
+        year: "至治元年",
+        ISBN: "9",
+        imgUrl: "../img/月令七十二候集解.png"
+      },
+      {
+        bookName: "知本提纲·农则",
+        author: "杨屾",
+        press: "清代关中书院",
+        year: "乾隆十二年",
+        ISBN: "24",
+        imgUrl: "../img/知本提纲农则.png"
+      }
+    ],
+    PurchaseRe: [{ libraryName: "马王堆汉墓帛书库", address: "湖南长沙" }],
+    borrowRe: [],
+    comment: [
+  { userName: "宇宙观", con: "'五位六合'空间体系与农耕时序的哲学对应" },
+  { userName: "政令时序", con: "规定孟春'禁伐木'、季夏'令渔师伐蛟'等生态法令" },
+  { userName: "阴阳配位", con: "东方春木、南方夏火等方位与农事活动的对应关系" },
+  { userName: "灾害预防", con: "'仲冬行秋令则天时雨汁，瓜瓠不成'的灾异理论" },
+  { userName: "技术伦理", con: "'不涸泽而渔'体现可持续发展思想萌芽" }
+]
   },
-  similarBook: [
-    {
+
+  // 17. 礼记·月令（西汉）
+  {
+    BookInformation: {
+      bookName: "礼记·月令",
+      author: "戴圣",
+      era: "西汉",
+      press: "西汉太常寺",
+      year: "公元前一世纪",
+      Binding: "简牍本",
+      folio: "一篇",
+      ISBN: "17",
+      imgUrl: "../img/礼记月令.png",
+      authorIntro: "戴圣编订礼记，整合先秦礼仪文献，确立月令经典地位。",
+      bookLabel: ["经典月令", "礼制农时", "西汉经学"],
+      themaWords: ["天子迎春", "土牛劝耕", "禁忌月令"],
+      contentSummary: "规范天子与百姓的农事活动，将农耕纳入礼制框架。",
+      catalogues: ["孟春之月", "仲夏之月", "季秋之月", "孟冬之月"]
+    },
+    similarBook: [
+      {
+        bookName: "夏小正",
+        author: "佚名",
+        press: "西周王室",
+        year: "约公元前十世纪",
+        ISBN: "10",
+        imgUrl: "../img/夏小正.png"
+      },
+      {
+        bookName: "吕氏春秋·上农四篇",
+        author: "吕不韦",
+        press: "秦国相府刊行",
+        year: "公元前239年",
+        ISBN: "2",
+        imgUrl: "../img/吕氏春秋.png"
+      },
+      {
+        bookName: "淮南子·时则训",
+        author: "刘安",
+        press: "西汉淮南王府",
+        year: "公元前二世纪",
+        ISBN: "16",
+        imgUrl: "../img/淮南子时则训.png"
+      },
+      {
+        bookName: "月令七十二候集解",
+        author: "吴澄",
+        press: "元代钦天监",
+        year: "至治元年",
+        ISBN: "9",
+        imgUrl: "../img/月令七十二候集解.png"
+      },
+      {
+        bookName: "授时通考",
+        author: "鄂尔泰",
+        press: "清代武英殿",
+        year: "乾隆七年",
+        ISBN: "4",
+        imgUrl: "../img/授时通考.png"
+      }
+    ],
+    PurchaseRe: [{ libraryName: "武威汉简库", address: "甘肃武威" }],
+    borrowRe: [],
+    comment: [
+  { userName: "礼制规范", con: "天子'躬耕帝籍'的仪式程序与象征意义" },
+  { userName: "政令时序", con: "仲春'安萌芽，养幼少，存诸孤'的社会救济制度" },
+  { userName: "生态禁忌", con: "季春'毋竭川泽，毋漉陂池'的资源保护法令" },
+  { userName: "建筑规制", con: "孟秋'完堤防，谨壅塞'的水利工程时间表" },
+  { userName: "军事农事", con: "立秋'天子乃帅三公九卿巡狩'的武装护农制度" }
+]
+  },
+
+  // 18. 沈氏农书（明代）
+  {
+    BookInformation: {
+      bookName: "沈氏农书",
+      author: "沈氏",
+      era: "明代",
+      press: "明末江南书坊",
+      year: "崇祯末年",
+      Binding: "稿本",
+      folio: "一卷",
+      ISBN: "18",
+      imgUrl: "../img/沈氏农书.png",
+      authorIntro: "明末湖州沈氏，总结江南地区水稻种植与桑蚕技术。",
+      bookLabel: ["江南农技", "水稻种植", "明代蚕桑"],
+      themaWords: ["看苗施肥", "桑园管理", "织造工艺"],
+      contentSummary: "详述江南水田耕作细节，提出精细化田间管理方法。",
+      catalogues: ["运田地法", "蚕务卷", "家常日用"]
+    },
+    similarBook: [
+      {
+        bookName: "陈旉农书",
+        author: "陈旉",
+        press: "南宋临安书铺",
+        year: "绍兴十九年",
+        ISBN: "12",
+        imgUrl: "../img/陈旉农书.png"
+      },
+      {
+        bookName: "农政全书",
+        author: "徐光启",
+        press: "明代司农监",
+        year: "崇祯年间",
+        ISBN: "3",
+        imgUrl: "../img/农政全书.png"
+      },
+      {
+        bookName: "三农纪",
+        author: "张宗法",
+        press: "清代四川刻本",
+        year: "乾隆二十五年",
+        ISBN: "19",
+        imgUrl: "../img/三农纪.png"
+      },
+      {
+        bookName: "农圃便览",
+        author: "丁宜曾",
+        press: "清代山东刻本",
+        year: "乾隆二十年",
+        ISBN: "25",
+        imgUrl: "../img/农圃便览.png"
+      },
+      {
+        bookName: "马首农言",
+        author: "祁寯藻",
+        press: "清代山西刻本",
+        year: "道光十六年",
+        ISBN: "26",
+        imgUrl: "../img/马首农言.png"
+      }
+    ],
+    PurchaseRe: [{ libraryName: "湖州民间藏书", address: "浙江湖州" }],
+    borrowRe: [],
+    comment: [
+  { userName: "精耕细作", con: "提出'宁可少而精密，不可多而草率'的集约经营理念" },
+  { userName: "看苗施肥", con: "根据叶色深浅判断水稻需肥量的经验法则" },
+  { userName: "成本核算", con: "详细计算长工饮食、农具损耗等生产成本" },
+  { userName: "桑基鱼塘", con: "记载湖州'塘基种桑，塘中养鱼'的生态农业模式" },
+  { userName: "纺织副业", con: "从栽桑到缫丝的全流程管理，提高家庭副业收益" }
+]
+  },
+
+  // 19. 三农纪（清代）
+  {
+    BookInformation: {
+      bookName: "三农纪",
+      author: "张宗法",
+      era: "清代",
+      press: "清代四川刻本",
+      year: "乾隆二十五年",
+      Binding: "木刻本",
+      folio: "二十四卷",
+      ISBN: "19",
+      imgUrl: "../img/三农纪.png",
+      authorIntro: "清代四川农学家，结合巴蜀地理特点编写综合性农书。",
+      bookLabel: ["山区农业", "巴蜀农技", "清代农学"],
+      themaWords: ["梯田开垦", "山地灌溉", "杂粮轮作"],
+      contentSummary: "针对西南山区农业特点，系统记载旱作、水利与畜牧技术。",
+      catalogues: ["天时卷", "地利卷", "耕获卷", "畜牧卷"]
+    },
+    similarBook: [
+      {
+        bookName: "农圃便览",
+        author: "丁宜曾",
+        press: "清代山东刻本",
+        year: "乾隆二十年",
+        ISBN: "25",
+        imgUrl: "../img/农圃便览.png"
+      },
+      {
+        bookName: "四民月令",
+        author: "崔寔",
+        press: "东汉太学府",
+        year: "二世纪中叶",
+        ISBN: "5",
+        imgUrl: "../img/四民月令.png"
+      },
+      {
+        bookName: "陈旉农书",
+        author: "陈旉",
+        press: "南宋临安书铺",
+        year: "绍兴十九年",
+        ISBN: "12",
+        imgUrl: "../img/陈旉农书.png"
+      },
+      {
+        bookName: "授时通考",
+        author: "鄂尔泰",
+        press: "清代武英殿",
+        year: "乾隆七年",
+        ISBN: "4",
+        imgUrl: "../img/授时通考.png"
+      },
+      {
+        bookName: "马首农言",
+        author: "祁寯藻",
+        press: "清代山西刻本",
+        year: "道光十六年",
+        ISBN: "26",
+        imgUrl: "../img/马首农言.png"
+      }
+    ],
+    PurchaseRe: [{ libraryName: "四川民间藏书楼", address: "四川成都" }],
+    borrowRe: [],
+    comment: [
+  { userName: "山地开发", con: "'层蹬作梯，包石成田'的梯田修筑技术规范" },
+  { userName: "杂粮种植", con: "详述荞麦、燕麦等耐寒作物在川陕山区的栽培要诀" },
+  { userName: "林粮间作", con: "推广桐粮间作'三年桐子五年桐，桐下种粟两不误'" },
+  { userName: "水利创新", con: "竹笕分水、连筒过山等山区灌溉技术集锦" },
+  { userName: "灾害防御", con: "总结防雹、驱兽等山区特殊灾害应对措施" }
+]
+  },
+
+  // 20. 农桑衣食撮要（元代）
+  {
+    BookInformation: {
+      bookName: "农桑衣食撮要",
+      author: "鲁明善",
+      era: "元代",
+      press: "元代畏兀儿文坊",
+      year: "延祐元年",
+      Binding: "册页本",
+      folio: "二卷",
+      ISBN: "20",
+      imgUrl: "../img/农桑衣食撮要.png",
+      authorIntro: "元代畏兀儿农学家，任寿春郡监时编撰月令体农书。",
+      bookLabel: ["月令体", "民族农学", "元代技术"],
+      themaWords: ["按月农事", "果蔬贮藏", "家庭副业"],
+      contentSummary: "按月编排农事活动，涵盖耕作、蚕桑、食品加工等实用技术。",
+      catalogues: ["正月事宜", "四月事宜", "七月事宜", "十月事宜"]
+    },
+    similarBook: [
+      {
+        bookName: "四民月令",
+        author: "崔寔",
+        press: "东汉太学府",
+        year: "二世纪中叶",
+        ISBN: "5",
+        imgUrl: "../img/四民月令.png"
+      },
+      {
+        bookName: "齐民要术",
+        author: "贾思勰",
+        press: "北魏",
+        year: "六世纪中叶",
+        ISBN: "1",
+        imgUrl: "../img/齐民要术.png"
+      },
+      {
+        bookName: "岁时广记",
+        author: "陈元靓",
+        press: "南宋建阳书坊",
+        year: "宝祐四年",
+        ISBN: "15",
+        imgUrl: "../img/岁时广记.png"
+      },
+      {
+        bookName: "月令广义",
+        author: "冯应京",
+        press: "明代民间书坊",
+        year: "万历三十年",
+        ISBN: "11",
+        imgUrl: "../img/月令广义.png"
+      },
+      {
+        bookName: "三农纪",
+        author: "张宗法",
+        press: "清代四川刻本",
+        year: "乾隆二十五年",
+        ISBN: "19",
+        imgUrl: "../img/三农纪.png"
+      }
+    ],
+    PurchaseRe: [{ libraryName: "西域文献库", address: "新疆吐鲁番" }],
+    borrowRe: [],
+    comment: [
+  { userName: "月令体系", con: "按月编排'正月种芋，二月种茄'等农事操作指南" },
+  { userName: "食品加工", con: "详录造酪、作酱、腌菜等家庭食品贮藏技术" },
+  { userName: "家庭副业", con: "传授养蜂取蜜、种药制药等增收技艺" },
+  { userName: "节气养生", con: "按季节推荐'四月饮菊苗粥，六月制紫苏饮'等食疗方" },
+  { userName: "多民族智慧", con: "融合畏兀儿等少数民族的农业经验" }
+]
+  },
+
+{
+    BookInformation: {
       bookName: "田家五行",
       author: "娄元礼",
+      era: "元代",
       press: "元代江浙书坊",
       year: "至正年间",
+      Binding: "木刻本",
+      folio: "三卷",
       ISBN: "21",
-      imgUrl: "../img/田家五行.png"
-    }
-  ],
-  PurchaseRe: [{
-    libraryName: "福建土楼藏书",
-    address: "福建龙岩"
-  }],
-  borrowRe: [],
-  comment: [{
-    userName: "占候研究者",
-    con: "明代农事预测的权威指南，占候术的科学化尝试"
-  }]
-},
-
-// 23.农丹（清代）
-{
-  BookInformation: {
-    bookName: "农丹",
-    author: "张标",
-    era: "清代",
-    press: "清代民间刻本",
-    year: "康熙三年",
-    Binding: "稿本",
-    folio: "六卷",
-    ISBN: "23",
-    imgUrl: "../img/农丹.png",
-    authorIntro: "清代农学家，提出地气说，倡导春耕与地温的精准配合。",
-    bookLabel: ["地气理论", "春耕技术", "清代农学"],
-    themaWords: ["立春验土", "地气升降", "耕层深浅"],
-    contentSummary: "融合传统农学与地学知识，构建以地温为核心的耕作体系。",
-    catalogues: ["地气卷", "春耕卷", "施肥卷", "灌溉卷"]
+      imgUrl: "../img/田家五行.png",
+      authorIntro: "元代气象学家，长期观测太湖流域天气与农事关系。",
+      bookLabel: ["气象农谚", "占候术", "元代江南"],
+      themaWords: ["看云识雨", "观星测晴", "动物兆候"],
+      contentSummary: "收录五百余条农谚，系统总结天气预测与农事占验经验。",
+      catalogues: ["天文类", "地理类", "草木类", "鸟兽类"]
+    },
+    similarBook: [
+      {
+        bookName: "农候杂占",
+        author: "梁章钜",
+        press: "明代福建书坊",
+        year: "万历四十年",
+        ISBN: "22",
+        imgUrl: "../img/农候杂占.png"
+      },
+      {
+        bookName: "授时通考",
+        author: "鄂尔泰",
+        press: "清代武英殿",
+        year: "乾隆七年",
+        ISBN: "4",
+        imgUrl: "../img/授时通考.png"
+      },
+      {
+        bookName: "夏小正",
+        author: "佚名",
+        press: "西周王室",
+        year: "约公元前十世纪",
+        ISBN: "10",
+        imgUrl: "../img/夏小正.png"
+      },
+      {
+        bookName: "月令七十二候集解",
+        author: "吴澄",
+        press: "元代钦天监",
+        year: "至治元年",
+        ISBN: "9",
+        imgUrl: "../img/月令七十二候集解.png"
+      },
+      {
+        bookName: "三农纪",
+        author: "张宗法",
+        press: "清代四川刻本",
+        year: "乾隆二十五年",
+        ISBN: "19",
+        imgUrl: "../img/三农纪.png"
+      }
+    ],
+    PurchaseRe: [{ libraryName: "太湖民间藏书", address: "江苏苏州" }],
+    borrowRe: [],
+    comment: [
+  { userName: "气象观测", con: "'云行东，车马通；云行西，雨凄凄'等数百条观天经验" },
+  { userName: "物候预测", con: "'鸦浴风，鹊浴雨'等动物行为与天气的关联研究" },
+  { userName: "农谚体系", con: "系统整理'稻秀雨浇，麦秀风摇'等作物管理谚语" },
+  { userName: "灾害预警", con: "'虹挂东，有雨一场空'等特殊天象解读" },
+  { userName: "地方知识", con: "专记太湖流域'夏至西南风，必定收稻翁'等地域性经验" }
+]
   },
-  similarBook: [
-    {
+
+  // 22. 农候杂占（明代）
+  {
+    BookInformation: {
+      bookName: "农候杂占",
+      author: "梁章钜",
+      era: "明代",
+      press: "明代福建书坊",
+      year: "万历四十年",
+      Binding: "线装本",
+      folio: "四卷",
+      ISBN: "22",
+      imgUrl: "../img/农候杂占.png",
+      authorIntro: "明代农学家，专研农事占候，结合地方经验编撰此书。",
+      bookLabel: ["占候术", "农事预测", "明代农谚"],
+      themaWords: ["立春占验", "梅雨预测", "霜期推算"],
+      contentSummary: "系统分析节气与农事关系，提出基于物候的耕作时序理论。",
+      catalogues: ["卷一·天部", "卷二·地部", "卷三·人部", "卷四·物部"]
+    },
+    similarBook: [
+      {
+        bookName: "田家五行",
+        author: "娄元礼",
+        press: "元代江浙书坊",
+        year: "至正年间",
+        ISBN: "21",
+        imgUrl: "../img/田家五行.png"
+      },
+      {
+        bookName: "授时通考",
+        author: "鄂尔泰",
+        press: "清代武英殿",
+        year: "乾隆七年",
+        ISBN: "4",
+        imgUrl: "../img/授时通考.png"
+      },
+      {
+        bookName: "月令广义",
+        author: "冯应京",
+        press: "明代民间书坊",
+        year: "万历三十年",
+        ISBN: "11",
+        imgUrl: "../img/月令广义.png"
+      },
+      {
+        bookName: "淮南子·时则训",
+        author: "刘安",
+        press: "西汉淮南王府",
+        year: "公元前二世纪",
+        ISBN: "16",
+        imgUrl: "../img/淮南子时则训.png"
+      },
+      {
+        bookName: "农丹",
+        author: "张标",
+        press: "清代民间刻本",
+        year: "康熙三年",
+        ISBN: "23",
+        imgUrl: "../img/农丹.png"
+      }
+    ],
+    PurchaseRe: [{ libraryName: "福建土楼藏书", address: "福建龙岩" }],
+    borrowRe: [],
+    comment: [
+  { userName: "节气预测", con: "立春'西北风主歉收，东南风主丰稔'的长期预报" },
+  { userName: "云图识别", con: "分类'钩云、鱼鳞云、炮车云'等二十余种云形" },
+  { userName: "物候序列", con: "建立'桐始华-田鼠化鴽-虹始见'的物候演进链条" },
+  { userName: "农事禁忌", con: "'雷打惊蛰前，高山好种田'等特殊气候应对策略" },
+  { userName: "占卜科学化", con: "剔除迷信成分，强化观测实证的天气预测体系" }
+]
+  },
+
+  // 23. 农丹（清代）
+  {
+    BookInformation: {
+      bookName: "农丹",
+      author: "张标",
+      era: "清代",
+      press: "清代民间刻本",
+      year: "康熙三年",
+      Binding: "稿本",
+      folio: "六卷",
+      ISBN: "23",
+      imgUrl: "../img/农丹.png",
+      authorIntro: "清代农学家，提出地气说，倡导春耕与地温的精准配合。",
+      bookLabel: ["地气理论", "春耕技术", "清代农学"],
+      themaWords: ["立春验土", "地气升降", "耕层深浅"],
+      contentSummary: "融合传统农学与地学知识，构建以地温为核心的耕作体系。",
+      catalogues: ["地气卷", "春耕卷", "施肥卷", "灌溉卷"]
+    },
+    similarBook: [
+      {
+        bookName: "农圃便览",
+        author: "丁宜曾",
+        press: "清代山东刻本",
+        year: "乾隆二十年",
+        ISBN: "25",
+        imgUrl: "../img/农圃便览.png"
+      },
+      {
+        bookName: "氾胜之书",
+        author: "氾胜之",
+        press: "西汉司农寺",
+        year: "公元前一世纪",
+        ISBN: "6",
+        imgUrl: "../img/氾胜之书.png"
+      },
+      {
+        bookName: "齐民要术",
+        author: "贾思勰",
+        press: "北魏",
+        year: "六世纪中叶",
+        ISBN: "1",
+        imgUrl: "../img/齐民要术.png"
+      },
+      {
+        bookName: "知本提纲·农则",
+        author: "杨屾",
+        press: "清代关中书院",
+        year: "乾隆十二年",
+        ISBN: "24",
+        imgUrl: "../img/知本提纲农则.png"
+      },
+      {
+        bookName: "农政全书",
+        author: "徐光启",
+        press: "明代司农监",
+        year: "崇祯年间",
+        ISBN: "3",
+        imgUrl: "../img/农政全书.png"
+      }
+    ],
+    PurchaseRe: [{ libraryName: "清代民间手稿", address: "河北保定" }],
+    borrowRe: [],
+    comment: [
+  { userName: "地气学说", con: "'地气通乎天时'，建立土壤温度与耕作时机关联理论" },
+  { userName: "春耕技术", con: "立春后'土膏脉动'时深耕曝晒的整地方法" },
+  { userName: "施肥体系", con: "提出'寒热相济，骨革相配'的肥料搭配原则" },
+  { userName: "灌溉时序", con: "按地温确定'春灌午前，冬灌向晚'的浇水法则" },
+  { userName: "农学哲学", con: "将'阴阳燮理'思想应用于田间管理实践" }
+]
+  },
+
+  // 24. 知本提纲·农则（清代）
+  {
+    BookInformation: {
+      bookName: "知本提纲·农则",
+      author: "杨屾",
+      era: "清代",
+      press: "清代关中书院",
+      year: "乾隆十二年",
+      Binding: "书院刻本",
+      folio: "五卷",
+      ISBN: "24",
+      imgUrl: "../img/知本提纲农则.png",
+      authorIntro: "清代关中学者，将理学思想融入农学研究，强调知本务农。",
+      bookLabel: ["理学农学", "关中农技", "清代哲学"],
+      themaWords: ["打春仪式", "耕读传家", "天地人三才"],
+      contentSummary: "以理学框架阐释农耕原理，记载关中地区立春耕作仪式。",
+      catalogues: ["农则卷", "天则卷", "地则卷", "人则卷"]
+    },
+    similarBook: [
+      {
+        bookName: "郡县农政",
+        author: "包世臣",
+        press: "清代安吴四种本",
+        year: "嘉庆五年",
+        ISBN: "978-7-古代-0028",
+        imgUrl: "../img/郡县农政.png"
+      },
+      {
+        bookName: "吕氏春秋·上农四篇",
+        author: "吕不韦",
+        press: "秦国相府刊行",
+        year: "公元前239年",
+        ISBN: "2",
+        imgUrl: "../img/吕氏春秋.png"
+      },
+      {
+        bookName: "淮南子·时则训",
+        author: "刘安",
+        press: "西汉淮南王府",
+        year: "公元前二世纪",
+        ISBN: "16",
+        imgUrl: "../img/淮南子时则训.png"
+      },
+      {
+        bookName: "农丹",
+        author: "张标",
+        press: "清代民间刻本",
+        year: "康熙三年",
+        ISBN: "23",
+        imgUrl: "../img/农丹.png"
+      },
+      {
+        bookName: "马首农言",
+        author: "祁寯藻",
+        press: "清代山西刻本",
+        year: "道光十六年",
+        ISBN: "26",
+        imgUrl: "../img/马首农言.png"
+      }
+    ],
+    PurchaseRe: [{ libraryName: "关中书院文库", address: "陕西西安" }],
+    borrowRe: [],
+    comment: [
+  { userName: "农政哲学", con: "'天功人其代之'的天人合一农学思想体系" },
+  { userName: "耕作仪式", con: "图解关中'打春牛、祭先农'等立春劝农仪典" },
+  { userName: "生态伦理", con: "'五谷不宜连种，三田必须轮休'的可持续耕作观" },
+  { userName: "技术规范", con: "规定'耕深三寸，耙必四遍'的精细作业标准" },
+  { userName: "教育理念", con: "主张'村塾课农书，田畯授稼法'的农技普及体系" }
+]
+  },
+
+  // 25. 农圃便览（清代）
+  {
+    BookInformation: {
       bookName: "农圃便览",
       author: "丁宜曾",
+      era: "清代",
       press: "清代山东刻本",
       year: "乾隆二十年",
+      Binding: "线装本",
+      folio: "八卷",
       ISBN: "25",
-      imgUrl: "../img/农圃便览.png"
-    }
-  ],
-  PurchaseRe: [{
-    libraryName: "清代民间手稿",
-    address: "河北保定"
-  }],
-  borrowRe: [],
-  comment: [{
-    userName: "农学理论家",
-    con: "地气学说的系统性论著，清代农学理论化的标志"
-  }]
-},
-
-// 24.知本提纲·农则（清代）
-{
-  BookInformation: {
-    bookName: "知本提纲·农则",
-    author: "杨屾",
-    era: "清代",
-    press: "清代关中书院",
-    year: "乾隆十二年",
-    Binding: "书院刻本",
-    folio: "五卷",
-    ISBN: "24",
-    imgUrl: "../img/知本提纲农则.png",
-    authorIntro: "清代关中学者，将理学思想融入农学研究，强调知本务农。",
-    bookLabel: ["理学农学", "关中农技", "清代哲学"],
-    themaWords: ["打春仪式", "耕读传家", "天地人三才"],
-    contentSummary: "以理学框架阐释农耕原理，记载关中地区立春耕作仪式。",
-    catalogues: ["农则卷", "天则卷", "地则卷", "人则卷"]
+      imgUrl: "../img/农圃便览.png",
+      authorIntro: "山东农学家，结合鲁中地理特点编写实用性农书。",
+      bookLabel: ["山东农技", "土壤分类", "清代月令"],
+      themaWords: ["沙地耕作", "黏土改良", "农具选用"],
+      contentSummary: "针对山东不同土质提出耕作建议，强调立春后因地制宜。",
+      catalogues: ["土宜卷", "谷类卷", "蔬果卷", "杂植卷"]
+    },
+    similarBook: [
+      {
+        bookName: "三农纪",
+        author: "张宗法",
+        press: "清代四川刻本",
+        year: "乾隆二十五年",
+        ISBN: "19",
+        imgUrl: "../img/三农纪.png"
+      },
+      {
+        bookName: "陈旉农书",
+        author: "陈旉",
+        press: "南宋临安书铺",
+        year: "绍兴十九年",
+        ISBN: "12",
+        imgUrl: "../img/陈旉农书.png"
+      },
+      {
+        bookName: "氾胜之书",
+        author: "氾胜之",
+        press: "西汉司农寺",
+        year: "公元前一世纪",
+        ISBN: "6",
+        imgUrl: "../img/氾胜之书.png"
+      },
+      {
+        bookName: "齐民要术",
+        author: "贾思勰",
+        press: "北魏",
+        year: "六世纪中叶",
+        ISBN: "1",
+        imgUrl: "../img/齐民要术.png"
+      },
+      {
+        bookName: "农丹",
+        author: "张标",
+        press: "清代民间刻本",
+        year: "康熙三年",
+        ISBN: "23",
+        imgUrl: "../img/农丹.png"
+      }
+    ],
+    PurchaseRe: [{ libraryName: "山东民间藏书", address: "山东潍坊" }],
+    borrowRe: [],
+    comment: [
+  { userName: "土壤分类", con: "将鲁中土壤分为沙、淤、碱等八类并制定改良方案" },
+  { userName: "轮作体系", con: "设计'谷-豆-麻-菜'四年轮作防地方衰退" },
+  { userName: "沙地农业", con: "总结'沙地宜花生，碱地宜苜蓿'的适地种植原则" },
+  { userName: "农具选配", con: "针对不同土质推荐'沙地用漏锄，淤地用板锨'" },
+  { userName: "节气农谚", con: "辑录'立春三日，百草排芽'等山东地方农谚" }
+]
   },
-  similarBook: [
-    {
-      bookName: "郡县农政",
-      author: "包世臣",
-      press: "清代安吴四种本",
-      year: "嘉庆五年",
-      ISBN: "978-7-古代-0028",
-      imgUrl: "../img/郡县农政.png"
-    }
-  ],
-  PurchaseRe: [{
-    libraryName: "关中书院文库",
-    address: "陕西西安"
-  }],
-  borrowRe: [],
-  comment: [{
-    userName: "思想史学者",
-    con: "理学与农学交融的典范，关中农事哲学的深度阐释"
-  }]
-},
 
-// 25.农圃便览（清代）
-{
-  BookInformation: {
-    bookName: "农圃便览",
-    author: "丁宜曾",
-    era: "清代",
-    press: "清代山东刻本",
-    year: "乾隆二十年",
-    Binding: "线装本",
-    folio: "八卷",
-    ISBN: "25",
-    imgUrl: "../img/农圃便览.png",
-    authorIntro: "山东农学家，结合鲁中地理特点编写实用性农书。",
-    bookLabel: ["山东农技", "土壤分类", "清代月令"],
-    themaWords: ["沙地耕作", "黏土改良", "农具选用"],
-    contentSummary: "针对山东不同土质提出耕作建议，强调立春后因地制宜。",
-    catalogues: ["土宜卷", "谷类卷", "蔬果卷", "杂植卷"]
-  },
-  similarBook: [
-    {
-      bookName: "三农纪",
-      author: "张宗法",
-      press: "清代四川刻本",
-      year: "乾隆二十五年",
-      ISBN: "19",
-      imgUrl: "../img/三农纪.png"
-    }
-  ],
-  PurchaseRe: [{
-    libraryName: "山东民间藏书",
-    address: "山东潍坊"
-  }],
-  borrowRe: [],
-  comment: [{
-    userName: "土壤学家",
-    con: "清代土壤分类的先驱，鲁中农业的实用指南"
-  }]
-},
-
-// 26.马首农言（清代）
-{
-  BookInformation: {
-    bookName: "马首农言",
-    author: "祁寯藻",
-    era: "清代",
-    press: "清代山西刻本",
-    year: "道光十六年",
-    Binding: "木刻本",
-    folio: "四卷",
-    ISBN: "26",
-    imgUrl: "../img/马首农言.png",
-    authorIntro: "清代山西巡抚，主持编写反映晋中农业的地方农书。",
-    bookLabel: ["山西农技", "烧荒法", "清代农政"],
-    themaWords: ["立春烧荒", "谷豆轮作", "农谚辑录"],
-    contentSummary: "记载晋中旱作农业技术，详述立春烧荒整地与传统农谚。",
-    catalogues: ["地势卷", "种植卷", "农谚卷", "畜牧卷"]
-  },
-  similarBook: [
-    {
-      bookName: "三农纪",
-      author: "张宗法",
-      press: "清代四川刻本",
-      year: "乾隆二十五年",
-      ISBN: "19",
-      imgUrl: "../img/三农纪.png"
-    }
-  ],
-  PurchaseRe: [{
-    libraryName: "晋商藏书楼",
-    address: "山西平遥"
-  }],
-  borrowRe: [],
-  comment: [{
-    userName: "区域农史学者",
-    con: "晋中农业的百科全书，烧荒法与轮作制的珍贵记录"
-  }]
-}
-
-    
+  // 26. 马首农言（清代）
+  {
+    BookInformation: {
+      bookName: "马首农言",
+      author: "祁寯藻",
+      era: "清代",
+      press: "清代山西刻本",
+      year: "道光十六年",
+      Binding: "木刻本",
+      folio: "四卷",
+      ISBN: "26",
+      imgUrl: "../img/马首农言.png",
+      authorIntro: "清代山西巡抚，主持编写反映晋中农业的地方农书。",
+      bookLabel: ["山西农技", "烧荒法", "清代农政"],
+      themaWords: ["立春烧荒", "谷豆轮作", "农谚辑录"],
+      contentSummary: "记载晋中旱作农业技术，详述立春烧荒整地与传统农谚。",
+      catalogues: ["地势卷", "种植卷", "农谚卷", "畜牧卷"]
+    },
+    similarBook: [
+      {
+        bookName: "三农纪",
+        author: "张宗法",
+        press: "清代四川刻本",
+        year: "乾隆二十五年",
+        ISBN: "19",
+        imgUrl: "../img/三农纪.png"
+      },
+      {
+        bookName: "氾胜之书",
+        author: "氾胜之",
+        press: "西汉司农寺",
+        year: "公元前一世纪",
+        ISBN: "6",
+        imgUrl: "../img/氾胜之书.png"
+      },
+      {
+        bookName: "齐民要术",
+        author: "贾思勰",
+        press: "北魏",
+        year: "六世纪中叶",
+        ISBN: "1",
+        imgUrl: "../img/齐民要术.png"
+      },
+      {
+        bookName: "知本提纲·农则",
+        author: "杨屾",
+        press: "清代关中书院",
+        year: "乾隆十二年",
+        ISBN: "24",
+        imgUrl: "../img/知本提纲农则.png"
+      },
+      {
+        bookName: "农圃便览",
+        author: "丁宜曾",
+        press: "清代山东刻本",
+        year: "乾隆二十年",
+        ISBN: "25",
+        imgUrl: "../img/农圃便览.png"
+      }
+    ],
+    PurchaseRe: [{ libraryName: "晋商藏书楼", address: "山西平遥" }],
+    borrowRe: [],
+    comment: [
+  { userName: "烧荒技术", con: "'立春烧荒，惊蛰耙地'的晋中旱作整地体系" },
+  { userName: "杂粮种植", con: "详述莜麦、荞麦等耐寒作物栽培管理要点" },
+  { userName: "畜牧经验", con: "总结'春放阳坡夏放梁，秋放山洼冬放沟'放牧规律" },
+  { userName: "农谚集成", con: "'谷雨前后，安瓜点豆'等晋中农谚系统性整理" },
+  { userName: "灾害应对", con: "防霜'薰烟法'、抗旱'积雪法'等地方智慧结晶" }
+]
+  }
   ];
 /** 
  * [地图全国按月数据（2017）]
@@ -1702,804 +2269,291 @@ var data = [
 
 
 var allMData = {
-    book: [367, 1699, 556934, 157986, 176124, 208673, 223975, 248095, 294409, 326461, 331678, 344706],
-    variety: [267, 1187, 11851, 59364, 72711, 103007, 116496, 137698, 180854, 203537, 207474, 214692],
-    sales: [3749, 7214, 9918, 13660, 16870, 19900, 37962, 48909, 59433, 69905, 77894, 86402],
-    stock:  [6365, 5680, 7035, 6066, 6501, 2227, 7930, 8497, 10082, 4268, 3742, 6105]
+    book: ["约550本"],
+    variety: ["约260种"],
+    sales: ["约150种"],
+    stock:  ["约50种"]
 }
 
 /** 
  * [地图按月按省数据（2017）]
- * @param {[Array]} uploadcnt [上传条数]
- * @param {[Array]} uploadpzs [品种数]
- * @param {[Array]} xsmy [销售码洋]
- * @param {[Array]} kcmy [库存码洋]
+ * @param {[Array]} uploadcnt [土地类型]
+ * @param {[Array]} uploadpzs [主要作物]
+ * @param {[Array]} xsmy [气候]
+ * @param {[Array]} kcmy [主要食物]
 */
 
 
 var mapD = {
   Jan: [
     {
-       name: "牛",
-       uploadcnt: "20671",
-       uploadpzs: "",
-       xsmy: "73.8",
-       kcmy: "1579.5"
-     },
-    {
-       name: "上海",
-       uploadcnt: "22932",
-       uploadpzs: "",
-       xsmy: "163.6",
-       kcmy: "784.6"
-     },  
-     {
-       name: "云南",
-       uploadcnt: "56177",
-       uploadpzs: "",
-       xsmy: "533.2",
-       kcmy: "25.2"
-     },  
-     {
-       name: "湖北",
-       uploadcnt: "8613",
-       uploadpzs: "",
-       xsmy: "26.2",
-       kcmy: "454.6"
-     },  
-    {
-       name: "江苏",
-       uploadcnt: "1757",
-       uploadpzs: "",
-       xsmy: "20.6",
-       kcmy: "361.8"
-    },  
-    {
-       name: "内蒙古",
-       uploadcnt: "",
-       uploadpzs: "",
-       xsmy: "62.2",
-       kcmy: "154.3"
-    },  
-    {
-       name: "浙江",
-       uploadcnt: "141905",
-       uploadpzs: "179",
-       xsmy: "1097.2",
-       kcmy: "1073.4"
+      name: "河北",
+      uploadcnt: "黄土平原、冲积平原",
+      uploadpzs: "小麦、谷子、高粱",
+      xsmy: "温带季风气候，冬季寒冷干燥",
+      kcmy: "面食（饼、馒头）、杂粮粥"
     },
     {
-       name: "江西",
-       uploadcnt: "3033",
-       uploadpzs: "",
-       xsmy: "12.6",
-       kcmy: "615.9"
-     },     
+      name: "山西",
+      uploadcnt: "黄土高原",
+      uploadpzs: "谷子、黍、高粱",
+      xsmy: "温带大陆性气候，寒冷干燥",
+      kcmy: "杂粮、窝头、豆类制品"
+    },
     {
-      name: "四川",
-      uploadcnt: "",
-      uploadpzs: "",
-      xsmy: "",
-      kcmy: ""
+      name: "内蒙古",
+      uploadcnt: "草原、沙地、丘陵",
+      uploadpzs: "燕麦、黍、马铃薯",
+      xsmy: "温带草原气候，干冷风大",
+      kcmy: "奶制品、牛羊肉、面食"
     }
   ],
-  /*
   Feb: [
     {
-       name: "湖南",
-       uploadcnt: "33456",
-       uploadpzs: "",
-       xsmy: "177.9",
-       kcmy: "1587.1"
-     },
+      name: "辽宁",
+      uploadcnt: "山地、平原、丘陵",
+      uploadpzs: "小麦、高粱、粟",
+      xsmy: "温带季风气候，寒冷干燥",
+      kcmy: "面食、杂粮粥、鱼类"
+    },
     {
-       name: "上海",
-       uploadcnt: "23103",
-       uploadpzs: "",
-       xsmy: "159.1",
-       kcmy: "1193.1"
-     },  
-     {
-       name: "云南",
-       uploadcnt: "52433",
-       uploadpzs: "",
-       xsmy: "356.7",
-       kcmy: "18.1"
-     },  
-     {
-       name: "湖北",
-       uploadcnt: "10228",
-       uploadpzs: "",
-       xsmy: "32.9",
-       kcmy: "431.3"
-     },  
+      name: "吉林",
+      uploadcnt: "山地、丘陵、平原",
+      uploadpzs: "大豆、粟、马铃薯",
+      xsmy: "温带季风气候，严寒多雪",
+      kcmy: "豆制品、粟米饭、野菜"
+    },
     {
-       name: "江苏",
-       uploadcnt: "3515",
-       uploadpzs: "",
-       xsmy: "92.2",
-       kcmy: ""
-     },  
-     {
-       name: "内蒙古",
-       uploadcnt: "",
-       uploadpzs: "",
-       xsmy: "71.6",
-       kcmy: ""
-     },
-     {
-       name: "浙江",
-       uploadcnt: "165366",
-       uploadpzs: "605",
-       xsmy: "1027.9",
-       kcmy: "1056.3"
-     },
-    {
-       name: "江西",
-       uploadcnt: "8589",
-       uploadpzs: "",
-       xsmy: "36.2",
-       kcmy: "464.1"
-     },  
-     {
-       name: "四川",
-       uploadcnt: "409",
-       uploadpzs: "",
-       xsmy: "",
-       kcmy: ""
-     }
+      name: "黑龙江",
+      uploadcnt: "黑土平原、林地",
+      uploadpzs: "大豆、小麦、马铃薯",
+      xsmy: "寒温带气候，严寒漫长",
+      kcmy: "大豆制品、牛羊肉、杂粮"
+    }
   ],
   Mar: [
     {
-       name: "湖南",
-       uploadcnt: "21814",
-       uploadpzs: "",
-       xsmy: "291.6",
-       kcmy: "3076.2"
-     },
+      name: "江苏",
+      uploadcnt: "冲积平原、水网密布",
+      uploadpzs: "水稻、小麦、蚕桑",
+      xsmy: "亚热带湿润季风气候，温暖多雨",
+      kcmy: "米饭、面条、鱼虾"
+    },
     {
-       name: "上海",
-       uploadcnt: "21240",
-       uploadpzs: "8082",
-       xsmy: "208.2",
-       kcmy: "573.1"
-     },  
-     {
-       name: "云南",
-       uploadcnt: "38102",
-       uploadpzs: "",
-       xsmy: "420.5",
-       kcmy: "25.8"
-     },  
-     {
-       name: "湖北",
-       uploadcnt: "7447",
-       uploadpzs: "",
-       xsmy: "27.5",
-       kcmy: "432.2"
-     },  
+      name: "浙江",
+      uploadcnt: "丘陵、水田",
+      uploadpzs: "水稻、茶叶、蚕桑",
+      xsmy: "亚热带季风气候，温暖湿润",
+      kcmy: "米饭、鱼干、蔬菜"
+    },
     {
-       name: "江苏",
-       uploadcnt: "1294",
-       uploadpzs: "",
-       xsmy: "146.1",
-       kcmy: "989.8"
-     },  
-     {
-       name: "内蒙古",
-       uploadcnt: "",
-       uploadpzs: "",
-       xsmy: "70.5",
-       kcmy: "694.8"
-     },
-     {
-       name: "浙江",
-       uploadcnt: "31804",
-       uploadpzs: "44",
-       xsmy: "269.8",
-       kcmy: "369.9"
-     },
-     {
-       name: "江西",
-       uploadcnt: "2625",
-       uploadpzs: "",
-       xsmy: "7.9",
-       kcmy: ""
-     },  
-     {
-       name: "四川",
-       uploadcnt: "",
-       uploadpzs: "",
-       xsmy: "",
-       kcmy: ""
-     }
+      name: "安徽",
+      uploadcnt: "山地、平原、湖泊",
+      uploadpzs: "水稻、小麦、油菜",
+      xsmy: "亚热带季风气候，雨量充沛",
+      kcmy: "米饭、杂粮、鱼肉"
+    }
   ],
   Apr: [
     {
-       name: "湖南",
-       uploadcnt: "25640",
-       uploadpzs: "",
-       xsmy: "344.1",
-       kcmy: "2923.4"
-     },
-    {
-       name: "上海",
-       uploadcnt: "16221",
-       uploadpzs: "12580",
-       xsmy: "197.9",
-       kcmy: "472.5"
-     },  
-     {
-       name: "云南",
-       uploadcnt: "195973",
-       uploadpzs: "",
-       xsmy: "427.6",
-       kcmy: "25.3"
-     },  
-     {
-       name: "湖北",
-       uploadcnt: "3923",
-       uploadpzs: "",
-       xsmy: "28.2",
-       kcmy: "582.2"
-     },  
-    {
-       name: "江苏",
-       uploadcnt: "3849",
-       uploadpzs: "",
-       xsmy: "337.5",
-       kcmy: ""
-     },  
-     {
-       name: "内蒙古",
-       uploadcnt: "2348",
-       uploadpzs: "",
-       xsmy: "54.4",
-       kcmy: "126.2"
-     },
-     {
-       name: "浙江",
-       uploadcnt: "12974",
-       uploadpzs: "",
-       xsmy: "17.1",
-       kcmy: "65.5"
-     },
-     {
-       name: "江西",
-       uploadcnt: "1392",
-       uploadpzs: "",
-       xsmy: "7.4",
-       kcmy: "410.5"
-     },  
-     {
-       name: "四川",
-       uploadcnt: "",
-       uploadpzs: "",
-       xsmy: "",
-       kcmy: ""
-     }
-  ],
-  May: [
-    {
-       name: "湖南",
-       uploadcnt: "16800",
-       uploadpzs: "",
-       xsmy: "206.9",
-       kcmy: "2457.8"
-     },
-    {
-       name: "上海",
-       uploadcnt: "16023",
-       uploadpzs: "9034",
-       xsmy: "87.4",
-       kcmy: "487.4"
-     },  
-     {
-       name: "云南",
-       uploadcnt: "87231",
-       uploadpzs: "",
-       xsmy: "1106.1",
-       kcmy: "46.5"
-     },  
-     {
-       name: "湖北",
-       uploadcnt: "9557",
-       uploadpzs: "",
-       xsmy: "45.1",
-       kcmy: "1050.5"
-     },  
-    {
-       name: "江苏",
-       uploadcnt: "2604",
-       uploadpzs: "",
-       xsmy: "48.1",
-       kcmy: "564.1"
-     },  
-     {
-       name: "内蒙古",
-       uploadcnt: "3385",
-       uploadpzs: "",
-       xsmy: "45.1",
-       kcmy: "322.1"
-     },
-     {
-       name: "浙江",
-       uploadcnt: "7485",
-       uploadpzs: "",
-       xsmy: "136.6",
-       kcmy: "71.3"
-     },
-     {
-       name: "江西",
-       uploadcnt: "109",
-       uploadpzs: "",
-       xsmy: "",
-       kcmy: "412.2"
-     },  
-     {
-       name: "四川",
-       uploadcnt: "",
-       uploadpzs: "",
-       xsmy: "",
-       kcmy: ""
-     }
-  ],
-  Jun: [
-    {
-       name: "湖南",
-       uploadcnt: "11453",
-       uploadpzs: "1",
-       xsmy: "450.3",
-       kcmy: "521.1"
-     },
-    {
-       name: "上海",
-       uploadcnt: "18065",
-       uploadpzs: "28549",
-       xsmy: "67.7",
-       kcmy: "267.1"
-     },  
-     {
-       name: "云南",
-       uploadcnt: "76517",
-       uploadpzs: "",
-       xsmy: "745.7",
-       kcmy: "42.6"
-     },    
-    {
-       name: "江苏",
-       uploadcnt: "3562",
-       uploadpzs: "",
-       xsmy: "81.1",
-       kcmy: "465.2"
-     },  
-     {
-       name: "内蒙古",
-       uploadcnt: "753",
-       uploadpzs: "",
-       xsmy: "40.8",
-       kcmy: "180.1"
-     },
-     {
-       name: "浙江",
-       uploadcnt: "11976",
-       uploadpzs: "",
-       xsmy: "170.3",
-       kcmy: "71.7"
-     },     
-     {
-      name: "湖北",
-      uploadcnt: "",
-      uploadpzs: "",
-      xsmy: "",
-      kcmy: ""
-    },  
-    {
-      name: "四川",
-      uploadcnt: "",
-      uploadpzs: "",
-      xsmy: "",
-      kcmy: ""
+      name: "福建",
+      uploadcnt: "山地、丘陵、水田",
+      uploadpzs: "水稻、甘蔗、茶叶",
+      xsmy: "亚热带季风气候，湿润多雨",
+      kcmy: "米饭、番薯、海产"
     },
     {
       name: "江西",
-      uploadcnt: "",
-      uploadpzs: "",
-      xsmy: "",
-      kcmy: ""
+      uploadcnt: "丘陵、湖泊、水田",
+      uploadpzs: "水稻、甘蔗、棉花",
+      xsmy: "亚热带湿润气候，四季分明",
+      kcmy: "米饭、藜蒿、鸭肉"
+    },
+    {
+      name: "山东",
+      uploadcnt: "平原、丘陵、沿海",
+      uploadpzs: "小麦、花生、高粱",
+      xsmy: "温带季风气候，春旱夏雨",
+      kcmy: "面食、地瓜、海鲜"
+    }
+  ],
+  May: [
+    {
+      name: "河南",
+      uploadcnt: "黄土平原、河谷地",
+      uploadpzs: "小麦、棉花、芝麻",
+      xsmy: "温带季风气候，春暖夏热",
+      kcmy: "馒头、杂粮粥、豆腐"
+    },
+    {
+      name: "湖北",
+      uploadcnt: "湖泊、平原、水田",
+      uploadpzs: "水稻、油菜、棉花",
+      xsmy: "亚热带湿润气候，雨多湿热",
+      kcmy: "米饭、鱼、藕汤"
+    },
+    {
+      name: "湖南",
+      uploadcnt: "丘陵、水田、湖区",
+      uploadpzs: "水稻、棉花、甘蔗",
+      xsmy: "亚热带湿润气候，潮湿多雨",
+      kcmy: "米饭、腊肉、鱼类"
+    }
+  ],
+  Jun: [
+    {
+      name: "广东",
+      uploadcnt: "丘陵、盆地、平原",
+      uploadpzs: "水稻、甘蔗、香蕉",
+      xsmy: "南亚热带季风气候，炎热多雨",
+      kcmy: "米饭、粥、海鲜"
+    },
+    {
+      name: "广西",
+      uploadcnt: "喀斯特丘陵、河谷",
+      uploadpzs: "水稻、玉米、甘蔗",
+      xsmy: "南亚热带湿润气候，湿热多雨",
+      kcmy: "米饭、螺蛳粉、豆豉菜"
+    },
+    {
+      name: "海南",
+      uploadcnt: "火山地、平原、丘陵",
+      uploadpzs: "水稻、甘蔗、热带水果",
+      xsmy: "热带季风气候，全年高温",
+      kcmy: "米饭、椰子饭、热带果品"
     }
   ],
   Jul: [
     {
-       name: "湖南",
-       uploadcnt: "80847",
-       uploadpzs: "66",
-       xsmy: "35.1",
-       kcmy: "4066.9"
-     },
+      name: "四川",
+      uploadcnt: "盆地、山地、丘陵",
+      uploadpzs: "水稻、小麦、油菜",
+      xsmy: "亚热带湿润气候，炎热多雨",
+      kcmy: "米饭、麻辣火锅、豆瓣酱"
+    },
     {
-       name: "上海",
-       uploadcnt: "18570",
-       uploadpzs: "12946",
-       xsmy: "104.6",
-       kcmy: "177.4"
-     },  
-     {
-       name: "云南",
-       uploadcnt: "57718",
-       uploadpzs: "",
-       xsmy: "353.6",
-       kcmy: "31.5"
-     },  
-     {
-       name: "湖北",
-       uploadcnt: "",
-       uploadpzs: "",
-       xsmy: "",
-       kcmy: ""
-     },  
+      name: "重庆",
+      uploadcnt: "丘陵、山地",
+      uploadpzs: "水稻、甘蔗、蔬菜",
+      xsmy: "亚热带湿润气候，闷热潮湿",
+      kcmy: "米饭、火锅、小面"
+    },
     {
-       name: "江苏",
-       uploadcnt: "750",
-       uploadpzs: "",
-       xsmy: "42.3",
-       kcmy: "551.1"
-     },    
-     {
-       name: "四川",
-       uploadcnt: "",
-       uploadpzs: "",
-       xsmy: "5.6",
-       kcmy: ""
-     },
-     {
-       name: "浙江",
-       uploadcnt: "12974",
-       uploadpzs: "",
-       xsmy: "90.7",
-       kcmy: "623.3"
-     },
-      {
-       name: "江西",
-       uploadcnt: "",
-       uploadpzs: "",
-       xsmy: "112.3",
-       kcmy: ""
-     },     
-     {
-      name: "内蒙古",
-      uploadcnt: "",
-      uploadpzs: "",
-      xsmy: "",
-      kcmy: ""
+      name: "贵州",
+      uploadcnt: "喀斯特高原、山地",
+      uploadpzs: "玉米、马铃薯、稻谷",
+      xsmy: "亚热带湿润气候，湿润凉爽",
+      kcmy: "酸汤饭、腊肉、米豆腐"
     }
   ],
   Aug: [
     {
-       name: "湖南",
-       uploadcnt: "58409",
-       uploadpzs: "",
-       xsmy: "281.4",
-       kcmy: "4146.2"
-     },
+      name: "云南",
+      uploadcnt: "高原、山地、河谷",
+      uploadpzs: "水稻、玉米、烟草",
+      xsmy: "高原山地气候，干湿分明",
+      kcmy: "米线、野菜、腊肉"
+    },
     {
-       name: "上海",
-       uploadcnt: "15352",
-       uploadpzs: "16171",
-       xsmy: "67.8",
-       kcmy: "229.1"
-     },  
-     {
-       name: "云南",
-       uploadcnt: "40141",
-       uploadpzs: "",
-       xsmy: "289.1",
-       kcmy: "373.5"
-     },  
+      name: "西藏",
+      uploadcnt: "高原、山地",
+      uploadpzs: "青稞、豌豆、马铃薯",
+      xsmy: "高原气候，寒冷干燥",
+      kcmy: "糌粑、酥油茶、牦牛肉"
+    },
     {
-       name: "江苏",
-       uploadcnt: "2521",
-       uploadpzs: "",
-       xsmy: "85.4",
-       kcmy: "310.9"
-     },   
-     {
-       name: "四川",
-       uploadcnt: "92",
-       uploadpzs: "",
-       xsmy: "5.1",
-       kcmy: ""
-     },
-     {
-       name: "浙江",
-       uploadcnt: "13473",
-       uploadpzs: "",
-       xsmy: "90.5",
-       kcmy: "57.4"
-     },
-      {
-       name: "江西",
-       uploadcnt: "14057",
-       uploadpzs: "",
-       xsmy: "45.8",
-       kcmy: "520.3"
-     },     
-     {
-      name: "内蒙古",
-      uploadcnt: "",
-      uploadpzs: "",
-      xsmy: "",
-      kcmy: ""
-    },  
-    {
-      name: "湖北",
-      uploadcnt: "",
-      uploadpzs: "",
-      xsmy: "",
-      kcmy: ""
-    } 
+      name: "青海",
+      uploadcnt: "高原、山地、草原",
+      uploadpzs: "青稞、马铃薯、豆类",
+      xsmy: "高原大陆性气候，寒冷干燥",
+      kcmy: "糌粑、奶制品、牛羊肉"
+    }
   ],
   Sep: [
     {
-       name: "湖南",
-       uploadcnt: "50693",
-       uploadpzs: "1",
-       xsmy: "379.1",
-       kcmy: "4115.2"
-     },
+      name: "陕西",
+      uploadcnt: "关中平原、黄土高原",
+      uploadpzs: "小麦、玉米、棉花",
+      xsmy: "温带大陆性气候，四季分明",
+      kcmy: "面食、凉皮、杂粮"
+    },
     {
-       name: "上海",
-       uploadcnt: "14678",
-       uploadpzs: "42639",
-       xsmy: "72.3",
-       kcmy: "170.1"
-     },  
-     {
-       name: "云南",
-       uploadcnt: "33405",
-       uploadpzs: "",
-       xsmy: "250",
-       kcmy: "20.5"
-     },  
-     {
-       name: "湖北",
-       uploadcnt: "7733",
-       uploadpzs: "2",
-       xsmy: "7.5",
-       kcmy: "1354.4"
-     },  
+      name: "甘肃",
+      uploadcnt: "山地、沙地、绿洲",
+      uploadpzs: "小麦、玉米、马铃薯",
+      xsmy: "温带干旱半干旱气候，少雨多风",
+      kcmy: "馍馍、牛羊肉、粉条"
+    },
     {
-       name: "江苏",
-       uploadcnt: "1534",
-       uploadpzs: "",
-       xsmy: "60.8",
-       kcmy: "100.2"
-     },  
-     {
-       name: "内蒙古",
-       uploadcnt: "3546",
-       uploadpzs: "",
-       xsmy: "186.8",
-       kcmy: "14.8"
-     },  
-     {
-       name: "四川",
-       uploadcnt: "351",
-       uploadpzs: "",
-       xsmy: "6.2",
-       kcmy: ""
-     },
-      {
-       name: "江西",
-       uploadcnt: "6827",
-       uploadpzs: "",
-       xsmy: "80.7",
-       kcmy: "614.3"
-     },
-     {
-       name: "浙江",
-       uploadcnt: "",
-       uploadpzs: "",
-       xsmy: "",
-       kcmy: ""
-     }
+      name: "宁夏",
+      uploadcnt: "黄土台地、河套平原",
+      uploadpzs: "小麦、水稻、枸杞",
+      xsmy: "温带大陆性干旱气候",
+      kcmy: "面食、羊肉、粥类"
+    }
   ],
   Oct: [
     {
-       name: "湖南",
-       uploadcnt: "72028",
-       uploadpzs: "",
-       xsmy: "70.3",
-       kcmy: ""
-     },
+      name: "新疆",
+      uploadcnt: "盆地、山地、绿洲",
+      uploadpzs: "小麦、棉花、葡萄",
+      xsmy: "温带大陆性干旱气候，昼夜温差大",
+      kcmy: "馕、抓饭、牛羊肉"
+    },
     {
-       name: "上海",
-       uploadcnt: "10008",
-       uploadpzs: "9664",
-       xsmy: "53.4",
-       kcmy: "61.4"
-     },  
-     {
-       name: "云南",
-       uploadcnt: "97368",
-       uploadpzs: "",
-       xsmy: "49.7",
-       kcmy: "1.9"
-     },  
-     {
-       name: "湖北",
-       uploadcnt: "16161",
-       uploadpzs: "",
-       xsmy: "94.6",
-       kcmy: ""
-     },  
+      name: "天津",
+      uploadcnt: "冲积平原、滨海湿地",
+      uploadpzs: "小麦、玉米、蔬菜",
+      xsmy: "温带季风气候，冬冷夏热",
+      kcmy: "煎饼果子、面食、海鲜"
+    },
     {
-       name: "江苏",
-       uploadcnt: "3123",
-       uploadpzs: "",
-       xsmy: "74.1",
-       kcmy: "33.2"
-     },  
-     {
-       name: "内蒙古",
-       uploadcnt: "499",
-       uploadpzs: "",
-       xsmy: "65.7",
-       kcmy: "12.4"
-     },  
-     {
-       name: "四川",
-       uploadcnt: "94",
-       uploadpzs: "",
-       xsmy: "5.1",
-       kcmy: ""
-     },
-     {
-       name: "江西",
-       uploadcnt: "1969",
-       uploadpzs: "",
-       xsmy: "8.1",
-       kcmy: "320.2"
-     },
-     {
-       name: "浙江",
-       uploadcnt: "",
-       uploadpzs: "",
-       xsmy: "",
-       kcmy: ""
-     }
+      name: "北京",
+      uploadcnt: "山地、平原",
+      uploadpzs: "小麦、玉米、豆类",
+      xsmy: "温带季风气候，四季分明",
+      kcmy: "面条、豆汁、驴打滚"
+    }
   ],
   Nov: [
     {
-       name: "湖南",
-       uploadcnt: "45188",
-       uploadpzs: "",
-       xsmy: "20.6",
-       kcmy: ""
-     },
+      name: "上海",
+      uploadcnt: "冲积平原、河网密布",
+      uploadpzs: "水稻、棉花、蔬菜",
+      xsmy: "亚热带季风气候，湿润温暖",
+      kcmy: "米饭、小笼包、河鲜"
+    },
     {
-       name: "上海",
-       uploadcnt: "13960",
-       uploadpzs: "3115",
-       xsmy: "56.2",
-       kcmy: ""
-     },  
-     {
-       name: "云南",
-       uploadcnt: "67467",
-       uploadpzs: "",
-       xsmy: "43.6",
-       kcmy: ""
-     },  
-     {
-       name: "湖北",
-       uploadcnt: "22398",
-       uploadpzs: "",
-       xsmy: "185.6",
-       kcmy: ""
-     },  
+      name: "台湾",
+      uploadcnt: "山地、平原、海岸",
+      uploadpzs: "水稻、甘蔗、热带水果",
+      xsmy: "热带和亚热带季风气候",
+      kcmy: "米饭、海产、水果"
+    },
     {
-       name: "江苏",
-       uploadcnt: "8224",
-       uploadpzs: "",
-       xsmy: "186.7",
-       kcmy: "147.3"
-     },  
-     {
-       name: "内蒙古",
-       uploadcnt: "131512",
-       uploadpzs: "",
-       xsmy: "53.1",
-       kcmy: "22.1"
-     },  
-     {
-       name: "四川",
-       uploadcnt: "363",
-       uploadpzs: "",
-       xsmy: "5.2",
-       kcmy: ""
-     },
-     {
-       name: "江西",
-       uploadcnt: "23111",
-       uploadpzs: "",
-       xsmy: "94.2",
-       kcmy: ""
-     },
-     {
-       name: "浙江",
-       uploadcnt: "",
-       uploadpzs: "",
-       xsmy: "",
-       kcmy: ""
-     }
+      name: "香港",
+      uploadcnt: "丘陵、海港、填海地",
+      uploadpzs: "蔬菜、甘蔗、水稻（少量）",
+      xsmy: "亚热带季风气候，炎热潮湿",
+      kcmy: "粥粉面饭、海鲜、点心"
+    }
   ],
   Dec: [
     {
-       name: "湖南",
-       uploadcnt: "66053",
-       uploadpzs: "16",
-       xsmy: "166.1",
-       kcmy: "2655.2"
-     },
+      name: "澳门",
+      uploadcnt: "海岛、丘陵",
+      uploadpzs: "蔬菜、水稻（少量）",
+      xsmy: "亚热带季风气候，温暖湿润",
+      kcmy: "葡式米饭、点心、鱼虾"
+    },
     {
-       name: "上海",
-       uploadcnt: "13939",
-       uploadpzs: "837",
-       xsmy: "67.2",
-       kcmy: "78.1"
-     },  
-     {
-       name: "云南",
-       uploadcnt: "39226",
-       uploadpzs: "",
-       xsmy: "27.8",
-       kcmy: "10.4"
-     },  
-     {
-       name: "湖北",
-       uploadcnt: "22886",
-       uploadpzs: "",
-       xsmy: "289.9",
-       kcmy: "1219.3"
-     },  
-    {
-       name: "江苏",
-       uploadcnt: "2331",
-       uploadpzs: "",
-       xsmy: "30.6",
-       kcmy: "254.3"
-     },  
-     {
-       name: "四川",
-       uploadcnt: "5990",
-       uploadpzs: "",
-       xsmy: "4.2",
-       kcmy: ""
-     },
-      {
-       name: "江西",
-       uploadcnt: "4835",
-       uploadpzs: "",
-       xsmy: "126.1",
-       kcmy: "243.2"
-     },  
-     {
-       name: "内蒙古",
-       uploadcnt: "",
-       uploadpzs: "",
-       xsmy: "",
-       kcmy: ""
-     },
-     {
-       name: "浙江",
-       uploadcnt: "",
-       uploadpzs: "",
-       xsmy: "",
-       kcmy: ""
-     }
+      name: "其他",
+      uploadcnt: "多样化地形",
+      uploadpzs: "地方特产",
+      xsmy: "因地而异",
+      kcmy: "地方饮食风格各异"
+    }
   ]
-  */
 };
 
 /** 
@@ -3358,36 +3412,36 @@ var stockBL = {
 **/
 var saleStockR = {
     Jan: [{
-            value: 864,
-            name: '牛-先秦'
+            value: "100*6",
+            name: '蚕'
         },
         {
-            value: 486,
-            name: '猪-先秦'
+            value: "95*6",
+            name: '猪'
         },
         {
-            value: 361,
-            name: '羊-先秦'
+            value: "90*6",
+            name: '牛'
         },
         {
-            value: 264,
-            name: '鸡-先秦'
+            value: "85*6",
+            name: '鸡'
         },
         {
-            value: 258,
-            name: '马-先秦'
+            value: "80*6",
+            name: '羊'
         },
         {
-            value: 227,
-            name: '狗-先秦'
+            value: "75*6",
+            name: '鱼'
         },
         {
-            value: 223,
-            name: '蚕-先秦'
+            value: "70*6",
+            name: '马'
         },
         {
-            value: 212,
-            name: '鱼-先秦'
+            value: "65*6",
+            name: '鸭'
         }
     ],
     Feb: [{

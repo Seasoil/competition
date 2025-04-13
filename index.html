@@ -4,82 +4,155 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>农学</title>
+    <title>主界面</title>
+    <link href="./all.min.css" rel="stylesheet">
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            font-family: 'Segoe UI', system-ui, sans-serif;
         }
 
         body {
             min-height: 100vh;
-            background: url('./第三界面/img/bg.png') no-repeat center center fixed;
+            background: linear-gradient(rgba(240, 233, 233, 0), rgba(44, 121, 5, 0.7)),
+                url('./封面.png') no-repeat center center fixed;
             background-size: cover;
-            font-family: Arial, sans-serif;
+            overflow: hidden;
         }
 
         .container {
+            position: absolute;
+            bottom: 20vh;
+            /* 位置更靠下 */
+            width: 100%;
             display: flex;
             justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            padding: 20px;
-            background-color: rgba(0, 0, 0, 0.5);
+            padding: 2rem;
         }
 
         .dashboard {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(3, 260px);
             gap: 30px;
-            max-width: 1200px;
-            width: 100%;
+            position: relative;
         }
 
         .window {
-            background: rgba(255, 255, 255, 0.9);
-            border-radius: 15px;
-            padding: 30px;
+            position: relative;
+            background: rgba(18, 14, 14, 0.08);
+            border-radius: 20px;
+            padding: 1.5rem;
+            /* 更紧凑的内边距 */
+            min-height: 100px;
+            /* 更矮的高度 */
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(143, 21, 21, 0.1);
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
             text-decoration: none;
-            color: #333;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            color: rgb(240, 227, 227);
+            overflow: hidden;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        .window::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg,
+                    transparent,
+                    rgba(255, 255, 255, 0.1),
+                    transparent);
+            transition: 0.5s;
         }
 
         .window:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
-            background: rgba(255, 255, 255, 1);
+            transform: translateY(-8px) scale(1.03);
+            /* 更克制的动画幅度 */
+            background: rgba(255, 255, 255, 0.12);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .window:hover::before {
+            left: 100%;
         }
 
         .window h2 {
-            color: #2c3e50;
-            margin-bottom: 15px;
-            font-size: 24px;
+            font-size: 1.8rem;
+            /* 更小的字号 */
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 600;
+            letter-spacing: 1px;
         }
 
         .window p {
-            color: #666;
-            line-height: 1.6;
+            font-size: 0.9rem;
+            /* 更小的正文字号 */
+            line-height: 1.5;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 1rem;
         }
 
-        /* 不同窗口的个性装饰 */
+        .icon {
+            width: 40px;
+            /* 更小的图标容器 */
+            height: 40px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.1);
+            font-size: 1.5rem;
+            /* 更小的图标尺寸 */
+        }
+
+        /* 个性化配色 */
         .window:nth-child(1) {
-            border-left: 5px solid #3498db;
+            border-left: 3px solid #4dbd0c;
+        }
+
+        .window:nth-child(1) .icon {
+            background: linear-gradient(45deg, #7f5fff, #5f2fff);
         }
 
         .window:nth-child(2) {
-            border-left: 5px solid #e74c3c;
+            border-left: 3px solid #9b9210;
+        }
+
+        .window:nth-child(2) .icon {
+            background: linear-gradient(45deg, #ff6b6b, #ff8e53);
         }
 
         .window:nth-child(3) {
-            border-left: 5px solid #2ecc71;
+            border-left: 3px solid #db9c0a;
         }
 
-        @media (max-width: 768px) {
+        .window:nth-child(3) .icon {
+            background: linear-gradient(45deg, #4ecdc4, #45b7af);
+        }
+
+        @media (max-width: 960px) {
             .dashboard {
                 grid-template-columns: 1fr;
+                width: 85%;
+            }
+
+            .container {
+                bottom: 25vh;
+                /* 移动端位置调整 */
+            }
+
+            .window {
+                min-height: 160px;
+                padding: 1.2rem;
             }
         }
     </style>
@@ -89,18 +162,18 @@
     <div class="container">
         <div class="dashboard">
             <a href="./第一界面/1界面.html" class="window">
-                <h2>天</h2>
-                <p>点击查看复杂的节点关系网络可视化分析，支持动态交互和详细数据钻取。</p>
+                <h2></i></span>节气展示</h2>
+                <p></p>
             </a>
 
             <a href="./第二界面/关系图.html" class="window">
-                <h2>人</h2>
-                <p>进入多维数据图表分析界面，提供柱状图、折线图等多种可视化形式。</p>
+                <h2></i></span>农文化展示</h2>
+                <p></p>
             </a>
 
             <a href="./第三界面/人界面.html" class="window">
-                <h2>地</h2>
-                <p>查看基于地理信息的数据分布可视化，支持地图下钻和热力图展示。</p>
+                <h2></i></span>农文化概览</h2>
+                <p></p>
             </a>
         </div>
     </div>

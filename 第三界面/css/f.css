@@ -512,11 +512,11 @@ header {
       font-size: 12px;
       color: #fff; }
     .middle-map .map-wrap .unit-wanyuan:after {
-      content: '万元'; }
+      content: ''; }
     .middle-map .map-wrap .unit-number:after {
-      content: '条'; }
+      content: ''; }
     .middle-map .map-wrap .unit-type:after {
-      content: '种'; }
+      content: ''; }
     .middle-map .map-wrap .unit-pc:after {
       content: '批次'; }
     .middle-map .map-wrap #map {

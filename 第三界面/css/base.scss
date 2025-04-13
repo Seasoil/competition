@@ -324,17 +324,17 @@ header {
     }
     .unit-wanyuan{
       &:after{
-        content: '万元';
+        content: '';
       }
     }
     .unit-number{
       &:after{
-        content: '条';
+        content: '';
       }
     }
     .unit-type{
       &:after{
-        content: '种';
+        content: '';
       }
     }
     .unit-pc{
