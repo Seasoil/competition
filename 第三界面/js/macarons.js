@@ -11,7 +11,7 @@
     }
 }(this, function (exports, echarts) {
     var log = function (msg) {
-        if (typeof console !== 'undefined') {
+        if (typeof console !== '') {
             console && console.error && console.error(msg);
         }
     };
