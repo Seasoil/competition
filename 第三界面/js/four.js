@@ -1861,7 +1861,7 @@ $(function () {
         "<li>" +
         '<img class="fl" src="' +
         imgUrl +
-        '" alt="更多资源：https://gitee.com/iGaoWei/big-data-view">' +
+        '" alt="">' +
         '<dl class="fl">' +
         "<dt>" +
         data[index].similarBook[i].bookName +
@@ -1891,7 +1891,7 @@ $(function () {
     var html =
       '<img class="fl" src="' +
       data[index].BookInformation.imgUrl +
-      '" alt="更多资源：https://gitee.com/iGaoWei/big-data-view">' +
+      '" alt="">' +
       '<dl class="fl">' +
       "<dt>" +
       data[index].BookInformation.bookName +

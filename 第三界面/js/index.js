@@ -31,6 +31,7 @@ $(function() {
     "Oct",
     "Nov",
     "Dec"
+    
 
   ];
   var bookName = "";
@@ -100,8 +101,9 @@ $(function() {
   if (index === -1) return;
 
   // 生成正确路径
-  var basePath = window.location.origin + window.location.pathname.split('/').slice(0, -1).join('/');
-  var newHref = `${basePath}/four.html?index=${index}`;
+  var currentPath = window.location.href.replace(/[^/]*$/, ''); // 获取当前页面的目录
+var newHref = currentPath + 'four.html?index=' + index; // ✅
+    window.location.href = newHref; 
 
   // four.js 使用事件委托
   $(".aside-left").on("click", "ul li", function() {
@@ -116,7 +118,7 @@ $(function() {
 
   var bottomSpan = $(".aside-left .bottom .book-rank span");
   var bottomSpanH = bottomSpan.height();
-  bottomSpan.css("line-height", bottomSpanH + "px");
+  bottomSpan.css("line-height", bottomSpanH +"px");
 });
 
 //   // 柱形折线图
