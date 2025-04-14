@@ -114,7 +114,7 @@ var newHref = currentPath + 'four.html?index=' + index; // ✅
   //   获取行高
   var topSpan = $(".aside-left .top .book-rank span");
   var topSpanH = topSpan.height();
-  topSpan.css("line-height", topSpanH + "px");
+  topSpan.css("line-height", topSpanH +"px");
 
   var bottomSpan = $(".aside-left .bottom .book-rank span");
   var bottomSpanH = bottomSpan.height();
