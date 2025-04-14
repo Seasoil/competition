@@ -901,7 +901,7 @@ function formatterShow (params){
 
 
 // 有数据省份
-var hasData = [8,9,8,8,8,6,7,7,8,8,8,7];
+var hasData = [8,9,8,8,8,6,7,7,8,8,8,7,9,8,8,8,6,7,7,8,8,8,7,9,8,8,8,6,7,7,8,8,8,7,8,7];
 // 全国12个月数据
 
 var point = 'image://img/point.png';

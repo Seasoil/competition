@@ -3,9 +3,9 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>完整节气分析系统</title>
+    <title>历史节气分析系统</title>
     <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.2/dist/echarts.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/lunar-calendar-js@1.0.3/lib/lunar-calendar.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lunar-javascript@1.3.6/dist/lunar.min.js"></script>
     <style>
         :root {
             --primary: #2c5f2d;
@@ -64,6 +64,7 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             margin: 20px auto;
             max-width: 1200px;
+            position: relative;
         }
 
         .solarterm-grid {
@@ -206,7 +207,6 @@
 </head>
 
 <body>
-    <!-- 导航栏 -->
     <div class="nav-bar">
         <button class="nav-btn" onclick="location.href='index.html'">节气分析</button>
         <button class="nav-btn" onclick="location.href='weather.html'">天气数据</button>
@@ -215,7 +215,7 @@
     </div>
 
     <div class="container">
-        <h1>节气分析系统</h1>
+        <h1>历史节气分析系统</h1>
 
         <div class="solarterm-grid" id="termGrid"></div>
 
@@ -235,7 +235,6 @@
         <button class="chart-trigger" onclick="system.showChart()">查看年度图表</button>
     </div>
 
-    <!-- 图表弹窗 -->
     <div class="chart-modal" id="chartModal">
         <div class="modal-content">
             <span class="close-btn" onclick="system.hideChart()">×</span>
@@ -247,83 +246,48 @@
         const ERA_DB = [
             { name: "夏", start: -2070, end: -1600 },
             { name: "商", start: -1600, end: -1046 },
-            {
-                name: "周", start: -1046, end: -256, periods: [
-                    { name: "西周", start: -1046, end: -771 },
-                    { name: "东周", start: -770, end: -256 }
-                ]
-            },
+            { name: "西周", start: -1046, end: -771 },
+            { name: "东周", start: -770, end: -256 },
             { name: "秦", start: -221, end: -207 },
-            {
-                name: "汉", start: -202, end: 220, periods: [
-                    { name: "西汉", start: -202, end: 8 },
-                    { name: "东汉", start: 25, end: 220 }
-                ]
-            },
-            {
-                name: "三国", start: 220, end: 280, periods: [
-                    { name: "魏", start: 220, end: 266 },
-                    { name: "蜀汉", start: 221, end: 263 },
-                    { name: "吴", start: 229, end: 280 }
-                ]
-            },
-            {
-                name: "晋", start: 265, end: 420, periods: [
-                    { name: "西晋", start: 265, end: 317 },
-                    { name: "东晋", start: 317, end: 420 }
-                ]
-            },
-            {
-                name: "南北朝", start: 420, end: 589, periods: [
-                    { name: "宋", start: 420, end: 479 },
-                    { name: "齐", start: 479, end: 502 },
-                    { name: "梁", start: 502, end: 557 },
-                    { name: "陈", start: 557, end: 589 }
-                ]
-            },
+            { name: "西汉", start: -202, end: 8 },
+            { name: "东汉", start: 25, end: 220 },
+            { name: "三国", start: 220, end: 280 },
+            { name: "西晋", start: 265, end: 317 },
+            { name: "东晋", start: 317, end: 420 },
             { name: "隋", start: 581, end: 618 },
-            {
-                name: "唐", start: 618, end: 907, periods: [
-                    { name: "贞观", start: 627, end: 649 },
-                    { name: "开元", start: 713, end: 741 }
-                ]
-            },
-            {
-                name: "宋", start: 960, end: 1279, periods: [
-                    { name: "北宋", start: 960, end: 1127 },
-                    { name: "南宋", start: 1127, end: 1279 }
-                ]
-            },
+            { name: "唐", start: 618, end: 907 },
+            { name: "北宋", start: 960, end: 1127 },
+            { name: "南宋", start: 1127, end: 1279 },
             { name: "元", start: 1271, end: 1368 },
             { name: "明", start: 1368, end: 1644 },
             { name: "清", start: 1636, end: 1912 }
         ];
 
         const SOLAR_TERMS = {
-            '立春': { month: 2, c: [[3.87, 21], [4.15, 22]], L: y => Math.floor((y - 1) / 4), exceptions: {} },
-            '雨水': { month: 2, c: [[18.73, 21]], L: y => Math.floor((y - 1) / 4), exceptions: { 2026: -1 } },
-            '惊蛰': { month: 3, c: [[5.63, 21]], L: y => Math.floor((y - 1) / 4), exceptions: {} },
-            '春分': { month: 3, c: [[20.646, 21]], L: y => Math.floor(y / 4), exceptions: { 2084: 1 } },
-            '清明': { month: 4, c: [[4.81, 21], [5.59, 20]], L: y => Math.floor(y / 4), exceptions: {} },
-            '谷雨': { month: 4, c: [[20.1, 21], [20.888, 20]], L: y => Math.floor(y / 4), exceptions: {} },
-            '立夏': { month: 5, c: [[5.52, 21], [6.318, 20]], L: y => Math.floor(y / 4), exceptions: { 1911: 1 } },
-            '小满': { month: 5, c: [[21.04, 21], [21.86, 20]], L: y => Math.floor(y / 4), exceptions: { 2008: 1 } },
-            '芒种': { month: 6, c: [[5.678, 21], [6.5, 20]], L: y => Math.floor(y / 4), exceptions: { 1902: 1 } },
-            '夏至': { month: 6, c: [[21.37, 21], [22.20, 20]], L: y => Math.floor(y / 4), exceptions: { 1928: 1 } },
-            '小暑': { month: 7, c: [[7.108, 21], [7.928, 20]], L: y => Math.floor(y / 4), exceptions: { 1925: 1, 2016: 1 } },
-            '大暑': { month: 7, c: [[22.83, 21], [23.65, 20]], L: y => Math.floor(y / 4), exceptions: { 1922: 1 } },
-            '立秋': { month: 8, c: [[7.5, 21], [8.35, 20]], L: y => Math.floor(y / 4), exceptions: { 2002: 1 } },
-            '处暑': { month: 8, c: [[23.13, 21], [23.95, 20]], L: y => Math.floor(y / 4), exceptions: {} },
-            '白露': { month: 9, c: [[7.646, 21], [8.44, 20]], L: y => Math.floor(y / 4), exceptions: { 1927: 1 } },
-            '秋分': { month: 9, c: [[23.042, 21], [23.822, 20]], L: y => Math.floor(y / 4), exceptions: { 1942: 1 } },
-            '寒露': { month: 10, c: [[8.318, 21], [9.098, 20]], L: y => Math.floor(y / 4), exceptions: {} },
-            '霜降': { month: 10, c: [[23.438, 21], [24.218, 20]], L: y => Math.floor(y / 4), exceptions: { 2089: 1 } },
-            '立冬': { month: 11, c: [[7.438, 21], [8.218, 20]], L: y => Math.floor(y / 4), exceptions: { 2089: 1 } },
-            '小雪': { month: 11, c: [[22.36, 21], [23.08, 20]], L: y => Math.floor(y / 4), exceptions: { 1978: 1 } },
-            '大雪': { month: 12, c: [[7.18, 21], [7.9, 20]], L: y => Math.floor(y / 4), exceptions: { 1954: 1 } },
-            '冬至': { month: 12, c: [[21.94, 21], [22.60, 20]], L: y => Math.floor(y / 4), exceptions: { 1918: -1, 2021: -1 } },
-            '小寒': { month: 1, c: [[5.4055, 21], [6.11, 20]], L: y => Math.floor((y - 1) / 4), exceptions: { 1982: 1, 2019: -1 } },
-            '大寒': { month: 1, c: [[20.12, 21], [20.84, 20]], L: y => Math.floor((y - 1) / 4), exceptions: { 2082: 1 } }
+            '立春': { order: 3, coefficients: [3.87, 0.2422], month: 2 },
+            '雨水': { order: 4, coefficients: [18.73, 0.2422], month: 2 },
+            '惊蛰': { order: 5, coefficients: [5.63, 0.2422], month: 3 },
+            '春分': { order: 6, coefficients: [20.646, 0.2422], month: 3 },
+            '清明': { order: 7, coefficients: [4.81, 0.2422], month: 4 },
+            '谷雨': { order: 8, coefficients: [20.1, 0.2422], month: 4 },
+            '立夏': { order: 9, coefficients: [5.52, 0.2422], month: 5 },
+            '小满': { order: 10, coefficients: [21.04, 0.2422], month: 5 },
+            '芒种': { order: 11, coefficients: [5.678, 0.2422], month: 6 },
+            '夏至': { order: 12, coefficients: [21.37, 0.2422], month: 6 },
+            '小暑': { order: 13, coefficients: [7.108, 0.2422], month: 7 },
+            '大暑': { order: 14, coefficients: [22.83, 0.2422], month: 7 },
+            '立秋': { order: 15, coefficients: [7.5, 0.2422], month: 8 },
+            '处暑': { order: 16, coefficients: [23.13, 0.2422], month: 8 },
+            '白露': { order: 17, coefficients: [7.646, 0.2422], month: 9 },
+            '秋分': { order: 18, coefficients: [23.042, 0.2422], month: 9 },
+            '寒露': { order: 19, coefficients: [8.318, 0.2422], month: 10 },
+            '霜降': { order: 20, coefficients: [23.438, 0.2422], month: 10 },
+            '立冬': { order: 21, coefficients: [7.438, 0.2422], month: 11 },
+            '小雪': { order: 22, coefficients: [22.36, 0.2422], month: 11 },
+            '大雪': { order: 23, coefficients: [7.18, 0.2422], month: 12 },
+            '冬至': { order: 24, coefficients: [21.94, 0.2422], month: 12 },
+            '小寒': { order: 1, coefficients: [5.4055, 0.2422], month: 1 },
+            '大寒': { order: 2, coefficients: [20.12, 0.2422], month: 1 }
         };
 
         class SolarSystem {
@@ -375,19 +339,15 @@
             }
 
             parseInput(input) {
-                const complexMatch = input.match(/^([\u4e00-\u9fa5]+)([\u4e00-\u9fa5]{2,})([元一二三四五六七八九十百]+)$/);
-                if (complexMatch) {
-                    const [_, dynasty, era, year] = complexMatch;
-                    return this.parseComplexEra(dynasty, era, year);
-                }
-
-                const eraMatch = input.match(/^([\u4e00-\u9fa5]{2,})([元一二三四五六七八九十百]+)$/);
+                // 年号解析逻辑
+                const eraMatch = input.match(/^([\u4e00-\u9fa5]+)([元一二三四五六七八九十百]+)$/);
                 if (eraMatch) {
-                    const [_, era, year] = eraMatch;
-                    return this.parseSimpleEra(era, year);
+                    const era = eraMatch[1];
+                    const chineseYear = eraMatch[2];
+                    return this.parseEra(era, chineseYear);
                 }
 
-                if (/^\d+$/.test(input)) {
+                if (/^-?\d+$/.test(input)) {
                     const year = parseInt(input);
                     if (year < -221 || year > 3000) throw new Error("年份超出计算范围");
                     return year;
@@ -396,146 +356,96 @@
                 throw new Error("无法识别的输入格式");
             }
 
-            parseComplexEra(dynasty, era, chineseYear) {
-                const dynastyData = ERA_DB.find(d => d.name === dynasty);
-                if (!dynastyData) throw new Error("未找到对应朝代");
-
-                const eraData = dynastyData.periods?.find(p => p.name === era);
-                if (!eraData) throw new Error("未找到对应年号");
-
-                return eraData.start + this.chineseToNumber(chineseYear) - 1;
-            }
-
-            parseSimpleEra(era, chineseYear) {
-                for (const dynasty of ERA_DB) {
-                    const eraData = dynasty.periods?.find(p => p.name === era);
-                    if (eraData) {
-                        return eraData.start + this.chineseToNumber(chineseYear) - 1;
-                    }
-                }
-                throw new Error("未找到对应年号");
+            parseEra(era, chineseYear) {
+                const dynasty = ERA_DB.find(d => d.name.startsWith(era));
+                if (!dynasty) throw new Error("未找到对应朝代");
+                return dynasty.start + this.chineseToNumber(chineseYear) - 1;
             }
 
             chineseToNumber(str) {
-                const map = { 元: 1, 一: 1, 二: 2, 三: 3, 四: 4, 五: 5, 六: 6, 七: 7, 八: 8, 九: 9, 十: 10 };
-                const numbers = [...str].map(c => map[c] || 0);
-                if (numbers.includes(0)) throw new Error("包含无效字符");
+                const map = {
+                    元: 1, 一: 1, 二: 2, 三: 3, 四: 4, 五: 5,
+                    六: 6, 七: 7, 八: 8, 九: 9, 十: 10,
+                    廿: 20, 卅: 30
+                };
 
-                if (str.startsWith('十')) {
-                    return 10 + (numbers.slice(1).reduce((a, b) => a + b, 0));
+                let total = 0;
+                let temp = 0;
+
+                for (const char of str) {
+                    const value = map[char];
+                    if (value >= 10) {
+                        total += temp * value;
+                        temp = 0;
+                    } else {
+                        temp = temp * 10 + value;
+                    }
                 }
-                return numbers.reduce((a, b) => a + b, 0);
+                return total + temp;
             }
 
             calcSolarTerm(year) {
                 const config = SOLAR_TERMS[this.currentTerm];
+                const century = Math.floor(year / 100) + 1;
                 const y = year % 100;
-                const century = Math.ceil(year / 100);
 
-                const cData = config.c.find(([_, c]) => c === century);
-                const c = cData ? cData[0] : config.c[0][0];
+                let date = Math.floor(century * config.coefficients[1] * y + config.coefficients[0])
+                    - Math.floor((century - 1) / 4);
 
-                let day = Math.floor(y * 0.2422 + c) - config.L(year);
-                day += config.exceptions[year] || 0;
-
-                const jsYear = year < 1 ? year + 1 : year;
-                const date = new Date(jsYear, config.month - 1, 1);
-                if (isNaN(date.getTime())) throw new Error("日期计算错误");
-
-                const maxDay = new Date(jsYear, config.month, 0).getDate();
-                day = Math.min(Math.max(day, 1), maxDay);
-                date.setDate(day);
-
-                return date;
+                // 构造日期对象（处理公元前）
+                const jsYear = year < 0 ? year + 1 : year;
+                const resultDate = new Date(jsYear, config.month - 1, 1);
+                resultDate.setDate(Math.min(date, 31));
+                return resultDate;
             }
 
             updateDisplay(date) {
+                // 公历显示
                 document.getElementById('gregDate').textContent =
                     `${date.getFullYear()}年${date.getMonth() + 1}月${date.getDate()}日`;
 
+                // 农历显示
                 const lunar = this.getLunar(date);
                 const lunarHTML = lunar.error ?
                     `<div class="error">${lunar.error}</div>` :
-                    `
-            <div>农历：${lunar.year}年 ${lunar.month}${lunar.day}</div>
-            <div>干支：${lunar.ganzhi}年 · ${lunar.zodiac}</div>
-            ${lunar.festival ? `<div>节气：${lunar.festival}</div>` : ''}
-            `;
+                    `<div>农历：${lunar.year} ${lunar.month}${lunar.day}</div>
+                     <div>干支：${lunar.ganzhi}年 · ${lunar.zodiac}年</div>
+                     ${lunar.festival ? `<div>节气/节日：${lunar.festival}</div>` : ''}`;
                 document.getElementById('lunarDate').innerHTML = lunarHTML;
 
+                // 历史时期
                 this.updateEraDisplay(date.getFullYear());
             }
 
             getLunar(date) {
                 try {
-                    if (date.getFullYear() <= 0 || date.getFullYear() > 2100) {
-                        return { error: "超出农历支持范围（仅支持公元1-2100年）" };
-                    }
-
-                    const lunar = LunarCalendar.solarToLunar(
-                        date.getFullYear(),
-                        date.getMonth() + 1,
-                        date.getDate()
-                    );
-
-                    if (!lunar || typeof lunar.lYear === 'undefined') {
-                        return { error: "农历数据获取失败" };
-                    }
-
-                    // 修正闰月显示
-                    let monthDisplay = lunar.monthStr;
-                    if (lunar.isLeap) {
-                        monthDisplay = "闰" + monthDisplay;
-                    }
-
+                    const solar = Lunar.fromDate(date);
                     return {
-                        year: lunar.lYear,
-                        month: monthDisplay,
-                        day: lunar.dayStr,
-                        ganzhi: lunar.GanZhiYear,
-                        zodiac: lunar.zodiac,
-                        festival: lunar.term || ''
+                        year: solar.getYearInChinese(),
+                        month: solar.getMonthInChinese(),
+                        day: solar.getDayInChinese(),
+                        ganzhi: solar.getYearInGanZhi(),
+                        zodiac: solar.getYearShengXiao(),
+                        festival: solar.getFestivals().join(' ') || solar.getJieQi()
                     };
                 } catch (e) {
-                    return { error: "农历转换失败，请检查日期有效性" };
+                    return { error: "农历转换失败" };
                 }
             }
 
             updateEraDisplay(year) {
-                const dynasty = ERA_DB.find(d => year >= d.start && year <= d.end);
-                let displayText = '';
-
-                if (dynasty) {
-                    displayText += dynasty.name;
-                    if (dynasty.periods) {
-                        const period = dynasty.periods.find(p => year >= p.start && year <= p.end);
-                        if (period) {
-                            const eraYear = year - period.start + 1;
-                            displayText += `·${period.name}${this.toChineseYear(eraYear)}`;
-                        }
-                    }
-                }
-                document.getElementById('eraDisplay').textContent = displayText || '未知时期';
+                const era = ERA_DB.find(e => year >= e.start && year <= e.end);
+                document.getElementById('eraDisplay').textContent = era ? era.name : '未知时期';
             }
 
-            toChineseYear(num) {
-                const digits = ['', '一', '二', '三', '四', '五', '六', '七', '八', '九', '十'];
-                if (num === 1) return '元年';
-                if (num <= 10) return digits[num] + '年';
-                if (num < 20) return `十${digits[num % 10]}`;
-                return `${digits[Math.floor(num / 10)]}十${digits[num % 10]}`;
-            }
-
+            // 图表功能
             initChart() {
                 this.chart = echarts.init(document.getElementById('mainChart'));
                 window.addEventListener('resize', () => this.chart.resize());
             }
 
             showChart() {
-                if (!this.currentYear) {
-                    alert('请先查询年份数据');
-                    return;
-                }
+                if (!this.currentYear) return;
                 this.updateChart();
                 document.getElementById('chartModal').classList.add('active');
                 setTimeout(() => this.chart.resize(), 100);
@@ -546,63 +456,19 @@
             }
 
             updateChart() {
-                // 生成全年月份数据
                 const months = Array.from({ length: 12 }, (_, i) => `${i + 1}月`);
-
-                // 生成模拟数据
-                const rainData = months.map(() => Math.floor(Math.random() * 100 + 50));
-                const cropData = months.map(() => Math.floor(Math.random() * 80 + 20));
-
                 const option = {
-                    title: {
-                        text: `${this.currentYear}年度农业分析`,
-                        left: 'center'
-                    },
-                    tooltip: {
-                        trigger: 'axis',
-                        formatter: params => {
-                            const month = params[0].name;
-                            const rain = params[0].value;
-                            const crop = params[1].value;
-                            return `
-                                ${month}<br>
-                                降雨量：${rain}mm<br>
-                                作物生长指数：${crop}%
-                            `;
-                        }
-                    },
-                    legend: {
-                        data: ['降雨量', '作物生长'],
-                        bottom: 10
-                    },
-                    xAxis: {
-                        type: 'category',
-                        data: months
-                    },
-                    yAxis: {
-                        type: 'value'
-                    },
-                    series: [
-                        {
-                            name: '降雨量',
-                            type: 'line',
-                            data: rainData,
-                            smooth: true,
-                            lineStyle: { color: '#91cc75', width: 2 },
-                            itemStyle: { color: '#91cc75' }
-                        },
-                        {
-                            name: '作物生长',
-                            type: 'line',
-                            data: cropData,
-                            smooth: true,
-                            lineStyle: { color: '#ee6666', width: 2 },
-                            itemStyle: { color: '#ee6666' }
-                        }
-                    ]
+                    title: { text: `${this.currentYear}年度分析`, left: 'center' },
+                    tooltip: { trigger: 'axis' },
+                    xAxis: { type: 'category', data: months },
+                    yAxis: { type: 'value' },
+                    series: [{
+                        type: 'line',
+                        data: months.map(() => Math.random() * 100 + 50),
+                        smooth: true
+                    }]
                 };
-
-                this.chart.setOption(option, true);
+                this.chart.setOption(option);
             }
 
             bindEvents() {
@@ -610,8 +476,7 @@
                     if (e.key === 'Enter') this.calculate();
                 });
 
-                // 点击模态框外部关闭
-                document.getElementById('chartModal').addEventListener('click', (e) => {
+                document.getElementById('chartModal').addEventListener('click', e => {
                     if (e.target === document.getElementById('chartModal')) {
                         this.hideChart();
                     }
