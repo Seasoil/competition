@@ -16,7 +16,7 @@ var bestSelling = {
       ISBN: "1",      
       pressDate: "六世纪中叶 ",   
       pricing: "0.00",    
-      imageUrl: "../img/齐民要术.png",     
+      imageUrl: "img/齐民要术.png",     
       index: 0   
     },
     {
@@ -26,7 +26,7 @@ var bestSelling = {
       ISBN: "2",       
       pressDate: "公元前239年 ",   
       pricing: "0.00",    
-      imageUrl: "../img/吕氏春秋.png",
+      imageUrl: "img/吕氏春秋.png",
       index: 1    
     },
     {
@@ -36,7 +36,7 @@ var bestSelling = {
       ISBN: "3",  
       pressDate: "崇祯年间 ",  
       pricing: "0.00", 
-      imageUrl: "../img/农政全书.png", 
+      imageUrl: "img/农政全书.png", 
       index: 2
     },
     

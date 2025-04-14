@@ -17,7 +17,7 @@ $(function () {
       Binding: "卷轴本",
       folio: "十卷九十二篇",
       ISBN: "1",
-      imgUrl: "../img/齐民要术.png",
+      imgUrl: "img/齐民要术.png",
       authorIntro: "北魏高阳太守，三任郡守期间考察黄河中下游农耕技术，历时十载著成此书。",
       bookLabel: ['农政', '耕作技术', '北魏农学'],
       themaWords: ['耕田法', '作物轮作', '酿造工艺'],
@@ -31,7 +31,7 @@ $(function () {
         press: "西汉司农寺",
         year: "公元前一世纪",
         ISBN: "6",
-        imgUrl: "../img/氾胜之书.png"
+        imgUrl: "img/氾胜之书.png"
       },
       {
         bookName: "四民月令",
@@ -39,7 +39,7 @@ $(function () {
         press: "东汉太学府",
         year: "二世纪中叶",
         ISBN: "5",
-        imgUrl: "../img/四民月令.png"
+        imgUrl: "img/四民月令.png"
       },
       {
         bookName: "农政全书",
@@ -47,7 +47,7 @@ $(function () {
         press: "明代司农监",
         year: "崇祯年间",
         ISBN: "3",
-        imgUrl: "../img/农政全书.png"
+        imgUrl: "img/农政全书.png"
       },
       {
         bookName: "王祯农书",
@@ -55,7 +55,7 @@ $(function () {
         press: "元代司农司",
         year: "皇庆二年",
         ISBN: "7",
-        imgUrl: "../img/王祯农书.png"
+        imgUrl: "img/王祯农书.png"
       },
       {
         bookName: "农桑辑要",
@@ -63,7 +63,7 @@ $(function () {
         press: "元代官刻本",
         year: "至元十年",
         ISBN: "13",
-        imgUrl: "../img/农桑辑要.png"
+        imgUrl: "img/农桑辑要.png"
       }
     ],
     PurchaseRe: [{ libraryName: "敦煌藏经洞", address: "甘肃敦煌莫高窟第17窟" }],
@@ -88,7 +88,7 @@ $(function () {
       Binding: "竹简本",
       folio: "四篇",
       ISBN: "2",
-      imgUrl: "../img/吕氏春秋.png",
+      imgUrl: "img/吕氏春秋.png",
       authorIntro: "秦国丞相，组织门客编纂综合著作，含重农抑商政策论述",
       bookLabel: ['农本思想', '月令体系', '战国农政'],
       themaWords: ['上农理论', '耕战政策', '土宜辨正'],
@@ -102,7 +102,7 @@ $(function () {
         press: "西汉太常寺",
         year: "公元前一世纪",
         ISBN: "17",
-        imgUrl: "../img/礼记月令.png"
+        imgUrl: "img/礼记月令.png"
       },
       {
         bookName: "夏小正",
@@ -110,7 +110,7 @@ $(function () {
         press: "西周王室",
         year: "约公元前十世纪",
         ISBN: "10",
-        imgUrl: "../img/夏小正.png"
+        imgUrl: "img/夏小正.png"
       },
       {
         bookName: "淮南子·时则训",
@@ -118,7 +118,7 @@ $(function () {
         press: "西汉淮南王府",
         year: "公元前二世纪",
         ISBN: "16",
-        imgUrl: "../img/淮南子时则训.png"
+        imgUrl: "img/淮南子时则训.png"
       },
       {
         bookName: "陈旉农书",
@@ -126,7 +126,7 @@ $(function () {
         press: "南宋临安书铺",
         year: "绍兴十九年",
         ISBN: "12",
-        imgUrl: "../img/陈旉农书.png"
+        imgUrl: "img/陈旉农书.png"
       },
       {
         bookName: "知本提纲·农则",
@@ -134,7 +134,7 @@ $(function () {
         press: "清代关中书院",
         year: "乾隆十二年",
         ISBN: "24",
-        imgUrl: "../img/知本提纲农则.png"
+        imgUrl: "img/知本提纲农则.png"
       }
     ],
     PurchaseRe: [],
@@ -158,7 +158,7 @@ $(function () {
       Binding: "线装本",
       folio: "六十卷",
       ISBN: "3",
-      imgUrl: "../img/农政全书.png",
+      imgUrl: "img/农政全书.png",
       authorIntro: "明代科学家，官至礼部尚书，融合中西农业科技，倡导水利与荒政改革。",
       bookLabel: ["农政", "水利工程", "明代农学"],
       themaWords: ["农本论", "田制规划", "农器图谱"],
@@ -172,7 +172,7 @@ $(function () {
         press: "元代司农司",
         year: "皇庆二年",
         ISBN: "7",
-        imgUrl: "../img/王祯农书.png"
+        imgUrl: "img/王祯农书.png"
       },
       {
         bookName: "授时通考",
@@ -180,7 +180,7 @@ $(function () {
         press: "清代武英殿",
         year: "乾隆七年",
         ISBN: "4",
-        imgUrl: "../img/授时通考.png"
+        imgUrl: "img/授时通考.png"
       },
       {
         bookName: "天工开物",
@@ -188,7 +188,7 @@ $(function () {
         press: "明代书林堂",
         year: "崇祯十年",
         ISBN: "14",
-        imgUrl: "../img/天工开物.png"
+        imgUrl: "img/天工开物.png"
       },
       {
         bookName: "群芳谱及广群芳谱",
@@ -196,7 +196,7 @@ $(function () {
         press: "明代文林阁/清代武英殿",
         year: "1621年/1708年",
         ISBN: "8",
-        imgUrl: "../img/群芳谱.png"
+        imgUrl: "img/群芳谱.png"
       },
       {
         bookName: "农桑辑要",
@@ -204,7 +204,7 @@ $(function () {
         press: "元代官刻本",
         year: "至元十年",
         ISBN: "13",
-        imgUrl: "../img/农桑辑要.png"
+        imgUrl: "img/农桑辑要.png"
       }
     ],
     PurchaseRe: [{ libraryName: "天一阁", address: "浙江宁波" }],
@@ -228,7 +228,7 @@ $(function () {
       Binding: "殿版精装本",
       folio: "七十八卷",
       ISBN: "4",
-      imgUrl: "../img/授时通考.png",
+      imgUrl: "img/授时通考.png",
       authorIntro: "清代名臣，主持编纂官修农书，整合历代农学与天文历法成果。",
       bookLabel: ["官修农书", "历法农时", "清代农政"],
       themaWords: ["节气耕作", "授时历", "农事占验"],
@@ -242,7 +242,7 @@ $(function () {
         press: "明代司农监",
         year: "崇祯年间",
         ISBN: "3",
-        imgUrl: "../img/农政全书.png"
+        imgUrl: "img/农政全书.png"
       },
       {
         bookName: "月令七十二候集解",
@@ -250,7 +250,7 @@ $(function () {
         press: "元代钦天监",
         year: "至治元年",
         ISBN: "9",
-        imgUrl: "../img/月令七十二候集解.png"
+        imgUrl: "img/月令七十二候集解.png"
       },
       {
         bookName: "农桑衣食撮要",
@@ -258,7 +258,7 @@ $(function () {
         press: "元代畏兀儿文坊",
         year: "延祐元年",
         ISBN: "20",
-        imgUrl: "../img/农桑衣食撮要.png"
+        imgUrl: "img/农桑衣食撮要.png"
       },
       {
         bookName: "田家五行",
@@ -266,7 +266,7 @@ $(function () {
         press: "元代江浙书坊",
         year: "至正年间",
         ISBN: "21",
-        imgUrl: "../img/田家五行.png"
+        imgUrl: "img/田家五行.png"
       },
       {
         bookName: "农候杂占",
@@ -274,7 +274,7 @@ $(function () {
         press: "明代福建书坊",
         year: "万历四十年",
         ISBN: "22",
-        imgUrl: "../img/农候杂占.png"
+        imgUrl: "img/农候杂占.png"
       }
     ],
     PurchaseRe: [{ libraryName: "文渊阁", address: "北京故宫" }],
@@ -297,7 +297,7 @@ $(function () {
       Binding: "帛书本",
       folio: "12卷",
       ISBN: "5",
-      imgUrl: "../img/四民月令.png",
+      imgUrl: "img/四民月令.png",
       authorIntro: "东汉农学家，曾任五原太守，推广纺织与农耕技术。",
       bookLabel: ["月令体", "家庭经济", "东汉农事"],
       themaWords: ["四时安排", "田庄管理", "纺织技术"],
@@ -311,7 +311,7 @@ $(function () {
         press: "北魏",
         year: "六世纪中叶",
         ISBN: "1",
-        imgUrl: "../img/齐民要术.png"
+        imgUrl: "img/齐民要术.png"
       },
       {
         bookName: "农桑衣食撮要",
@@ -319,7 +319,7 @@ $(function () {
         press: "元代畏兀儿文坊",
         year: "延祐元年",
         ISBN: "20",
-        imgUrl: "../img/农桑衣食撮要.png"
+        imgUrl: "img/农桑衣食撮要.png"
       },
       {
         bookName: "岁时广记",
@@ -327,7 +327,7 @@ $(function () {
         press: "南宋建阳书坊",
         year: "宝祐四年",
         ISBN: "15",
-        imgUrl: "../img/岁时广记.png"
+        imgUrl: "img/岁时广记.png"
       },
       {
         bookName: "月令广义",
@@ -335,7 +335,7 @@ $(function () {
         press: "明代民间书坊",
         year: "万历三十年",
         ISBN: "11",
-        imgUrl: "../img/月令广义.png"
+        imgUrl: "img/月令广义.png"
       },
       {
         bookName: "三农纪",
@@ -343,7 +343,7 @@ $(function () {
         press: "清代四川刻本",
         year: "乾隆二十五年",
         ISBN: "19",
-        imgUrl: "../img/三农纪.png"
+        imgUrl: "img/三农纪.png"
       }
     ],
     PurchaseRe: [{ libraryName: "居延汉简库", address: "内蒙古额济纳旗" }],
@@ -368,7 +368,7 @@ $(function () {
       Binding: "木牍本",
       folio: "18篇",
       ISBN: "6",
-      imgUrl: "../img/氾胜之书.png",
+      imgUrl: "img/氾胜之书.png",
       authorIntro: "西汉农学家，创区田法，总结黄河流域旱作农业技术。",
       bookLabel: ["区田法", "旱作农业", "西汉农学"],
       themaWords: ["趋时耕作", "和土法", "务粪泽"],
@@ -382,7 +382,7 @@ $(function () {
         press: "北魏",
         year: "六世纪中叶",
         ISBN: "1",
-        imgUrl: "../img/齐民要术.png"
+        imgUrl: "img/齐民要术.png"
       },
       {
         bookName: "吕氏春秋·上农四篇",
@@ -390,7 +390,7 @@ $(function () {
         press: "秦国相府刊行",
         year: "公元前239年",
         ISBN: "2",
-        imgUrl: "../img/吕氏春秋.png"
+        imgUrl: "img/吕氏春秋.png"
       },
       {
         bookName: "王祯农书",
@@ -398,7 +398,7 @@ $(function () {
         press: "元代司农司",
         year: "皇庆二年",
         ISBN: "7",
-        imgUrl: "../img/王祯农书.png"
+        imgUrl: "img/王祯农书.png"
       },
       {
         bookName: "农丹",
@@ -406,7 +406,7 @@ $(function () {
         press: "清代民间刻本",
         year: "康熙三年",
         ISBN: "23",
-        imgUrl: "../img/农丹.png"
+        imgUrl: "img/农丹.png"
       },
       {
         bookName: "马首农言",
@@ -414,7 +414,7 @@ $(function () {
         press: "清代山西刻本",
         year: "道光十六年",
         ISBN: "26",
-        imgUrl: "../img/马首农言.png"
+        imgUrl: "img/马首农言.png"
       }
     ],
     PurchaseRe: [{ libraryName: "武威汉墓", address: "甘肃武威" }],
@@ -439,7 +439,7 @@ $(function () {
       Binding: "木刻版",
       folio: "22卷",
       ISBN: "7",
-      imgUrl: "../img/王祯农书.png",
+      imgUrl: "img/王祯农书.png",
       authorIntro: "元代农学家，首创农器图谱，系统记录南北农具与灌溉机械。",
       bookLabel: ["农器图谱", "南北农技", "元代农学"],
       themaWords: ["水转翻车", "木棉纺车", "梯田法"],
@@ -453,7 +453,7 @@ $(function () {
         press: "明代司农监",
         year: "崇祯年间",
         ISBN: "3",
-        imgUrl: "../img/农政全书.png"
+        imgUrl: "img/农政全书.png"
       },
       {
         bookName: "天工开物",
@@ -461,7 +461,7 @@ $(function () {
         press: "明代书林堂",
         year: "崇祯十年",
         ISBN: "14",
-        imgUrl: "../img/天工开物.png"
+        imgUrl: "img/天工开物.png"
       },
       {
         bookName: "授时通考",
@@ -469,7 +469,7 @@ $(function () {
         press: "清代武英殿",
         year: "乾隆七年",
         ISBN: "4",
-        imgUrl: "../img/授时通考.png"
+        imgUrl: "img/授时通考.png"
       },
       {
         bookName: "农桑辑要",
@@ -477,7 +477,7 @@ $(function () {
         press: "元代官刻本",
         year: "至元十年",
         ISBN: "13",
-        imgUrl: "../img/农桑辑要.png"
+        imgUrl: "img/农桑辑要.png"
       },
       {
         bookName: "三农纪",
@@ -485,7 +485,7 @@ $(function () {
         press: "清代四川刻本",
         year: "乾隆二十五年",
         ISBN: "19",
-        imgUrl: "../img/三农纪.png"
+        imgUrl: "img/三农纪.png"
       }
     ],
     PurchaseRe: [{ libraryName: "永乐大典残卷库", address: "中国国家图书馆" }],
@@ -510,7 +510,7 @@ $(function () {
       Binding: "明版线装/清殿版",
       folio: "30卷/100卷",
       ISBN: "8",
-      imgUrl: "../img/群芳谱.png",
+      imgUrl: "img/群芳谱.png",
       authorIntro: "王象晋：明代文学家；汪灏：清代学者，奉敕增补群芳谱。",
       bookLabel: ["植物学", "园艺", "明清博物"],
       themaWords: ["花卉栽培", "药用植物", "果树嫁接"],
@@ -524,7 +524,7 @@ $(function () {
         press: "明代书林堂",
         year: "崇祯十年",
         ISBN: "14",
-        imgUrl: "../img/天工开物.png"
+        imgUrl: "img/天工开物.png"
       },
       {
         bookName: "农政全书",
@@ -532,7 +532,7 @@ $(function () {
         press: "明代司农监",
         year: "崇祯年间",
         ISBN: "3",
-        imgUrl: "../img/农政全书.png"
+        imgUrl: "img/农政全书.png"
       },
       {
         bookName: "授时通考",
@@ -540,7 +540,7 @@ $(function () {
         press: "清代武英殿",
         year: "乾隆七年",
         ISBN: "4",
-        imgUrl: "../img/授时通考.png"
+        imgUrl: "img/授时通考.png"
       },
       {
         bookName: "月令广义",
@@ -548,7 +548,7 @@ $(function () {
         press: "明代民间书坊",
         year: "万历三十年",
         ISBN: "11",
-        imgUrl: "../img/月令广义.png"
+        imgUrl: "img/月令广义.png"
       },
       {
         bookName: "农圃便览",
@@ -556,7 +556,7 @@ $(function () {
         press: "清代山东刻本",
         year: "乾隆二十年",
         ISBN: "25",
-        imgUrl: "../img/农圃便览.png"
+        imgUrl: "img/农圃便览.png"
       }
     ],
     PurchaseRe: [{ libraryName: "四库全书阁", address: "北京、杭州等地" }],
@@ -581,7 +581,7 @@ $(function () {
       Binding: "绢本彩绘",
       folio: "24卷",
       ISBN: "9",
-      imgUrl: "../img/月令七十二候集解.png",
+      imgUrl: "img/月令七十二候集解.png",
       authorIntro: "元代理学家，精研历法，重构月令体系以指导农事。",
       bookLabel: ["节气历法", "物候学", "元代农时"],
       themaWords: ["七十二候", "阴阳五行", "农事占候"],
@@ -595,7 +595,7 @@ $(function () {
         press: "西汉太常寺",
         year: "公元前一世纪",
         ISBN: "17",
-        imgUrl: "../img/礼记月令.png"
+        imgUrl: "img/礼记月令.png"
       },
       {
         bookName: "夏小正",
@@ -603,7 +603,7 @@ $(function () {
         press: "西周王室",
         year: "约公元前十世纪",
         ISBN: "10",
-        imgUrl: "../img/夏小正.png"
+        imgUrl: "img/夏小正.png"
       },
       {
         bookName: "淮南子·时则训",
@@ -611,7 +611,7 @@ $(function () {
         press: "西汉淮南王府",
         year: "公元前二世纪",
         ISBN: "16",
-        imgUrl: "../img/淮南子时则训.png"
+        imgUrl: "img/淮南子时则训.png"
       },
       {
         bookName: "授时通考",
@@ -619,7 +619,7 @@ $(function () {
         press: "清代武英殿",
         year: "乾隆七年",
         ISBN: "4",
-        imgUrl: "../img/授时通考.png"
+        imgUrl: "img/授时通考.png"
       },
       {
         bookName: "农候杂占",
@@ -627,7 +627,7 @@ $(function () {
         press: "明代福建书坊",
         year: "万历四十年",
         ISBN: "22",
-        imgUrl: "../img/农候杂占.png"
+        imgUrl: "img/农候杂占.png"
       }
     ],
     PurchaseRe: [{ libraryName: "元代天文台遗址", address: "河南登封" }],
@@ -652,7 +652,7 @@ $(function () {
       Binding: "甲骨文/青铜器铭文",
       folio: "1卷",
       ISBN: "10",
-      imgUrl: "../img/夏小正.png",
+      imgUrl: "img/夏小正.png",
       authorIntro: "传为夏代历法遗存，经孔子整理收录于大戴礼记。",
       bookLabel: ["物候历", "先秦历法", "夏文化"],
       themaWords: ["星象观测", "物候变化", "祭祀农事"],
@@ -666,7 +666,7 @@ $(function () {
         press: "西汉淮南王府",
         year: "公元前二世纪",
         ISBN: "16",
-        imgUrl: "../img/淮南子时则训.png"
+        imgUrl: "img/淮南子时则训.png"
       },
       {
         bookName: "礼记·月令",
@@ -674,7 +674,7 @@ $(function () {
         press: "西汉太常寺",
         year: "公元前一世纪",
         ISBN: "17",
-        imgUrl: "../img/礼记月令.png"
+        imgUrl: "img/礼记月令.png"
       },
       {
         bookName: "吕氏春秋·上农四篇",
@@ -682,7 +682,7 @@ $(function () {
         press: "秦国相府刊行",
         year: "公元前239年",
         ISBN: "2",
-        imgUrl: "../img/吕氏春秋.png"
+        imgUrl: "img/吕氏春秋.png"
       },
       {
         bookName: "月令广义",
@@ -690,7 +690,7 @@ $(function () {
         press: "明代民间书坊",
         year: "万历三十年",
         ISBN: "11",
-        imgUrl: "../img/月令广义.png"
+        imgUrl: "img/月令广义.png"
       },
       {
         bookName: "农候杂占",
@@ -698,7 +698,7 @@ $(function () {
         press: "明代福建书坊",
         year: "万历四十年",
         ISBN: "22",
-        imgUrl: "../img/农候杂占.png"
+        imgUrl: "img/农候杂占.png"
       }
     ],
     PurchaseRe: [{ libraryName: "安阳殷墟", address: "河南安阳" }],
@@ -723,7 +723,7 @@ $(function () {
       Binding: "木刻线装",
       folio: "二十五卷",
       ISBN: "11",
-      imgUrl: "../img/月令广义.png",
+      imgUrl: "img/月令广义.png",
       authorIntro: "明代学者，融合月令传统与地方民俗，重构农事指导体系。",
       bookLabel: ["节气民俗", "地方农事", "明代月令"],
       themaWords: ["迎春仪式", "占岁习俗", "田家杂占"],
@@ -737,7 +737,7 @@ $(function () {
         press: "南宋建阳书坊",
         year: "宝祐四年",
         ISBN: "15",
-        imgUrl: "../img/岁时广记.png"
+        imgUrl: "img/岁时广记.png"
       },
       {
         bookName: "四民月令",
@@ -745,7 +745,7 @@ $(function () {
         press: "东汉太学府",
         year: "二世纪中叶",
         ISBN: "5",
-        imgUrl: "../img/四民月令.png"
+        imgUrl: "img/四民月令.png"
       },
       {
         bookName: "夏小正",
@@ -753,7 +753,7 @@ $(function () {
         press: "西周王室",
         year: "约公元前十世纪",
         ISBN: "10",
-        imgUrl: "../img/夏小正.png"
+        imgUrl: "img/夏小正.png"
       },
       {
         bookName: "农桑衣食撮要",
@@ -761,7 +761,7 @@ $(function () {
         press: "元代畏兀儿文坊",
         year: "延祐元年",
         ISBN: "20",
-        imgUrl: "../img/农桑衣食撮要.png"
+        imgUrl: "img/农桑衣食撮要.png"
       },
       {
         bookName: "知本提纲·农则",
@@ -769,7 +769,7 @@ $(function () {
         press: "清代关中书院",
         year: "乾隆十二年",
         ISBN: "24",
-        imgUrl: "../img/知本提纲农则.png"
+        imgUrl: "img/知本提纲农则.png"
       }
     ],
     PurchaseRe: [{ libraryName: "宁波天一阁", address: "浙江宁波" }],
@@ -794,7 +794,7 @@ $(function () {
       Binding: "蝴蝶装",
       folio: "三卷",
       ISBN: "12",
-      imgUrl: "../img/陈旉农书.png",
+      imgUrl: "img/陈旉农书.png",
       authorIntro: "南宋隐士，隐居扬州务农，总结南方水田耕作技术。",
       bookLabel: ["江南农事", "土壤改良", "宋代农学"],
       themaWords: ["地力常新", "耕耨之法", "六种之宜"],
@@ -808,7 +808,7 @@ $(function () {
         press: "明末江南书坊",
         year: "崇祯末年",
         ISBN: "18",
-        imgUrl: "../img/沈氏农书.png"
+        imgUrl: "img/沈氏农书.png"
       },
       {
         bookName: "农政全书",
@@ -816,7 +816,7 @@ $(function () {
         press: "明代司农监",
         year: "崇祯年间",
         ISBN: "3",
-        imgUrl: "../img/农政全书.png"
+        imgUrl: "img/农政全书.png"
       },
       {
         bookName: "农桑辑要",
@@ -824,7 +824,7 @@ $(function () {
         press: "元代官刻本",
         year: "至元十年",
         ISBN: "13",
-        imgUrl: "../img/农桑辑要.png"
+        imgUrl: "img/农桑辑要.png"
       },
       {
         bookName: "三农纪",
@@ -832,7 +832,7 @@ $(function () {
         press: "清代四川刻本",
         year: "乾隆二十五年",
         ISBN: "19",
-        imgUrl: "../img/三农纪.png"
+        imgUrl: "img/三农纪.png"
       },
       {
         bookName: "农圃便览",
@@ -840,7 +840,7 @@ $(function () {
         press: "清代山东刻本",
         year: "乾隆二十年",
         ISBN: "25",
-        imgUrl: "../img/农圃便览.png"
+        imgUrl: "img/农圃便览.png"
       }
     ],
     PurchaseRe: [{ libraryName: "临安府库残卷", address: "浙江杭州" }],
@@ -865,7 +865,7 @@ $(function () {
       Binding: "官版线装",
       folio: "七卷",
       ISBN: "13",
-      imgUrl: "../img/农桑辑要.png",
+      imgUrl: "img/农桑辑要.png",
       authorIntro: "元代官方农书，由司农司编纂，强调农桑为立国之本。",
       bookLabel: ["官修农书", "蚕桑技术", "元代农政"],
       themaWords: ["栽桑法", "养蚕术", "棉麻种植"],
@@ -879,7 +879,7 @@ $(function () {
         press: "清代武英殿",
         year: "乾隆七年",
         ISBN: "4",
-        imgUrl: "../img/授时通考.png"
+        imgUrl: "img/授时通考.png"
       },
       {
         bookName: "齐民要术",
@@ -887,7 +887,7 @@ $(function () {
         press: "北魏",
         year: "六世纪中叶",
         ISBN: "1",
-        imgUrl: "../img/齐民要术.png"
+        imgUrl: "img/齐民要术.png"
       },
       {
         bookName: "王祯农书",
@@ -895,7 +895,7 @@ $(function () {
         press: "元代司农司",
         year: "皇庆二年",
         ISBN: "7",
-        imgUrl: "../img/王祯农书.png"
+        imgUrl: "img/王祯农书.png"
       },
       {
         bookName: "农政全书",
@@ -903,7 +903,7 @@ $(function () {
         press: "明代司农监",
         year: "崇祯年间",
         ISBN: "3",
-        imgUrl: "../img/农政全书.png"
+        imgUrl: "img/农政全书.png"
       },
       {
         bookName: "农桑衣食撮要",
@@ -911,7 +911,7 @@ $(function () {
         press: "元代畏兀儿文坊",
         year: "延祐元年",
         ISBN: "20",
-        imgUrl: "../img/农桑衣食撮要.png"
+        imgUrl: "img/农桑衣食撮要.png"
       }
     ],
     PurchaseRe: [{ libraryName: "元代大都档案库", address: "北京" }],
@@ -936,7 +936,7 @@ $(function () {
       Binding: "竹纸刻本",
       folio: "十八卷",
       ISBN: "14",
-      imgUrl: "../img/天工开物.png",
+      imgUrl: "img/天工开物.png",
       authorIntro: "明代科学家，记录手工业与农业技术，被誉为技术的百科全书。",
       bookLabel: ["手工业", "农业技术", "明代科技"],
       themaWords: ["乃粒篇", "粹精篇", "陶埏篇"],
@@ -950,7 +950,7 @@ $(function () {
         press: "明代司农监",
         year: "崇祯年间",
         ISBN: "3",
-        imgUrl: "../img/农政全书.png"
+        imgUrl: "img/农政全书.png"
       },
       {
         bookName: "王祯农书",
@@ -958,7 +958,7 @@ $(function () {
         press: "元代司农司",
         year: "皇庆二年",
         ISBN: "7",
-        imgUrl: "../img/王祯农书.png"
+        imgUrl: "img/王祯农书.png"
       },
       {
         bookName: "群芳谱及广群芳谱",
@@ -966,7 +966,7 @@ $(function () {
         press: "明代文林阁/清代武英殿",
         year: "1621年/1708年",
         ISBN: "8",
-        imgUrl: "../img/群芳谱.png"
+        imgUrl: "img/群芳谱.png"
       },
       {
         bookName: "授时通考",
@@ -974,7 +974,7 @@ $(function () {
         press: "清代武英殿",
         year: "乾隆七年",
         ISBN: "4",
-        imgUrl: "../img/授时通考.png"
+        imgUrl: "img/授时通考.png"
       },
       {
         bookName: "农桑辑要",
@@ -982,7 +982,7 @@ $(function () {
         press: "元代官刻本",
         year: "至元十年",
         ISBN: "13",
-        imgUrl: "../img/农桑辑要.png"
+        imgUrl: "img/农桑辑要.png"
       }
     ],
     PurchaseRe: [{ libraryName: "涂本初刻本", address: "江西奉新" }],
@@ -1007,7 +1007,7 @@ $(function () {
       Binding: "册页本",
       folio: "四十二卷",
       ISBN: "15",
-      imgUrl: "../img/岁时广记.png",
+      imgUrl: "img/岁时广记.png",
       authorIntro: "宋代民俗学家，广泛采集民间岁时节令资料。",
       bookLabel: ["节气民俗", "宋代节庆", "农事占候"],
       themaWords: ["立春鞭牛", "社日祭神", "冬至数九"],
@@ -1021,7 +1021,7 @@ $(function () {
         press: "明代民间书坊",
         year: "万历三十年",
         ISBN: "11",
-        imgUrl: "../img/月令广义.png"
+        imgUrl: "img/月令广义.png"
       },
       {
         bookName: "四民月令",
@@ -1029,7 +1029,7 @@ $(function () {
         press: "东汉太学府",
         year: "二世纪中叶",
         ISBN: "5",
-        imgUrl: "../img/四民月令.png"
+        imgUrl: "img/四民月令.png"
       },
       {
         bookName: "淮南子·时则训",
@@ -1037,7 +1037,7 @@ $(function () {
         press: "西汉淮南王府",
         year: "公元前二世纪",
         ISBN: "16",
-        imgUrl: "../img/淮南子时则训.png"
+        imgUrl: "img/淮南子时则训.png"
       },
       {
         bookName: "农候杂占",
@@ -1045,7 +1045,7 @@ $(function () {
         press: "明代福建书坊",
         year: "万历四十年",
         ISBN: "22",
-        imgUrl: "../img/农候杂占.png"
+        imgUrl: "img/农候杂占.png"
       },
       {
         bookName: "田家五行",
@@ -1053,7 +1053,7 @@ $(function () {
         press: "元代江浙书坊",
         year: "至正年间",
         ISBN: "21",
-        imgUrl: "../img/田家五行.png"
+        imgUrl: "img/田家五行.png"
       }
     ],
     PurchaseRe: [{ libraryName: "宋代闽刻本", address: "福建建阳" }],
@@ -1078,7 +1078,7 @@ $(function () {
       Binding: "帛书卷轴",
       folio: "一篇",
       ISBN: "16",
-      imgUrl: "../img/淮南子时则训.png",
+      imgUrl: "img/淮南子时则训.png",
       authorIntro: "淮南王刘安主持编纂，融合道家思想与月令体系。",
       bookLabel: ["月令体系", "西汉哲学", "农时政令"],
       themaWords: ["五行配时", "天文历法", "刑德理论"],
@@ -1092,7 +1092,7 @@ $(function () {
         press: "秦国相府刊行",
         year: "公元前239年",
         ISBN: "2",
-        imgUrl: "../img/吕氏春秋.png"
+        imgUrl: "img/吕氏春秋.png"
       },
       {
         bookName: "礼记·月令",
@@ -1100,7 +1100,7 @@ $(function () {
         press: "西汉太常寺",
         year: "公元前一世纪",
         ISBN: "17",
-        imgUrl: "../img/礼记月令.png"
+        imgUrl: "img/礼记月令.png"
       },
       {
         bookName: "夏小正",
@@ -1108,7 +1108,7 @@ $(function () {
         press: "西周王室",
         year: "约公元前十世纪",
         ISBN: "10",
-        imgUrl: "../img/夏小正.png"
+        imgUrl: "img/夏小正.png"
       },
       {
         bookName: "月令七十二候集解",
@@ -1116,7 +1116,7 @@ $(function () {
         press: "元代钦天监",
         year: "至治元年",
         ISBN: "9",
-        imgUrl: "../img/月令七十二候集解.png"
+        imgUrl: "img/月令七十二候集解.png"
       },
       {
         bookName: "知本提纲·农则",
@@ -1124,7 +1124,7 @@ $(function () {
         press: "清代关中书院",
         year: "乾隆十二年",
         ISBN: "24",
-        imgUrl: "../img/知本提纲农则.png"
+        imgUrl: "img/知本提纲农则.png"
       }
     ],
     PurchaseRe: [{ libraryName: "马王堆汉墓帛书库", address: "湖南长沙" }],
@@ -1149,7 +1149,7 @@ $(function () {
       Binding: "简牍本",
       folio: "一篇",
       ISBN: "17",
-      imgUrl: "../img/礼记月令.png",
+      imgUrl: "img/礼记月令.png",
       authorIntro: "戴圣编订礼记，整合先秦礼仪文献，确立月令经典地位。",
       bookLabel: ["经典月令", "礼制农时", "西汉经学"],
       themaWords: ["天子迎春", "土牛劝耕", "禁忌月令"],
@@ -1163,7 +1163,7 @@ $(function () {
         press: "西周王室",
         year: "约公元前十世纪",
         ISBN: "10",
-        imgUrl: "../img/夏小正.png"
+        imgUrl: "img/夏小正.png"
       },
       {
         bookName: "吕氏春秋·上农四篇",
@@ -1171,7 +1171,7 @@ $(function () {
         press: "秦国相府刊行",
         year: "公元前239年",
         ISBN: "2",
-        imgUrl: "../img/吕氏春秋.png"
+        imgUrl: "img/吕氏春秋.png"
       },
       {
         bookName: "淮南子·时则训",
@@ -1179,7 +1179,7 @@ $(function () {
         press: "西汉淮南王府",
         year: "公元前二世纪",
         ISBN: "16",
-        imgUrl: "../img/淮南子时则训.png"
+        imgUrl: "img/淮南子时则训.png"
       },
       {
         bookName: "月令七十二候集解",
@@ -1187,7 +1187,7 @@ $(function () {
         press: "元代钦天监",
         year: "至治元年",
         ISBN: "9",
-        imgUrl: "../img/月令七十二候集解.png"
+        imgUrl: "img/月令七十二候集解.png"
       },
       {
         bookName: "授时通考",
@@ -1195,7 +1195,7 @@ $(function () {
         press: "清代武英殿",
         year: "乾隆七年",
         ISBN: "4",
-        imgUrl: "../img/授时通考.png"
+        imgUrl: "img/授时通考.png"
       }
     ],
     PurchaseRe: [{ libraryName: "武威汉简库", address: "甘肃武威" }],
@@ -1220,7 +1220,7 @@ $(function () {
       Binding: "稿本",
       folio: "一卷",
       ISBN: "18",
-      imgUrl: "../img/沈氏农书.png",
+      imgUrl: "img/沈氏农书.png",
       authorIntro: "明末湖州沈氏，总结江南地区水稻种植与桑蚕技术。",
       bookLabel: ["江南农技", "水稻种植", "明代蚕桑"],
       themaWords: ["看苗施肥", "桑园管理", "织造工艺"],
@@ -1234,7 +1234,7 @@ $(function () {
         press: "南宋临安书铺",
         year: "绍兴十九年",
         ISBN: "12",
-        imgUrl: "../img/陈旉农书.png"
+        imgUrl: "img/陈旉农书.png"
       },
       {
         bookName: "农政全书",
@@ -1242,7 +1242,7 @@ $(function () {
         press: "明代司农监",
         year: "崇祯年间",
         ISBN: "3",
-        imgUrl: "../img/农政全书.png"
+        imgUrl: "img/农政全书.png"
       },
       {
         bookName: "三农纪",
@@ -1250,7 +1250,7 @@ $(function () {
         press: "清代四川刻本",
         year: "乾隆二十五年",
         ISBN: "19",
-        imgUrl: "../img/三农纪.png"
+        imgUrl: "img/三农纪.png"
       },
       {
         bookName: "农圃便览",
@@ -1258,7 +1258,7 @@ $(function () {
         press: "清代山东刻本",
         year: "乾隆二十年",
         ISBN: "25",
-        imgUrl: "../img/农圃便览.png"
+        imgUrl: "img/农圃便览.png"
       },
       {
         bookName: "马首农言",
@@ -1266,7 +1266,7 @@ $(function () {
         press: "清代山西刻本",
         year: "道光十六年",
         ISBN: "26",
-        imgUrl: "../img/马首农言.png"
+        imgUrl: "img/马首农言.png"
       }
     ],
     PurchaseRe: [{ libraryName: "湖州民间藏书", address: "浙江湖州" }],
@@ -1291,7 +1291,7 @@ $(function () {
       Binding: "木刻本",
       folio: "二十四卷",
       ISBN: "19",
-      imgUrl: "../img/三农纪.png",
+      imgUrl: "img/三农纪.png",
       authorIntro: "清代四川农学家，结合巴蜀地理特点编写综合性农书。",
       bookLabel: ["山区农业", "巴蜀农技", "清代农学"],
       themaWords: ["梯田开垦", "山地灌溉", "杂粮轮作"],
@@ -1305,7 +1305,7 @@ $(function () {
         press: "清代山东刻本",
         year: "乾隆二十年",
         ISBN: "25",
-        imgUrl: "../img/农圃便览.png"
+        imgUrl: "img/农圃便览.png"
       },
       {
         bookName: "四民月令",
@@ -1313,7 +1313,7 @@ $(function () {
         press: "东汉太学府",
         year: "二世纪中叶",
         ISBN: "5",
-        imgUrl: "../img/四民月令.png"
+        imgUrl: "img/四民月令.png"
       },
       {
         bookName: "陈旉农书",
@@ -1321,7 +1321,7 @@ $(function () {
         press: "南宋临安书铺",
         year: "绍兴十九年",
         ISBN: "12",
-        imgUrl: "../img/陈旉农书.png"
+        imgUrl: "img/陈旉农书.png"
       },
       {
         bookName: "授时通考",
@@ -1329,7 +1329,7 @@ $(function () {
         press: "清代武英殿",
         year: "乾隆七年",
         ISBN: "4",
-        imgUrl: "../img/授时通考.png"
+        imgUrl: "img/授时通考.png"
       },
       {
         bookName: "马首农言",
@@ -1337,7 +1337,7 @@ $(function () {
         press: "清代山西刻本",
         year: "道光十六年",
         ISBN: "26",
-        imgUrl: "../img/马首农言.png"
+        imgUrl: "img/马首农言.png"
       }
     ],
     PurchaseRe: [{ libraryName: "四川民间藏书楼", address: "四川成都" }],
@@ -1362,7 +1362,7 @@ $(function () {
       Binding: "册页本",
       folio: "二卷",
       ISBN: "20",
-      imgUrl: "../img/农桑衣食撮要.png",
+      imgUrl: "img/农桑衣食撮要.png",
       authorIntro: "元代畏兀儿农学家，任寿春郡监时编撰月令体农书。",
       bookLabel: ["月令体", "民族农学", "元代技术"],
       themaWords: ["按月农事", "果蔬贮藏", "家庭副业"],
@@ -1376,7 +1376,7 @@ $(function () {
         press: "东汉太学府",
         year: "二世纪中叶",
         ISBN: "5",
-        imgUrl: "../img/四民月令.png"
+        imgUrl: "img/四民月令.png"
       },
       {
         bookName: "齐民要术",
@@ -1384,7 +1384,7 @@ $(function () {
         press: "北魏",
         year: "六世纪中叶",
         ISBN: "1",
-        imgUrl: "../img/齐民要术.png"
+        imgUrl: "img/齐民要术.png"
       },
       {
         bookName: "岁时广记",
@@ -1392,7 +1392,7 @@ $(function () {
         press: "南宋建阳书坊",
         year: "宝祐四年",
         ISBN: "15",
-        imgUrl: "../img/岁时广记.png"
+        imgUrl: "img/岁时广记.png"
       },
       {
         bookName: "月令广义",
@@ -1400,7 +1400,7 @@ $(function () {
         press: "明代民间书坊",
         year: "万历三十年",
         ISBN: "11",
-        imgUrl: "../img/月令广义.png"
+        imgUrl: "img/月令广义.png"
       },
       {
         bookName: "三农纪",
@@ -1408,7 +1408,7 @@ $(function () {
         press: "清代四川刻本",
         year: "乾隆二十五年",
         ISBN: "19",
-        imgUrl: "../img/三农纪.png"
+        imgUrl: "img/三农纪.png"
       }
     ],
     PurchaseRe: [{ libraryName: "西域文献库", address: "新疆吐鲁番" }],
@@ -1432,7 +1432,7 @@ $(function () {
       Binding: "木刻本",
       folio: "三卷",
       ISBN: "21",
-      imgUrl: "../img/田家五行.png",
+      imgUrl: "img/田家五行.png",
       authorIntro: "元代气象学家，长期观测太湖流域天气与农事关系。",
       bookLabel: ["气象农谚", "占候术", "元代江南"],
       themaWords: ["看云识雨", "观星测晴", "动物兆候"],
@@ -1446,7 +1446,7 @@ $(function () {
         press: "明代福建书坊",
         year: "万历四十年",
         ISBN: "22",
-        imgUrl: "../img/农候杂占.png"
+        imgUrl: "img/农候杂占.png"
       },
       {
         bookName: "授时通考",
@@ -1454,7 +1454,7 @@ $(function () {
         press: "清代武英殿",
         year: "乾隆七年",
         ISBN: "4",
-        imgUrl: "../img/授时通考.png"
+        imgUrl: "img/授时通考.png"
       },
       {
         bookName: "夏小正",
@@ -1462,7 +1462,7 @@ $(function () {
         press: "西周王室",
         year: "约公元前十世纪",
         ISBN: "10",
-        imgUrl: "../img/夏小正.png"
+        imgUrl: "img/夏小正.png"
       },
       {
         bookName: "月令七十二候集解",
@@ -1470,7 +1470,7 @@ $(function () {
         press: "元代钦天监",
         year: "至治元年",
         ISBN: "9",
-        imgUrl: "../img/月令七十二候集解.png"
+        imgUrl: "img/月令七十二候集解.png"
       },
       {
         bookName: "三农纪",
@@ -1478,7 +1478,7 @@ $(function () {
         press: "清代四川刻本",
         year: "乾隆二十五年",
         ISBN: "19",
-        imgUrl: "../img/三农纪.png"
+        imgUrl: "img/三农纪.png"
       }
     ],
     PurchaseRe: [{ libraryName: "太湖民间藏书", address: "江苏苏州" }],
@@ -1503,7 +1503,7 @@ $(function () {
       Binding: "线装本",
       folio: "四卷",
       ISBN: "22",
-      imgUrl: "../img/农候杂占.png",
+      imgUrl: "img/农候杂占.png",
       authorIntro: "明代农学家，专研农事占候，结合地方经验编撰此书。",
       bookLabel: ["占候术", "农事预测", "明代农谚"],
       themaWords: ["立春占验", "梅雨预测", "霜期推算"],
@@ -1517,7 +1517,7 @@ $(function () {
         press: "元代江浙书坊",
         year: "至正年间",
         ISBN: "21",
-        imgUrl: "../img/田家五行.png"
+        imgUrl: "img/田家五行.png"
       },
       {
         bookName: "授时通考",
@@ -1525,7 +1525,7 @@ $(function () {
         press: "清代武英殿",
         year: "乾隆七年",
         ISBN: "4",
-        imgUrl: "../img/授时通考.png"
+        imgUrl: "img/授时通考.png"
       },
       {
         bookName: "月令广义",
@@ -1533,7 +1533,7 @@ $(function () {
         press: "明代民间书坊",
         year: "万历三十年",
         ISBN: "11",
-        imgUrl: "../img/月令广义.png"
+        imgUrl: "img/月令广义.png"
       },
       {
         bookName: "淮南子·时则训",
@@ -1541,7 +1541,7 @@ $(function () {
         press: "西汉淮南王府",
         year: "公元前二世纪",
         ISBN: "16",
-        imgUrl: "../img/淮南子时则训.png"
+        imgUrl: "img/淮南子时则训.png"
       },
       {
         bookName: "农丹",
@@ -1549,7 +1549,7 @@ $(function () {
         press: "清代民间刻本",
         year: "康熙三年",
         ISBN: "23",
-        imgUrl: "../img/农丹.png"
+        imgUrl: "img/农丹.png"
       }
     ],
     PurchaseRe: [{ libraryName: "福建土楼藏书", address: "福建龙岩" }],
@@ -1574,7 +1574,7 @@ $(function () {
       Binding: "稿本",
       folio: "六卷",
       ISBN: "23",
-      imgUrl: "../img/农丹.png",
+      imgUrl: "img/农丹.png",
       authorIntro: "清代农学家，提出地气说，倡导春耕与地温的精准配合。",
       bookLabel: ["地气理论", "春耕技术", "清代农学"],
       themaWords: ["立春验土", "地气升降", "耕层深浅"],
@@ -1588,7 +1588,7 @@ $(function () {
         press: "清代山东刻本",
         year: "乾隆二十年",
         ISBN: "25",
-        imgUrl: "../img/农圃便览.png"
+        imgUrl: "img/农圃便览.png"
       },
       {
         bookName: "氾胜之书",
@@ -1596,7 +1596,7 @@ $(function () {
         press: "西汉司农寺",
         year: "公元前一世纪",
         ISBN: "6",
-        imgUrl: "../img/氾胜之书.png"
+        imgUrl: "img/氾胜之书.png"
       },
       {
         bookName: "齐民要术",
@@ -1604,7 +1604,7 @@ $(function () {
         press: "北魏",
         year: "六世纪中叶",
         ISBN: "1",
-        imgUrl: "../img/齐民要术.png"
+        imgUrl: "img/齐民要术.png"
       },
       {
         bookName: "知本提纲·农则",
@@ -1612,7 +1612,7 @@ $(function () {
         press: "清代关中书院",
         year: "乾隆十二年",
         ISBN: "24",
-        imgUrl: "../img/知本提纲农则.png"
+        imgUrl: "img/知本提纲农则.png"
       },
       {
         bookName: "农政全书",
@@ -1620,7 +1620,7 @@ $(function () {
         press: "明代司农监",
         year: "崇祯年间",
         ISBN: "3",
-        imgUrl: "../img/农政全书.png"
+        imgUrl: "img/农政全书.png"
       }
     ],
     PurchaseRe: [{ libraryName: "清代民间手稿", address: "河北保定" }],
@@ -1645,7 +1645,7 @@ $(function () {
       Binding: "书院刻本",
       folio: "五卷",
       ISBN: "24",
-      imgUrl: "../img/知本提纲农则.png",
+      imgUrl: "img/知本提纲农则.png",
       authorIntro: "清代关中学者，将理学思想融入农学研究，强调知本务农。",
       bookLabel: ["理学农学", "关中农技", "清代哲学"],
       themaWords: ["打春仪式", "耕读传家", "天地人三才"],
@@ -1659,7 +1659,7 @@ $(function () {
         press: "清代安吴四种本",
         year: "嘉庆五年",
         ISBN: "978-7-古代-0028",
-        imgUrl: "../img/郡县农政.png"
+        imgUrl: "img/郡县农政.png"
       },
       {
         bookName: "吕氏春秋·上农四篇",
@@ -1667,7 +1667,7 @@ $(function () {
         press: "秦国相府刊行",
         year: "公元前239年",
         ISBN: "2",
-        imgUrl: "../img/吕氏春秋.png"
+        imgUrl: "img/吕氏春秋.png"
       },
       {
         bookName: "淮南子·时则训",
@@ -1675,7 +1675,7 @@ $(function () {
         press: "西汉淮南王府",
         year: "公元前二世纪",
         ISBN: "16",
-        imgUrl: "../img/淮南子时则训.png"
+        imgUrl: "img/淮南子时则训.png"
       },
       {
         bookName: "农丹",
@@ -1683,7 +1683,7 @@ $(function () {
         press: "清代民间刻本",
         year: "康熙三年",
         ISBN: "23",
-        imgUrl: "../img/农丹.png"
+        imgUrl: "img/农丹.png"
       },
       {
         bookName: "马首农言",
@@ -1691,7 +1691,7 @@ $(function () {
         press: "清代山西刻本",
         year: "道光十六年",
         ISBN: "26",
-        imgUrl: "../img/马首农言.png"
+        imgUrl: "img/马首农言.png"
       }
     ],
     PurchaseRe: [{ libraryName: "关中书院文库", address: "陕西西安" }],
@@ -1716,7 +1716,7 @@ $(function () {
       Binding: "线装本",
       folio: "八卷",
       ISBN: "25",
-      imgUrl: "../img/农圃便览.png",
+      imgUrl: "img/农圃便览.png",
       authorIntro: "山东农学家，结合鲁中地理特点编写实用性农书。",
       bookLabel: ["山东农技", "土壤分类", "清代月令"],
       themaWords: ["沙地耕作", "黏土改良", "农具选用"],
@@ -1730,7 +1730,7 @@ $(function () {
         press: "清代四川刻本",
         year: "乾隆二十五年",
         ISBN: "19",
-        imgUrl: "../img/三农纪.png"
+        imgUrl: "img/三农纪.png"
       },
       {
         bookName: "陈旉农书",
@@ -1738,7 +1738,7 @@ $(function () {
         press: "南宋临安书铺",
         year: "绍兴十九年",
         ISBN: "12",
-        imgUrl: "../img/陈旉农书.png"
+        imgUrl: "img/陈旉农书.png"
       },
       {
         bookName: "氾胜之书",
@@ -1746,7 +1746,7 @@ $(function () {
         press: "西汉司农寺",
         year: "公元前一世纪",
         ISBN: "6",
-        imgUrl: "../img/氾胜之书.png"
+        imgUrl: "img/氾胜之书.png"
       },
       {
         bookName: "齐民要术",
@@ -1754,7 +1754,7 @@ $(function () {
         press: "北魏",
         year: "六世纪中叶",
         ISBN: "1",
-        imgUrl: "../img/齐民要术.png"
+        imgUrl: "img/齐民要术.png"
       },
       {
         bookName: "农丹",
@@ -1762,7 +1762,7 @@ $(function () {
         press: "清代民间刻本",
         year: "康熙三年",
         ISBN: "23",
-        imgUrl: "../img/农丹.png"
+        imgUrl: "img/农丹.png"
       }
     ],
     PurchaseRe: [{ libraryName: "山东民间藏书", address: "山东潍坊" }],
@@ -1787,7 +1787,7 @@ $(function () {
       Binding: "木刻本",
       folio: "四卷",
       ISBN: "26",
-      imgUrl: "../img/马首农言.png",
+      imgUrl: "img/马首农言.png",
       authorIntro: "清代山西巡抚，主持编写反映晋中农业的地方农书。",
       bookLabel: ["山西农技", "烧荒法", "清代农政"],
       themaWords: ["立春烧荒", "谷豆轮作", "农谚辑录"],
@@ -1801,7 +1801,7 @@ $(function () {
         press: "清代四川刻本",
         year: "乾隆二十五年",
         ISBN: "19",
-        imgUrl: "../img/三农纪.png"
+        imgUrl: "img/三农纪.png"
       },
       {
         bookName: "氾胜之书",
@@ -1809,7 +1809,7 @@ $(function () {
         press: "西汉司农寺",
         year: "公元前一世纪",
         ISBN: "6",
-        imgUrl: "../img/氾胜之书.png"
+        imgUrl: "img/氾胜之书.png"
       },
       {
         bookName: "齐民要术",
@@ -1817,7 +1817,7 @@ $(function () {
         press: "北魏",
         year: "六世纪中叶",
         ISBN: "1",
-        imgUrl: "../img/齐民要术.png"
+        imgUrl: "img/齐民要术.png"
       },
       {
         bookName: "知本提纲·农则",
@@ -1825,7 +1825,7 @@ $(function () {
         press: "清代关中书院",
         year: "乾隆十二年",
         ISBN: "24",
-        imgUrl: "../img/知本提纲农则.png"
+        imgUrl: "img/知本提纲农则.png"
       },
       {
         bookName: "农圃便览",
@@ -1833,7 +1833,7 @@ $(function () {
         press: "清代山东刻本",
         year: "乾隆二十年",
         ISBN: "25",
-        imgUrl: "../img/农圃便览.png"
+        imgUrl: "img/农圃便览.png"
       }
     ],
     PurchaseRe: [{ libraryName: "晋商藏书楼", address: "山西平遥" }],

@@ -16,7 +16,7 @@
         body {
             font-family: 'Microsoft YaHei', sans-serif;
             margin: 0;
-            padding: 20px;
+            padding: 0;
             background: url('https://images.unsplash.com/photo-1601662521367-b92d7b228c39') no-repeat center/cover fixed;
             min-height: 100vh;
             position: relative;
@@ -31,6 +31,30 @@
             bottom: 0;
             background: rgba(255, 255, 255, 0.85);
             z-index: -1;
+        }
+
+        .nav-bar {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 1rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .nav-btn {
+            padding: 0.8rem 1.5rem;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .nav-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
         }
 
         .container {
@@ -104,12 +128,50 @@
             font-size: 0.9em;
         }
 
-        .chart-container {
-            height: 500px;
-            margin: 2rem 0;
+        .chart-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .chart-modal.active {
+            display: flex;
+        }
+
+        .modal-content {
             background: white;
-            border-radius: 8px;
-            padding: 1rem;
+            padding: 2rem;
+            border-radius: 12px;
+            width: 80%;
+            height: 70%;
+            position: relative;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #666;
+            transition: color 0.2s;
+        }
+
+        .close-btn:hover {
+            color: var(--primary);
+        }
+
+        .chart-container {
+            height: calc(100% - 40px);
+            margin-top: 1rem;
         }
 
         .lunar-info {
@@ -122,10 +184,36 @@
             color: #dc3545;
             font-weight: bold;
         }
+
+        .chart-trigger {
+            position: absolute;
+            right: 2rem;
+            bottom: 2rem;
+            padding: 0.8rem 1.5rem;
+            background: var(--chart-blue);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .chart-trigger:hover {
+            transform: scale(1.05);
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+        }
     </style>
 </head>
 
 <body>
+    <!-- 导航栏 -->
+    <div class="nav-bar">
+        <button class="nav-btn" onclick="location.href='index.html'">节气分析</button>
+        <button class="nav-btn" onclick="location.href='weather.html'">天气数据</button>
+        <button class="nav-btn" onclick="location.href='crops.html'">作物生长</button>
+        <button class="nav-btn" onclick="location.href='history.html'">历史记录</button>
+    </div>
+
     <div class="container">
         <h1>节气分析系统</h1>
 
@@ -144,7 +232,15 @@
             <div id="lunarDate" class="lunar-info">-</div>
         </div>
 
-        <div class="chart-container" id="mainChart"></div>
+        <button class="chart-trigger" onclick="system.showChart()">查看年度图表</button>
+    </div>
+
+    <!-- 图表弹窗 -->
+    <div class="chart-modal" id="chartModal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="system.hideChart()">×</span>
+            <div class="chart-container" id="mainChart"></div>
+        </div>
     </div>
 
     <script>
@@ -234,6 +330,7 @@
             constructor() {
                 this.currentTerm = '立春';
                 this.chart = null;
+                this.currentYear = new Date().getFullYear();
                 this.init();
             }
 
@@ -268,10 +365,9 @@
                     const input = document.getElementById('yearInput').value.trim();
                     if (!input) throw new Error("请输入有效年份");
 
-                    const year = this.parseInput(input);
-                    const date = this.calcSolarTerm(year);
-                    this.updateDisplay(year, date);
-                    this.updateChart(year);
+                    this.currentYear = this.parseInput(input);
+                    const date = this.calcSolarTerm(this.currentYear);
+                    this.updateDisplay(date);
                 } catch (e) {
                     alert(`操作失败：${e.message}`);
                     console.error(e);
@@ -353,7 +449,7 @@
                 return date;
             }
 
-            updateDisplay(year, date) {
+            updateDisplay(date) {
                 document.getElementById('gregDate').textContent =
                     `${date.getFullYear()}年${date.getMonth() + 1}月${date.getDate()}日`;
 
@@ -367,7 +463,7 @@
             `;
                 document.getElementById('lunarDate').innerHTML = lunarHTML;
 
-                this.updateEraDisplay(year);
+                this.updateEraDisplay(date.getFullYear());
             }
 
             getLunar(date) {
@@ -386,9 +482,15 @@
                         return { error: "农历数据获取失败" };
                     }
 
+                    // 修正闰月显示
+                    let monthDisplay = lunar.monthStr;
+                    if (lunar.isLeap) {
+                        monthDisplay = "闰" + monthDisplay;
+                    }
+
                     return {
                         year: lunar.lYear,
-                        month: lunar.monthStr,
+                        month: monthDisplay,
                         day: lunar.dayStr,
                         ganzhi: lunar.GanZhiYear,
                         zodiac: lunar.zodiac,
@@ -426,60 +528,78 @@
 
             initChart() {
                 this.chart = echarts.init(document.getElementById('mainChart'));
+                window.addEventListener('resize', () => this.chart.resize());
             }
 
-            updateChart(year) {
-                const startYear = Math.max(year - 25, 1900);
-                const endYear = Math.min(year + 25, 2100);
-                const years = Array.from({ length: endYear - startYear + 1 }, (_, i) => startYear + i);
+            showChart() {
+                if (!this.currentYear) {
+                    alert('请先查询年份数据');
+                    return;
+                }
+                this.updateChart();
+                document.getElementById('chartModal').classList.add('active');
+                setTimeout(() => this.chart.resize(), 100);
+            }
 
-                const data = years.map(y => {
-                    try {
-                        const date = this.calcSolarTerm(y);
-                        const start = new Date(y, 0, 1);
-                        const diff = date - start;
-                        return Math.floor(diff / 86400000) + 1;
-                    } catch {
-                        return null;
-                    }
-                }).filter(v => v !== null);
+            hideChart() {
+                document.getElementById('chartModal').classList.remove('active');
+            }
+
+            updateChart() {
+                // 生成全年月份数据
+                const months = Array.from({ length: 12 }, (_, i) => `${i + 1}月`);
+
+                // 生成模拟数据
+                const rainData = months.map(() => Math.floor(Math.random() * 100 + 50));
+                const cropData = months.map(() => Math.floor(Math.random() * 80 + 20));
 
                 const option = {
                     title: {
-                        text: `${this.currentTerm}历史趋势 (${startYear}-${endYear})`,
+                        text: `${this.currentYear}年度农业分析`,
                         left: 'center'
                     },
                     tooltip: {
                         trigger: 'axis',
                         formatter: params => {
-                            const y = years[params[0].dataIndex];
-                            const value = params[0].value;
-                            return `${y}年: ${value}日（约${Math.floor(value / 30.44) + 1}月${value % 30}日）`;
+                            const month = params[0].name;
+                            const rain = params[0].value;
+                            const crop = params[1].value;
+                            return `
+                                ${month}<br>
+                                降雨量：${rain}mm<br>
+                                作物生长指数：${crop}%
+                            `;
                         }
+                    },
+                    legend: {
+                        data: ['降雨量', '作物生长'],
+                        bottom: 10
                     },
                     xAxis: {
                         type: 'category',
-                        data: years.map(y => `${y}`),
-                        axisLabel: { rotate: 45 }
+                        data: months
                     },
                     yAxis: {
-                        type: 'value',
-                        axisLabel: { formatter: value => `${value}日` }
+                        type: 'value'
                     },
-                    series: [{
-                        type: 'line',
-                        data: data,
-                        smooth: true,
-                        lineStyle: { color: '#5470C6', width: 2 },
-                        itemStyle: { color: '#5470C6' },
-                        markPoint: {
-                            data: [{
-                                name: '当前年份',
-                                coord: [years.indexOf(year), data[years.indexOf(year)]],
-                                itemStyle: { color: '#ff4500' }
-                            }]
+                    series: [
+                        {
+                            name: '降雨量',
+                            type: 'line',
+                            data: rainData,
+                            smooth: true,
+                            lineStyle: { color: '#91cc75', width: 2 },
+                            itemStyle: { color: '#91cc75' }
+                        },
+                        {
+                            name: '作物生长',
+                            type: 'line',
+                            data: cropData,
+                            smooth: true,
+                            lineStyle: { color: '#ee6666', width: 2 },
+                            itemStyle: { color: '#ee6666' }
                         }
-                    }]
+                    ]
                 };
 
                 this.chart.setOption(option, true);
@@ -488,6 +608,13 @@
             bindEvents() {
                 document.getElementById('yearInput').addEventListener('keypress', e => {
                     if (e.key === 'Enter') this.calculate();
+                });
+
+                // 点击模态框外部关闭
+                document.getElementById('chartModal').addEventListener('click', (e) => {
+                    if (e.target === document.getElementById('chartModal')) {
+                        this.hideChart();
+                    }
                 });
             }
         }
