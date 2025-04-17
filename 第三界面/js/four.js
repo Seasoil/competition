@@ -66,8 +66,16 @@ $(function () {
         imgUrl: "img/农桑辑要.png"
       }
     ],
-    PurchaseRe: [{ libraryName: "敦煌藏经洞", address: "甘肃敦煌莫高窟第17窟" }],
-    borrowRe: [],
+    PurchaseRe: [
+    { libraryName: "耕作技术", address: "记载89种作物种植技术，奠定中国古代精耕细作传统" },
+    { libraryName: "酿造工艺", address: "系统总结酒、醋、酱等21种食品加工技术" },
+    { libraryName: "农政思想", address: "提出'食为政首'的治国理念，影响历代重农政策" }
+  ],
+  borrowRe: [
+    { libraryName: "农业技术体系奠基", address: "我国现存最早最完整的农业百科全书" },
+    { libraryName: "北魏经济镜像", address: "反映6世纪黄河中下游农业生产水平" },
+    { libraryName: "农学方法论", address: "建立'采捃经传，验之行事'的实证研究体系" }
+  ],
       comment: [{ userName: "耕作制度", con: "详载春耕秋收、轮作换茬之法，强调因地制宜、顺时播种" },
         { userName: "作物栽培", con: "记述粟、麦、稻、豆、麻等数十种农作物的品种、种植方法与病虫防治" },
         { userName: "园艺果蔬", con: "载有百余种蔬菜、果木的培育方法，如种瓜艺豆、嫁接梨枣，体现古代园艺技术之成熟" },
@@ -137,8 +145,17 @@ $(function () {
         imgUrl: "img/知本提纲农则.png"
       }
     ],
-    PurchaseRe: [],
-    borrowRe: [{ libraryName: "云梦秦简库", address: "湖北云梦睡虎地" }],
+    
+  PurchaseRe: [
+    { libraryName: "耕战政策", address: "最早将农业与国防紧密结合的理论阐述" },
+    { libraryName: "土宜辨正", address: "提出'地可使肥又可使瘠'的土壤改良观" },
+    { libraryName: "农时哲学", address: "建立'得时之稼兴，失时之稼约'的时序理论" }
+  ],
+  borrowRe: [
+    { libraryName: "农本思想源头", address: "确立中国古代以农立国政策基调" },
+    { libraryName: "月令体系雏形", address: "二十四节气农事规范的理论基础" },
+    { libraryName: "战国农政纲领", address: "反映秦国重农抑商的国家战略" }
+  ],
     comment: [{ userName: "农政", con: "农政为立国之根基" },
       { userName: "农时节令", con: "“因天时而作务”，谓“四时失序，五谷不成”" },
       { userName: "农具农艺", con:"“神农作耒耜以利天下” "},
@@ -1990,7 +2007,7 @@ $(function () {
         data[index].PurchaseRe[i].libraryName +
         "</span>" +
         "</dt>" +
-        "<dd>地址: " +
+        "<dd>: " +
         data[index].PurchaseRe[i].address +
         "</dd>" +
         "</dl>";
@@ -2016,7 +2033,7 @@ $(function () {
         data[index].borrowRe[i].libraryName +
         "</span>" +
         "</dt>" +
-        "<dd>地址: " +
+        "<dd>: " +
         data[index].borrowRe[i].address +
         "</dd>" +
         "</dl>";

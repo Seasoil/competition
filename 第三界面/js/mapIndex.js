@@ -24,16 +24,26 @@ var convertData = function(data) {
   return res;
 };
 // 散点数据 和 对应经纬度
+
 var data = [
+  { name: "双鸭山", value: 8 },
+  { name: "七台河", value: 9 },
   { name: "海门", value: 9 },
+  { name: "阿拉善", value: 10 },
+  { name: "果洛", value: 11 },
   { name: "鄂尔多斯", value: 12 },
   { name: "招远", value: 12 },
   { name: "舟山", value: 12 },
+  { name: "三沙", value: 13 },
   { name: "齐齐哈尔", value: 14 },
+  { name: "日喀则", value: 15 },
   { name: "盐城", value: 15 },
+  { name: "林芝", value: 16 },
   { name: "赤峰", value: 16 },
-  { name: "青岛", value: 18 },
+  { name: "那曲", value: 17 },
   { name: "乳山", value: 18 },
+  { name: "青岛", value: 18 },
+  { name: "阿里", value: 19 },
   { name: "金昌", value: 19 },
   { name: "泉州", value: 21 },
   { name: "莱西", value: 21 },
