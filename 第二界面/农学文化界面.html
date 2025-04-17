@@ -167,7 +167,7 @@
                         layout: 'force',
                         roam: true,
                         draggable: true,
-                        scaleLimit: { min: 2, max: 3 },
+                        scaleLimit: { min: 2, max: 3},
                         edgeSymbol: ['none', 'arrow'],
                         edgeSymbolSize: 2,
                         label: { show: false },
@@ -175,17 +175,17 @@
                         data: graphData.nodes,
                         links: graphData.links,
                         force: {
-                            repulsion: 10,
-                            edgeLength: 10,
+                            repulsion: 5,
+                            edgeLength: 5,
                             gravity: 0.25,
-                            friction: 0.28,
+                            friction: 0.35,
                             layoutAnimation: true
                         },
                         lineStyle: {
                             color: 'source',
-                            curveness: 0.000001,
+                            curveness: 0.1,
                             width: 0.5,
-                            opacity: 0.15
+                            opacity: 0.001
                         },
                         emphasis: {
                             itemStyle: {

@@ -6,11 +6,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>羲和节气历</title>
     <style>
+        /* 自定义配置区 */
         :root {
             --primary-color: #2c3e50;
+            /* 主色调 */
             --secondary-color: #3498db;
-            --background: #f8f9fa;
+            /* 按钮颜色 */
+            --bg-color: rgba(255, 255, 255, 0.93);
+            /* 容器透明度 */
             --text-color: #34495e;
+            /* 文字颜色 */
+            --card-bg: rgba(241, 244, 247, 0.6);
+            /* 节气卡片背景 */
+
+            /* 背景图设置 */
+            --page-bg: url('./img/羲和.png') center/cover fixed;
+            --mask-bg: linear-gradient(rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.1));
         }
 
         * {
@@ -21,143 +32,158 @@
         }
 
         body {
-            background: var(--background);
+            min-height: 100vh;
+            background: var(--page-bg), var(--mask-bg);
             color: var(--text-color);
-            line-height: 1.6;
+            line-height: 1.5;
+            padding: 1rem;
         }
 
         .navbar {
-            background: var(--primary-color);
-            padding: 1rem 2rem;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            position: fixed;
-            width: 100%;
+            background: transparent !important;
+            backdrop-filter: blur(1px);
+            padding: 1rem 20rem;
+            position: sticky;
             top: 0;
             z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(5px);
         }
 
         .nav-buttons {
             display: flex;
-            gap: 1rem;
+            gap: 0.8rem;
+            justify-content: center;
         }
 
         .nav-button {
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.15);
             color: white;
-            padding: 0.7rem 1.8rem;
+            padding: 0.6rem 1.5rem;
             border-radius: 6px;
             text-decoration: none;
-            transition: all 0.3s ease;
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s;
+            font-size: 0.95em;
+            backdrop-filter: blur(2px);
         }
 
         .nav-button:hover {
             background: var(--secondary-color);
-            transform: translateY(-2px);
+            transform: scale(1.05);
         }
 
         .container {
-            max-width: 1000px;
-            margin: 6rem auto 2rem;
-            padding: 2rem;
-            background: white;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            max-width: 1400px;
+            margin: 2rem auto;
+            padding: 1.5rem;
+            background: var(--bg-color);
+            border-radius: 12px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.05);
+            backdrop-filter: blur(10px);
         }
 
         .input-group {
             display: flex;
             gap: 1rem;
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;
             flex-wrap: wrap;
         }
 
         input[type="number"] {
             padding: 0.8rem;
-            border: 1px solid #ddd;
+            border: 1px solid #ef0b0b46;
             border-radius: 8px;
-            width: 200px;
+            flex: 1 1 200px;
             font-size: 1rem;
-            transition: border-color 0.3s ease;
+            transition: all 0.3s;
+            background: rgba(224, 191, 4, 0.255);
         }
 
-        input[type="number"]:focus {
-            outline: none;
-            border-color: var(--secondary-color);
-            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+        input:focus {
+            outline: 2px solid var(--secondary-color);
+            outline-offset: 2px;
+            background: rgb(228, 217, 157);
         }
 
         button {
             background: var(--secondary-color);
-            color: white;
+            color: rgb(15, 1, 1);
             padding: 0.8rem 2rem;
             border: none;
-            border-radius: 8px;
+            border-radius: 6px;
             cursor: pointer;
-            transition: all 0.3s ease;
-            text-transform: uppercase;
-            font-weight: bold;
-            letter-spacing: 1px;
+            transition: all 0.3s;
+            flex: 0 1 auto;
+            backdrop-filter: brightness(1.1);
         }
 
         button:hover {
-            background: #2980b9;
+            opacity: 0.9;
+            transform: translateY(-1px);
+            box-shadow: 0 3px 12px rgba(52, 152, 219, 0.3);
+        }
+
+        /* 节气表格样式 */
+        #result table {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 0.3rem;
+            padding: 0.5rem;
+            overflow-x: auto;
+            min-height: 200px;
+        }
+
+        #result td {
+            background: var(--card-bg);
+            border-radius: 6px;
+            padding: 0.4rem;
+            text-align: space-between;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            min-height: 50px;
+            min-width: 2500px;
+            transition: all 0.3s;
+            backdrop-filter: blur(2px);
+        }
+
+        #result td:hover {
             transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.3);
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+            background: rgba(209, 106, 16, 0.8);
         }
 
-        table {
-            width: 100%;
-            margin-top: 2rem;
-            border-collapse: collapse;
-            background: white;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 1px 10px rgba(0, 0, 0, 0.05);
-        }
-
-        th,
-        td {
-            padding: 1rem;
-            text-align: center;
-            border-bottom: 1px solid #f0f0f0;
-        }
-
-        th {
-            background: var(--primary-color);
-            color: white;
+        #result td div:first-child {
             font-weight: 600;
-        }
-
-        tr:hover {
-            background: #f8f9fa;
-        }
-
-        .era-badge {
-            background: #e74c3c;
-            color: white;
-            padding: 0.2rem 0.5rem;
-            border-radius: 4px;
+            color: var(--primary-color);
             font-size: 0.9em;
-            margin-left: 0.5rem;
+            margin-bottom: 0.2rem;
+        }
+
+        #result td div:last-child {
+            font-size: 0.8em;
+            opacity: 0.9;
+        }
+
+        /* 滚动条样式 */
+        #result table::-webkit-scrollbar {
+            height: 6px;
+            background: rgba(0, 0, 0, 0.05);
+        }
+
+        #result table::-webkit-scrollbar-thumb {
+            background: var(--secondary-color);
+            border-radius: 3px;
         }
 
         @media (max-width: 768px) {
+            #result table {
+                grid-template-columns: repeat(12, 90px);
+            }
+
             .container {
-                margin: 5rem 1rem 1rem;
+                margin: 1rem 0.5rem;
                 padding: 1rem;
-            }
-
-            .input-group {
-                flex-direction: column;
-            }
-
-            input[type="number"] {
-                width: 100%;
-            }
-
-            button {
-                width: 100%;
             }
         }
     </style>
@@ -166,131 +192,94 @@
 <body>
     <nav class="navbar">
         <div class="nav-buttons">
-            <a href="../1界面.html" class="nav-button">第一界面</a>
-            <a href="./立冬.html" class="nav-button">节气计算界面</a>
+            <a href="../1界面.html" class="nav-button">主界面</a>
+            <a href="./立冬.html" class="nav-button">节气详情</a>
         </div>
     </nav>
 
     <div class="container">
-        <h1>羲和节气历</h1>
+        <h1 style="margin-bottom:1.5rem;text-align:center;color:var(--primary-color);">羲和节气历</h1>
         <div class="input-group">
-            <input type="number" id="year" min="-3000" max="3000" placeholder="输入查询年份">
-            <button onclick="calculate()">立即查询</button>
+            <input type="number" id="year" min="-3000" max="3000" placeholder="请输入年份（公元前用负号）">
+            <button onclick="calculate()">查询节气</button>
         </div>
         <div id="result"></div>
     </div>
 
     <script>
-        // 天干地支数据
+        // 数据配置
         const celestialStems = ["甲", "乙", "丙", "丁", "戊", "己", "庚", "辛", "壬", "癸"];
         const terrestrialBranches = ["子", "丑", "寅", "卯", "辰", "巳", "午", "未", "申", "酉", "戌", "亥"];
-        const solarTermsCN = ["小寒", "大寒", "立春", "雨水", "惊蛰", "春分",
-            "清明", "谷雨", "立夏", "小满", "芒种", "夏至",
-            "小暑", "大暑", "立秋", "处暑", "白露", "秋分",
+        const solarTermsCN = ["小寒", "大寒", "立春", "雨水", "惊蛰", "春分", "清明", "谷雨",
+            "立夏", "小满", "芒种", "夏至", "小暑", "大暑", "立秋", "处暑", "白露", "秋分",
             "寒露", "霜降", "立冬", "小雪", "大雪", "冬至"];
 
-        // 儒略日转公历日期（支持公元前）
+        // 核心计算函数
         function jdToDate(jd) {
             jd += 0.5;
             let z = Math.floor(jd);
             let f = jd - z;
-            let a, alpha;
-
-            if (z < 2299161) {
-                a = z;
-            } else {
-                alpha = Math.floor((z - 1867216.25) / 36524.25);
-                a = z + 1 + alpha - Math.floor(alpha / 4);
-            }
-
+            let a = z < 2299161 ? z : z + 1 + Math.floor((z - 1867216.25) / 36524.25) - Math.floor(Math.floor((z - 1867216.25) / 36524.25) / 4);
             let b = a + 1524;
             let c = Math.floor((b - 122.1) / 365.25);
             let d = Math.floor(365.25 * c);
             let e = Math.floor((b - d) / 30.6001);
-
             let day = b - d - Math.floor(30.6001 * e) + f;
-            let month = (e < 14) ? e - 1 : e - 13;
-            let year = (month > 2) ? c - 4716 : c - 4715;
-
-            if (year <= 0) year -= 1;
 
             return {
-                year: year,
-                month: month,
-                day: Math.floor(day),
-                hour: Math.floor((day - Math.floor(day)) * 24)
+                year: (e < 14 ? c - 4716 : c - 4715),
+                month: e < 14 ? e - 1 : e - 13,
+                day: Math.floor(day)
             };
         }
 
-        // 计算太阳黄经
         function computeSunLongitude(jd) {
             const T = (jd - 2451545.0) / 36525;
-            let L0 = 280.46645 + 36000.76983 * T + 0.0003032 * T * T;
-            let M = 357.52910 + 35999.05030 * T - 0.0001559 * T * T - 0.00000048 * T * T * T;
-            M = M * Math.PI / 180;
-
-            let C = (1.914600 - 0.004817 * T - 0.000014 * T * T) * Math.sin(M)
-                + (0.019993 - 0.000101 * T) * Math.sin(2 * M)
-                + 0.000290 * Math.sin(3 * M);
-
-            let sunLong = L0 + C;
-            sunLong += 0.00569;
-            sunLong = sunLong % 360;
-            return sunLong < 0 ? sunLong + 360 : sunLong;
+            let M = (357.52910 + 35999.05030 * T - 0.0001559 * T * T) * Math.PI / 180;
+            return (280.46645 + 36000.76983 * T +
+                (1.914600 - 0.004817 * T) * Math.sin(M) +
+                0.019993 * Math.sin(2 * M)) % 360;
         }
 
-        // 计算节气
         function getSolarTerm(year, index) {
-            const termAngles = [285, 300, 315, 330, 345, 0,
-                15, 30, 45, 60, 75, 90,
-                105, 120, 135, 150, 165, 180,
-                195, 210, 225, 240, 255, 270];
-
+            const termAngles = [285, 300, 315, 330, 345, 0, 15, 30, 45, 60, 75, 90, 105, 120, 135, 150, 165, 180, 195, 210, 225, 240, 255, 270];
             let jd = 2451545.5 + (year - 2000) * 365.2422 + index * 15.2184;
-
             for (let i = 0; i < 3; i++) {
-                let sunLong = computeSunLongitude(jd);
-                let diff = (sunLong - termAngles[index]) / 360 * 365.25;
+                let diff = (computeSunLongitude(jd) - termAngles[index]) / 360 * 365.25;
                 jd -= diff;
             }
-
             return jd;
         }
 
-        // 计算干支
         function getGanZhi(year) {
             if (year < 0) year++;
-            const base = 4;
-            let num = (year - base) % 60;
-            num = num < 0 ? num + 60 : num;
+            let num = (year - 4) % 60;
             return celestialStems[num % 10] + terrestrialBranches[num % 12];
         }
 
-        // 主函数
+        // 界面交互
         function calculate() {
             const inputYear = parseInt(document.getElementById("year").value);
             if (isNaN(inputYear) || inputYear < -3000 || inputYear > 3000) {
-                alert("请输入-3000到3000之间的有效年份");
+                alert("请输入有效年份（公元前3000年 - 公元3000年）");
                 return;
             }
 
             const ganzhi = getGanZhi(inputYear);
-
-            let tableHTML = `<h3>${inputYear >= 0 ? inputYear : inputYear * -1 + "BC"}年 (${ganzhi}年) 节气表</h3>
-                           <table><tr><th>节气</th><th>公历日期</th></tr>`;
+            let tableHTML = `<h3 style="margin-bottom:1rem;color:var(--primary-color);font-size:1.2em;">
+                ${inputYear >= 0 ? inputYear : inputYear * -1 + "BC"}年 · ${ganzhi}年
+            </h3><table><tr>`;
 
             for (let i = 0; i < 24; i++) {
-                const jd = getSolarTerm(inputYear, i);
-                const date = jdToDate(jd);
-                const bcYear = date.year < 0 ? (date.year * -1) + " BC" : date.year;
-                tableHTML += `<tr>
-                    <td>${solarTermsCN[i]}</td>
-                    <td>${bcYear}-${date.month.toString().padStart(2, '0')}-${date.day.toString().padStart(2, '0')}</td>
-                </tr>`;
+                const { month, day } = jdToDate(getSolarTerm(inputYear, i));
+                if (i === 12) tableHTML += `</tr><tr>`; // 第13个节气换行
+                tableHTML += `<td>
+                    <div>${solarTermsCN[i]}</div>
+                    <div>${month}.${day.toString().padStart(2, '0')}</div>
+                </td>`;
             }
 
-            tableHTML += "</table>";
-            document.getElementById("result").innerHTML = tableHTML;
+            document.getElementById("result").innerHTML = tableHTML + "</tr></table>";
         }
     </script>
 </body>
