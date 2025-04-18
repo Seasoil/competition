@@ -67,15 +67,25 @@ $(function () {
       }
     ],
     PurchaseRe: [
-    { libraryName: "耕作技术", address: "记载89种作物种植技术，奠定中国古代精耕细作传统" },
-    { libraryName: "酿造工艺", address: "系统总结酒、醋、酱等21种食品加工技术" },
-    { libraryName: "农政思想", address: "提出'食为政首'的治国理念，影响历代重农政策" }
-  ],
-  borrowRe: [
-    { libraryName: "农业技术体系奠基", address: "我国现存最早最完整的农业百科全书" },
-    { libraryName: "北魏经济镜像", address: "反映6世纪黄河中下游农业生产水平" },
-    { libraryName: "农学方法论", address: "建立'采捃经传，验之行事'的实证研究体系" }
-  ],
+      { 
+        libraryName: "耕作技术·精耕体系", 
+        address: "敦煌藏经洞·黄河中游农耕技术母本库" 
+      },
+      { 
+        libraryName: "酿造工艺·生物工程", 
+        address: "北魏郡县农政档案·古代食品加工中枢" 
+      }
+    ],
+    borrowRe: [
+      { 
+        libraryName: "农学体系·技术奠基", 
+        address: "六世纪黄河流域·旱作农业标准化总源" 
+      },
+      { 
+        libraryName: "经济实证·生产镜像", 
+        address: "北朝庄园经济档案·古代家庭农业管理库" 
+      }
+    ],
       comment: [{ userName: "耕作制度", con: "详载春耕秋收、轮作换茬之法，强调因地制宜、顺时播种" },
         { userName: "作物栽培", con: "记述粟、麦、稻、豆、麻等数十种农作物的品种、种植方法与病虫防治" },
         { userName: "园艺果蔬", con: "载有百余种蔬菜、果木的培育方法，如种瓜艺豆、嫁接梨枣，体现古代园艺技术之成熟" },
@@ -147,15 +157,25 @@ $(function () {
     ],
     
   PurchaseRe: [
-    { libraryName: "耕战政策", address: "最早将农业与国防紧密结合的理论阐述" },
-    { libraryName: "土宜辨正", address: "提出'地可使肥又可使瘠'的土壤改良观" },
-    { libraryName: "农时哲学", address: "建立'得时之稼兴，失时之稼约'的时序理论" }
-  ],
-  borrowRe: [
-    { libraryName: "农本思想源头", address: "确立中国古代以农立国政策基调" },
-    { libraryName: "月令体系雏形", address: "二十四节气农事规范的理论基础" },
-    { libraryName: "战国农政纲领", address: "反映秦国重农抑商的国家战略" }
-  ],
+      { 
+        libraryName: "耕战政策·军政档案", 
+        address: "云梦秦简库·先秦农政思想发源地" 
+      },
+      { 
+        libraryName: "土宜辨正·土地规划", 
+        address: "秦相府刊本·战国农耕制度总枢" 
+      }
+    ],
+    borrowRe: [
+      { 
+        libraryName: "月令体系·时序规范", 
+        address: "黄老思想总库·阴阳五行农学典范" 
+      },
+      { 
+        libraryName: "重农抑商·治国法典", 
+        address: "秦国军政档案·耕战政策策源地" 
+      }
+    ],
     comment: [{ userName: "农政", con: "农政为立国之根基" },
       { userName: "农时节令", con: "“因天时而作务”，谓“四时失序，五谷不成”" },
       { userName: "农具农艺", con:"“神农作耒耜以利天下” "},
@@ -224,8 +244,26 @@ $(function () {
         imgUrl: "img/农桑辑要.png"
       }
     ],
-    PurchaseRe: [{ libraryName: "天一阁", address: "浙江宁波" }],
-    borrowRe: [],
+     PurchaseRe: [
+      { 
+        libraryName: "水利工程·农器革命", 
+        address: "宁波天一阁·明代农业科技总枢" 
+      },
+      { 
+        libraryName: "荒政制度·防灾体系", 
+        address: "司农监典籍库·古代赈灾技术集成" 
+      }
+    ],
+    borrowRe: [
+      { 
+        libraryName: "农学启蒙·中西合璧", 
+        address: "徐光启手稿本·近代农学改革母本" 
+      },
+      { 
+        libraryName: "田制规划·生态智慧", 
+        address: "崇祯官刻本·江南集约农业典范" 
+      }
+    ],
     comment: [{ userName: "农政思想", con: "“农为政首”“本本之业”" },
       { userName: "农时与气候", con: "天时不顺需辅以人力弥补" },
       { userName: "农艺与作物", con: "涵盖五谷（稻、麦、黍、豆、麻）、经济作物（棉花、甘蔗等），包括播种、育苗、田间管理、收获储藏等全流程" },
@@ -294,8 +332,26 @@ $(function () {
         imgUrl: "img/农候杂占.png"
       }
     ],
-    PurchaseRe: [{ libraryName: "文渊阁", address: "北京故宫" }],
-    borrowRe: [],
+    PurchaseRe: [
+      { 
+        libraryName: "历法集成·节气规范", 
+        address: "文渊阁殿本·国家农时标准制定库" 
+      },
+      { 
+        libraryName: "物候观测·授时制度", 
+        address: "登封天文台·古代农耕时序中枢" 
+      }
+    ],
+    borrowRe: [
+      { 
+        libraryName: "农事占验·星象体系", 
+        address: "钦天监藏本·物候观测技术总源" 
+      },
+      { 
+        libraryName: "耕作规范·国家典章", 
+        address: "武英殿刊本·清代农政制度集成" 
+      }
+    ],
     comment: [{ userName: "农时制度化", con: "将农时与精密历法相结合" },
       { userName: "授时系统", con: "设27座观测台，如大都、登封、杭州等地" },
       { userName: "历法", con: "主张“岁首应合节气”,改“旧历”以助农耕" },
@@ -363,8 +419,26 @@ $(function () {
         imgUrl: "img/三农纪.png"
       }
     ],
-    PurchaseRe: [{ libraryName: "居延汉简库", address: "内蒙古额济纳旗" }],
-    borrowRe: [],
+    PurchaseRe: [
+      { 
+        libraryName: "庄园经济·田庄管理", 
+        address: "居延汉简库·汉代家庭经济档案库" 
+      },
+      { 
+        libraryName: "纺织技术·手工业", 
+        address: "东汉太学府·麻纺技术发源地" 
+      }
+    ],
+    borrowRe: [
+      { 
+        libraryName: "月令体系·四时规范", 
+        address: "东汉官修典籍·农耕文化总汇" 
+      },
+      { 
+        libraryName: "节气民俗·祭祀制度", 
+        address: "礼制农时总库·古代农业仪式集成" 
+      }
+    ],
     comment: [
   { userName: "田庄管理", con: "详载汉代田庄的作物布局、劳力分配与收益核算，展现庄园经济运作模式" },
   { userName: "纺织技术", con: "记录养蚕缫丝、麻布织造等家庭手工业流程，反映东汉纺织技术进步" },
@@ -434,8 +508,26 @@ $(function () {
         imgUrl: "img/马首农言.png"
       }
     ],
-    PurchaseRe: [{ libraryName: "武威汉墓", address: "甘肃武威" }],
-    borrowRe: [],
+    PurchaseRe: [
+      { 
+        libraryName: "区田法·旱作技术", 
+        address: "武威汉墓出土简牍·黄河农耕起源实证库" 
+      },
+      { 
+        libraryName: "溲种法·种子处理", 
+        address: "西汉司农寺藏本·古代生物技术先驱地" 
+      }
+    ],
+    borrowRe: [
+      { 
+        libraryName: "耕作三原则·农学奠基", 
+        address: "旱作农业技术母本·北方耕作体系总源" 
+      },
+      { 
+        libraryName: "麦作体系·抗逆栽培", 
+        address: "黄河中游流域观测站·冬麦技术规范中枢" 
+      }
+    ],
     comment: [
   { userName: "区田法", con: "首创代田区种，深挖作沟，集中施肥，旱作保墒的典范" },
   { userName: "溲种技术", con: "以骨汁粪汁浸种，增强抗病抗旱能力，早期种子处理技术代表" },
@@ -505,8 +597,26 @@ $(function () {
         imgUrl: "img/三农纪.png"
       }
     ],
-    PurchaseRe: [{ libraryName: "永乐大典残卷库", address: "中国国家图书馆" }],
-    borrowRe: [],
+    PurchaseRe: [
+      { 
+        libraryName: "农器图谱·机械革命", 
+        address: "永乐大典残卷库·古代农具技术总枢" 
+      },
+      { 
+        libraryName: "梯田开发·山地治理", 
+        address: "元代司农司刊本·丘陵耕作技术集成" 
+      }
+    ],
+    borrowRe: [
+      { 
+        libraryName: "南北融合·技术集成", 
+        address: "全国农耕地理总汇·多元农技融合典范" 
+      },
+      { 
+        libraryName: "水转翻车·灌溉革新", 
+        address: "木刻版技术图谱·元代水利工程母本库" 
+      }
+    ],
     comment: [
   { userName: "农器革命", con: "图释水转大纺车、木棉搅车等机械，展现元代纺织器具重大革新" },
   { userName: "南北融合", con: "比较北方旱作与江南稻作技术，首倡全国性农业技术整合" },
@@ -576,8 +686,26 @@ $(function () {
         imgUrl: "img/农圃便览.png"
       }
     ],
-    PurchaseRe: [{ libraryName: "四库全书阁", address: "北京、杭州等地" }],
-    borrowRe: [],
+    PurchaseRe: [
+      { 
+        libraryName: "植物图谱·园艺集成", 
+        address: "四库全书阁藏本·明清植物分类总库" 
+      },
+      { 
+        libraryName: "物种引种·技术传播", 
+        address: "武英殿刊本·中外农业交流档案库" 
+      }
+    ],
+    borrowRe: [
+      { 
+        libraryName: "花卉分类·造园艺术", 
+        address: "文林阁刻本·观赏植物培育技术中枢" 
+      },
+      { 
+        libraryName: "药用植物·医学融合", 
+        address: "清代增补本·中医药材种植技术总源" 
+      }
+    ],
     comment: [
   { userName: "植物分类", con: "将花卉分为牡丹、芍药等12谱，建立园艺植物分类体系" },
   { userName: "栽培技艺", con: "详述熏花促开、曲枝造形等观赏植物培育技术" },
@@ -647,8 +775,26 @@ $(function () {
         imgUrl: "img/农候杂占.png"
       }
     ],
-    PurchaseRe: [{ libraryName: "元代天文台遗址", address: "河南登封" }],
-    borrowRe: [],
+    PurchaseRe: [
+      { 
+        libraryName: "物候观测·星象对应", 
+        address: "登封观星台遗址·农时观测技术中心" 
+      },
+      { 
+        libraryName: "阴阳五行·农时体系", 
+        address: "钦天监孤本·节气耕作规范总库" 
+      }
+    ],
+    borrowRe: [
+      { 
+        libraryName: "农谚体系·气象预测", 
+        address: "元代观测数据站·天气经验集成库" 
+      },
+      { 
+        libraryName: "节气民俗·文化整合", 
+        address: "至治元年官刻本·农耕仪式档案总汇" 
+      }
+    ],
     comment: [
   { userName: "物候体系", con: "将每节气分为三候，形成全年72候的精细物候观测系统" },
   { userName: "农事占验", con: "'冬至晴年必旱，重阳无雨一冬晴'等农谚的科学性总结" },
@@ -718,8 +864,26 @@ $(function () {
         imgUrl: "img/农候杂占.png"
       }
     ],
-    PurchaseRe: [{ libraryName: "安阳殷墟", address: "河南安阳" }],
-    borrowRe: [],
+    PurchaseRe: [
+      { 
+        libraryName: "星象历法·古历溯源", 
+        address: "殷墟甲骨窖藏·华夏农耕文明发源地" 
+      },
+      { 
+        libraryName: "物候体系·原始农时", 
+        address: "大戴礼记注本·十月太阳历遗存实证" 
+      }
+    ],
+    borrowRe: [
+      { 
+        libraryName: "祭祀农事·原始信仰", 
+        address: "西周王室典籍库·早期农耕文化总源" 
+      },
+      { 
+        libraryName: "畜牧技术·马政起源", 
+        address: "青铜器铭文档案·先秦畜牧技术总库" 
+      }
+    ],
     comment: [
   { userName: "星象物候", con: "'正月启蛰雁北乡'体现夏代星象与物候对应观测水平" },
   { userName: "祭祀农事", con: "'二月往耰黍墠'反映原始宗教与农业生产的紧密结合" },
@@ -789,8 +953,26 @@ $(function () {
         imgUrl: "img/知本提纲农则.png"
       }
     ],
-    PurchaseRe: [{ libraryName: "宁波天一阁", address: "浙江宁波" }],
-    borrowRe: [],
+    PurchaseRe: [
+        { 
+            libraryName: "节气民俗·迎春仪式", 
+            address: "浙江宁波天一阁·岁时民俗文献总库" 
+        },
+        { 
+            libraryName: "农具改良·代耕架", 
+            address: "万历民间刻本·江南农具革新策源地" 
+        }
+    ],
+    borrowRe: [
+        { 
+            libraryName: "占岁文化·年景预测", 
+            address: "明代地方志库·农业气象预测集成" 
+        },
+        { 
+            libraryName: "食疗养生·节气方案", 
+            address: "建阳书坊刻本·江南食疗文化中枢" 
+        }
+    ],
     comment: [
   { userName: "节气民俗", con: "详细图解立春迎气、东郊鞭春等官方劝农仪典" },
   { userName: "地方农俗", con: "收录江南'浸稻种'、岭南'烧畲'等特色耕作习俗" },
@@ -860,8 +1042,26 @@ $(function () {
         imgUrl: "img/农圃便览.png"
       }
     ],
-    PurchaseRe: [{ libraryName: "临安府库残卷", address: "浙江杭州" }],
-    borrowRe: [],
+     PurchaseRe: [
+        { 
+            libraryName: "水田技术·烤田法", 
+            address: "杭州临安府库·南宋耕作技术母本" 
+        },
+        { 
+            libraryName: "地力常新·土壤理论", 
+            address: "蝴蝶装稿本·可持续农业典范库" 
+        }
+    ],
+    borrowRe: [
+        { 
+            libraryName: "耕耨体系·精细管理", 
+            address: "江南农学总源·集约经营技术中枢" 
+        },
+        { 
+            libraryName: "立体农业·六种之宜", 
+            address: "绍兴年间刻本·地形利用典范" 
+        }
+    ],
     comment: [
   { userName: "地力理论", con: "'地力常新壮'说突破地方渐衰论，提出施肥养地方案" },
   { userName: "耕耨之法", con: "强调'早田刈获才毕，随即耕治晒暴'的整地要诀" },
@@ -931,8 +1131,26 @@ $(function () {
         imgUrl: "img/农桑衣食撮要.png"
       }
     ],
-    PurchaseRe: [{ libraryName: "元代大都档案库", address: "北京" }],
-    borrowRe: [],
+    PurchaseRe: [
+        { 
+            libraryName: "蚕桑技术·纺织革新", 
+            address: "元代大都档案库·丝绸技术策源地" 
+        },
+        { 
+            libraryName: "木棉种植·棉纺革命", 
+            address: "至元十年官本·北方棉业起源库" 
+        }
+    ],
+    borrowRe: [
+        { 
+            libraryName: "多语编译·技术传播", 
+            address: "畏兀儿文坊本·民族农技交汇处" 
+        },
+        { 
+            libraryName: "救荒体系·作物推广", 
+            address: "司农监典籍·抗旱作物技术总汇" 
+        }
+    ],
     comment: [
   { userName: "政策导向", con: "元政府'重北轻南'政策下推广北方蚕桑的技术指南" },
   { userName: "纺织革新", con: "系统总结'择茧、缫丝、络纬、织造'全套工艺标准" },
@@ -1002,8 +1220,26 @@ $(function () {
         imgUrl: "img/农桑辑要.png"
       }
     ],
-    PurchaseRe: [{ libraryName: "涂本初刻本", address: "江西奉新" }],
-    borrowRe: [],
+    PurchaseRe: [
+        { 
+            libraryName: "乃粒篇·杂交育种", 
+            address: "江西奉新涂本·古代生物技术母本" 
+        },
+        { 
+            libraryName: "花机图录·纺织革命", 
+            address: "崇祯十年刊本·机械农具图谱库" 
+        }
+    ],
+    borrowRe: [
+        { 
+            libraryName: "技术母本·工业前驱", 
+            address: "明代科技总汇·手工业革命前奏" 
+        },
+        { 
+            libraryName: "海舟制造·水密隔舱", 
+            address: "闽南船政档案·古代造船技术中枢" 
+        }
+    ],
     comment: [
   { userName: "农业革命", con: "'乃粒'篇详述水稻杂交、麦类移栽等突破性技术" },
   { userName: "纺织图谱", con: "图释花机、腰机等复杂织机结构，保留明代纺织机械细节" },
@@ -1073,8 +1309,26 @@ $(function () {
         imgUrl: "img/田家五行.png"
       }
     ],
-    PurchaseRe: [{ libraryName: "宋代闽刻本", address: "福建建阳" }],
-    borrowRe: [],
+    PurchaseRe: [
+        { 
+            libraryName: "节气溯源·饮食文化", 
+            address: "建阳书坊刻本·宋代市井文化总汇" 
+        },
+        { 
+            libraryName: "踏犁秧马·新式农具", 
+            address: "闽刻本·江南农具革新档案" 
+        }
+    ],
+    borrowRe: [
+        { 
+            libraryName: "占验体系·云图识别", 
+            address: "宝祐四年官本·天气预测经验库" 
+        },
+        { 
+            libraryName: "商业农事·节气经济", 
+            address: "南宋市井档案·农业商品经济典范" 
+        }
+    ],
     comment: [
   { userName: "节气溯源", con: "考证寒食禁火、端午竞渡等习俗的农业起源" },
   { userName: "占验体系", con: "系统整理'春甲子雨，赤地千里'等天气预测经验" },
@@ -1144,8 +1398,26 @@ $(function () {
         imgUrl: "img/知本提纲农则.png"
       }
     ],
-    PurchaseRe: [{ libraryName: "马王堆汉墓帛书库", address: "湖南长沙" }],
-    borrowRe: [],
+    PurchaseRe: [
+        { 
+            libraryName: "五行配时·耕作时序", 
+            address: "长沙马王堆帛书·黄老农政思想库" 
+        },
+        { 
+            libraryName: "生态禁忌·资源保护", 
+            address: "淮南王府藏本·古代可持续发展法典" 
+        }
+    ],
+    borrowRe: [
+        { 
+            libraryName: "宇宙观·天人相应", 
+            address: "汉初哲学总源·农耕时空体系" 
+        },
+        { 
+            libraryName: "灾害预防·阴阳理论", 
+            address: "西汉太学典籍·农事灾异预测库" 
+        }
+    ],
     comment: [
   { userName: "宇宙观", con: "'五位六合'空间体系与农耕时序的哲学对应" },
   { userName: "政令时序", con: "规定孟春'禁伐木'、季夏'令渔师伐蛟'等生态法令" },
@@ -1215,8 +1487,26 @@ $(function () {
         imgUrl: "img/授时通考.png"
       }
     ],
-    PurchaseRe: [{ libraryName: "武威汉简库", address: "甘肃武威" }],
-    borrowRe: [],
+     PurchaseRe: [
+        { 
+            libraryName: "礼制农时·政令规范", 
+            address: "甘肃省武威·汉朝礼制规范总源" 
+        },
+        { 
+            libraryName: "生态禁忌·资源保护", 
+            address: "西汉太常寺典籍·古代可持续发展法典" 
+        }
+    ],
+    borrowRe: [
+        { 
+            libraryName: "月令体系·国家典章", 
+            address: "汉简档案库·农耕时序制度母本" 
+        },
+        { 
+            libraryName: "农事仪式·祭祀文化", 
+            address: "皇室春耕仪轨·农耕信仰集成库" 
+        }
+    ],
     comment: [
   { userName: "礼制规范", con: "天子'躬耕帝籍'的仪式程序与象征意义" },
   { userName: "政令时序", con: "仲春'安萌芽，养幼少，存诸孤'的社会救济制度" },
@@ -1286,8 +1576,26 @@ $(function () {
         imgUrl: "img/马首农言.png"
       }
     ],
-    PurchaseRe: [{ libraryName: "湖州民间藏书", address: "浙江湖州" }],
-    borrowRe: [],
+    PurchaseRe: [
+        { 
+            libraryName: "蚕织技术·桑基鱼塘", 
+            address: "浙江湖州·明清生态农业示范基地" 
+        },
+        { 
+            libraryName: "水田管理·看苗施肥", 
+            address: "江南稿本·精细耕作技术中枢" 
+        }
+    ],
+    borrowRe: [
+        { 
+            libraryName: "成本核算·经营典范", 
+            address: "明末经济档案·农业会计学先驱" 
+        },
+        { 
+            libraryName: "集约农业·江南模式", 
+            address: "长三角农技总汇·水田集约化模板" 
+        }
+    ],
     comment: [
   { userName: "精耕细作", con: "提出'宁可少而精密，不可多而草率'的集约经营理念" },
   { userName: "看苗施肥", con: "根据叶色深浅判断水稻需肥量的经验法则" },
@@ -1357,8 +1665,26 @@ $(function () {
         imgUrl: "img/马首农言.png"
       }
     ],
-    PurchaseRe: [{ libraryName: "四川民间藏书楼", address: "四川成都" }],
-    borrowRe: [],
+     PurchaseRe: [
+        { 
+            libraryName: "梯田开发·山地治理", 
+            address: "四川盆地·西南丘陵耕作总库" 
+        },
+        { 
+            libraryName: "林粮间作·立体农业", 
+            address: "巴蜀农技档案·生态复合种植体系" 
+        }
+    ],
+    borrowRe: [
+        { 
+            libraryName: "竹笕灌溉·水利创新", 
+            address: "川陕山地·特殊地形水利技术库" 
+        },
+        { 
+            libraryName: "杂粮体系·耐寒作物", 
+            address: "青藏高原东麓·高海拔农业技术集成" 
+        }
+    ],
     comment: [
   { userName: "山地开发", con: "'层蹬作梯，包石成田'的梯田修筑技术规范" },
   { userName: "杂粮种植", con: "详述荞麦、燕麦等耐寒作物在川陕山区的栽培要诀" },
@@ -1428,8 +1754,26 @@ $(function () {
         imgUrl: "img/三农纪.png"
       }
     ],
-    PurchaseRe: [{ libraryName: "西域文献库", address: "新疆吐鲁番" }],
-    borrowRe: [],
+    PurchaseRe: [
+        { 
+            libraryName: "多语农技·民族融合", 
+            address: "新疆吐鲁番·丝路农业文明交汇处" 
+        },
+        { 
+            libraryName: "家庭副业·增收技艺", 
+            address: "元代坊刻本·庭院经济操作指南" 
+        }
+    ],
+    borrowRe: [
+        { 
+            libraryName: "月令体例·实用创新", 
+            address: "西北边疆·农事历法传播枢纽" 
+        },
+        { 
+            libraryName: "食品加工·贮藏技术", 
+            address: "绿洲农业档案·干燥区食品保存总汇" 
+        }
+    ],
     comment: [
   { userName: "月令体系", con: "按月编排'正月种芋，二月种茄'等农事操作指南" },
   { userName: "食品加工", con: "详录造酪、作酱、腌菜等家庭食品贮藏技术" },
@@ -1498,8 +1842,26 @@ $(function () {
         imgUrl: "img/三农纪.png"
       }
     ],
-    PurchaseRe: [{ libraryName: "太湖民间藏书", address: "江苏苏州" }],
-    borrowRe: [],
+    PurchaseRe: [
+        { 
+            libraryName: "气象农谚·观天体系", 
+            address: "太湖流域·古代天气预测中心" 
+        },
+        { 
+            libraryName: "占候科学·经验集成", 
+            address: "江浙刻本·农业气象学实证档案" 
+        }
+    ],
+    borrowRe: [
+        { 
+            libraryName: "云图识别·预测模型", 
+            address: "长三角观测站·气象大数据先驱" 
+        },
+        { 
+            libraryName: "物候序列·演进规律", 
+            address: "江南农谚总库·气候变迁研究母本" 
+        }
+    ],
     comment: [
   { userName: "气象观测", con: "'云行东，车马通；云行西，雨凄凄'等数百条观天经验" },
   { userName: "物候预测", con: "'鸦浴风，鹊浴雨'等动物行为与天气的关联研究" },
@@ -1569,8 +1931,26 @@ $(function () {
         imgUrl: "img/农丹.png"
       }
     ],
-    PurchaseRe: [{ libraryName: "福建土楼藏书", address: "福建龙岩" }],
-    borrowRe: [],
+    PurchaseRe: [
+        { 
+            libraryName: "云形分类·预测体系", 
+            address: "福建土楼·东南农谚研究总库" 
+        },
+        { 
+            libraryName: "节气占验·灾害预警", 
+            address: "闽刻本·古代农业风险管理典范" 
+        }
+    ],
+    borrowRe: [
+        { 
+            libraryName: "物候链·生态时序", 
+            address: "万历观测档案·生物气候学先驱" 
+        },
+        { 
+            libraryName: "科学占卜·经验升华", 
+            address: "民间智慧总汇·气象学去迷信典范" 
+        }
+    ],
     comment: [
   { userName: "节气预测", con: "立春'西北风主歉收，东南风主丰稔'的长期预报" },
   { userName: "云图识别", con: "分类'钩云、鱼鳞云、炮车云'等二十余种云形" },
@@ -1640,8 +2020,26 @@ $(function () {
         imgUrl: "img/农政全书.png"
       }
     ],
-    PurchaseRe: [{ libraryName: "清代民间手稿", address: "河北保定" }],
-    borrowRe: [],
+    PurchaseRe: [
+        { 
+            libraryName: "地气学说·土壤哲学", 
+            address: "河北保定·传统农学理论化基地" 
+        },
+        { 
+            libraryName: "耕层管理·地温调控", 
+            address: "华北平原·土壤耕作实验档案库" 
+        }
+    ],
+    borrowRe: [
+        { 
+            libraryName: "阴阳燮理·农学思辨", 
+            address: "康熙稿本·传统农学哲学化标本" 
+        },
+        { 
+            libraryName: "施肥体系·物质循环", 
+            address: "北方旱作·生态农业理论先驱" 
+        }
+    ],
     comment: [
   { userName: "地气学说", con: "'地气通乎天时'，建立土壤温度与耕作时机关联理论" },
   { userName: "春耕技术", con: "立春后'土膏脉动'时深耕曝晒的整地方法" },
@@ -1711,8 +2109,26 @@ $(function () {
         imgUrl: "img/马首农言.png"
       }
     ],
-    PurchaseRe: [{ libraryName: "关中书院文库", address: "陕西西安" }],
-    borrowRe: [],
+    PurchaseRe: [
+        { 
+            libraryName: "理学农学·天地人三才", 
+            address: "陕西省西安·儒学农学融合典范库" 
+        },
+        { 
+            libraryName: "耕作仪式·生态伦理", 
+            address: "关中书院藏本·可持续农业哲学总源" 
+        }
+    ],
+    borrowRe: [
+        { 
+            libraryName: "农政体系·耕读传家", 
+            address: "乾隆官刻本·北方旱作技术标准库" 
+        },
+        { 
+            libraryName: "地气学说·土壤改良", 
+            address: "黄河流域观测站·传统农学实证基地" 
+        }
+    ],
     comment: [
   { userName: "农政哲学", con: "'天功人其代之'的天人合一农学思想体系" },
   { userName: "耕作仪式", con: "图解关中'打春牛、祭先农'等立春劝农仪典" },
@@ -1782,8 +2198,26 @@ $(function () {
         imgUrl: "img/农丹.png"
       }
     ],
-    PurchaseRe: [{ libraryName: "山东民间藏书", address: "山东潍坊" }],
-    borrowRe: [],
+    PurchaseRe: [
+        { 
+            libraryName: "土壤分类·适地种植", 
+            address: "山东省潍坊·北方土壤改良技术中枢" 
+        },
+        { 
+            libraryName: "轮作防衰·地方农谚", 
+            address: "鲁中平原·华北农业实践指南库" 
+        }
+    ],
+    borrowRe: [
+        { 
+            libraryName: "沙地耕作·抗逆栽培", 
+            address: "黄河三角洲·耐盐作物技术总汇" 
+        },
+        { 
+            libraryName: "农具适配·精耕细作", 
+            address: "齐鲁农耕档案·工具与土质匹配典范" 
+        }
+    ],
     comment: [
   { userName: "土壤分类", con: "将鲁中土壤分为沙、淤、碱等八类并制定改良方案" },
   { userName: "轮作体系", con: "设计'谷-豆-麻-菜'四年轮作防地方衰退" },
@@ -1853,8 +2287,26 @@ $(function () {
         imgUrl: "img/农圃便览.png"
       }
     ],
-    PurchaseRe: [{ libraryName: "晋商藏书楼", address: "山西平遥" }],
-    borrowRe: [],
+    PurchaseRe: [
+        { 
+            libraryName: "旱作体系·烧荒整地", 
+            address: "山西省平遥·黄土高原耕作技术母本" 
+        },
+        { 
+            libraryName: "杂粮种植·耐寒作物", 
+            address: "晋中丘陵区·山地农业技术集成库" 
+        }
+    ],
+    borrowRe: [
+        { 
+            libraryName: "农谚体系·灾害应对", 
+            address: "太行山观测站·传统气象预测总源" 
+        },
+        { 
+            libraryName: "畜牧管理·山地放牧", 
+            address: "晋商牧场档案·高原畜牧技术规范" 
+        }
+    ],
     comment: [
   { userName: "烧荒技术", con: "'立春烧荒，惊蛰耙地'的晋中旱作整地体系" },
   { userName: "杂粮种植", con: "详述莜麦、荞麦等耐寒作物栽培管理要点" },

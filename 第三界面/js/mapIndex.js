@@ -54,7 +54,7 @@ var data = [
   { name: "云浮", value: 24 },
   { name: "梅州", value: 25 },
   { name: "文登", value: 25 },
-  { name: "上海", value: 25 },
+  { name: "上海市", value: 25 },
   { name: "攀枝花", value: 25 },
   { name: "威海", value: 25 },
   { name: "承德", value: 25 },
@@ -132,7 +132,7 @@ var data = [
   { name: "柳州", value: 54 },
   { name: "三亚", value: 54 },
   { name: "自贡", value: 56 },
-  { name: "吉林", value: 56 },
+  { name: "吉林省", value: 56 },
   { name: "阳江", value: 57 },
   { name: "泸州", value: 57 },
   { name: "西宁", value: 57 },
@@ -154,7 +154,7 @@ var data = [
   { name: "扬州", value: 64 },
   { name: "常州", value: 64 },
   { name: "潍坊", value: 65 },
-  { name: "重庆", value: 66 },
+  { name: "重庆市", value: 66 },
   { name: "台州", value: 67 },
   { name: "南京", value: 67 },
   { name: "滨州", value: 70 },
@@ -167,7 +167,7 @@ var data = [
   { name: "宝鸡", value: 72 },
   { name: "焦作", value: 75 },
   { name: "句容", value: 75 },
-  { name: "北京", value: 79 },
+  { name: "北京市", value: 79 },
   { name: "徐州", value: 79 },
   { name: "衡水", value: 80 },
   { name: "包头", value: 80 },
@@ -191,7 +191,7 @@ var data = [
   { name: "沧州", value: 100 },
   { name: "临沂", value: 103 },
   { name: "南充", value: 104 },
-  { name: "天津", value: 105 },
+  { name: "天津市", value: 105 },
   { name: "富阳", value: 106 },
   { name: "泰安", value: 112 },
   { name: "诸暨", value: 112 },
@@ -246,7 +246,7 @@ var geoCoordMap = {
   云浮: [112.02, 22.93],
   梅州: [116.1, 24.55],
   文登: [122.05, 37.2],
-  上海: [121.48, 31.22],
+  上海市: [121.48, 31.22],
   攀枝花: [101.718637, 26.582347],
   威海: [122.1, 37.5],
   承德: [117.93, 40.97],
@@ -324,7 +324,7 @@ var geoCoordMap = {
   柳州: [109.4, 24.33],
   三亚: [109.511909, 18.252847],
   自贡: [104.778442, 29.33903],
-  吉林: [126.57, 43.87],
+  吉林省: [126.57, 43.87],
   阳江: [111.95, 21.85],
   泸州: [105.39, 28.91],
   西宁: [101.74, 36.56],
@@ -346,7 +346,7 @@ var geoCoordMap = {
   扬州: [119.42, 32.39],
   常州: [119.95, 31.79],
   潍坊: [119.1, 36.62],
-  重庆: [106.54, 29.59],
+  重庆市: [106.54, 29.59],
   台州: [121.420757, 28.656386],
   南京: [118.78, 32.04],
   滨州: [118.03, 37.36],
@@ -359,7 +359,7 @@ var geoCoordMap = {
   宝鸡: [107.15, 34.38],
   焦作: [113.21, 35.24],
   句容: [119.16, 31.95],
-  北京: [116.46, 39.92],
+  北京市: [116.46, 39.92],
   徐州: [117.2, 34.26],
   衡水: [115.72, 37.72],
   包头: [110, 40.58],
@@ -383,7 +383,7 @@ var geoCoordMap = {
   沧州: [116.83, 38.33],
   临沂: [118.35, 35.05],
   南充: [106.110698, 30.837793],
-  天津: [117.2, 39.13],
+  天津市: [117.2, 39.13],
   富阳: [119.95, 30.07],
   泰安: [117.13, 36.18],
   诸暨: [120.23, 29.71],
@@ -437,7 +437,7 @@ var Month = [
 var itemStyleD = [
     // === itemStyleD 部分（核心省份） ===
     {   
-        name: '湖南',
+        name: '湖南省',
         uploadcnt: "丘陵、水田、湖区", 
         uploadpzs: "水稻、棉花、甘蔗",
         xsmy: "亚热带湿润气候，潮湿多雨",
@@ -448,7 +448,7 @@ var itemStyleD = [
         }        
     },
     {   
-        name: '上海',
+        name: '上海市',
         uploadcnt: "冲积平原、河网密布",
         uploadpzs: "水稻、棉花、蔬菜",
         xsmy: "亚热带季风气候，湿润温暖",
@@ -459,7 +459,7 @@ var itemStyleD = [
         }        
     },
     {   
-        name: '云南',
+        name: '云南省',
         uploadcnt: "高原、山地、河谷",
         uploadpzs: "水稻、玉米、烟草",
         xsmy: "高原山地气候，干湿分明",
@@ -470,7 +470,7 @@ var itemStyleD = [
         }        
     },
     {   
-        name: '湖北',
+        name: '湖北省',
         uploadcnt: "湖泊、平原、水田",
         uploadpzs: "水稻、油菜、棉花",
         xsmy: "亚热带湿润气候，雨多湿热",
@@ -481,7 +481,7 @@ var itemStyleD = [
         }        
     },
     {   
-        name: '江苏',
+        name: '江苏省',
         uploadcnt: "冲积平原、水网密布",
         uploadpzs: "水稻、小麦、蚕桑",
         xsmy: "亚热带湿润季风气候，温暖多雨",
@@ -492,7 +492,7 @@ var itemStyleD = [
         }        
     },
     {   
-        name: '江西',
+        name: '江西省',
         uploadcnt: "丘陵、湖泊、水田",
         uploadpzs: "水稻、甘蔗、棉花",
         xsmy: "亚热带湿润气候，四季分明",
@@ -503,7 +503,7 @@ var itemStyleD = [
         }        
     },
     {   
-        name: '内蒙古',
+        name: '内蒙古自治区',
         uploadcnt: "草原、沙地、丘陵",
         uploadpzs: "燕麦、黍、马铃薯",
         xsmy: "温带草原气候，干冷风大",
@@ -514,7 +514,7 @@ var itemStyleD = [
         }        
     },
     {   
-        name: '四川',
+        name: '四川省',
         uploadcnt: "盆地、山地、丘陵",
         uploadpzs: "水稻、小麦、油菜",
         xsmy: "亚热带湿润气候，炎热多雨",
@@ -525,7 +525,7 @@ var itemStyleD = [
         }        
     },
     {   
-        name: '浙江',
+        name: '浙江省',
         uploadcnt: "丘陵、水田",
         uploadpzs: "水稻、茶叶、蚕桑",
         xsmy: "亚热带季风气候，温暖湿润",
@@ -540,7 +540,7 @@ var itemStyleD = [
 var noneData = [
     // === noneData 部分（其他省份） ===
     {
-        name: '广东', 
+        name: '广东省', 
         uploadcnt: "丘陵、盆地、平原",
         uploadpzs: "水稻、甘蔗、香蕉",
         xsmy: "南亚热带季风气候，炎热多雨",
@@ -551,7 +551,7 @@ var noneData = [
         }
     },    
     {
-        name: '甘肃', 
+        name: '甘肃省', 
         uploadcnt: "山地、沙地、绿洲",
         uploadpzs: "小麦、玉米、马铃薯",
         xsmy: "温带干旱半干旱气候，少雨多风",
@@ -562,7 +562,7 @@ var noneData = [
         }                    
     },
     {
-        name: '河北', 
+        name: '河北省', 
         uploadcnt: "黄土平原、冲积平原",
         uploadpzs: "小麦、谷子、高粱",
         xsmy: "温带季风气候，冬季寒冷干燥",
@@ -573,7 +573,7 @@ var noneData = [
         }                                       
     },
     {
-        name: '河南', 
+        name: '河南省', 
         uploadcnt: "黄土平原、河谷地",
         uploadpzs: "小麦、棉花、芝麻",
         xsmy: "温带季风气候，春暖夏热",
@@ -584,7 +584,7 @@ var noneData = [
         }                    
     },
     {
-        name: '黑龙江', 
+        name: '黑龙江省', 
         uploadcnt: "黑土平原、林地",
         uploadpzs: "大豆、小麦、马铃薯",
         xsmy: "寒温带气候，严寒漫长",
@@ -595,7 +595,7 @@ var noneData = [
         }
     },
     {
-        name: '山东', 
+        name: '山东省', 
         uploadcnt: "平原、丘陵、沿海",
         uploadpzs: "小麦、花生、高粱",
         xsmy: "温带季风气候，春旱夏雨",
@@ -606,7 +606,7 @@ var noneData = [
         }
     },
     {
-        name: '新疆', 
+        name: '新疆维吾尔自治区', 
         uploadcnt: "盆地、山地、绿洲",
         uploadpzs: "小麦、棉花、葡萄",
         xsmy: "温带大陆性干旱气候，昼夜温差大",
@@ -617,7 +617,7 @@ var noneData = [
         }
     },    
     {
-        name: '宁夏', 
+        name: '宁夏回族自治区', 
         uploadcnt: "黄土台地、河套平原",
         uploadpzs: "小麦、水稻、枸杞",
         xsmy: "温带大陆性干旱气候",
@@ -629,7 +629,7 @@ var noneData = [
         label: { show: false }                                         
     },
     {
-        name: '海南', 
+        name: '海南省', 
         uploadcnt: "火山地、平原、丘陵",
         uploadpzs: "水稻、甘蔗、热带水果",
         xsmy: "热带季风气候，全年高温",
@@ -641,7 +641,7 @@ var noneData = [
         label: { show: false }                                         
     },
     {
-        name: '台湾',  
+        name: '台湾省',  
         uploadcnt: "山地、平原、海岸",
         uploadpzs: "水稻、甘蔗、热带水果",
         xsmy: "热带和亚热带季风气候",
@@ -677,7 +677,7 @@ var noneData = [
         label: { show: false }                                                              
     },
     {
-        name: '北京', 
+        name: '北京市', 
         uploadcnt: "山地、平原",
         uploadpzs: "小麦、玉米、豆类",
         xsmy: "温带季风气候，四季分明",
@@ -689,7 +689,7 @@ var noneData = [
         label: { show: false }                      
     },
     {
-        name: '天津', 
+        name: '天津市', 
         uploadcnt: "冲积平原、滨海湿地",
         uploadpzs: "小麦、玉米、蔬菜",
         xsmy: "温带季风气候，冬冷夏热",
@@ -701,7 +701,7 @@ var noneData = [
         label: { show: false }                      
     },
     {
-        name: '重庆', 
+        name: '重庆市', 
         uploadcnt: "丘陵、山地",
         uploadpzs: "水稻、甘蔗、蔬菜",
         xsmy: "亚热带湿润气候，闷热潮湿",
@@ -713,7 +713,7 @@ var noneData = [
         label: { show: false }                                         
     },      
     {
-        name: '辽宁', 
+        name: '辽宁省', 
         uploadcnt: "山地、平原、丘陵",
         uploadpzs: "小麦、高粱、粟",
         xsmy: "温带季风气候，寒冷干燥",
@@ -725,7 +725,7 @@ var noneData = [
         label: { show: false }                      
     },
     {
-        name: '安徽', 
+        name: '安徽省', 
         uploadcnt: "山地、平原、湖泊",
         uploadpzs: "水稻、小麦、油菜",
         xsmy: "亚热带季风气候，雨量充沛",
@@ -737,7 +737,7 @@ var noneData = [
         label: { show: false }                                          
     },      
     {
-        name: '广西', 
+        name: '广西壮族自治区', 
         uploadcnt: "喀斯特丘陵、河谷",
         uploadpzs: "水稻、玉米、甘蔗",
         xsmy: "南亚热带湿润气候，湿热多雨",
@@ -749,7 +749,7 @@ var noneData = [
         label: { show: false }                      
     },      
     {
-        name: '山西', 
+        name: '山西省', 
         uploadcnt: "黄土高原",
         uploadpzs: "谷子、黍、高粱",
         xsmy: "温带大陆性气候，寒冷干燥",
@@ -761,7 +761,7 @@ var noneData = [
         label: { show: false }                      
     },
     {
-        name: '陕西', 
+        name: '陕西省', 
         uploadcnt: "关中平原、黄土高原",
         uploadpzs: "小麦、玉米、棉花",
         xsmy: "温带大陆性气候，四季分明",
@@ -773,7 +773,7 @@ var noneData = [
         label: { show: false }                                                                                                                          
     },
     {
-        name: '吉林', 
+        name: '吉林省', 
         uploadcnt: "山地、丘陵、平原",
         uploadpzs: "大豆、粟、马铃薯",
         xsmy: "温带季风气候，严寒多雪",
@@ -785,7 +785,7 @@ var noneData = [
         label: { show: false }                                                            
     },
     {
-        name: '福建', 
+        name: '福建省', 
         uploadcnt: "山地、丘陵、水田",
         uploadpzs: "水稻、甘蔗、茶叶",
         xsmy: "亚热带季风气候，湿润多雨",
@@ -797,7 +797,7 @@ var noneData = [
         label: { show: false }                                        
     },
     {
-        name: '贵州', 
+        name: '贵州省', 
         uploadcnt: "喀斯特高原、山地",
         uploadpzs: "玉米、马铃薯、稻谷",
         xsmy: "亚热带湿润气候，湿润凉爽",
@@ -809,7 +809,7 @@ var noneData = [
         label: { show: false }                                       
     },      
     {
-        name: '青海', 
+        name: '青海省', 
         uploadcnt: "高原、山地、草原",
         uploadpzs: "青稞、马铃薯、豆类",
         xsmy: "高原大陆性气候，寒冷干燥",
@@ -821,7 +821,7 @@ var noneData = [
         label: { show: false }                                                             
     },
     {
-        name: '西藏', 
+        name: '西藏自治区', 
         uploadcnt: "高原、山地",
         uploadpzs: "青稞、豌豆、马铃薯",
         xsmy: "高原气候，寒冷干燥",
@@ -971,21 +971,21 @@ var option = {
             }
         },
         {
-            name: '北京', 
+            name: '北京市', 
             itemStyle: {
                 areaColor: '#034DE4',
                 opacity: 0.2                            
             }
         },
         {
-            name: '天津', 
+            name: '天津市', 
             itemStyle: {
 							areaColor: '#034DE4',
 							opacity: 0.2                            
 						}
         },
         {
-            name: '上海', 
+            name: '上海市', 
             itemStyle: {
 							areaColor: '#27E9FD',
 							opacity: 0.2                            
@@ -993,203 +993,203 @@ var option = {
 						
         },
         {
-            name: '重庆', 
+            name: '重庆市', 
             itemStyle: {
 							areaColor: '#0E7DEB',
 							opacity: 0.2                            
 						}                  
         },
         {
-            name: '河北', 
+            name: '河北省', 
 						itemStyle: {
 							areaColor: '#034DE4',
 							opacity: 0.2                            
 						}                                      
         },
         {
-            name: '河南', 
+            name: '河南省', 
             itemStyle: {
 							areaColor: '#034DE4',
 							opacity: 0.2                            
 						}
         },
         {
-            name: '云南', 
+            name: '云南省', 
             itemStyle: {
 							areaColor: '#20CAF8',
 							opacity: 0.2                            
 						}
         },
         {
-					name: '辽宁', 
+					name: '辽宁省', 
 					itemStyle: {
 						areaColor: '#034DE4',
 						opacity: 0.2                            
 					}                    
         },
         {
-					name: '黑龙江', 
+					name: '黑龙江省', 
 					itemStyle: {
 						areaColor: '#17A3F1',
 						opacity: 0.2                            
 					}
         },
         {
-					name: '湖南', 
+					name: '湖南省', 
 					itemStyle: {
 						areaColor: '#0554E4',
 						opacity: 0.2                            
 					}
         },
         {
-            name: '安徽', 
+            name: '安徽省', 
             itemStyle: {
 							areaColor: '#27E8FD',
 							opacity: 0.2                            
 						}                  
         },
         {
-            name: '山东', 
+            name: '山东省', 
             itemStyle: {
 							areaColor: '#4BFFFF',
 							opacity: 0.2                            
 						}
         },
         {
-            name: '新疆', 
+            name: '新疆维吾尔自治区', 
 						itemStyle: {
 							areaColor: '#17A3F1',
 							opacity: 0.2                            
 						}
         },
         {
-            name: '江苏', 
+            name: '江苏省', 
             itemStyle: {
 							areaColor: '#00b6f6',
 							opacity: 0.2                            
 						}                  
         },
         {
-            name: '浙江', 
+            name: '浙江省', 
             itemStyle: {
 							areaColor: '#00b6f6',
 							opacity: 0.2                            
 						}                    
         },
         {
-            name: '江西', 
+            name: '江西省', 
             itemStyle: {
 							areaColor: '#01a4f1',
 							opacity: 0.2                            
 						} 
         },
         {
-            name: '湖北', 
+            name: '湖北省', 
             itemStyle: {
 							areaColor: '#005ce5',
 							opacity: 0.2                            
 						} 
         },
         {
-            name: '广西', 
+            name: '广西壮族自治区', 
             itemStyle: {
 							areaColor: '#0088ec',
 							opacity: 0.2                            
 						} 
         },
         {
-            name: '甘肃', 
+            name: '甘肃省', 
             itemStyle: {
 							areaColor: '#0042df',
 							opacity: 0.2                            
 						}                                       
         },
         {
-            name: '山西', 
+            name: '山西省', 
             itemStyle: {
 							areaColor: '#01d0fa',
 							opacity: 0.2                            
 						}                     
         },
         {
-            name: '内蒙古', 
+            name: '内蒙古自治区', 
             itemStyle: {
                 areaColor: '#00ccf7',
                 opacity: 0.2                            
             }                                       
         },
         {
-            name: '陕西', 
+            name: '陕西省', 
             itemStyle: {
 							areaColor: '#01b0f3',
 							opacity: 0.2                            
 						} 
         },
         {
-            name: '吉林', 
+            name: '吉林省', 
             itemStyle: {
 							areaColor: '#0051e1',
 							opacity: 0.2                            
 						}                                       
         },
         {
-            name: '福建', 
+            name: '福建省', 
             itemStyle: {
 							areaColor: '#0158e3',
 							opacity: 0.2                            
 						} 
         },
         {
-            name: '贵州', 
+            name: '贵州省', 
             itemStyle: {
 							areaColor: '#0199ef',
 							opacity: 0.2                            
 						}                    
         },
         {
-            name: '广东', 
+            name: '广东省', 
             itemStyle: {
 							areaColor: '#00d9fc',
 							opacity: 0.2                            
 						} 
         },
         {
-            name: '青海', 
+            name: '青海省', 
             itemStyle: {
 							areaColor: '#005ae4',
 							opacity: 0.2                            
 						} 
         },
         {
-            name: '西藏', 
+            name: '西藏自治区', 
             itemStyle: {
 							areaColor: '#01e9fd',
 							opacity: 0.2                            
 						}                    
         },
         {
-					name: '四川', 
+					name: '四川省', 
 					itemStyle: {
 						areaColor: '#0069e8',
 						opacity: 0.2                            
 					} 
         },
         {
-					name: '宁夏', 
+					name: '宁夏回族自治区', 
 					itemStyle: {
 						areaColor: '#01b0f3',
 						opacity: 0.2                            
 					}                    
         },
         {
-					name: '海南', 
+					name: '海南省', 
 					itemStyle: {
 						areaColor: '#00f0ff',
 						opacity: 0.2                            
 					}                   
         },
         {
-					name: '台湾', 
+					name: '台湾省', 
 					itemStyle: {
 						areaColor: '#0067e7',
 						opacity: 0.2                            
@@ -1246,7 +1246,7 @@ var option = {
       },
       data: [
         {
-          name: '北京', 
+          name: '北京市', 
           itemStyle: {
             normal: {
                 areaColor: '#034DE4'                            
@@ -1261,7 +1261,7 @@ var option = {
           }
         },
         {
-            name: '天津', 
+            name: '天津市', 
             itemStyle: {
                 normal: {
                     areaColor: '#034DE4'                            
@@ -1276,7 +1276,7 @@ var option = {
             }
         },
         {
-            name: '上海', 
+            name: '上海市', 
             itemStyle: {
                 normal: {
                     areaColor: '#27E9FD'   
@@ -1287,7 +1287,7 @@ var option = {
             }                    
         },
         {
-            name: '重庆', 
+            name: '重庆市', 
             itemStyle: {
                 normal: {                        
                     areaColor: '#0E7DEB'
@@ -1302,7 +1302,7 @@ var option = {
             }                   
         },
         {
-            name: '河北',                    
+            name: '河北省',                    
             itemStyle: {
                 normal: {                        
                     areaColor: '#034DE4'
@@ -1313,7 +1313,7 @@ var option = {
             }                                       
         },
         {
-            name: '河南',                    
+            name: '河南省',                    
             itemStyle: {
                 normal: {                        
                     areaColor: '#034DE4'
@@ -1324,7 +1324,7 @@ var option = {
             }                    
         },
         {
-            name: '云南', 
+            name: '云南省', 
             itemStyle: {
                 normal: {                        
                     areaColor: '#20CAF8'
@@ -1335,7 +1335,7 @@ var option = {
             }                     
         },
         {
-            name: '辽宁', 
+            name: '辽宁省', 
             itemStyle: {
                 normal: {                        
                     areaColor: '#034DE4'
@@ -1350,7 +1350,7 @@ var option = {
             }                     
         },
         {
-            name: '黑龙江', 
+            name: '黑龙江省', 
             itemStyle: {
                 normal: {                        
                     areaColor: '#17A3F1'
@@ -1361,7 +1361,7 @@ var option = {
             }
         },
         {
-            name: '湖南', 
+            name: '湖南省', 
             itemStyle: {
                 normal: {                       
                     areaColor: '#0554E4'                      
@@ -1372,7 +1372,7 @@ var option = {
             } 
         },
         {
-            name: '安徽', 
+            name: '安徽省', 
             itemStyle: {
                 normal: {                        
                     areaColor: '#27E8FD'
@@ -1387,7 +1387,7 @@ var option = {
             }                    
         },
         {
-            name: '山东', 
+            name: '山东省', 
             itemStyle: {
                 normal: {                        
                     areaColor: '#4BFFFF'                    
@@ -1398,7 +1398,7 @@ var option = {
             }
         },
         {
-            name: '新疆', 
+            name: '新疆维吾尔自治区', 
             itemStyle: {
                 normal: {                        
                     areaColor: '#17A3F1'    
@@ -1409,7 +1409,7 @@ var option = {
             }
         },
         {
-            name: '江苏', 
+            name: '江苏省', 
             itemStyle: {
                 normal: {                        
                     areaColor: '#00b6f6'
@@ -1420,7 +1420,7 @@ var option = {
             }                   
         },
         {
-            name: '浙江', 
+            name: '浙江省', 
             itemStyle: {
                 normal: {                        
                     areaColor: '#00b6f6'
@@ -1435,7 +1435,7 @@ var option = {
             }                    
         },
         {
-            name: '江西', 
+            name: '江西省', 
             itemStyle: {
                 normal: {                        
                     areaColor: '#01a4f1'
@@ -1446,7 +1446,7 @@ var option = {
             }                                        
         },
         {
-            name: '湖北', 
+            name: '湖北省', 
             itemStyle: {
                 normal: {                        
                     areaColor: '#005ce5'
@@ -1457,7 +1457,7 @@ var option = {
             }                                                            
         },
         {
-            name: '广西', 
+            name: '广西壮族自治区', 
             itemStyle: {
                 normal: {                        
                     areaColor: '#0088ec'                           
@@ -1472,7 +1472,7 @@ var option = {
             }                    
         },
         {
-            name: '甘肃', 
+            name: '甘肃省', 
             itemStyle: {
                 normal: {                        
                     areaColor: '#0042df'
@@ -1483,7 +1483,7 @@ var option = {
             }                    
         },
         {
-            name: '山西', 
+            name: '山西省', 
             itemStyle: {
                 normal: {                        
                     areaColor: '#01d0fa'
@@ -1498,7 +1498,7 @@ var option = {
             } 
         },
         {
-            name: '内蒙古', 
+            name: '内蒙古自治区', 
             itemStyle: {
                 normal: {                        
                     areaColor: '#00ccf7'
@@ -1509,7 +1509,7 @@ var option = {
             }
         },
         {
-            name: '陕西', 
+            name: '陕西省', 
             itemStyle: {
                 normal: {                        
                     areaColor: '#01b0f3'
@@ -1524,7 +1524,7 @@ var option = {
             }                                                              
         },
         {
-            name: '吉林', 
+            name: '吉林省', 
             itemStyle: {
                 normal: {                        
                     areaColor: '#0051e1'
@@ -1539,7 +1539,7 @@ var option = {
             }                                                                                
         },
         {
-            name: '福建', 
+            name: '福建省', 
             itemStyle: {
                 normal: {                       
                     areaColor: '#0158e3'
@@ -1554,7 +1554,7 @@ var option = {
             }                                                                                                      
         },
         {
-            name: '贵州', 
+            name: '贵州省', 
             itemStyle: {
                 normal: {                        
                     areaColor: '#0199ef'
@@ -1569,7 +1569,7 @@ var option = {
             }                                                                                                                                            
         },
         {
-          name: '广东', 
+          name: '广东省', 
           itemStyle: {
               normal: {                        
                   areaColor: '#00d9fc'                            
@@ -1584,7 +1584,7 @@ var option = {
           }                                                                                                      
         },
         {
-            name: '青海', 
+            name: '青海省', 
             itemStyle: {
                 normal: {                        
                     areaColor: '#005ae4'
@@ -1599,7 +1599,7 @@ var option = {
             }                    
         },
         {
-            name: '西藏', 
+            name: '西藏自治区', 
             itemStyle: {
                 normal: {                        
                     areaColor: '#01e9fd'                            
@@ -1614,7 +1614,7 @@ var option = {
             }
         },
         {
-            name: '四川', 
+            name: '四川省', 
             itemStyle: {
                 normal: {                        
                     areaColor: '#0069e8'                           
@@ -1626,7 +1626,7 @@ var option = {
             }
         },
         {
-            name: '宁夏', 
+            name: '宁夏回族自治区', 
             itemStyle: {
                 normal: {                        
                     areaColor: '#01b0f3'                            
@@ -1641,7 +1641,7 @@ var option = {
             }
         },
         {
-            name: '海南', 
+            name: '海南省', 
             itemStyle: {
                 normal: {                        
                     areaColor: '#00f0ff'
@@ -1656,7 +1656,7 @@ var option = {
             }                    
         },
         {
-            name: '台湾',                  
+            name: '台湾省',                  
             itemStyle: {
                     normal: {                       
                     areaColor: '#0067e7'
@@ -2169,63 +2169,63 @@ for(var i = 0, len = allDefProvince.length; i < len; i++){
    var sglProvinceProperties = allDefProvince[i].properties;
    var sglProvinceName = sglProvinceProperties.name;
    switch(sglProvinceName){
-        case '湖北':
+        case '湖北省':
             sglProvinceProperties.cp[0] = 128.642464;
 			sglProvinceProperties.cp[1] = 34.756967;
             break;
-        case '湖南':
+        case '湖南省':
             sglProvinceProperties.cp[0] = 128.642464;
 			sglProvinceProperties.cp[1] = 34.756967;
             break;        
-        case '江西':
+        case '江西省':
             sglProvinceProperties.cp[0] = 128.642464;
 			sglProvinceProperties.cp[1] = 34.756967;
             break;        
-        case '甘肃':
+        case '甘肃省':
             sglProvinceProperties.cp[0] = 128.642464;
 			sglProvinceProperties.cp[1] = 34.756967;
             break;        
-        case '新疆':
+        case '新疆维吾尔自治区':
             sglProvinceProperties.cp[0] = 128.642464;
 			sglProvinceProperties.cp[1] = 34.756967;
             break;        
-        case '上海':
+        case '上海市':
             sglProvinceProperties.cp[0] = 128.642464;
 			sglProvinceProperties.cp[1] = 34.756967;
             break;        
-        case '江苏':
+        case '江苏省':
             sglProvinceProperties.cp[0] = 128.642464;
 			sglProvinceProperties.cp[1] = 34.756967;
             break;        
-        case '云南':
+        case '云南省':
             sglProvinceProperties.cp[0] = 128.642464;
 			sglProvinceProperties.cp[1] = 34.756967;
             break;        
-        case '广东':
+        case '广东省':
             sglProvinceProperties.cp[0] = 128.642464;
 			sglProvinceProperties.cp[1] = 34.756967;
             break;        
-        case '浙江':
+        case '浙江省':
             sglProvinceProperties.cp[0] = 128.642464;
 			sglProvinceProperties.cp[1] = 34.756967;
             break;        
-        case '河北':
+        case '河北省':
             sglProvinceProperties.cp[0] = 128.642464;
 			sglProvinceProperties.cp[1] = 34.756967;
             break;        
-        case '山东':            
+        case '山东省':            
             sglProvinceProperties.cp[0] = 128.642464;
 			sglProvinceProperties.cp[1] = 34.756967;
             break;        
-        case '河南':
+        case '河南省':
             sglProvinceProperties.cp[0] = 128.642464;
 			sglProvinceProperties.cp[1] = 34.756967;
             break;        
-        case '四川':
+        case '四川省':
             sglProvinceProperties.cp[0] = 128.642464;
 			sglProvinceProperties.cp[1] = 34.756967;
             break;        
-        case '内蒙古':
+        case '内蒙古自治区':
  sglProvinceProperties.cp[0] = 128.642464;
 			sglProvinceProperties.cp[1] = 34.756967;
             break;
