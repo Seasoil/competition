@@ -9,17 +9,18 @@
         body {
             margin: 0;
             padding: 0;
-            background: linear-gradient(to bottom, #f0f9eb, #c8e6c9);
+            background: url('./节气界面/img/背景图（节气）.png');
             font-family: 'Microsoft YaHei', sans-serif;
         }
+
         .main-nav {
             position: fixed;
             top: 0;
             left: 0;
             right: 0;
             height: 80px;
-            background: rgba(124, 169, 56, 0.95);
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            background: rgba(199, 185, 185, 0.08);
+            box-shadow: 0 4px 20px rgba(199, 185, 185, 0.08);
             z-index: 1000;
             display: flex;
             align-items: center;
@@ -36,8 +37,8 @@
         .nav-button {
             padding: 12px 28px;
             border-radius: 6px;
-            background: rgba(255, 255, 255, 0.1);
-            color: #04532c;
+            background: rgb(84, 82, 82);
+            color: #e2eae6;
             font-size: 16px;
             font-weight: 500;
             cursor: pointer;
@@ -49,7 +50,7 @@
         }
 
         .nav-button:hover {
-            background: #1eb323;
+            background: #f4e110;
             color: white;
             transform: translateY(-2px);
             box-shadow: 0 6px 16px rgba(76, 175, 80, 0.25);
@@ -58,8 +59,9 @@
         .nav-button i {
             font-size: 18px;
         }
+
         #chart-container {
-            margin-top: 100px; /* 给导航栏留出空间 */
+            margin-top: 100px;
             height: calc(100vh - 100px);
         }
 
@@ -75,6 +77,36 @@
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
             z-index: 2;
             padding: 15px 5px;
+        }
+
+        #time-labels {
+            position: absolute;
+            left: -60px;
+            top: 0;
+            height: 100%;
+            width: 50px;
+            pointer-events: none;
+        }
+
+        .time-label {
+            position: absolute;
+            right: 10px;
+            transform: translateY(-50%);
+            color: #4a7a3d;
+            font-size: 12px;
+            font-weight: 500;
+            text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
+            white-space: nowrap;
+        }
+
+        .time-label::after {
+            content: '';
+            position: absolute;
+            right: -8px;
+            top: 50%;
+            width: 4px;
+            height: 1px;
+            background: #8bc34a;
         }
 
         #time-slider {
@@ -133,19 +165,19 @@
 
 <body>
     <nav class="main-nav">
-        <h1 style="color: #2c7a53; font-size: 24px;">农事节气可视化系统</h1>
+        <h1 style="color: #2c7a53; font-size: 24px;"></h1>
         <div class="nav-buttons">
             <button class="nav-button" onclick="window.location.href='../index.html'">
-                <i>📊</i>主界面
+                <i></i>主界面
             </button>
             <button class="nav-button" onclick="window.location.href='../第二界面/关系图.html'">
-                <i>🌾</i>第二界面
+                <i></i>第二界面
             </button>
             <button class="nav-button" onclick="window.location.href='../第三界面/人界面.html'">
-                <i>📅</i>第三界面
+                <i></i>第三界面
             </button>
             <button class="nav-button" onclick="window.location.href='./节气界面/农谚.html'">
-                <i>🌱</i>农谚界面
+                <i></i>农谚界面
             </button>
         </div>
     </nav>
@@ -153,6 +185,7 @@
     <div id="chart-container"></div>
     <div id="time-axis">
         <input type="range" id="time-slider" min="0" max="365" value="0" orient="vertical">
+        <div id="time-labels"></div>
     </div>
     <div id="term-tooltip" class="term-tooltip"></div>
 
@@ -166,21 +199,21 @@
         };
         const navButtons = document.querySelectorAll('.nav-button');
 
-            navButtons.forEach(button => {
-                button.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    // 添加页面过渡动画
-                    anime({
-                        targets: 'body',
-                        opacity: 0,
-                        duration: 400,
-                        easing: 'easeInOutQuad',
-                        complete: () => {
-                            window.location.href = button.onclick.toString().match(/'(.*?)'/)[1];
-                        }
-                    });
+        navButtons.forEach(button => {
+            button.addEventListener('click', (e) => {
+                e.preventDefault();
+                // 添加页面过渡动画
+                anime({
+                    targets: 'body',
+                    opacity: 0,
+                    duration: 400,
+                    easing: 'easeInOutQuad',
+                    complete: () => {
+                        window.location.href = button.onclick.toString().match(/'(.*?)'/)[1];
+                    }
                 });
             });
+        });
         // 节气数据
         const solarTermsData = [
             { name: '立春', season: '春', date: '2月3-5日', desc: '春耕备耕开始，检查农具，准备早稻育秧' },
@@ -220,6 +253,20 @@
 
         const slider = document.getElementById('time-slider');
         const tooltip = document.getElementById('term-tooltip');
+
+        // 创建时间轴标签
+        const monthLabels = [
+              { day: 15, name: '12月' },{ day: 45, name: '11月' },{ day: 75, name: '10月' },{ day: 105, name: '9月' },{ day: 135, name: '8月' },{ day: 165, name: '7月' },{ day: 195, name: '6月' },{ day: 225, name: '5月' },{ day: 255, name: '4月' },{ day: 285, name: '3月' },{ day: 315, name: '2月' },{ day: 345, name: '1月' }
+        ];
+
+        const labelsContainer = document.getElementById('time-labels');
+        monthLabels.forEach(label => {
+            const elem = document.createElement('div');
+            elem.className = 'time-label';
+            elem.style.top = `${(label.day / 365) * 100}%`;
+            elem.textContent = label.name;
+            labelsContainer.appendChild(elem);
+        });
 
         // 优化时间轴交互
         slider.addEventListener('input', _.throttle(e => {

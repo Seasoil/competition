@@ -2339,13 +2339,13 @@ $(function () {
         "<p>作者: " +
         data[index].similarBook[i].author +
         "</p>" +
-        "<p>出版社: " +
+        "<p> " +
         data[index].similarBook[i].press +
         "</p>" +
-        "<p>出版年: " +
+        "<p> " +
         data[index].similarBook[i].year +
         "</p>" +
-        "<p>ISBN: " +
+        "<p>" +
         data[index].similarBook[i].ISBN +
         "</p>" +
         "</dd>" +
@@ -2369,22 +2369,22 @@ $(function () {
       "<p>作者: " +
       data[index].BookInformation.author +
       "</p>" +
-      "<p>出版社: " +
+      "<p> " 
       data[index].BookInformation.press +
       "</p>" +
-      "<p>出版年: " +
+      "<p> " +
       data[index].BookInformation.year +
       "</p>" +
-      "<p>定价: " +
+      "<p> " +
       data[index].BookInformation.price +
       "元</p>" +
-      "<p>装帧: " +
+      "<p> " +
       data[index].BookInformation.Binding +
       "</p>" +
-      "<p>开本: " +
+      "<p> " +
       data[index].BookInformation.folio +
       "开</p>" +
-      "<p>ISBN: " +
+      "<p> " +
       data[index].BookInformation.ISBN +
       "</p>" +
       "</dd>" +

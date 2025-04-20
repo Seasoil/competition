@@ -443,8 +443,8 @@ var itemStyleD = [
         xsmy: "亚热带湿润气候，潮湿多雨",
         kcmy: "米饭、腊肉、鱼类",
         itemStyle: {
-            normal: { areaColor: '#0554E4' },
-            emphasis: { areaColor: "#0554E4" }
+            normal: { areaColor: 'rgb(244, 163, 13)' },
+            emphasis: { areaColor: "rgb(244, 71, 13)" }
         }        
     },
     {   
@@ -454,8 +454,8 @@ var itemStyleD = [
         xsmy: "亚热带季风气候，湿润温暖",
         kcmy: "米饭、小笼包、河鲜",
         itemStyle: {
-            normal: { areaColor: '#27E9FD' },
-            emphasis: { areaColor: "#27E9FD" }
+            normal: { areaColor: 'rgb(244, 163, 13)' },
+            emphasis: { areaColor: "rgb(244, 71, 13)" }
         }        
     },
     {   
@@ -465,8 +465,8 @@ var itemStyleD = [
         xsmy: "高原山地气候，干湿分明",
         kcmy: "米线、野菜、腊肉",
         itemStyle: {
-            normal: { areaColor: '#20CAF8' },
-            emphasis: { areaColor: "#20CAF8" }
+            normal: { areaColor: 'rgb(244, 163, 13)' },
+            emphasis: { areaColor: "rgb(244, 71, 13)" }
         }        
     },
     {   
@@ -476,8 +476,8 @@ var itemStyleD = [
         xsmy: "亚热带湿润气候，雨多湿热",
         kcmy: "米饭、鱼、藕汤",
         itemStyle: {
-            normal: { areaColor: '#005ce5' },
-            emphasis: { areaColor: "#005ce5" }
+            normal: { areaColor: 'rgb(244, 163, 13)' },
+            emphasis: { areaColor: "rgb(244, 71, 13)" }
         }        
     },
     {   
@@ -487,8 +487,8 @@ var itemStyleD = [
         xsmy: "亚热带湿润季风气候，温暖多雨",
         kcmy: "米饭、面条、鱼虾",
         itemStyle: {
-            normal: { areaColor: '#00b6f6' },
-            emphasis: { areaColor: "#00b6f6" }
+            normal: { areaColor: 'rgb(244, 163, 13)' },
+            emphasis: { areaColor: "rgb(244, 71, 13)" }
         }        
     },
     {   
@@ -498,8 +498,8 @@ var itemStyleD = [
         xsmy: "亚热带湿润气候，四季分明",
         kcmy: "米饭、藜蒿、鸭肉",
         itemStyle: {
-            normal: { areaColor: '#01a4f1' },
-            emphasis: { areaColor: "#01a4f1" }
+            normal: { areaColor: 'rgb(244, 163, 13)' },
+            emphasis: { areaColor: "rgb(244, 71, 13)" }
         }        
     },
     {   
@@ -509,8 +509,8 @@ var itemStyleD = [
         xsmy: "温带草原气候，干冷风大",
         kcmy: "奶制品、牛羊肉、面食",
         itemStyle: {
-            normal: { areaColor: '#00ccf7' },
-            emphasis: { areaColor: "#00ccf7" }
+            normal: { areaColor: 'rgb(244, 163, 13)' },
+            emphasis: { areaColor: "rgb(244, 71, 13)" }
         }        
     },
     {   
@@ -520,8 +520,8 @@ var itemStyleD = [
         xsmy: "亚热带湿润气候，炎热多雨",
         kcmy: "米饭、麻辣火锅、豆瓣酱",
         itemStyle: {
-            normal: { areaColor: '#0069e8' },
-            emphasis: { areaColor: "#0069e8" }
+            normal: { areaColor: 'rgb(244, 163, 13)' },
+            emphasis: { areaColor: "rgb(244, 71, 13)" }
         }        
     },
     {   
@@ -531,8 +531,8 @@ var itemStyleD = [
         xsmy: "亚热带季风气候，温暖湿润",
         kcmy: "米饭、鱼干、蔬菜",
         itemStyle: {
-            normal: { areaColor: '#00b6f6' },
-            emphasis: { areaColor: "#00b6f6" }
+            normal: { areaColor: 'rgb(244, 163, 13)' },
+            emphasis: { areaColor: "rgb(244, 71, 13)" }
         }        
     },
 ];
@@ -546,8 +546,8 @@ var noneData = [
         xsmy: "南亚热带季风气候，炎热多雨",
         kcmy: "米饭、粥、海鲜",
         itemStyle: {
-            normal: { areaColor: '#00d9fc' },
-            emphasis: { areaColor: "#00d9fc" }       
+            normal: { areaColor: 'rgb(244, 163, 13)' },
+            emphasis: { areaColor: "rgb(244, 71, 13)" }       
         }
     },    
     {
@@ -557,8 +557,8 @@ var noneData = [
         xsmy: "温带干旱半干旱气候，少雨多风",
         kcmy: "馍馍、牛羊肉、粉条",
         itemStyle: {
-            normal: { areaColor: '#0042df' },
-            emphasis: { areaColor: "#0042df" }
+            normal: { areaColor: 'rgb(244, 163, 13)' },
+            emphasis: { areaColor: "rgb(244, 71, 13)" }
         }                    
     },
     {
@@ -568,8 +568,8 @@ var noneData = [
         xsmy: "温带季风气候，冬季寒冷干燥",
         kcmy: "面食（饼、馒头）、杂粮粥",
         itemStyle: {
-            normal: { areaColor: '#034DE4' },
-            emphasis: { areaColor: "#034DE4" }
+            normal: { areaColor: 'rgb(244, 163, 13)' },
+            emphasis: { areaColor: "rgb(244, 71, 13)" }
         }                                       
     },
     {
@@ -579,8 +579,8 @@ var noneData = [
         xsmy: "温带季风气候，春暖夏热",
         kcmy: "馒头、杂粮粥、豆腐",
         itemStyle: {
-            normal: { areaColor: '#034DE4' },
-            emphasis: { areaColor: "#034DE4" }
+            normal: { areaColor: 'rgb(244, 163, 13)' },
+            emphasis: { areaColor: "rgb(244, 71, 13)" }
         }                    
     },
     {
@@ -590,8 +590,8 @@ var noneData = [
         xsmy: "寒温带气候，严寒漫长",
         kcmy: "大豆制品、牛羊肉、杂粮",
         itemStyle: {
-            normal: { areaColor: '#17A3F1' },
-            emphasis: { areaColor: "#17A3F1" }                          
+            normal: { areaColor: 'rgb(244, 163, 13)' },
+            emphasis: { areaColor: "rgb(244, 71, 13)" }                          
         }
     },
     {
@@ -601,8 +601,8 @@ var noneData = [
         xsmy: "温带季风气候，春旱夏雨",
         kcmy: "面食、地瓜、海鲜",
         itemStyle: {
-            normal: { areaColor: '#4BFFFF' },
-            emphasis: { areaColor: "#4BFFFF" }       
+            normal: { areaColor: 'rgb(244, 163, 13)' },
+            emphasis: { areaColor: "rgb(244, 71, 13)" }       
         }
     },
     {
@@ -612,8 +612,8 @@ var noneData = [
         xsmy: "温带大陆性干旱气候，昼夜温差大",
         kcmy: "馕、抓饭、牛羊肉",
         itemStyle: {
-            normal: { areaColor: '#17A3F1' },
-            emphasis: { areaColor: "#17A3F1" }       
+            normal: { areaColor: 'rgb(244, 163, 13)' },
+            emphasis: { areaColor: "rgb(244, 71, 13)" }       
         }
     },    
     {
@@ -623,8 +623,8 @@ var noneData = [
         xsmy: "温带大陆性干旱气候",
         kcmy: "面食、羊肉、粥类",
         itemStyle: {
-            normal: { areaColor: '#01b0f3' },
-            emphasis: { areaColor: "#01b0f3", opacity: 0.2 }       
+            normal: { areaColor: 'rgb(244, 163, 13)' },
+            emphasis: { areaColor: "rgb(244, 71, 13)", opacity: 1}       
         },
         label: { show: false }                                         
     },
@@ -635,8 +635,8 @@ var noneData = [
         xsmy: "热带季风气候，全年高温",
         kcmy: "米饭、椰子饭、热带果品",
         itemStyle: {
-            normal: { areaColor: '#00f0ff' },
-            emphasis: { areaColor: "#00f0ff", opacity: 0.2 }
+            normal: { areaColor: 'rgb(244, 163, 13)' },
+            emphasis: { areaColor: "rgb(244, 71, 13)", opacity: 1}
         },
         label: { show: false }                                         
     },
@@ -647,8 +647,8 @@ var noneData = [
         xsmy: "热带和亚热带季风气候",
         kcmy: "米饭、海产、水果",
         itemStyle: {
-            normal: { areaColor: '#0067e7' },
-            emphasis: { areaColor: "#0067e7", opacity: 0.2 }
+            normal: { areaColor: 'rgb(244, 163, 13)' },
+            emphasis: { areaColor: "rgb(244, 71, 13)", opacity: 1}
         },
         label: { show: false }                     
     },
@@ -659,8 +659,8 @@ var noneData = [
         xsmy: "亚热带季风气候，炎热潮湿",
         kcmy: "粥粉面饭、海鲜、点心",
         itemStyle: {
-            normal: { areaColor: '#00dafa' },
-            emphasis: { areaColor: "#00dafa", opacity: 0.2 }
+            normal: { areaColor: 'rgb(244, 163, 13)' },
+            emphasis: { areaColor: "rgb(244, 71, 13)", opacity: 1}
         },
         label: { show: false }                                                              
     },
@@ -671,8 +671,8 @@ var noneData = [
         xsmy: "亚热带季风气候，温暖湿润",
         kcmy: "葡式米饭、点心、鱼虾",
         itemStyle: {
-            normal: { areaColor: '#00dafa' },
-            emphasis: { areaColor: "#00dafa", opacity: 0.2 }
+            normal: { areaColor: 'rgb(244, 163, 13)' },
+            emphasis: { areaColor: "rgb(244, 71, 13)", opacity: 1}
         },
         label: { show: false }                                                              
     },
@@ -683,8 +683,8 @@ var noneData = [
         xsmy: "温带季风气候，四季分明",
         kcmy: "面条、豆汁、驴打滚",
         itemStyle: {
-            normal: { areaColor: '#034DE4' },
-            emphasis: { areaColor: "#034DE4", opacity: 0.2 }
+            normal: { areaColor: 'rgb(244, 163, 13)' },
+            emphasis: { areaColor: "rgb(244, 71, 13)", opacity: 1}
         },
         label: { show: false }                      
     },
@@ -695,8 +695,8 @@ var noneData = [
         xsmy: "温带季风气候，冬冷夏热",
         kcmy: "煎饼果子、面食、海鲜",
         itemStyle: {
-            normal: { areaColor: '#034DE4' },
-            emphasis: { areaColor: "#034DE4", opacity: 0.2 }
+            normal: { areaColor: '#rgb(244, 163, 13)' },
+            emphasis: { areaColor: "rgb(244, 71, 13)", opacity: 1}
         },
         label: { show: false }                      
     },
@@ -707,8 +707,8 @@ var noneData = [
         xsmy: "亚热带湿润气候，闷热潮湿",
         kcmy: "米饭、火锅、小面",
         itemStyle: {
-            normal: { areaColor: '#0E7DEB' },
-            emphasis: { areaColor: "#0E7DEB", opacity: 0.2 }         
+            normal: { areaColor: 'rgb(244, 163, 13)' },
+            emphasis: { areaColor: "rgb(244, 71, 13)", opacity: 1}         
         },
         label: { show: false }                                         
     },      
@@ -719,8 +719,8 @@ var noneData = [
         xsmy: "温带季风气候，寒冷干燥",
         kcmy: "面食、杂粮粥、鱼类",
         itemStyle: {
-            normal: { areaColor: '#034DE4' },
-            emphasis: { areaColor: "#034DE4", opacity: 0.2 }
+            normal: { areaColor: 'rgb(244, 163, 13)' },
+            emphasis: { areaColor: "rgb(244, 71, 13)", opacity: 1}
         },
         label: { show: false }                      
     },
@@ -731,8 +731,8 @@ var noneData = [
         xsmy: "亚热带季风气候，雨量充沛",
         kcmy: "米饭、杂粮、鱼肉",                   
         itemStyle: {
-            normal: { areaColor: '#27E8FD' },
-            emphasis: { areaColor: "#27E8FD", opacity: 0.2 }
+            normal: { areaColor: 'rgb(244, 163, 13)' },
+            emphasis: { areaColor: "rgb(244, 71, 13)", opacity: 1}
         },
         label: { show: false }                                          
     },      
@@ -743,8 +743,8 @@ var noneData = [
         xsmy: "南亚热带湿润气候，湿热多雨",
         kcmy: "米饭、螺蛳粉、豆豉菜",
         itemStyle: {
-            normal: { areaColor: '#0088ec' },
-            emphasis: { areaColor: "#0088ec", opacity: 0.2 }       
+            normal: { areaColor: 'rgb(244, 163, 13)' },
+            emphasis: { areaColor: "rgb(244, 71, 13)", opacity: 1}       
         },
         label: { show: false }                      
     },      
@@ -755,8 +755,8 @@ var noneData = [
         xsmy: "温带大陆性气候，寒冷干燥",
         kcmy: "杂粮、窝头、豆类制品",                  
         itemStyle: {
-            normal: { areaColor: '#01d0fa' },
-            emphasis: { areaColor: "#01d0fa", opacity: 0.2 }
+            normal: { areaColor: 'rgb(244, 163, 13)' },
+            emphasis: { areaColor: "rgb(244, 71, 13)", opacity: 1}
         },
         label: { show: false }                      
     },
@@ -767,8 +767,8 @@ var noneData = [
         xsmy: "温带大陆性气候，四季分明",
         kcmy: "面食、凉皮、杂粮",
         itemStyle: {
-            normal: { areaColor: '#01b0f3' },
-            emphasis: { areaColor: "#01b0f3", opacity: 0.2 }
+            normal: { areaColor: 'rgb(244, 163, 13)' },
+            emphasis: { areaColor: "rgb(244, 71, 13)", opacity: 1}
         },
         label: { show: false }                                                                                                                          
     },
@@ -779,8 +779,8 @@ var noneData = [
         xsmy: "温带季风气候，严寒多雪",
         kcmy: "豆制品、粟米饭、野菜",                  
         itemStyle: {
-            normal: { areaColor: '#0051e1' },
-            emphasis: { areaColor: "#0051e1", opacity: 0.2 }
+            normal: { areaColor: 'rgb(244, 163, 13)' },
+            emphasis: { areaColor: "rgb(244, 71, 13)", opacity: 1}
         },
         label: { show: false }                                                            
     },
@@ -791,8 +791,8 @@ var noneData = [
         xsmy: "亚热带季风气候，湿润多雨",
         kcmy: "米饭、番薯、海产",
         itemStyle: {
-            normal: { areaColor: '#0158e3' },
-            emphasis: { areaColor: "#0158e3", opacity: 0.2 }
+            normal: { areaColor: 'rgb(244, 163, 13)' },
+            emphasis: { areaColor: "rgb(244, 71, 13)", opacity: 1}
         },
         label: { show: false }                                        
     },
@@ -803,8 +803,8 @@ var noneData = [
         xsmy: "亚热带湿润气候，湿润凉爽",
         kcmy: "酸汤饭、腊肉、米豆腐",
         itemStyle: {
-            normal: { areaColor: '#0199ef' },
-            emphasis: { areaColor: "#0199ef", opacity: 0.2 }
+            normal: { areaColor: 'rgb(244, 163, 13)' },
+            emphasis: { areaColor: "rgb(244, 71, 13)", opacity: 1}
         },
         label: { show: false }                                       
     },      
@@ -815,8 +815,8 @@ var noneData = [
         xsmy: "高原大陆性气候，寒冷干燥",
         kcmy: "糌粑、奶制品、牛羊肉",                  
         itemStyle: {
-            normal: { areaColor: '#005ae4' },
-            emphasis: { areaColor: "#005ae4", opacity: 0.2 }
+            normal: { areaColor: 'rgb(244, 163, 13)' },
+            emphasis: { areaColor: "rgb(244, 71, 13)", opacity: 1}
         },
         label: { show: false }                                                             
     },
@@ -827,8 +827,8 @@ var noneData = [
         xsmy: "高原气候，寒冷干燥",
         kcmy: "糌粑、酥油茶、牦牛肉",                  
         itemStyle: {
-            normal: { areaColor: '#01e9fd' },
-            emphasis: { areaColor: "#01e9fd", opacity: 0.2 }       
+            normal: { areaColor: 'rgb(244, 163, 13)' },
+            emphasis: { areaColor: "rgb(244, 71, 13)", opacity: 1}       
         },
         label: { show: false }
     }
@@ -966,247 +966,247 @@ var option = {
         {
             name: '南海诸岛',
             itemStyle: {
-                areaColor: '#6F798D',
-                opacity: 0.5
+                areaColor: 'rgb(244, 163, 13)',
+                opacity: 1
             }
         },
         {
             name: '北京市', 
             itemStyle: {
-                areaColor: '#034DE4',
-                opacity: 0.2                            
+                areaColor: 'rgb(160, 124, 23)',
+                opacity: 1                           
             }
         },
         {
             name: '天津市', 
             itemStyle: {
-							areaColor: '#034DE4',
-							opacity: 0.2                            
+							areaColor: 'rgb(244, 167, 13)',
+							opacity: 1                           
 						}
         },
         {
             name: '上海市', 
             itemStyle: {
-							areaColor: '#27E9FD',
-							opacity: 0.2                            
+							areaColor: 'rgb(244, 179, 13)',
+							opacity: 1                           
 						}						
 						
         },
         {
             name: '重庆市', 
             itemStyle: {
-							areaColor: '#0E7DEB',
-							opacity: 0.2                            
+							areaColor: 'rgb(244, 163, 13)',
+							opacity: 1                           
 						}                  
         },
         {
             name: '河北省', 
 						itemStyle: {
-							areaColor: '#034DE4',
-							opacity: 0.2                            
+							areaColor: 'rgb(244, 206, 13)',
+							opacity: 1                           
 						}                                      
         },
         {
             name: '河南省', 
             itemStyle: {
-							areaColor: '#034DE4',
-							opacity: 0.2                            
+							areaColor: 'rgb(192, 144, 14)',
+							opacity: 1                           
 						}
         },
         {
             name: '云南省', 
             itemStyle: {
-							areaColor: '#20CAF8',
-							opacity: 0.2                            
+							areaColor: 'rgb(244, 167, 13)',
+							opacity: 1                           
 						}
         },
         {
 					name: '辽宁省', 
 					itemStyle: {
-						areaColor: '#034DE4',
-						opacity: 0.2                            
+						areaColor: 'rgb(213, 179, 85)',
+						opacity: 1                           
 					}                    
         },
         {
 					name: '黑龙江省', 
 					itemStyle: {
-						areaColor: '#17A3F1',
-						opacity: 0.2                            
+						areaColor: 'rgb(174, 130, 11)',
+						opacity: 1                           
 					}
         },
         {
 					name: '湖南省', 
 					itemStyle: {
-						areaColor: '#0554E4',
-						opacity: 0.2                            
+						areaColor: 'rgb(244, 148, 13)',
+						opacity: 1                           
 					}
         },
         {
             name: '安徽省', 
             itemStyle: {
-							areaColor: '#27E8FD',
-							opacity: 0.2                            
+							areaColor: 'rgb(141, 106, 10)',
+							opacity: 1                           
 						}                  
         },
         {
             name: '山东省', 
             itemStyle: {
-							areaColor: '#4BFFFF',
-							opacity: 0.2                            
+							areaColor: 'rgb(239, 206, 74)',
+							opacity: 1                           
 						}
         },
         {
             name: '新疆维吾尔自治区', 
 						itemStyle: {
-							areaColor: '#17A3F1',
-							opacity: 0.2                            
+							areaColor: 'rgb(244, 182, 13)',
+							opacity: 1                           
 						}
         },
         {
             name: '江苏省', 
             itemStyle: {
-							areaColor: '#00b6f6',
-							opacity: 0.2                            
+							areaColor: 'rgb(193, 145, 14)',
+							opacity: 1                           
 						}                  
         },
         {
             name: '浙江省', 
             itemStyle: {
-							areaColor: '#00b6f6',
-							opacity: 0.2                            
+							areaColor: 'rgb(200, 150, 12)',
+							opacity: 1                           
 						}                    
         },
         {
             name: '江西省', 
             itemStyle: {
-							areaColor: '#01a4f1',
-							opacity: 0.2                            
+							areaColor: 'rgb(247, 195, 51)',
+							opacity: 1                           
 						} 
         },
         {
             name: '湖北省', 
             itemStyle: {
-							areaColor: '#005ce5',
-							opacity: 0.2                            
+							areaColor: 'rgba(244, 163, 13, 0.99)',
+							opacity: 1                           
 						} 
         },
         {
             name: '广西壮族自治区', 
             itemStyle: {
-							areaColor: '#0088ec',
-							opacity: 0.2                            
+							areaColor: 'rgb(152, 115, 15)',
+							opacity: 1                           
 						} 
         },
         {
             name: '甘肃省', 
             itemStyle: {
-							areaColor: '#0042df',
-							opacity: 0.2                            
+							areaColor: 'rgb(244, 140, 13)',
+							opacity: 1                           
 						}                                       
         },
         {
             name: '山西省', 
             itemStyle: {
-							areaColor: '#01d0fa',
-							opacity: 0.2                            
+							areaColor: 'rgb(238, 191, 63)',
+							opacity: 1                           
 						}                     
         },
         {
             name: '内蒙古自治区', 
             itemStyle: {
-                areaColor: '#00ccf7',
-                opacity: 0.2                            
+                areaColor: 'rgb(247, 191, 36)',
+                opacity: 1                           
             }                                       
         },
         {
             name: '陕西省', 
             itemStyle: {
-							areaColor: '#01b0f3',
-							opacity: 0.2                            
+							areaColor: 'rgb(250, 195, 43)',
+							opacity: 1                           
 						} 
         },
         {
             name: '吉林省', 
             itemStyle: {
-							areaColor: '#0051e1',
-							opacity: 0.2                            
+							areaColor: 'rgb(232, 244, 13)',
+							opacity: 1                           
 						}                                       
         },
         {
             name: '福建省', 
             itemStyle: {
-							areaColor: '#0158e3',
-							opacity: 0.2                            
+							areaColor: 'rgb(164, 124, 13)',
+							opacity: 1                           
 						} 
         },
         {
             name: '贵州省', 
             itemStyle: {
-							areaColor: '#0199ef',
-							opacity: 0.2                            
+							areaColor: 'rgb(247, 202, 81)',
+							opacity: 1                           
 						}                    
         },
         {
             name: '广东省', 
             itemStyle: {
-							areaColor: '#00d9fc',
-							opacity: 0.2                            
+							areaColor: 'rgb(244, 182, 13)',
+							opacity: 1                           
 						} 
         },
         {
             name: '青海省', 
             itemStyle: {
-							areaColor: '#005ae4',
-							opacity: 0.2                            
+							areaColor: 'rgba(243, 194, 61, 0.99)',
+							opacity: 1                           
 						} 
         },
         {
             name: '西藏自治区', 
             itemStyle: {
-							areaColor: '#01e9fd',
-							opacity: 0.2                            
+							areaColor: 'rgb(244, 202, 13)',
+							opacity: 1                           
 						}                    
         },
         {
 					name: '四川省', 
 					itemStyle: {
-						areaColor: '#0069e8',
-						opacity: 0.2                            
+						areaColor: 'rgb(125, 96, 16)',
+						opacity: 1                           
 					} 
         },
         {
 					name: '宁夏回族自治区', 
 					itemStyle: {
-						areaColor: '#01b0f3',
-						opacity: 0.2                            
+						areaColor: 'rgba(202, 244, 13, 0.99)',
+						opacity: 1                           
 					}                    
         },
         {
 					name: '海南省', 
 					itemStyle: {
-						areaColor: '#00f0ff',
-						opacity: 0.2                            
+						areaColor: 'rgb(242, 199, 80)',
+						opacity: 1                           
 					}                   
         },
         {
 					name: '台湾省', 
 					itemStyle: {
-						areaColor: '#0067e7',
-						opacity: 0.2                            
+						areaColor: 'rgb(244, 182, 13)',
+						opacity: 1                           
 					}                                      
         },
         {
 					name: '香港', 
 					itemStyle: {
-						areaColor: '#00dafa',
-						opacity: 0.2                            
+						areaColor: 'rgba(244, 225, 13, 0.98)',
+						opacity: 1                           
 					} 
         },
         {
 					name: '澳门', 
 					itemStyle: {
-						areaColor: '#00dafa',
-						opacity: 0.2                            
+						areaColor: 'rgba(244, 182, 13, 0.96)',
+						opacity: 1                           
 					} 
         } 
 ]
@@ -1253,7 +1253,7 @@ var option = {
             },
             emphasis: {
             areaColor: '#034DE4',                            
-            opacity: 0.2  
+            opacity: 1 
             }
           },
           label: {
@@ -1268,7 +1268,7 @@ var option = {
                 },
                 emphasis: {
                   areaColor: '#034DE4',                            
-                  opacity: 0.2  
+                  opacity: 1 
                 }
             },
             label: {
@@ -1294,7 +1294,7 @@ var option = {
                 },
                 emphasis: {
                     areaColor: '#0E7DEB',
-                    opacity: 0.2                  
+                    opacity: 1                 
                 }
             },
             label: {
@@ -1379,7 +1379,7 @@ var option = {
                 },
                 emphasis: {
                     areaColor: '#27E8FD',
-                    opacity: 0.2                      
+                    opacity: 1                     
                 }      
             },
             label: {
@@ -1591,7 +1591,7 @@ var option = {
                 },
                 emphasis: {
                     areaColor: '#005ae4',
-                    opacity: 0.2                    
+                    opacity: 1                   
                 }
             },
             label: {
@@ -1606,7 +1606,7 @@ var option = {
                 },
                 emphasis: {
                     areaColor: '#01e9fd',
-                    opacity: 0.2                    
+                    opacity: 1                   
                 }
             },
             label: {
@@ -1633,7 +1633,7 @@ var option = {
                 },
                 emphasis: {
                     areaColor: '#01b0f3',
-                    opacity: 0.2                    
+                    opacity: 1                   
                 }
             },
             label: {
@@ -1648,7 +1648,7 @@ var option = {
                 },
                 emphasis: {
                     areaColor: '#00f0ff',
-                    opacity: 0.2                    
+                    opacity: 1                   
                 }
             },
             label: {
@@ -1663,7 +1663,7 @@ var option = {
                 },
                 emphasis: {
                     areaColor: '#0067e7',
-                    opacity: 0.2                    
+                    opacity: 1                   
                 }
             },
             label: {
@@ -1678,7 +1678,7 @@ var option = {
                 },
                 emphasis: {
                     areaColor: '#00dafa',
-                    opacity: 0.2                    
+                    opacity: 1                   
                 }
             },
             label: {
@@ -1693,7 +1693,7 @@ var option = {
                 },
                 emphasis: {
                     areaColor: '#00dafa',
-                    opacity: 0.2                    
+                    opacity: 1                   
                 }
             },
             label: {
@@ -1939,7 +1939,7 @@ var pieOption1 = {
       itemWidth: 15,
       itemHeight: 8,
       textStyle: {
-          color: '#fff'
+          color: 'rgb(244, 239, 238) '
       }
   },
   series: [
@@ -1950,7 +1950,7 @@ var pieOption1 = {
           hoverOffset: 5,
           center: ['50%','35%'],
           avoidLabelOverlap: false,
-          color: ['#0239a7', '#fff', '#00bbec', '#23539b', '#24feb4','#1397ff'],
+          color: ['rgb(182, 244, 13)', 'rgb(82, 244, 13)', 'rgb(10, 164, 36)', 'rgb(13, 244, 109)', 'rgb(10, 118, 50)','rgb(24, 82, 46)'],
           label: {
               normal: {
                   show: false,
@@ -1959,7 +1959,7 @@ var pieOption1 = {
               ,
               emphasis: {
                   show: true,  
-                  color: '#fff',                
+                  color: 'rgb(250, 245, 244)',                
                   formatter: function(params, ticket, callback) {
                     // console.log
                       return '{big|' + params.value + '}{small|%}\n{small|' + params.name + '}';
@@ -1996,7 +1996,7 @@ var pieOption2 = {
           radius: ['55%', '65%'],
           hoverOffset: 5,
           avoidLabelOverlap: false,
-          color: ['#0239a7', '#fff', '#00bbec', '#23539b', '#24feb4','#1397ff'],
+          color: ['rgb(244, 209, 13)', 'rgb(182, 191, 18)', 'rgb(196, 137, 9)', 'rgb(184, 145, 27)b', 'rgb(113, 91, 9)','rgb(242, 113, 70)'],
           center: ['50%','35%'],
           label: {
               normal: {

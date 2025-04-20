@@ -7,7 +7,28 @@
     <title>农谚分类系统-完整版</title>
     <script src="./js/echarts.min.js"></script>
     <style>
-        /* 导航栏样式 */
+        /* 背景样式 */
+        body {
+            background: #e3e1e4f8 url('./img/背景图（农谚）.png') no-repeat center center fixed;
+            background-size: cover;
+            height: 100%;
+            font-family: 'Consolas', monospace;
+            padding-top: 64px;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(46, 39, 51, 0.65);
+            z-index: -1;
+        }
+
+        /* 导航栏 */
         .main-nav {
             background: #3A3241;
             padding: 12px 20px;
@@ -43,13 +64,7 @@
             padding: 0;
         }
 
-        body {
-            background: #2E2733;
-            height: 100%;
-            font-family: 'Consolas', monospace;
-            padding-top: 64px;
-        }
-
+        /* 主容器 */
         .container {
             display: flex;
             height: calc(100vh - 64px);
@@ -59,21 +74,22 @@
 
         #chart-container {
             flex: 1;
-            background: #3A3241;
+            background: rgba(58, 50, 65, 0);
             border-radius: 10px;
             padding: 15px;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
         }
 
+        /* 右侧面板 */
         .right-panel {
             width: 400px;
-            background: #4A4250;
+            background: rgba(58, 50, 65, 0.35);
             border-radius: 8px;
             padding: 15px;
             position: relative;
         }
 
-        /* 优化后的搜索框样式 */
+        /* 搜索框 */
         .search-box {
             margin-bottom: 15px;
             position: relative;
@@ -115,10 +131,7 @@
             transition: opacity 0.3s;
         }
 
-        #searchInput:focus+.search-box::after {
-            opacity: 0;
-        }
-
+        /* 谚语列表 */
         .proverb-list {
             height: calc(100% - 60px);
             overflow: hidden;
@@ -130,7 +143,6 @@
             backface-visibility: hidden;
         }
 
-        /* 修改后的谚语项样式 */
         .proverb-item {
             padding: 12px;
             margin: 8px 0;
@@ -179,6 +191,7 @@
             background: #7dbd6d;
         }
 
+        /* 详情面板 */
         .proverb-detail-panel {
             display: none;
             position: absolute;
@@ -243,7 +256,7 @@
         <div id="chart-container"></div>
         <div class="right-panel">
             <div class="search-box">
-                <input type="text" id="searchInput" placeholder="输入关键词...">
+                <input type="text" id="searchInput" placeholder="输入农谚或标签...">
             </div>
             <div class="proverb-list">
                 <div class="scroll-content" id="scrollContent"></div>
@@ -283,7 +296,8 @@
                         this.items.push({
                             text: node.name,
                             desc: node.desc || '传统农事经验总结',
-                            category: this.getCategoryPath(node)
+                            category: this.getCategoryPath(node),
+                            tags: node.tags || [] // 新增标签字段
                         });
                     }
                 }
@@ -301,7 +315,8 @@
                 const lowerKeyword = keyword.toLowerCase();
                 return this.items.filter(item =>
                     item.text.toLowerCase().includes(lowerKeyword) ||
-                    item.category.toLowerCase().includes(lowerKeyword)
+                    item.category.toLowerCase().includes(lowerKeyword) ||
+                    item.tags.some(tag => tag.toLowerCase().includes(lowerKeyword)) // 标签搜索
                 );
             }
         };
