@@ -20,8 +20,7 @@
         #main {
             width: 100%;
             height: 100vh;
-            background: url('./背景图（数据展示）.png') center/cover
-            ;
+            background: url('./背景图（数据展示）.png') center/cover;
             position: relative;
         }
 
@@ -70,6 +69,242 @@
             box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
             transform: translateY(-1px);
         }
+
+        /* 分类按钮样式 */
+        .category-buttons {
+            position: fixed;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            transition: all 0.3s ease;
+            padding: 10px;
+        }
+
+        .category-buttons.collapsed {
+            left: -180px;
+        }
+
+        .category-btn {
+            width: 200px;
+            height: 40px;
+            border-radius: 0 20px 20px 0;
+            background: rgba(255, 255, 255, 0.95);
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            padding: 0 15px;
+            font-size: 14px;
+            transition: all 0.3s;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+
+        .category-btn:hover,
+        .category-btn.active {
+            transform: translateX(5px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            color: white;
+        }
+
+        .toggle-button {
+            position: absolute;
+            right: -30px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 20px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 0 5px 5px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 2px 0 6px rgba(0, 0, 0, 0.1);
+            z-index: 1001;
+        }
+
+        .toggle-button::after {
+            content: '→';
+            transition: transform 0.3s;
+        }
+
+        .category-buttons.collapsed .toggle-button::after {
+            transform: rotate(180deg);
+        }
+
+        /* 搜索框样式 */
+        /* 搜索框样式 */
+        .search-container {
+            position: fixed;
+            top: 80px;
+            right: 15px;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+        }
+
+        .search-box {
+            background: rgba(217, 152, 12, 0.184);
+            padding: 15px;
+            border-radius: 6px;
+            box-shadow: 0 2px 8px rgba(185, 187, 182, 0.988);
+            width: 300px;
+            display: none;
+            position: relative;
+        }
+
+        .search-box.active {
+            display: block;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #40db1538;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+
+        .search-toggle {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(106, 208, 10, 0.297);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            margin-right: 10px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+            font-size: 20px;
+        }
+
+        .search-toggle.active {
+            transform: rotate(180deg);
+        }
+
+        .search-results {
+            position: absolute;
+            top: calc(100% - 15px);
+            left: 0;
+            right: 0;
+            background: rgba(30, 115, 4, 0.371);
+            border-radius: 4px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            max-height: 300px;
+            overflow-y: auto;
+            display: none;
+            z-index: 1002;
+        }
+
+        .search-result-item {
+            padding: 8px 12px;
+            cursor: pointer;
+            border-bottom: 1px solid #11d538;
+        }
+
+        .search-result-item:hover {
+            background: #648e0b;
+        }
+
+        .info-window {
+            position: fixed;
+            right: 15px;
+            top: 150px;
+            background: rgba(83, 209, 15, 0.236);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            z-index: 1001;
+            display: none;
+            width: 300px;
+            max-height: 60vh;
+            overflow-y: auto;
+        }
+
+        .detail-window {
+            transition: all 0.3s ease;
+            opacity: 0;
+        }
+
+        .detail-window.show {
+            opacity: 1;
+        }
+
+        .info-window img {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 15px;
+            border-radius: 4px;
+        }
+
+        .info-window h3 {
+            margin: 0 0 10px 0;
+            color: #333;
+        }
+
+        .info-window p {
+            margin: 5px 0;
+            color: #666;
+        }
+
+        .close-btn {
+            position: absolute;
+            right: 10px;
+            top: 10px;
+            cursor: pointer;
+            font-size: 20px;
+            color: #666;
+        }
+
+        /* 数据列表样式 */
+        .data-list {
+            margin-top: 15px;
+            max-height: 300px;
+            overflow-y: auto;
+            padding-right: 10px;
+        }
+
+        .data-item {
+            padding: 10px;
+            background: rgba(35, 133, 6, 0.282);
+            border-radius: 6px;
+            margin-bottom: 8px;
+            cursor: pointer;
+            transition: all 0.2s;
+            border: 1px solid #eee;
+        }
+
+        .data-item:hover {
+            background: rgba(64, 219, 12, 0.747);
+            transform: translateY(-2px);
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        /* 自定义滚动条样式 */
+        .data-list::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .data-list::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.1);
+            border-radius: 3px;
+        }
+
+        .data-list::-webkit-scrollbar-thumb {
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 3px;
+        }
+
+        .data-list::-webkit-scrollbar-thumb:hover {
+            background: rgba(0, 0, 0, 0.3);
+        }
     </style>
 </head>
 
@@ -81,16 +316,97 @@
         <div class="nav-btn" onclick="location.href='../第三界面/人界面.html'">第三界面</div>
     </div>
 
+    <!-- 分类按钮 -->
+    <div class="category-buttons">
+        <div class="toggle-button"></div>
+        <div class="category-btn">农事占候</div>
+        <div class="category-btn">农器</div>
+        <div class="category-btn">树艺</div>
+        <div class="category-btn">木本植物</div>
+        <div class="category-btn">牧养六畜</div>
+        <div class="category-btn">救荒本草</div>
+        <div class="category-btn">境外作物</div>
+    </div>
+
+    <!-- 搜索框 -->
+    <div class="search-container">
+        <div class="search-toggle">→</div>
+        <div class="search-box">
+            <input type="text" class="search-input" placeholder="搜索农学知识...">
+            <div class="search-results"></div>
+        </div>
+    </div>
+
+    <!-- 信息窗口 -->
+    <div class="info-window">
+        <span class="close-btn">&times;</span>
+        <h3></h3>
+        <img src="" alt="">
+        <div class="info-content"></div>
+    </div>
+
     <div id="main"></div>
     <div id="node-info"></div>
-
     <script>
         let myChart = echarts.init(document.getElementById('main'));
         myChart.showLoading();
 
+        // 搜索相关变量
+        let searchData = [];
+        const searchInput = document.querySelector('.search-input');
+        const searchResults = document.querySelector('.search-results');
+        const infoWindow = document.querySelector('.info-window');
+        const closeBtn = document.querySelector('.close-btn');
+        const searchToggle = document.querySelector('.search-toggle');
+        const searchBox = document.querySelector('.search-box');
+        const categoryButtonsContainer = document.querySelector('.category-buttons');
+        const toggleButton = document.querySelector('.toggle-button');
+
+        // 折叠按钮功能
+        toggleButton.addEventListener('click', () => {
+            categoryButtonsContainer.classList.toggle('collapsed');
+        });
+
+        // 搜索框展开/收起功能
+        searchToggle.addEventListener('click', () => {
+            searchToggle.classList.toggle('active');
+            searchBox.classList.toggle('active');
+        });
+
+        // 查找节点信息的辅助函数
+        function findNodeInfo(nodeName, nodes) {
+            for (const node of nodes) {
+                if (node.name === nodeName) {
+                    return node;
+                }
+                if (node.children) {
+                    if (Array.isArray(node.children)) {
+                        // 如果children是数组，检查是否包含该名称
+                        if (node.children.includes(nodeName)) {
+                            return {
+                                name: nodeName,
+                                description: `属于${node.name}类别的农学知识`,
+                                image: `./images/${nodeName}.jpg`,
+                                category: node.name
+                            };
+                        }
+                    }
+                    const found = findNodeInfo(nodeName, Array.isArray(node.children)
+                        ? node.children.map(child => typeof child === 'string'
+                            ? { name: child, description: `属于${node.name}的农学知识`, image: `./images/${child}.jpg` }
+                            : child)
+                        : [node.children]);
+                    if (found) return found;
+                }
+            }
+            return null;
+        }
+
         fetch('./data/data.js')
             .then(response => response.json())
             .then(agricultureData => {
+                window.agricultureData = agricultureData; // 使数据全局可用
+
                 function generateNodes(agricultureData) {
                     let nodes = [], links = [], idCounter = 0;
 
@@ -117,7 +433,7 @@
                                     processNode(item, parentId, depth, category);
                                 } else {
                                     const currentId = createNode(item, category, depth + 1);
-                                    links.push({ source: parentId, target: currentId });
+                                    if (parentId !== null) links.push({ source: parentId, target: currentId });
                                 }
                             });
                             return;
@@ -135,6 +451,70 @@
 
                     return { nodes, links };
                 }
+
+                // 构建搜索数据
+                function buildSearchData(data, parentCategory = '') {
+                    if (Array.isArray(data)) {
+                        data.forEach(item => {
+                            if (typeof item === 'object') {
+                                buildSearchData(item, parentCategory);
+                            } else {
+                                searchData.push({
+                                    name: item,
+                                    category: parentCategory,
+                                    description: `属于${parentCategory}类别的农学知识`,
+                                    image: `./images/${item}.jpg`
+                                });
+                            }
+                        });
+                    } else if (typeof data === 'object') {
+                        const currentCategory = data.name || parentCategory;
+                        searchData.push({
+                            name: data.name,
+                            category: parentCategory,
+                            description: data.description || `这是关于${data.name}的详细信息`,
+                            image: data.image || `./images/${data.name}.jpg`
+                        });
+                        if (data.children) {
+                            buildSearchData(data.children, currentCategory);
+                        }
+                    }
+                }
+
+                buildSearchData(agricultureData.nodes);
+
+                // 为分类按钮添加点击事件和样式
+                const categoryButtons = document.querySelectorAll('.category-btn');
+                categoryButtons.forEach((btn, index) => {
+                    // 设置渐变背景
+                    btn.style.background = `linear-gradient(135deg, ${agricultureData.categories[index].color}33, ${agricultureData.categories[index].color}66)`;
+
+                    btn.addEventListener('click', () => {
+                        // 移除其他按钮的激活状态
+                        categoryButtons.forEach(b => b.classList.remove('active'));
+                        // 添加当前按钮的激活状态
+                        btn.classList.add('active');
+                        btn.style.background = agricultureData.categories[index].color;
+
+                        const categoryName = agricultureData.categories[index].name;
+
+                        // 查找该类别下的所有项目
+                        const categoryItems = searchData.filter(item =>
+                            item.category.includes(categoryName)
+                        );
+
+                        // 显示信息窗口，展示该类别的概述
+                        const categoryInfo = {
+                            name: categoryName,
+                            category: '农学分类',
+                            description: agricultureData.categories[index].description,
+                            image: agricultureData.categories[index].image,
+                            items: categoryItems.map(item => item.name)
+                        };
+
+                        showInfoWindow(categoryInfo);
+                    });
+                });
 
                 const graphData = generateNodes(agricultureData);
                 const option = {
@@ -167,7 +547,7 @@
                         layout: 'force',
                         roam: true,
                         draggable: true,
-                        scaleLimit: { min: 2, max: 3},
+                        scaleLimit: { min: 2, max: 3 },
                         edgeSymbol: ['none', 'arrow'],
                         edgeSymbolSize: 2,
                         label: { show: false },
@@ -199,47 +579,168 @@
                 myChart.setOption(option);
                 myChart.hideLoading();
 
-                // 交互功能
-                const infoDiv = document.getElementById('node-info');
+                // 搜索功能实现
+                searchInput.addEventListener('input', (e) => {
+                    const value = e.target.value.trim();
+                    if (!value) {
+                        searchResults.style.display = 'none';
+                        return;
+                    }
+
+                    const filtered = searchData.filter(item =>
+                        item.name.includes(value) ||
+                        item.category.includes(value)
+                    );
+
+                    searchResults.innerHTML = filtered
+                        .slice(0, 10)
+                        .map(item => `
+                                    <div class="search-result-item" data-name="${item.name}">
+                                        <strong>${item.name}</strong>
+                                        <div>类别: ${item.category}</div>
+                                    </div>
+                                `).join('');
+
+                    searchResults.style.display = filtered.length ? 'block' : 'none';
+                });
+
+                // 点击搜索结果项
+                searchResults.addEventListener('click', (e) => {
+                    const resultItem = e.target.closest('.search-result-item');
+                    if (!resultItem) return;
+
+                    const name = resultItem.dataset.name;
+                    const item = searchData.find(i => i.name === name);
+
+                    if (item) {
+                        showDetailWindow(item);
+                    }
+                });
+
+                // 显示信息窗口
+                function showInfoWindow(item) {
+                    infoWindow.querySelector('h3').textContent = item.name;
+                    infoWindow.querySelector('img').src = item.image;/*
+                    
+                    infoWindow.querySelector('img').onerror = function () {
+                        this.src = './默认图片.jpg';
+                    };*/
+
+                    if (item.items) {
+                        // 显示类别信息和数据列表
+                        infoWindow.querySelector('.info-content').innerHTML = `
+                                    <p><strong>类别：</strong>${item.category}</p>
+                                    <p><strong>描述：</strong>${item.description}</p>
+                                    <div class="data-list">
+                                        ${item.items.map(name => {
+                            const nodeInfo = findNodeInfo(name, agricultureData.nodes) || {
+                                name: name,
+                                category: item.name,
+                                description: `属于${item.name}类别的农学知识`,
+                                image: `./images/${name}.jpg`
+                            };
+                            return `
+                                                <div class="data-item" data-name="${name}">
+                                                    <strong>${name}</strong>
+                                                    <div style="font-size: 12px; color: #666; margin-top: 4px;">
+                                                        点击查看详情
+                                                    </div>
+                                                </div>
+                                            `;
+                        }).join('')}
+                                    </div>
+                                `;
+
+                        // 为数据项添加点击事件
+                        const dataItems = infoWindow.querySelectorAll('.data-item');
+                        dataItems.forEach(dataItem => {
+                            dataItem.addEventListener('click', () => {
+                                const name = dataItem.dataset.name;
+                                const nodeInfo = findNodeInfo(name, agricultureData.nodes) || {
+                                    name: name,
+                                    category: item.name,
+                                    description: `属于${item.name}类别的农学知识`,
+                                    image: `./images/${name}.jpg`
+                                };
+                                showDetailWindow(nodeInfo);
+                            });
+                        });
+                    } else {
+                        // 显示普通项目信息
+                        infoWindow.querySelector('.info-content').innerHTML = `
+                                    <p><strong>类别：</strong>${item.category}</p>
+                                    <p><strong>描述：</strong>${item.description}</p>
+                                `;
+                    }
+
+                    infoWindow.style.display = 'block';
+                    searchResults.style.display = 'none';
+                }
+
+                // 显示详细信息窗口
+                function showDetailWindow(item) {
+                    // 检查是否已存在详细信息窗口
+                    const existingDetail = document.querySelector('.detail-window');
+                    if (existingDetail) {
+                        document.body.removeChild(existingDetail);
+                    }
+
+                    // 创建新的信息窗口
+                    const detailWindow = document.createElement('div');
+                    detailWindow.className = 'info-window detail-window';
+                    detailWindow.style.left = 'auto';
+                    detailWindow.style.right = '335px';
+                    detailWindow.style.display = 'block';
+                    detailWindow.innerHTML = `
+                                <span class="close-btn">&times;</span>
+                                <h3>${item.name}</h3>
+                                <div class="info-content">
+                                    <p><strong>类别：</strong>${item.category}</p>
+                                    <p><strong>描述：</strong>${item.description}</p>
+                                </div>
+                            `;
+
+                    // 添加关闭按钮事件
+                    detailWindow.querySelector('.close-btn').addEventListener('click', () => {
+                        document.body.removeChild(detailWindow);
+                    });
+
+                    document.body.appendChild(detailWindow);
+
+                    // 添加淡入效果
+                    setTimeout(() => {
+                        detailWindow.classList.add('show');
+                    }, 10);
+                }
+
+                // 点击节点显示信息
                 myChart.on('click', 'series.graph', function (params) {
                     if (params.data) {
-                        infoDiv.style.display = 'block';
-                        infoDiv.style.left = params.event.event.pageX + 15 + 'px';
-                        infoDiv.style.top = params.event.event.pageY + 15 + 'px';
-                        infoDiv.textContent = params.data.name;
+                        const nodeInfo = findNodeInfo(params.data.name, agricultureData.nodes);
+                        if (nodeInfo) {
+                            showInfoWindow({
+                                name: nodeInfo.name,
+                                category: params.data.category >= 0 ? agricultureData.categories[params.data.category].name : '',
+                                description: nodeInfo.description,
+                                image: nodeInfo.image
+                            });
+                        }
                     }
                 });
 
-                myChart.getZr().on('click', (event) => {
-                    if (!event.target) {
-                        infoDiv.style.display = 'none';
-                    }
+                // 关闭信息窗口
+                closeBtn.addEventListener('click', () => {
+                    infoWindow.style.display = 'none';
                 });
 
-                // 拖拽优化
-                let dragNode = null;
-                myChart.on('mousedown', { seriesIndex: 0 }, (e) => {
-                    dragNode = {
-                        id: e.data.id,
-                        x: e.event.offsetX,
-                        y: e.event.offsetY
-                    };
-                });
-                myChart.getZr().on('mousemove', (e) => {
-                    if (dragNode) {
-                        const dx = e.offsetX - dragNode.x;
-                        const dy = e.offsetY - dragNode.y;
-                        myChart.dispatchAction({
-                            type: 'dragNode',
-                            dataIndex: dragNode.id,
-                            dx: dx * 0.7,
-                            dy: dy * 0.7
-                        });
-                        dragNode.x = e.offsetX;
-                        dragNode.y = e.offsetY;
+                // 点击外部关闭信息窗口和搜索结果
+                window.addEventListener('click', (e) => {
+                    if (!infoWindow.contains(e.target) &&
+                        !searchResults.contains(e.target) &&
+                        e.target !== searchInput) {
+                        searchResults.style.display = 'none';
                     }
                 });
-                myChart.getZr().on('mouseup', () => dragNode = null);
 
                 // 初始缩放
                 setTimeout(() => {

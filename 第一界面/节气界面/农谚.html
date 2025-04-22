@@ -135,12 +135,37 @@
         .proverb-list {
             height: calc(100% - 60px);
             overflow: hidden;
+            /* 初始状态不允许滚动 */
+            padding-right: 10px;
+        }
+
+        .proverb-list.scrollable {
+            overflow-y: auto;
+            /* 允许滚动时启用滚动条 */
         }
 
         .scroll-content {
+            padding: 10px 0;
             transition: transform 0.5s ease;
-            will-change: transform;
-            backface-visibility: hidden;
+        }
+
+        /* 自定义滚动条样式 */
+        .proverb-list::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .proverb-list::-webkit-scrollbar-track {
+            background: rgba(58, 50, 65, 0.3);
+            border-radius: 4px;
+        }
+
+        .proverb-list::-webkit-scrollbar-thumb {
+            background: #6DA65D;
+            border-radius: 4px;
+        }
+
+        .proverb-list::-webkit-scrollbar-thumb:hover {
+            background: #8BC34A;
         }
 
         .proverb-item {
@@ -375,16 +400,69 @@
                 series: [{
                     type: 'sunburst',
                     data: data,
-                    radius: [0, '95%'],
+                    radius: [0, '90%'],
                     label: {
                         rotate: 'radial',
-                        fontSize: 12,
-                        formatter: p => p.name.length > 4 ? p.name.substr(0, 4) + '...' : p.name
+                        fontSize: 10,
+                        color: '#E0DCE5',
+                        formatter: function (params) {
+                            // 根据层级设置不同的显示方式
+                            if (params.treePathInfo.length === 1) {
+                                // 第一层（季节）：显示完整名称
+                                return params.name;
+                            } else if (params.treePathInfo.length === 2) {
+                                // 第二层（月份）：显示完整名称
+                                return params.name;
+                            } else {
+                                // 第三层（谚语）：只显示第一个字
+                                return params.name.charAt(0);
+                            }
+                        },
+                        position: 'outside',
+                        align: 'center',
+                        verticalAlign: 'middle',
+                        padding: [0, 3],
+                        backgroundColor: 'rgba(58, 50, 65, 0.7)',
+                        borderRadius: 4
                     },
                     levels: [
-                        { itemStyle: { color: '#6DA65D' }, r0: '0%', r: '30%' },
-                        { itemStyle: { color: '#4A4250' }, r0: '30%', r: '60%' },
-                        { itemStyle: { color: '#5F566D' }, r0: '60%', r: '80%' }
+                        {
+                            itemStyle: {
+                                color: '#6DA65D',
+                                borderWidth: 2,
+                                borderColor: '#2E2733'
+                            },
+                            r0: '0%',
+                            r: '25%',
+                            label: {
+                                fontSize: 14,
+                                fontWeight: 'bold'
+                            }
+                        },
+                        {
+                            itemStyle: {
+                                color: '#4A4250',
+                                borderWidth: 2,
+                                borderColor: '#2E2733'
+                            },
+                            r0: '25%',
+                            r: '55%',
+                            label: {
+                                fontSize: 12
+                            }
+                        },
+                        {
+                            itemStyle: {
+                                color: '#5F566D',
+                                borderWidth: 2,
+                                borderColor: '#2E2733'
+                            },
+                            r0: '55%',
+                            r: '90%',
+                            label: {
+                                fontSize: 10
+                            }
+                        }
                     ],
                     itemStyle: {
                         borderWidth: 2,
@@ -394,9 +472,33 @@
                         itemStyle: {
                             shadowBlur: 10,
                             shadowColor: 'rgba(0, 0, 0, 0.5)'
+                        },
+                        label: {
+                            show: true,
+                            fontSize: 14,
+                            backgroundColor: 'rgba(58, 50, 65, 0.9)'
                         }
+                    },
+                    highlightPolicy: 'ancestor',
+                    downplay: {
+                        label: {
+                            opacity: 0.5
+                        }
+                    },
+                    nodeClick: 'rootToNode',
+                    sort: function (a, b) {
+                        return b.value - a.value;
                     }
-                }]
+                }],
+                tooltip: {
+                    trigger: 'item',
+                    formatter: function (params) {
+                        if (params.treePathInfo.length === 3) {
+                            return `${params.name}<br/>${params.data.desc || '暂无详细解释'}`;
+                        }
+                        return params.name;
+                    }
+                }
             });
             return chart;
         }
@@ -406,22 +508,32 @@
             let currentItems = DataManager.items;
             let refreshInterval = null;
             let searchTimer = null;
+            let isAutoScrolling = true;
+            let scrollPosition = 0;
 
             const chart = initChart(fullData);
-            const scroller = new AutoScroller(document.querySelector('.proverb-list'));
+            const proverbList = document.querySelector('.proverb-list');
+            const scrollContent = document.getElementById('scrollContent');
 
-            chart.on('click', (params) => {
-                if (params.treePathInfo.length === 3) {
-                    const searchText = params.name;
-                    document.getElementById('searchInput').value = searchText;
+            // 自动滚动函数
+            function autoScroll() {
+                if (!isAutoScrolling) return;
 
-                    clearInterval(refreshInterval);
-                    currentItems = DataManager.search(searchText);
-                    updateProverbList(currentItems);
+                const containerHeight = proverbList.clientHeight;
+                const contentHeight = scrollContent.scrollHeight;
+
+                if (contentHeight > containerHeight) {
+                    scrollPosition -= 1;
+                    if (-scrollPosition >= contentHeight) {
+                        scrollPosition = containerHeight;
+                    }
+                    scrollContent.style.transform = `translateY(${scrollPosition}px)`;
+                    requestAnimationFrame(autoScroll);
                 }
-            });
+            }
 
-            function updateProverbList(items) {
+            // 更新谚语列表显示
+            function updateProverbList(items, autoScroll = false) {
                 const html = items.length ? items.map(item => `
                     <div class="proverb-item" 
                          data-text="${item.text}" 
@@ -432,67 +544,90 @@
                     </div>
                 `).join('') : '<div class="proverb-item">无匹配结果</div>';
 
-                const scrollContent = document.getElementById('scrollContent');
                 scrollContent.innerHTML = html;
-                scroller.reset();
+                scrollPosition = 0;
+                scrollContent.style.transform = 'translateY(0)';
 
-                if (!document.getElementById('searchInput').value) {
-                    scroller.start();
+                if (autoScroll) {
+                    isAutoScrolling = true;
+                    proverbList.classList.remove('scrollable');
+                    autoScroll();
+                } else {
+                    isAutoScrolling = false;
+                    proverbList.classList.add('scrollable');
                 }
             }
 
-            function startAutoRefresh() {
-                refreshInterval = setInterval(() => {
-                    const visibleCount = Math.max(15, Math.floor(scroller.containerHeight / 100));
-                    const shuffled = [...DataManager.items].sort(() => Math.random() - 0.5);
-                    currentItems = shuffled.slice(0, visibleCount);
-                    updateProverbList(currentItems);
-                }, 1500);
-            }
+            // 点击事件处理
+            chart.on('click', (params) => {
+                if (params.treePathInfo) {
+                    const searchText = params.name;
+                    document.getElementById('searchInput').value = searchText;
 
-            document.getElementById('searchInput').addEventListener('input', function (e) {
-                clearTimeout(searchTimer);
-                searchTimer = setTimeout(() => {
-                    const keyword = e.target.value.trim();
-                    clearInterval(refreshInterval);
+                    currentItems = DataManager.search(searchText);
 
-                    if (keyword) {
-                        currentItems = DataManager.search(keyword);
+                    // 如果点击的是最底层的节点（农谚本身）
+                    if (params.treePathInfo.length === 3) {
+                        const proverbItem = currentItems[0];
+                        if (proverbItem) {
+                            // 直接显示详细信息
+                            document.querySelector('.search-box').style.display = 'none';
+                            document.querySelector('.proverb-list').style.display = 'none';
+                            document.getElementById('proverb-detail-panel').classList.add('active');
+                            document.getElementById('proverb-desc').textContent = proverbItem.desc || '暂无详细解释';
+                            isAutoScrolling = false;
+                        }
                     } else {
-                        currentItems = DataManager.items;
-                        startAutoRefresh();
+                        // 如果不是最底层节点，显示该分类下的所有谚语
+                        document.querySelector('.search-box').style.display = 'block';
+                        document.querySelector('.proverb-list').style.display = 'block';
+                        document.getElementById('proverb-detail-panel').classList.remove('active');
+                        updateProverbList(currentItems, false); // 不自动滚动，允许手动滚动
                     }
-
-                    updateProverbList(currentItems);
-                }, 300);
+                }
             });
 
+            // 点击农谚条显示详细信息
             document.getElementById('scrollContent').addEventListener('click', (e) => {
                 const item = e.target.closest('.proverb-item');
                 if (item) {
                     document.querySelector('.search-box').style.display = 'none';
                     document.querySelector('.proverb-list').style.display = 'none';
                     document.getElementById('proverb-detail-panel').classList.add('active');
-                    document.getElementById('proverb-desc').textContent =
-                        item.dataset.desc || '暂无详细解释';
-                    scroller.stop();
-                    clearInterval(refreshInterval);
+                    document.getElementById('proverb-desc').textContent = item.dataset.desc || '暂无详细解释';
+                    isAutoScrolling = false;
                 }
             });
 
+            // 搜索框输入事件
+            document.getElementById('searchInput').addEventListener('input', function (e) {
+                clearTimeout(searchTimer);
+                searchTimer = setTimeout(() => {
+                    const keyword = e.target.value.trim();
+
+                    if (keyword) {
+                        currentItems = DataManager.search(keyword);
+                        updateProverbList(currentItems, false); // 搜索时不自动滚动
+                    } else {
+                        currentItems = DataManager.items;
+                        updateProverbList(currentItems, true); // 清空搜索时恢复自动滚动
+                    }
+                }, 300);
+            });
+
+            // 关闭详情面板时恢复自动滚动
             document.getElementById('close-detail').addEventListener('click', () => {
                 document.getElementById('proverb-detail-panel').classList.remove('active');
                 document.querySelector('.search-box').style.display = 'block';
                 document.querySelector('.proverb-list').style.display = 'block';
 
                 if (!document.getElementById('searchInput').value) {
-                    startAutoRefresh();
+                    updateProverbList(currentItems, true);
                 }
-                scroller.start();
             });
 
-            updateProverbList(currentItems);
-            startAutoRefresh();
+            // 初始状态：显示随机谚语并自动滚动
+            updateProverbList(currentItems, true);
         });
     </script>
 </body>
