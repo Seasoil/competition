@@ -3,456 +3,374 @@
 
 <head>
     <meta charset="utf-8">
-    <title>农学关系界面</title>
-    <script src="./js/jquery.min.js"></script>
+    <title>古代农业知识体系</title>
     <script src="./js/echarts.min.js"></script>
     <style>
-        html,
         body {
-            width: 100%;
-            height: 100%;
             margin: 0;
-            padding: 0;
-            overflow: hidden;
-            font-family: 'Microsoft YaHei', sans-serif;
-        }
-
-        #main {
-            width: 100%;
             height: 100vh;
-            background: url('./背景图（数据展示）.png') center/cover;
+            background: url('./背景图（关系展示）.png') no-repeat center/cover fixed;
+            font-family: "Microsoft Yahei", sans-serif;
             position: relative;
         }
 
-        #node-info {
+        body::after {
+            content: '';
             position: absolute;
-            display: none;
-            background: rgba(255, 255, 255, 0.95);
-            padding: 8px 12px;
-            border-radius: 4px;
-            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-            border: 1px solid #ddd;
-            pointer-events: none;
-            font-size: 14px;
-            color: #333;
-            max-width: 200px;
-            word-wrap: break-word;
-            backdrop-filter: blur(2px);
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(255, 255, 255, 0.1);
+            z-index: -1;
         }
 
-        .nav-buttons {
-            position: fixed;
-            top: 15px;
-            right: 15px;
-            z-index: 1000;
+        #nav {
+            padding: 20px;
             display: flex;
-            gap: 10px;
-            background: rgba(114, 218, 111, 0.9);
-            padding: 8px 12px;
-            border-radius: 6px;
-            box-shadow: 0 2px 8px rgba(201, 18, 18, 0.1);
+            justify-content: center;
+            gap: 20px;
+            position: relative;
+            backdrop-filter: blur(8px);
+            background: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
         }
 
         .nav-btn {
+            width: 120px;
+            height: 45px;
+            background: linear-gradient(145deg, rgba(86, 91, 94, 0.7), rgba(255, 255, 255, 0.15));
+            color: #2b2b2b;
+            border: none;
+            border-radius: 8px;
             cursor: pointer;
-            padding: 12px 28px;
-            border-radius: 6px;
-            background: rgba(183, 8, 8, 0.1);
-            border: 1px solid #350695;
-            transition: all 0.2s;
-            font-size: 12px;
-            color: #333;
+            transition: all 0.3s;
+            font-size: 15px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.3);
         }
 
         .nav-btn:hover {
-            background: #059467;
-            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-            transform: translateY(-1px);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+            background: linear-gradient(145deg, rgba(86, 91, 94, 0.8), rgba(255, 255, 255, 0.2));
         }
 
-        /* 搜索框样式 */
-        .search-container {
-            position: fixed;
-            top: 80px;
-            right: 15px;
-            z-index: 1000;
-            background: rgba(255, 255, 255, 0.95);
-            padding: 15px;
-            border-radius: 6px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-            width: 300px;
+        .nav-btn:active {
+            transform: translateY(0);
+            filter: brightness(0.9);
         }
 
-        .search-input {
+        #chart {
             width: 100%;
-            padding: 8px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            font-size: 14px;
+            height: calc(100vh - 100px);
         }
 
-        .search-results {
-            position: absolute;
-            top: 100%;
-            left: 0;
-            right: 0;
-            background: white;
-            border-radius: 4px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-            max-height: 300px;
-            overflow-y: auto;
-            display: none;
-        }
-
-        .search-result-item {
-            padding: 8px 12px;
-            cursor: pointer;
-            border-bottom: 1px solid #eee;
-        }
-
-        .search-result-item:hover {
-            background: #f5f5f5;
-        }
-
-        .info-window {
-            position: fixed;
-            left: 50%;
-            top: 50%;
-            transform: translate(-50%, -50%);
-            background: white;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-            z-index: 1001;
-            display: none;
-            width: 400px;
-            max-height: 80vh;
-            overflow-y: auto;
-        }
-
-        .info-window img {
-            max-width: 100%;
-            height: auto;
-            margin-bottom: 15px;
-        }
-
-        .info-window h3 {
-            margin: 0 0 10px 0;
-            color: #333;
-        }
-
-        .info-window p {
-            margin: 5px 0;
-            color: #666;
-        }
-
-        .close-btn {
-            position: absolute;
-            right: 10px;
-            top: 10px;
-            cursor: pointer;
-            font-size: 20px;
-            color: #666;
+        .tooltip {
+            background: rgba(255, 255, 255, 0.9) !important;
+            border-radius: 8px !important;
+            padding: 10px !important;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+            border: 1px solid rgba(0, 0, 0, 0.1) !important;
         }
     </style>
 </head>
 
 <body>
-    <div class="nav-buttons">
-        <div class="nav-btn" onclick="location.href='./关系图.html'">农学关系图</div>
-        <div class="nav-btn" onclick="location.href='./农学文化界面.html'">农学文化细览</div>
-        <div class="nav-btn" onclick="location.href='../第一界面/1界面.html'">第一界面</div>
-        <div class="nav-btn" onclick="location.href='../第三界面/人界面.html'">第三界面</div>
+    <div id="nav">
+        <button class="nav-btn" onclick="window.location.href='../index.html'">主界面</button>
+        <button class="nav-btn" onclick="window.location.href='../第一界面/1界面.html'">第一界面</button>
+        <button class="nav-btn" onclick="window.location.href='../第三界面/人界面.html'">第三界面</button>
+        <button class="nav-btn" onclick="window.location.href='./农学文化界面.html'">农学数据展示</button>
     </div>
-
-    <!-- 添加搜索框 -->
-    <div class="search-container">
-        <input type="text" class="search-input" placeholder="搜索农学知识...">
-        <div class="search-results"></div>
-    </div>
-
-    <!-- 添加信息窗口 -->
-    <div class="info-window">
-        <span class="close-btn">&times;</span>
-        <h3></h3>
-        <img src="" alt="">
-        <div class="info-content"></div>
-    </div>
-
-    <div id="main"></div>
-    <div id="node-info"></div>
+    <div id="chart"></div>
 
     <script>
-        let myChart = echarts.init(document.getElementById('main'));
-        myChart.showLoading();
+        const myChart = echarts.init(document.getElementById('chart'));
 
-        // 搜索相关变量
-        let searchData = [];
-        const searchInput = document.querySelector('.search-input');
-        const searchResults = document.querySelector('.search-results');
-        const infoWindow = document.querySelector('.info-window');
-        const closeBtn = document.querySelector('.close-btn');
-
-        fetch('./data/data.js')
-            .then(response => response.json())
-            .then(agricultureData => {
-                function generateNodes(agricultureData) {
-                    let nodes = [], links = [], idCounter = 0;
-
-                    const createNode = (name, category, depth = 0) => {
-                        const node = {
-                            id: idCounter++,
-                            name: name,
-                            category: category,
-                            symbolSize: Math.max(8 - depth * 1.2, 3),
-                            itemStyle: {
-                                borderWidth: 0,
-                                color: agricultureData.categories[category].color + 'FF',
-                                opacity: 0.9
-                            }
-                        };
-                        nodes.push(node);
-                        return node.id;
-                    };
-
-                    const processNode = (data, parentId = null, depth = 0, category = 0) => {
-                        if (Array.isArray(data)) {
-                            data.forEach(item => {
-                                if (typeof item === 'object') {
-                                    processNode(item, parentId, depth, category);
-                                } else {
-                                    const currentId = createNode(item, category, depth + 1);
-                                    links.push({ source: parentId, target: currentId });
+        const data = {
+            name: "古代农业知识体系",
+            value: 100,
+            children: [
+                {
+                    name: "农政制度",
+                    value: 80,
+                    children: [
+                        {
+                            name: "重农政策",
+                            value: 60,
+                            children: [
+                                { name: "历代帝王劝农诏令", value: 40 },
+                                { name: "田赋制度", value: 40, children: ["井田制", "均田制", "租佃制"] }
+                            ]
+                        },
+                        {
+                            name: "荒政体系",
+                            value: 60,
+                            children: [
+                                { name: "常平仓制度", value: 40 },
+                                { name: "社仓义仓", value: 40 },
+                                { name: "救荒本草", value: 40, children: ["可食草木分类", "救荒方法"] }
+                            ]
+                        },
+                        {
+                            name: "农书编撰",
+                            value: 60,
+                            children: [
+                                { name: "综合性农书", value: 40, children: ["齐民要术", "农政全书", "农桑辑要"] },
+                                { name: "专题农书", value: 40, children: ["蚕桑专论", "水利专论", "园艺专论"] }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    name: "天时农事",
+                    value: 80,
+                    children: [
+                        {
+                            name: "天文历法",
+                            value: 60,
+                            children: [
+                                { name: "二十四节气", value: 40, children: ["节气应用", "农事安排"] },
+                                { name: "农事月令", value: 40, children: ["月令体系", "农时指导"] }
+                            ]
+                        },
+                        {
+                            name: "气象占候",
+                            value: 60,
+                            children: [
+                                { name: "星象农谚", value: 40, children: ["箕星好风", "参星好雨"] },
+                                { name: "云霞雷电", value: 40, children: ["云象预测", "雷电预测"] },
+                                { name: "物候观测", value: 40, children: ["候雁北", "蚯蚓出", "草木萌动"] }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    name: "土地管理",
+                    value: 80,
+                    children: [
+                        {
+                            name: "土壤分类",
+                            value: 60,
+                            children: [
+                                { name: "九州土性", value: 40, children: ["黄壤", "黑壤", "赤壤"] },
+                                { name: "燥湿肥瘠", value: 40, children: ["燥土", "湿土", "肥土", "瘠土"] }
+                            ]
+                        },
+                        {
+                            name: "耕作制度",
+                            value: 60,
+                            children: [
+                                { name: "畎亩法", value: 40, children: ["垄作", "沟作"] },
+                                { name: "代田法", value: 40 },
+                                { name: "区田法", value: 40 }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    name: "水利工程",
+                    value: 80,
+                    children: [
+                        {
+                            name: "水利理论",
+                            value: 60,
+                            children: [
+                                { name: "治水策略", value: 40, children: ["疏浚", "障蓄"] },
+                                { name: "水文测量", value: 40, children: ["水平仪", "测深竿"] }
+                            ]
+                        },
+                        {
+                            name: "水利实践",
+                            value: 60,
+                            children: [
+                                {
+                                    name: "大型工程",
+                                    value: 40,
+                                    children: [
+                                        { name: "都江堰", value: 30 },
+                                        { name: "郑国渠", value: 30 }
+                                    ]
+                                },
+                                {
+                                    name: "灌溉工具",
+                                    value: 40,
+                                    children: [
+                                        { name: "翻车", value: 30, children: ["龙骨水车"] },
+                                        { name: "筒车", value: 30 },
+                                        { name: "桔槔", value: 30 }
+                                    ]
+                                },
+                                {
+                                    name: "农田体系",
+                                    value: 40,
+                                    children: [
+                                        { name: "圩田", value: 30 },
+                                        { name: "梯田", value: 30 }
+                                    ]
                                 }
-                            });
-                            return;
+                            ]
                         }
-
-                        const currentId = createNode(data.name || data, category, depth);
-                        if (parentId !== null) links.push({ source: parentId, target: currentId });
-                        if (data.children) processNode(data.children, currentId, depth + 1, category);
-                    };
-
-                    agricultureData.nodes.forEach((mainCategory, index) => {
-                        const mainId = createNode(mainCategory.name, index);
-                        if (mainCategory.children) processNode(mainCategory.children, mainId, 1, index);
-                    });
-
-                    return { nodes, links };
+                    ]
                 }
+            ]
+        };
 
-                // 构建搜索数据
-                function buildSearchData(data, category = '') {
-                    if (Array.isArray(data)) {
-                        data.forEach(item => {
-                            if (typeof item === 'object') {
-                                buildSearchData(item, category);
-                            } else {
-                                searchData.push({
-                                    name: item,
-                                    category: category,
-                                    description: `属于${category}类别的农学知识`,
-                                    image: `./images/${item}.jpg`
-                                });
-                            }
-                        });
-                    } else if (typeof data === 'object') {
-                        const currentCategory = data.name || category;
-                        if (data.children) {
-                            buildSearchData(data.children, currentCategory);
-                        }
+        const option = {
+            tooltip: {
+                trigger: 'item',
+                formatter: function (params) {
+                    const value = params.value || '';
+                    return `<div class="tooltip">
+                        <div style="font-weight:bold;margin-bottom:5px">${params.name}</div>
+                        ${value ? `<div>权重: ${value}</div>` : ''}
+                    </div>`;
+                }
+            },
+            series: [{
+                type: 'tree',
+                data: [data],
+                layout: 'radial',
+                symbol: 'emptyCircle',
+                symbolSize: 10,
+                initialTreeDepth: -1,
+                lineStyle: {
+                    color: '#4a6b8a',
+                    width: 2,
+                    curveness: 0.5,
+                    opacity: 0.8
+                },
+                label: {
+                    show: false,
+                    color: '#2b2b2b',
+                    fontSize: 12,
+                    position: 'left',
+                    verticalAlign: 'middle',
+                    lineHeight: 16,
+                    backgroundColor: 'rgba(255,255,255,0.7)',
+                    padding: [4, 8],
+                    borderRadius: 4,
+                    distance: 8
+                },
+                leaves: {
+                    label: {
+                        show: false,
+                        color: '#555',
+                        fontSize: 11,
+                        backgroundColor: 'rgba(255,255,255,0.7)',
+                        padding: [3, 6],
+                        borderRadius: 3,
+                        distance: 6
                     }
-                }
-
-                buildSearchData(agricultureData.nodes);
-
-                const graphData = generateNodes(agricultureData);
-                const option = {
-                    title: {
-                        text: '',
-                        left: 'center',
-                        textStyle: {
-                            fontSize: 50,
-                            color: '#283B4B',
-                            fontWeight: 'bold',
-                            textShadow: '0 2px 2px rgba(255,255,255,0.5)'
+                },
+                itemStyle: {
+                    color: '#fff',
+                    borderColor: '#4a6b8a',
+                    borderWidth: 2,
+                    shadowColor: 'rgba(0,0,0,0.1)',
+                    shadowBlur: 5
+                },
+                emphasis: {
+                    itemStyle: {
+                        borderWidth: 3,
+                        shadowBlur: 10,
+                        shadowColor: 'rgba(74,107,138,0.3)'
+                    },
+                    label: {
+                        show: true,
+                        fontWeight: 'bold',
+                        backgroundColor: 'rgba(255,255,255,0.9)'
+                    }
+                },
+                expandAndCollapse: true,
+                animationDuration: 300,
+                animationDurationUpdate: 300,
+                top: '0%',
+                bottom: '0%',
+                left: '0%',
+                right: '0%',
+                roam: true,
+                zoom: 1.2,
+                layoutCenter: ['50%', '50%'],
+                layoutRadius: '40%',
+                orient: 'radial',
+                animation: true,
+                animationDuration: 500,
+                animationEasing: 'cubicInOut',
+                animationDelay: function (idx) {
+                    return idx * 50;
+                },
+                animationDurationUpdate: 300,
+                animationEasingUpdate: 'cubicInOut',
+                animationDelayUpdate: function (idx) {
+                    return idx * 50;
+                },
+                nodeLayout: {
+                    type: 'radial',
+                    center: ['50%', '50%'],
+                    radius: '60%',
+                    startAngle: 0,
+                    endAngle: 360,
+                    clockwise: true,
+                    sort: 'asc',
+                    symbol: 'emptyCircle',
+                    symbolSize: 10,
+                    label: {
+                        show: false,
+                        position: 'left',
+                        distance: 8
+                    }
+                },
+                nodeGap: 20,
+                rotateLabel: true,
+                align: 'center',
+                distribute: true,
+                levels: [
+                    {
+                        r0: '0%',
+                        r: '20%',
+                        itemStyle: {
+                            color: '#fff',
+                            borderColor: '#4a6b8a',
+                            borderWidth: 2
+                        },
+                        label: {
+                            show: false
                         }
                     },
-                    legend: {
-                        data: agricultureData.categories.map(c => c.name),
-                        orient: 'vertical',
-                        right: 5,
-                        top: 'middle',
-                        itemWidth: 20,
-                        itemHeight: 20,
-                        textStyle: {
-                            color: '#283B4B',
-                            fontSize: 30,
-                            textShadow: '0 1px 2px rgba(255,255,255,0.8)'
+                    {
+                        r0: '20%',
+                        r: '40%',
+                        itemStyle: {
+                            color: '#fff',
+                            borderColor: '#4a6b8a',
+                            borderWidth: 2
+                        },
+                        label: {
+                            show: false
                         }
                     },
-                    tooltip: { show: false },
-                    series: [{
-                        type: 'graph',
-                        layout: 'force',
-                        roam: true,
-                        draggable: true,
-                        scaleLimit: { min: 2, max: 3 },
-                        edgeSymbol: ['none', 'arrow'],
-                        edgeSymbolSize: 2,
-                        label: { show: false },
-                        categories: agricultureData.categories,
-                        data: graphData.nodes,
-                        links: graphData.links,
-                        force: {
-                            repulsion: 5,
-                            edgeLength: 5,
-                            gravity: 0.25,
-                            friction: 0.35,
-                            layoutAnimation: true
+                    {
+                        r0: '40%',
+                        r: '60%',
+                        itemStyle: {
+                            color: '#fff',
+                            borderColor: '#4a6b8a',
+                            borderWidth: 2
                         },
-                        lineStyle: {
-                            color: 'source',
-                            curveness: 0.1,
-                            width: 0.5,
-                            opacity: 0.001
-                        },
-                        emphasis: {
-                            itemStyle: {
-                                shadowBlur: 8,
-                                shadowColor: 'rgba(0,0,0,0.2)'
-                            }
+                        label: {
+                            show: false
                         }
-                    }]
-                };
-
-                myChart.setOption(option);
-                myChart.hideLoading();
-
-                // 搜索功能实现
-                searchInput.addEventListener('input', (e) => {
-                    const value = e.target.value.trim();
-                    if (!value) {
-                        searchResults.style.display = 'none';
-                        return;
                     }
+                ]
+            }]
+        };
 
-                    const filtered = searchData.filter(item =>
-                        item.name.includes(value) ||
-                        item.category.includes(value)
-                    );
-
-                    searchResults.innerHTML = filtered
-                        .slice(0, 10)
-                        .map(item => `
-                            <div class="search-result-item" data-name="${item.name}">
-                                <strong>${item.name}</strong>
-                                <div>类别: ${item.category}</div>
-                            </div>
-                        `).join('');
-
-                    searchResults.style.display = filtered.length ? 'block' : 'none';
-                });
-
-                // 点击搜索结果项
-                searchResults.addEventListener('click', (e) => {
-                    const resultItem = e.target.closest('.search-result-item');
-                    if (!resultItem) return;
-
-                    const name = resultItem.dataset.name;
-                    const item = searchData.find(i => i.name === name);
-
-                    if (item) {
-                        showInfoWindow(item);
-                    }
-                });
-
-                // 显示信息窗口
-                function showInfoWindow(item) {
-                    infoWindow.querySelector('h3').textContent = item.name;
-                    infoWindow.querySelector('img').src = item.image;
-                    infoWindow.querySelector('img').onerror = function () {
-                        this.src = './默认图片.jpg';
-                    };
-                    infoWindow.querySelector('.info-content').innerHTML = `
-                        <p><strong>类别：</strong>${item.category}</p>
-                        <p><strong>描述：</strong>${item.description}</p>
-                    `;
-                    infoWindow.style.display = 'block';
-                    searchResults.style.display = 'none';
-                }
-
-                // 交互功能
-                const infoDiv = document.getElementById('node-info');
-                myChart.on('click', 'series.graph', function (params) {
-                    if (params.data) {
-                        infoDiv.style.display = 'block';
-                        infoDiv.style.left = params.event.event.pageX + 15 + 'px';
-                        infoDiv.style.top = params.event.event.pageY + 15 + 'px';
-                        infoDiv.textContent = params.data.name;
-                    }
-                });
-
-                myChart.getZr().on('click', (event) => {
-                    if (!event.target) {
-                        infoDiv.style.display = 'none';
-                    }
-                });
-
-                // 拖拽优化
-                let dragNode = null;
-                myChart.on('mousedown', { seriesIndex: 0 }, (e) => {
-                    dragNode = {
-                        id: e.data.id,
-                        x: e.event.offsetX,
-                        y: e.event.offsetY
-                    };
-                });
-                myChart.getZr().on('mousemove', (e) => {
-                    if (dragNode) {
-                        const dx = e.offsetX - dragNode.x;
-                        const dy = e.offsetY - dragNode.y;
-                        myChart.dispatchAction({
-                            type: 'dragNode',
-                            dataIndex: dragNode.id,
-                            dx: dx * 0.7,
-                            dy: dy * 0.7
-                        });
-                        dragNode.x = e.offsetX;
-                        dragNode.y = e.offsetY;
-                    }
-                });
-                myChart.getZr().on('mouseup', () => dragNode = null);
-
-                // 关闭信息窗口
-                closeBtn.addEventListener('click', () => {
-                    infoWindow.style.display = 'none';
-                });
-
-                // 点击外部关闭信息窗口和搜索结果
-                window.addEventListener('click', (e) => {
-                    if (!infoWindow.contains(e.target) &&
-                        !searchResults.contains(e.target) &&
-                        e.target !== searchInput) {
-                        searchResults.style.display = 'none';
-                    }
-                });
-
-                // 初始缩放
-                setTimeout(() => {
-                    myChart.dispatchAction({
-                        type: 'zoom',
-                        scale: 0.01,
-                        origin: [myChart.getWidth() / 2, myChart.getHeight() / 2]
-                    });
-                    myChart.dispatchAction({ type: 'restore' });
-                }, 8);
-            })
-            .catch(error => {
-                console.error('数据加载失败:', error);
-                myChart.hideLoading();
-            });
-
+        myChart.setOption(option);
         window.addEventListener('resize', () => myChart.resize());
     </script>
 </body>
