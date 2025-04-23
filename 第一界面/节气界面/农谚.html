@@ -28,34 +28,50 @@
             z-index: -1;
         }
 
-        /* 导航栏 */
+        /* 统一的导航栏样式 */
         .main-nav {
-            background: #3A3241;
-            padding: 12px 20px;
-            display: flex;
-            gap: 15px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
             position: fixed;
-            width: 100%;
             top: 0;
+            left: 0;
+            right: 0;
+            height: 80px;
+            background: rgba(255, 250, 240, 0.85);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
             z-index: 1000;
+            display: flex;
+            align-items: center;
+            padding: 0 40px;
+            backdrop-filter: blur(6px);
+            border-bottom: 1px solid rgba(212, 180, 131, 0.5);
         }
 
-        .nav-btn {
-            background: #6DA65D;
-            border: none;
-            color: #E0DCE5;
+        .nav-buttons {
+            display: flex;
+            gap: 25px;
+            margin-left: auto;
+        }
+
+        .nav-button {
             padding: 12px 28px;
-            border-radius: 5px;
+            border-radius: 6px;
+            background: transparent;
+            color: #4A4A4A;
+            font-size: 16px;
+            font-weight: 500;
             cursor: pointer;
-            font-family: 'Consolas', monospace;
-            transition: all 0.3s;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid rgba(74, 74, 74, 0.3);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            backdrop-filter: blur(8px);
         }
 
-        .nav-btn:hover {
-            background: #8BC34A;
+        .nav-button:hover {
+            background: rgba(74, 74, 74, 0.1);
+            color: #4A4A4A;
             transform: translateY(-2px);
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
         }
 
         * {
@@ -274,7 +290,9 @@
 
 <body>
     <nav class="main-nav">
-        <button class="nav-btn" onclick="window.location.href='../1界面.html'">二十四节气</button>
+        <div class="nav-buttons">
+            <button class="nav-button" onclick="window.location.href='../1界面.html'">二十四节气</button>
+        </div>
     </nav>
 
     <div class="container">

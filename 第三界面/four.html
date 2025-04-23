@@ -14,22 +14,15 @@
 </head>
 
 <body>
-    <ul class="nav">
-    
-        <li class="drop-down">
-      
-          <ul class="drop-down-content">
- 
-            <li>
-              <a href="./人界面.html">第三界面</a>
-            </li>
-      
-            <li>
-              <a href="./four.html">古籍展示界面</a>
-            </li>
-          </ul>
-        </li>
-      </ul>
+  <nav class="main-nav">
+    <h1 style="color: #8B4513; font-size: 24px;">古籍展示</h1>
+    <div class="nav-buttons">
+      <button class="nav-button" onclick="window.location.href='../index.html'">主界面</button>
+      <button class="nav-button" onclick="window.location.href='../第一界面/1界面.html'">第一界面</button>
+      <button class="nav-button" onclick="window.location.href='../第二界面/关系图.html'">第二界面</button>
+      <button class="nav-button" onclick="window.location.href='./人界面.html'">第三界面</button>
+    </div>
+  </nav>
   <div class="first-screen root-wrap">
     <header>
       <img src="./img/cnonix.png" />
@@ -123,3 +116,50 @@
 </body>
 
 </html>
+
+<style>
+  .main-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 80px;
+    background: rgba(255, 250, 240, 0.85);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    padding: 0 40px;
+    backdrop-filter: blur(6px);
+    border-bottom: 1px solid rgba(212, 180, 131, 0.5);
+  }
+
+  .nav-buttons {
+    display: flex;
+    gap: 25px;
+    margin-left: auto;
+  }
+
+  .nav-button {
+    padding: 12px 28px;
+    border-radius: 6px;
+    background: transparent;
+    color: #4A4A4A;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 1px solid rgba(74, 74, 74, 0.3);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    backdrop-filter: blur(8px);
+  }
+
+  .nav-button:hover {
+    background: rgba(74, 74, 74, 0.1);
+    color: #4A4A4A;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+  }
+</style>

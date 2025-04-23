@@ -13,19 +13,21 @@
             font-family: 'Microsoft YaHei', sans-serif;
         }
 
+        /* 统一的导航栏样式 */
         .main-nav {
             position: fixed;
             top: 0;
             left: 0;
             right: 0;
             height: 80px;
-            background: rgba(199, 185, 185, 0.08);
-            box-shadow: 0 4px 20px rgba(199, 185, 185, 0.08);
+            background: rgba(255, 250, 240, 0.85);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
             z-index: 1000;
             display: flex;
             align-items: center;
             padding: 0 40px;
             backdrop-filter: blur(6px);
+            border-bottom: 1px solid rgba(212, 180, 131, 0.5);
         }
 
         .nav-buttons {
@@ -37,23 +39,24 @@
         .nav-button {
             padding: 12px 28px;
             border-radius: 6px;
-            background: rgb(84, 82, 82);
-            color: #e2eae6;
+            background: transparent;
+            color: #4A4A4A;
             font-size: 16px;
             font-weight: 500;
             cursor: pointer;
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            border: none;
+            border: 1px solid rgba(74, 74, 74, 0.3);
             display: flex;
             align-items: center;
             gap: 8px;
+            backdrop-filter: blur(8px);
         }
 
         .nav-button:hover {
-            background: #f4e110;
-            color: white;
+            background: rgba(74, 74, 74, 0.1);
+            color: #4A4A4A;
             transform: translateY(-2px);
-            box-shadow: 0 6px 16px rgba(76, 175, 80, 0.25);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
         }
 
         .nav-button i {
@@ -164,21 +167,14 @@
 </head>
 
 <body>
+    <!-- 更新导航栏结构 -->
     <nav class="main-nav">
-        <h1 style="color: #2c7a53; font-size: 24px;"></h1>
+        <h1 style="color: #8B4513; font-size: 24px;">廿四节气</h1>
         <div class="nav-buttons">
-            <button class="nav-button" onclick="window.location.href='../index.html'">
-                <i></i>主界面
-            </button>
-            <button class="nav-button" onclick="window.location.href='../第二界面/关系图.html'">
-                <i></i>第二界面
-            </button>
-            <button class="nav-button" onclick="window.location.href='../第三界面/人界面.html'">
-                <i></i>第三界面
-            </button>
-            <button class="nav-button" onclick="window.location.href='./节气界面/农谚.html'">
-                <i></i>农谚界面
-            </button>
+            <button class="nav-button" onclick="window.location.href='../index.html'">主界面</button>
+            <button class="nav-button" onclick="window.location.href='../第二界面/关系图.html'">第二界面</button>
+            <button class="nav-button" onclick="window.location.href='../第三界面/人界面.html'">第三界面</button>
+            <button class="nav-button" onclick="window.location.href='./节气界面/农谚.html'">农谚界面</button>
         </div>
     </nav>
 
@@ -256,7 +252,7 @@
 
         // 创建时间轴标签
         const monthLabels = [
-              { day: 15, name: '12月' },{ day: 45, name: '11月' },{ day: 75, name: '10月' },{ day: 105, name: '9月' },{ day: 135, name: '8月' },{ day: 165, name: '7月' },{ day: 195, name: '6月' },{ day: 225, name: '5月' },{ day: 255, name: '4月' },{ day: 285, name: '3月' },{ day: 315, name: '2月' },{ day: 345, name: '1月' }
+            { day: 15, name: '12月' }, { day: 45, name: '11月' }, { day: 75, name: '10月' }, { day: 105, name: '9月' }, { day: 135, name: '8月' }, { day: 165, name: '7月' }, { day: 195, name: '6月' }, { day: 225, name: '5月' }, { day: 255, name: '4月' }, { day: 285, name: '3月' }, { day: 315, name: '2月' }, { day: 345, name: '1月' }
         ];
 
         const labelsContainer = document.getElementById('time-labels');
