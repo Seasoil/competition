@@ -68,69 +68,130 @@
             height: calc(100vh - 100px);
         }
 
+        /* 新的时间轴样式 */
         #time-axis {
             position: fixed;
             right: 40px;
             top: 50%;
             transform: translateY(-50%);
             height: 70vh;
-            width: 50px;
-            background: #fff;
-            border-radius: 25px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            width: 80px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 16px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
             z-index: 2;
-            padding: 15px 5px;
+            padding: 20px 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(220, 220, 220, 0.6);
         }
 
-        #time-labels {
+        .time-axis-track {
+            position: relative;
+            width: 6px;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.08);
+            border-radius: 3px;
+            padding-bottom: 15px;
+            /* 增加底部内边距，为1月标签腾出空间 */
+            box-sizing: border-box;
+        }
+
+        .time-axis-progress {
             position: absolute;
-            left: -60px;
+            width: 100%;
+            background: linear-gradient(to top, #8bc34a, #ffb74d, #f44336, #2196f3);
+            border-radius: 3px;
+            bottom: 0;
+            transition: height 0.2s ease;
+        }
+
+        .time-axis-handle {
+            position: absolute;
+            left: 50%;
+            width: 22px;
+            height: 22px;
+            background: #fff;
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            cursor: pointer;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+            z-index: 10;
+            border: 3px solid #4CAF50;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .time-axis-handle:hover {
+            transform: translate(-50%, -50%) scale(1.1);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+        }
+
+        .time-axis-handle:active {
+            transform: translate(-50%, -50%) scale(0.95);
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+        }
+
+        .time-axis-labels {
+            position: absolute;
+            left: -70px;
             top: 0;
             height: 100%;
-            width: 50px;
+            width: 60px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 10px 0;
             pointer-events: none;
         }
 
-        .time-label {
+        .time-label-container {
             position: absolute;
-            right: 10px;
+            right: -60px;
             transform: translateY(-50%);
-            color: #4a7a3d;
-            font-size: 12px;
-            font-weight: 500;
-            text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
-            white-space: nowrap;
-        }
-
-        .time-label::after {
-            content: '';
-            position: absolute;
-            right: -8px;
-            top: 50%;
-            width: 4px;
-            height: 1px;
-            background: #8bc34a;
-        }
-
-        #time-slider {
-            -webkit-appearance: slider-vertical;
-            width: 100%;
-            height: 100%;
-            margin: 0;
+            display: flex;
+            align-items: center;
             cursor: pointer;
-            background: transparent;
-            transition: transform 0.1s ease-out;
+            transition: all 0.2s ease;
         }
 
-        #time-slider::-webkit-slider-thumb {
-            -webkit-appearance: none;
+        /* 添加1月特殊样式 */
+        .time-label-container[data-month="1"] .time-label-indicator {
+            width: 20px;
+            /* 增加刻度线长度 */
+        }
+
+        .time-label-container:hover .time-label {
+            color: #205029;
+            transform: translateX(-3px);
+        }
+
+        .time-label {
+            color: #4a7a3d;
+            font-size: 14px;
+            font-weight: 500;
+            white-space: nowrap;
+            transition: all 0.2s ease;
+        }
+
+        .time-label-indicator {
+            position: absolute;
+            left: -20px;
+            width: 16px;
+            height: 2px;
+            background: #8bc34a;
+            border-radius: 1px;
+        }
+
+        .time-label-container.active .time-label {
+            color: #205029;
+            font-weight: 600;
+        }
+
+        .time-label-container.active .time-label-indicator {
             width: 24px;
-            height: 24px;
-            background: #0c9d10;
-            border-radius: 50%;
-            border: 3px solid #fff;
-            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
-            transition: transform 0.3s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+            background: #4CAF50;
         }
 
         .term-tooltip {
@@ -179,10 +240,16 @@
     </nav>
 
     <div id="chart-container"></div>
+
+    <!-- 新的时间轴结构 -->
     <div id="time-axis">
-        <input type="range" id="time-slider" min="0" max="365" value="0" orient="vertical">
-        <div id="time-labels"></div>
+        <div class="time-axis-track">
+            <div class="time-axis-progress" id="axis-progress"></div>
+            <div class="time-axis-handle" id="axis-handle"></div>
+            <div class="time-axis-labels" id="time-labels"></div>
+        </div>
     </div>
+
     <div id="term-tooltip" class="term-tooltip"></div>
 
     <script>
@@ -210,6 +277,7 @@
                 });
             });
         });
+
         // 节气数据
         const solarTermsData = [
             { name: '立春', season: '春', date: '2月3-5日', desc: '春耕备耕开始，检查农具，准备早稻育秧' },
@@ -246,51 +314,150 @@
         let activeTerm = null;
         let isAnimating = false;
         let hoverTimer = null;
+        let isDragging = false;
 
-        const slider = document.getElementById('time-slider');
+        // 时间轴元素
+        const timeAxis = document.getElementById('time-axis');
+        const axisTrack = document.querySelector('.time-axis-track');
+        const axisProgress = document.getElementById('axis-progress');
+        const axisHandle = document.getElementById('axis-handle');
+        const labelsContainer = document.getElementById('time-labels');
         const tooltip = document.getElementById('term-tooltip');
 
-        // 创建时间轴标签
+        // 创建时间轴月份标签 - 修正顺序（从下到上）
         const monthLabels = [
-            { day: 15, name: '12月' }, { day: 45, name: '11月' }, { day: 75, name: '10月' }, { day: 105, name: '9月' }, { day: 135, name: '8月' }, { day: 165, name: '7月' }, { day: 195, name: '6月' }, { day: 225, name: '5月' }, { day: 255, name: '4月' }, { day: 285, name: '3月' }, { day: 315, name: '2月' }, { day: 345, name: '1月' }
+            { month: 1, name: '1月' },
+            { month: 2, name: '2月' },
+            { month: 3, name: '3月' },
+            { month: 4, name: '4月' },
+            { month: 5, name: '5月' },
+            { month: 6, name: '6月' },
+            { month: 7, name: '7月' },
+            { month: 8, name: '8月' },
+            { month: 9, name: '9月' },
+            { month: 10, name: '10月' },
+            { month: 11, name: '11月' },
+            { month: 12, name: '12月' },
         ];
 
-        const labelsContainer = document.getElementById('time-labels');
-        monthLabels.forEach(label => {
+        // 计算每个月在年份中的位置百分比（从下到上）
+        monthLabels.forEach((label, index) => {
+            // 反转位置计算，让1月在底部，12月在顶部
+            let position = 100 - (index / (monthLabels.length - 1) * 100);
+
+            // 特殊处理1月位置，使其与进度条底部对齐但稍微上移
+            if (label.month === 1) {
+                position = 96; // 底部对齐但稍微上移
+            }
+            // 特殊处理2月位置，使其更好地位于1月和3月之间
+            else if (label.month === 2) {
+                position = 89; // 调整2月位置，使其在1月和3月之间
+            }
+
             const elem = document.createElement('div');
-            elem.className = 'time-label';
-            elem.style.top = `${(label.day / 365) * 100}%`;
-            elem.textContent = label.name;
+            elem.className = 'time-label-container';
+            elem.setAttribute('data-month', label.month);
+            elem.style.top = `${position}%`;
+            elem.innerHTML = `
+                <div class="time-label-indicator"></div>
+                <div class="time-label">${label.name}</div>
+            `;
+
+            // 点击月份标签直接跳转
+            elem.addEventListener('click', () => {
+                const day = getDayFromMonth(label.month);
+                updateTimeAxis(day);
+                const term = findNearestTerm(day);
+                updateHighlight(term);
+                showTooltip(term, day);
+            });
+
             labelsContainer.appendChild(elem);
         });
 
-        // 优化时间轴交互
-        slider.addEventListener('input', _.throttle(e => {
-            if (isAnimating) return;
-            isAnimating = true;
+        // 处理滑块拖动
+        axisHandle.addEventListener('mousedown', startDrag);
+        document.addEventListener('mouseup', stopDrag);
+        document.addEventListener('mousemove', drag);
 
-            const day = parseInt(e.target.value);
+        function startDrag(e) {
+            e.preventDefault();
+            isDragging = true;
+            axisHandle.style.transition = 'none';
+            axisProgress.style.transition = 'none';
+        }
+
+        function stopDrag() {
+            if (!isDragging) return;
+            isDragging = false;
+            axisHandle.style.transition = 'transform 0.2s ease, box-shadow 0.2s ease';
+            axisProgress.style.transition = 'height 0.2s ease';
+        }
+
+        function drag(e) {
+            if (!isDragging) return;
+
+            const trackRect = axisTrack.getBoundingClientRect();
+            let posY = e.clientY - trackRect.top;
+
+            // 限制在轨道范围内
+            posY = Math.max(0, Math.min(posY, trackRect.height));
+
+            // 计算百分比位置 (0-1)，注意方向是从下到上
+            const percentage = 1 - (posY / trackRect.height);
+
+            // 计算对应的天数 (0-365)
+            const day = Math.round(percentage * 365);
+
+            updateTimeAxis(day);
+
+            // 找到最近的节气并更新
             const term = findNearestTerm(day);
-
-            anime({
-                targets: slider,
-                value: getTermDay(term.date),
-                duration: 400,
-                easing: 'easeOutQuad',
-                round: true
-            });
-
             updateHighlight(term);
             showTooltip(term, day);
+        }
 
-            setTimeout(() => isAnimating = false, 150);
-        }, 20));
+        // 更新时间轴位置
+        function updateTimeAxis(day) {
+            // 确保day在0-365范围内
+            const normalizedDay = day % 365;
+            const percentage = normalizedDay / 365;
+            // 反转位置计算，让位置从下到上增长
+            const position = 100 - (percentage * 100);
+
+            // 更新滑块位置
+            axisHandle.style.top = `${position}%`;
+
+            // 更新进度条
+            axisProgress.style.height = `${percentage * 100}%`;
+
+            // 更新月份标签激活状态
+            const activeMonth = getMonthFromDay(normalizedDay);
+            updateMonthLabels(activeMonth);
+        }
+
+        // 更新月份标签的激活状态
+        function updateMonthLabels(activeMonth) {
+            document.querySelectorAll('.time-label-container').forEach(label => {
+                const month = parseInt(label.getAttribute('data-month'));
+                if (month === activeMonth) {
+                    label.classList.add('active');
+                } else {
+                    label.classList.remove('active');
+                }
+            });
+        }
 
         // 鼠标悬停交互
         chart.on('mouseover', ({ name }) => {
             const term = solarTermsData.find(t => t.name === name);
             clearTimeout(hoverTimer);
-            showTooltip(term, getTermDay(term.date));
+
+            // 更新时间轴
+            const day = getTermDay(term.date);
+            updateTimeAxis(day);
+
+            showTooltip(term, day);
         });
 
         chart.on('mouseout', () => {
@@ -317,7 +484,7 @@
                 name: term.name,
                 animation: { duration: 300, easing: 'quadraticOut' }
             });
-            if (activeTerm) {
+            if (activeTerm && activeTerm !== term.name) {
                 chart.dispatchAction({ type: 'downplay', name: activeTerm });
             }
             activeTerm = term.name;
@@ -351,21 +518,52 @@
         function getTermDay(dateStr) {
             const [month, days] = dateStr.split('月');
             const [startDay] = days.replace('日', '').split('-').map(Number);
-            return (parseInt(month) - 1) * 30 + startDay;
+
+            let monthNum = parseInt(month);
+            // 将月份直接映射到天数，1月是0-30天，12月是330-360天
+            return (monthNum - 1) * 30 + startDay;
+        }
+
+        function getMonthFromDay(day) {
+            // 确保day在0-365范围内
+            const normalizedDay = day % 365;
+            // 将天数映射到月份 (1-12)
+            return Math.floor(normalizedDay / 30) + 1;
+        }
+
+        function getDayFromMonth(month) {
+            // 确保month在1-12范围内
+            const normalizedMonth = ((month - 1) % 12) + 1;
+            return (normalizedMonth - 1) * 30 + 15; // 定位到月中
         }
 
         function findNearestTerm(day) {
-            return solarTermsData.reduce((nearest, term) =>
-                Math.abs(getTermDay(term.date) - day) <
-                    Math.abs(getTermDay(nearest.date) - day) ? term : nearest
-            );
+            // 确保day在0-365范围内
+            const normalizedDay = day % 365;
+
+            return solarTermsData.reduce((nearest, term) => {
+                const termDay = getTermDay(term.date);
+                // 考虑循环情况，例如12月31日和1月1日其实很近
+                const dist1 = Math.abs(termDay - normalizedDay);
+                const dist2 = Math.abs(termDay - (normalizedDay + 365));
+                const dist3 = Math.abs(termDay + 365 - normalizedDay);
+                const minDist = Math.min(dist1, dist2, dist3);
+
+                const nearestTermDay = getTermDay(nearest.date);
+                const nearestDist1 = Math.abs(nearestTermDay - normalizedDay);
+                const nearestDist2 = Math.abs(nearestTermDay - (normalizedDay + 365));
+                const nearestDist3 = Math.abs(nearestTermDay + 365 - normalizedDay);
+                const nearestMinDist = Math.min(nearestDist1, nearestDist2, nearestDist3);
+
+                return minDist < nearestMinDist ? term : nearest;
+            }, solarTermsData[0]);
         }
 
         // ECharts配置
         const option = {
             title: {
                 text: '廿四节气时间分布',
-                subtext: '滑动右侧时间轴探索节气',
+                subtext: '拖动右侧时间轴或点击节气探索',
                 left: 'center',
                 textStyle: {
                     color: '#2c7a53',
@@ -416,6 +614,14 @@
 
         chart.setOption(option);
         window.addEventListener('resize', () => chart.resize());
+
+        // 初始化时间轴位置（默认选中立春）
+        setTimeout(() => {
+            const initialTerm = solarTermsData[0]; // 立春
+            const initialDay = getTermDay(initialTerm.date);
+            updateTimeAxis(initialDay);
+            updateHighlight(initialTerm);
+        }, 500);
     </script>
 </body>
 
