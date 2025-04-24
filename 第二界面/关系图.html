@@ -8,10 +8,11 @@
     <style>
         body {
             margin: 0;
-            height: 100vh;
+            min-height: 100vh;
             background: url('./背景图（关系展示）.png') no-repeat center/cover fixed;
             font-family: "Microsoft Yahei", sans-serif;
             position: relative;
+            overflow-x: hidden;
         }
 
         body::after {
@@ -73,7 +74,10 @@
 
         #chart {
             width: 100%;
-            height: calc(100vh - 100px);
+            height: calc(100vh - 80px);
+            margin-top: 80px;
+            padding: 20px;
+            box-sizing: border-box;
         }
 
         .tooltip {

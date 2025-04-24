@@ -1,0 +1,3709 @@
+{
+  "categories": [
+    {
+      "name": "农事占候",
+      "color": "#5470c6",
+      "description": "研究天时、物候、气象等农事征兆的学问"
+    },
+    {
+      "name": "农器",
+      "color": "#91cc75",
+      "description": "古代农业生产中使用的各类工具和器械"
+    },
+    {
+      "name": "树艺",
+      "color": "#fac858",
+      "description": "种植和培育各类农作物的技术"
+    },
+    {
+      "name": "木本植物",
+      "color": "#ee6666",
+      "description": "具有木质茎的多年生植物"
+    },
+    {
+      "name": "牧养六畜",
+      "color": "#73c0de",
+      "description": "古代畜牧养殖的主要动物",
+      "children": [
+        {
+          "name": "马",
+          "description": "古代重要的交通和军事用畜",
+          "children": [
+            {
+              "name": "品种",
+              "description": "主要马种类型",
+              "varieties": [
+                {
+                  "name": "龙马",
+                  "description": "体格高大,善走",
+                  "origin": "西域",
+                  "features": ["体高八尺","毛色青白","性烈"]
+                },
+                {
+                  "name": "铁骝马",
+                  "description": "体格结实,耐力好",
+                  "origin": "北方",
+                  "features": ["毛色黑","腿部有力","耐寒"]
+                },
+                {
+                  "name": "赤骥",
+                  "description": "速度快,善跑",
+                  "origin": "西域",
+                  "features": ["毛色赤红","身形修长","善奔跑"]
+                }
+              ]
+            },
+            {
+              "name": "饲养方法",
+              "description": "马的饲养要点",
+              "methods": [
+                {
+                  "stage": "幼马",
+                  "care": "三月可断奶,需补充精料",
+                  "feed": ["青草","豆料","麸皮"]
+                },
+                {
+                  "stage": "成马",
+                  "care": "需要经常运动,每日梳理",
+                  "feed": ["干草","豆料","盐"]
+                }
+              ]
+            },
+            {
+              "name": "疾病防治",
+              "description": "常见马病及治疗方法",
+              "diseases": [
+                {
+                  "name": "马疝",
+                  "symptoms": ["腹痛","不食","躁动"],
+                  "treatment": "针灸,服用姜汤"
+                },
+                {
+                  "name": "马痢",
+                  "symptoms": ["腹泻","精神差"],
+                  "treatment": "服用黄连汤"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "牛",
+          "description": "主要农耕用畜",
+          "children": [
+            {
+              "name": "品种",
+              "description": "主要牛种类型",
+              "varieties": [
+                {
+                  "name": "青牛",
+                  "description": "体格健壮,善耕",
+                  "origin": "中原",
+                  "features": ["毛色青灰","体型大","力大"]
+                },
+                {
+                  "name": "水牛",
+                  "description": "适应水田耕作",
+                  "origin": "江南",
+                  "features": ["皮厚","耐水湿","力大"]
+                }
+              ]
+            },
+            {
+              "name": "饲养方法",
+              "description": "牛的饲养要点",
+              "methods": [
+                {
+                  "stage": "犊牛",
+                  "care": "四月可断奶,需补充营养",
+                  "feed": ["嫩草","豆饼","糠"]
+                },
+                {
+                  "stage": "成牛",
+                  "care": "需要适量运动,保持清洁",
+                  "feed": ["干草","豆秸","盐"]
+                }
+              ]
+            },
+            {
+              "name": "疾病防治",
+              "description": "常见牛病及治疗方法",
+              "diseases": [
+                {
+                  "name": "牛瘟",
+                  "symptoms": ["发热","不食","流涎"],
+                  "treatment": "隔离,服用大黄汤"
+                },
+                {
+                  "name": "牛疮",
+                  "symptoms": ["皮肤溃烂","瘙痒"],
+                  "treatment": "外敷硫磺膏"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "羊",
+          "description": "重要的肉用和毛用畜",
+          "children": [
+            {
+              "name": "品种",
+              "description": "主要羊种类型",
+              "varieties": [
+                {
+                  "name": "青羊",
+                  "description": "产毛量大",
+                  "origin": "北方",
+                  "features": ["毛色青白","毛质细","耐寒"]
+                },
+                {
+                  "name": "湖羊",
+                  "description": "繁殖力强,生长快",
+                  "origin": "江浙",
+                  "features": ["体型小","多胎","肉质好"]
+                }
+              ]
+            },
+            {
+              "name": "饲养方法",
+              "description": "羊的饲养要点",
+              "methods": [
+                {
+                  "stage": "羔羊",
+                  "care": "两月可断奶,需保暖",
+                  "feed": ["母乳","嫩草"]
+                },
+                {
+                  "stage": "成羊",
+                  "care": "需要放牧,定期剪毛",
+                  "feed": ["牧草","豆秸","盐"]
+                }
+              ]
+            },
+            {
+              "name": "疾病防治",
+              "description": "常见羊病及治疗方法",
+              "diseases": [
+                {
+                  "name": "羊痘",
+                  "symptoms": ["发热","起疹","结痂"],
+                  "treatment": "隔离,外敷草药"
+                },
+                {
+                  "name": "羊瘟",
+                  "symptoms": ["发热","咳嗽","流涎"],
+                  "treatment": "服用板蓝根汤"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "猪",
+          "description": "重要的肉用畜",
+          "children": [
+            {
+              "name": "品种",
+              "description": "主要猪种类型",
+              "varieties": [
+                {
+                  "name": "黑猪",
+                  "description": "生长快,肉质好",
+                  "origin": "江南",
+                  "features": ["毛色黑","体型大","肉质肥美"]
+                },
+                {
+                  "name": "花猪",
+                  "description": "适应性强",
+                  "origin": "中原",
+                  "features": ["黑白花纹","繁殖力强","抗病"]
+                }
+              ]
+            },
+            {
+              "name": "饲养方法",
+              "description": "猪的饲养要点",
+              "methods": [
+                {
+                  "stage": "仔猪",
+                  "care": "两月断奶,需保暖",
+                  "feed": ["母乳","米糠","菜叶"]
+                },
+                {
+                  "stage": "成猪",
+                  "care": "圈养为主,保持清洁",
+                  "feed": ["谷糠","菜叶","豆渣"]
+                }
+              ]
+            },
+            {
+              "name": "疾病防治",
+              "description": "常见猪病及治疗方法",
+              "diseases": [
+                {
+                  "name": "猪瘟",
+                  "symptoms": ["发热","不食","腹泻"],
+                  "treatment": "隔离,服用大青叶"
+                },
+                {
+                  "name": "猪痢",
+                  "symptoms": ["腹泻","精神差"],
+                  "treatment": "服用黄连汤"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "鸡",
+          "description": "重要的家禽",
+          "children": [
+            {
+              "name": "品种",
+              "description": "主要鸡种类型",
+              "varieties": [
+                {
+                  "name": "土鸡",
+                  "description": "适应性强,肉质好",
+                  "origin": "中原",
+                  "features": ["体型适中","抗病","肉质好"]
+                },
+                {
+                  "name": "竹丝鸡",
+                  "description": "体型小,肉质细嫩",
+                  "origin": "南方",
+                  "features": ["毛色黑","骨细","肉嫩"]
+                }
+              ]
+            },
+            {
+              "name": "饲养方法",
+              "description": "鸡的饲养要点",
+              "methods": [
+                {
+                  "stage": "雏鸡",
+                  "care": "需保暖,防潮",
+                  "feed": ["碎米","蛋黄","虫子"]
+                },
+                {
+                  "stage": "成鸡",
+                  "care": "半散养,注意防疫",
+                  "feed": ["谷物","青菜","虫子"]
+                }
+              ]
+            },
+            {
+              "name": "疾病防治",
+              "description": "常见鸡病及治疗方法",
+              "diseases": [
+                {
+                  "name": "鸡瘟",
+                  "symptoms": ["发热","不食","喘气"],
+                  "treatment": "隔离,服用板蓝根"
+                },
+                {
+                  "name": "痘疮",
+                  "symptoms": ["头面肿胀","结痂"],
+                  "treatment": "外敷草药"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "犬",
+          "description": "用于看家护院",
+          "children": [
+            {
+              "name": "品种",
+              "description": "主要犬种类型",
+              "varieties": [
+                {
+                  "name": "田犬",
+                  "description": "看家护院",
+                  "origin": "中原",
+                  "features": ["体型中等","警觉","忠诚"]
+                },
+                {
+                  "name": "猎犬",
+                  "description": "用于狩猎",
+                  "origin": "北方",
+                  "features": ["体型大","速度快","嗅觉灵敏"]
+                }
+              ]
+            },
+            {
+              "name": "饲养方法",
+              "description": "犬的饲养要点",
+              "methods": [
+                {
+                  "stage": "幼犬",
+                  "care": "三月断奶,需训练",
+                  "feed": ["母乳","肉糜","米粥"]
+                },
+                {
+                  "stage": "成犬",
+                  "care": "定期运动,训练",
+                  "feed": ["谷物","肉食","菜汤"]
+                }
+              ]
+            },
+            {
+              "name": "疾病防治",
+              "description": "常见犬病及治疗方法",
+              "diseases": [
+                {
+                  "name": "犬瘟",
+                  "symptoms": ["发热","流涎","抽搐"],
+                  "treatment": "隔离,服用清热药"
+                },
+                {
+                  "name": "疥癣",
+                  "symptoms": ["瘙痒","脱毛","结痂"],
+                  "treatment": "外敷硫磺膏"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "救荒本草",
+      "color": "#3ba272",
+      "description": "荒年可食用的野生植物，来源于《农政全书》卷六十"
+    },
+    {
+      "name": "境外作物",
+      "color": "#fc8452",
+      "description": "从国外引进或传入的农作物品种"
+    }
+  ],
+  "nodes": [
+    {
+      "name": "一、农事占候",
+      "description": "通过观察自然现象预测农事的传统方法",
+      "children": [
+        {
+          "name": "时间",
+          "description": "十二个月的农事规律",
+          "children": [
+            {
+              "name": "正月",
+              "description": "农历一年的开始，春耕准备时节"
+            },
+            {
+              "name": "二月",
+              "description": "春耕播种的重要时节"
+            },
+            {
+              "name": "三月",
+              "description": "春耕继续，作物生长期"
+            },
+            {
+              "name": "四月",
+              "description": "春夏之交，作物管理关键期"
+            },
+            {
+              "name": "五月",
+              "description": "夏季农事繁忙时期"
+            },
+            {
+              "name": "六月",
+              "description": "夏季管理和早稻收获期"
+            },
+            {
+              "name": "七月",
+              "description": "秋收准备和田间管理期"
+            },
+            {
+              "name": "八月",
+              "description": "秋收的主要时节"
+            },
+            {
+              "name": "九月",
+              "description": "秋收后期和冬种准备"
+            },
+            {
+              "name": "十月",
+              "description": "冬种和储藏准备时节"
+            },
+            {
+              "name": "十一月",
+              "description": "冬季农闲和储藏期"
+            },
+            {
+              "name": "十二月",
+              "description": "冬季农闲和来年准备"
+            }
+          ]
+        },
+        {
+          "name": "天象",
+          "description": "观察天空现象预测天气",
+          "children": [
+            {
+              "name": "日",
+              "description": "太阳升落、光照变化的征兆"
+            },
+            {
+              "name": "月",
+              "description": "月相变化对农事的影响"
+            },
+            {
+              "name": "星",
+              "description": "星象变化的农事征兆"
+            },
+            {
+              "name": "风",
+              "description": "风向风力的天气预示"
+            },
+            {
+              "name": "雨",
+              "description": "降水的各种征兆"
+            },
+            {
+              "name": "云",
+              "description": "云层变化的天气预示"
+            },
+            {
+              "name": "雾",
+              "description": "雾气的天气征兆"
+            },
+            {
+              "name": "霞",
+              "description": "晚霞早霞的天气预示"
+            },
+            {
+              "name": "虹",
+              "description": "虹的出现与天气关系"
+            },
+            {
+              "name": "雷",
+              "description": "雷电的季节性预示"
+            },
+            {
+              "name": "电",
+              "description": "闪电的天气征兆"
+            }
+          ]
+        },
+        {
+          "name": "自然现象",
+          "description": "地面自然现象的征兆",
+          "children": [
+            {
+              "name": "冰",
+              "description": "结冰化冰的气温指示"
+            },
+            {
+              "name": "霜",
+              "description": "霜的农事影响"
+            },
+            {
+              "name": "雪",
+              "description": "降雪对农事的影响"
+            },
+            {
+              "name": "潮",
+              "description": "潮湿程度的指示"
+            }
+          ]
+        },
+        {
+          "name": "地理",
+          "description": "地理环境特征的影响",
+          "children": [
+            {
+              "name": "山",
+              "description": "山地地形的农事特点"
+            },
+            {
+              "name": "地",
+              "description": "土地状况的观察"
+            },
+            {
+              "name": "水",
+              "description": "水文条件的影响"
+            }
+          ]
+        },
+        {
+          "name": "动植物指征",
+          "description": "动植物行为变化的预示",
+          "children": [
+            {
+              "name": "草",
+              "description": "草木生长的季节性变化"
+            },
+            {
+              "name": "花",
+              "description": "花期的物候指示"
+            },
+            {
+              "name": "木",
+              "description": "树木生长的季节变化"
+            },
+            {
+              "name": "飞禽走兽",
+              "description": "动物行为的天气预示"
+            },
+            {
+              "name": "龙鱼杂虫",
+              "description": "水生动物和昆虫的征兆"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "二、农器",
+      "description": "古代农业生产中使用的各类工具和器械",
+      "children": [
+        {
+          "name": "耕作工具",
+          "description": "用于耕地和整地的基本农具",
+          "children": [
+            {
+              "name": "犁",
+              "description": "翻土耕地的主要工具，由犁铧、犁壁、犁架、犁柄等组成",
+              "variants": [
+                "木犁",
+                "铁犁",
+                "牛犁",
+                "曲辕犁",
+                "蜈蚣犁",
+                "双股犁"
+              ],
+              "usage": "翻土、开垦",
+              "material": [
+                "木制",
+                "铁制"
+              ],
+              "power_source": "人力或畜力"
+            },
+            {
+              "name": "耒",
+              "description": "最早的手持翻土工具，形似锄头",
+              "usage": "小块土地耕作",
+              "material": "木制",
+              "historical_value": "中国最早的农具之一"
+            },
+            {
+              "name": "耜",
+              "description": "类似锄头的翻土工具，用于浅层耕作",
+              "usage": "浅层耕作",
+              "material": [
+                "木制",
+                "铁制"
+              ],
+              "feature": "轻便易用"
+            },
+            {
+              "name": "耧",
+              "description": "播种和耕地的复合工具",
+              "variants": [
+                "独轮耧",
+                "脚踏耧",
+                "手摇耧",
+                "耧车",
+                "耧耠车"
+              ],
+              "usage": [
+                "播种",
+                "耕地"
+              ],
+              "innovation": "提高播种效率的重要发明"
+            }
+          ]
+        },
+        {
+          "name": "整地工具",
+          "description": "用于平整土地和细化土壤的工具",
+          "children": [
+            {
+              "name": "锄",
+              "description": "松土除草的基本工具",
+              "variants": [
+                "锄头"
+              ],
+              "usage": [
+                "松土",
+                "除草",
+                "开沟"
+              ],
+              "material": [
+                "木柄铁头"
+              ],
+              "widespread": "最普及的农具之一"
+            },
+            {
+              "name": "锹",
+              "description": "挖掘和铲土工具",
+              "usage": [
+                "挖掘",
+                "铲土",
+                "堆土"
+              ],
+              "material": [
+                "木柄铁头"
+              ],
+              "feature": "效率高"
+            },
+            {
+              "name": "铲",
+              "description": "平整土地的专用工具",
+              "usage": "平整土地",
+              "material": [
+                "木柄铁头"
+              ],
+              "feature": "适合大面积平整"
+            },
+            {
+              "name": "磙",
+              "description": "圆柱形的平整土地工具",
+              "usage": [
+                "压实土地",
+                "碾平土地"
+              ],
+              "material": [
+                "石制",
+                "木制"
+              ],
+              "power_source": "人力或畜力",
+              "feature": "适合大面积压实"
+            },
+            {
+              "name": "碌碡",
+              "description": "石制或木制的圆柱形压土工具",
+              "usage": "压实农田",
+              "material": [
+                "石制",
+                "木制"
+              ],
+              "feature": "适合大面积作业"
+            },
+            {
+              "name": "耙",
+              "description": "用于平整和耙地的工具",
+              "variants": [
+                "木耙",
+                "铁齿耙",
+                "牛脚耙"
+              ],
+              "usage": [
+                "平整土地",
+                "耙地",
+                "除草"
+              ],
+              "material": [
+                "木制",
+                "铁齿"
+              ],
+              "feature": "多功能农具"
+            }
+          ]
+        },
+        {
+          "name": "灌溉工具",
+          "description": "用于农田灌溉的各类工具",
+          "children": [
+            {
+              "name": "翻车",
+              "description": "重要的古代灌溉工具",
+              "components": [
+                "水轮",
+                "天沟",
+                "链条",
+                "木桶"
+              ],
+              "power_source": "人力或畜力",
+              "usage": "提水灌溉",
+              "feature": "效率高，适合大面积灌溉"
+            },
+            {
+              "name": "筒车",
+              "description": "简单结构的提水工具",
+              "material": [
+                "竹制",
+                "木制"
+              ],
+              "usage": "提水灌溉",
+              "feature": "结构简单，易于制作"
+            },
+            {
+              "name": "桔槔",
+              "description": "杠杆原理的灌溉工具",
+              "components": [
+                "支点",
+                "长杆",
+                "水桶"
+              ],
+              "usage": "小规模灌溉",
+              "feature": "适合小块农田灌溉"
+            },
+            {
+              "name": "踏车",
+              "description": "脚踏式灌溉工具",
+              "usage": "田间灌溉",
+              "power_source": "人力",
+              "feature": "江南水乡常见灌溉工具"
+            }
+          ]
+        },
+        {
+          "name": "收割工具",
+          "description": "用于收割农作物的各类工具",
+          "children": [
+            {
+              "name": "镰刀",
+              "description": "收割作物的主要工具",
+              "variants": [
+                "直镰",
+                "弯镰",
+                "锯齿镰"
+              ],
+              "usage": [
+                "收割",
+                "割草"
+              ],
+              "material": [
+                "木柄铁头"
+              ],
+              "feature": "轻便高效"
+            },
+            {
+              "name": "铡刀",
+              "description": "切割秸秆和草料的工具",
+              "usage": [
+                "切草",
+                "切秸秆"
+              ],
+              "material": [
+                "木架铁刀"
+              ],
+              "feature": "适合大量切割"
+            },
+            {
+              "name": "打谷器",
+              "description": "脱粒用的工具",
+              "variants": [
+                "连枷",
+                "打谷板"
+              ],
+              "usage": "脱粒",
+              "material": [
+                "木制",
+                "竹制"
+              ],
+              "feature": "传统脱粒工具"
+            }
+          ]
+        },
+        {
+          "name": "运输工具",
+          "description": "用于运输农产品的工具",
+          "children": [
+            {
+              "name": "独轮车",
+              "description": "单人操作的运输工具",
+              "usage": [
+                "运输",
+                "搬运"
+              ],
+              "material": [
+                "木制",
+                "铁制"
+              ],
+              "feature": "适合狭窄道路"
+            },
+            {
+              "name": "牛车",
+              "description": "畜力牵引的运输工具",
+              "usage": "大宗运输",
+              "power_source": "畜力",
+              "feature": "载重量大"
+            },
+            {
+              "name": "扁担",
+              "description": "肩挑运输工具",
+              "usage": "小宗运输",
+              "material": [
+                "竹制",
+                "木制"
+              ],
+              "feature": "轻便灵活"
+            }
+          ]
+        },
+        {
+          "name": "加工工具",
+          "description": "用于农产品加工的各类工具",
+          "children": [
+            {
+              "name": "石磨",
+              "description": "磨制粮食的工具",
+              "usage": [
+                "磨面",
+                "磨粉"
+              ],
+              "material": "石制",
+              "power_source": "人力或畜力",
+              "feature": "传统加工工具"
+            },
+            {
+              "name": "碾子",
+              "description": "碾压谷物的工具",
+              "usage": "去壳碾米",
+              "material": "石制",
+              "power_source": "人力或畜力",
+              "feature": "适合大量加工"
+            },
+            {
+              "name": "臼",
+              "description": "捣碎粮食的工具",
+              "usage": [
+                "捣米",
+                "捣药"
+              ],
+              "material": [
+                "石制",
+                "木制"
+              ],
+              "feature": "适合小量加工"
+            }
+          ]
+        },
+        {
+          "name": "储藏工具",
+          "description": "用于储存农产品的工具",
+          "children": [
+            {
+              "name": "粮仓",
+              "description": "储存粮食的建筑",
+              "variants": [
+                "木仓",
+                "土仓",
+                "砖仓"
+              ],
+              "usage": "储存粮食",
+              "material": [
+                "木制",
+                "土制",
+                "砖制"
+              ],
+              "feature": "防潮防虫"
+            },
+            {
+              "name": "陶罐",
+              "description": "储存粮食的容器",
+              "usage": "储存粮食",
+              "material": "陶制",
+              "feature": "密封性好"
+            },
+            {
+              "name": "竹篓",
+              "description": "临时储存工具",
+              "usage": "临时储存",
+              "material": "竹制",
+              "feature": "通风透气"
+            }
+          ]
+        },
+        {
+          "name": "播种工具",
+          "description": "用于播种的各类工具",
+          "children": [
+            {
+              "name": "耧车",
+              "description": "古代播种机",
+              "variants": [
+                "独脚耧",
+                "两脚耧",
+                "三脚耧"
+              ],
+              "usage": "条播",
+              "material": [
+                "木制",
+                "铁制"
+              ],
+              "power_source": "畜力",
+              "feature": "提高播种效率"
+            },
+            {
+              "name": "点播器",
+              "description": "点播种子的工具",
+              "usage": "点播",
+              "material": [
+                "竹制",
+                "木制"
+              ],
+              "feature": "适合小粒种子"
+            },
+            {
+              "name": "撒播器",
+              "description": "撒播种子的工具",
+              "usage": "撒播",
+              "material": [
+                "竹制",
+                "木制"
+              ],
+              "feature": "适合大面积播种"
+            }
+          ]
+        },
+        {
+          "name": "施肥工具",
+          "description": "用于施肥的各类工具",
+          "children": [
+            {
+              "name": "粪箕",
+              "description": "装运肥料的工具",
+              "usage": "装运肥料",
+              "material": [
+                "竹制",
+                "木制"
+              ],
+              "feature": "轻便耐用"
+            },
+            {
+              "name": "粪勺",
+              "description": "舀取肥料的工具",
+              "usage": "舀取肥料",
+              "material": [
+                "木制",
+                "铁制"
+              ],
+              "feature": "容量适中"
+            },
+            {
+              "name": "粪桶",
+              "description": "盛装肥料的容器",
+              "usage": "盛装肥料",
+              "material": [
+                "木制",
+                "竹制"
+              ],
+              "feature": "密封性好"
+            }
+          ]
+        },
+        {
+          "name": "除草工具",
+          "description": "用于除草的各类工具",
+          "children": [
+            {
+              "name": "锄头",
+              "description": "除草松土的工具",
+              "variants": [
+                "平锄",
+                "尖锄",
+                "宽锄"
+              ],
+              "usage": [
+                "除草",
+                "松土"
+              ],
+              "material": [
+                "木柄铁头"
+              ],
+              "feature": "多功能农具"
+            },
+            {
+              "name": "铲子",
+              "description": "铲除杂草的工具",
+              "usage": "铲草",
+              "material": [
+                "木柄铁头"
+              ],
+              "feature": "适合硬质杂草"
+            },
+            {
+              "name": "除草耙",
+              "description": "耙除杂草的工具",
+              "usage": "耙草",
+              "material": [
+                "木制",
+                "铁齿"
+              ],
+              "feature": "适合大面积除草"
+            }
+          ]
+        },
+        {
+          "name": "病虫害防治工具",
+          "description": "用于防治病虫害的各类工具",
+          "children": [
+            {
+              "name": "喷雾器",
+              "description": "喷洒药剂的工具",
+              "variants": [
+                "手压式",
+                "背负式"
+              ],
+              "usage": "喷洒药剂",
+              "material": [
+                "铁制",
+                "塑料制"
+              ],
+              "feature": "均匀喷洒"
+            },
+            {
+              "name": "捕虫网",
+              "description": "捕捉害虫的工具",
+              "usage": "捕捉害虫",
+              "material": [
+                "竹制",
+                "网布"
+              ],
+              "feature": "适合小规模防治"
+            },
+            {
+              "name": "诱虫灯",
+              "description": "诱杀害虫的工具",
+              "usage": "诱杀害虫",
+              "material": [
+                "竹制",
+                "油灯"
+              ],
+              "feature": "环保防治"
+            }
+          ]
+        },
+        {
+          "name": "收获后处理工具",
+          "description": "用于收获后处理的各类工具",
+          "children": [
+            {
+              "name": "簸箕",
+              "description": "筛选粮食的工具",
+              "usage": [
+                "筛选",
+                "扬场"
+              ],
+              "material": [
+                "竹制",
+                "木制"
+              ],
+              "feature": "轻便实用"
+            },
+            {
+              "name": "筛子",
+              "description": "筛选粮食的工具",
+              "variants": [
+                "粗筛",
+                "细筛"
+              ],
+              "usage": "筛选粮食",
+              "material": [
+                "竹制",
+                "铁制"
+              ],
+              "feature": "分级筛选"
+            },
+            {
+              "name": "风车",
+              "description": "分离粮食的工具",
+              "usage": "分离粮食",
+              "material": [
+                "木制"
+              ],
+              "power_source": "人力",
+              "feature": "高效分离"
+            }
+          ]
+        },
+        {
+          "name": "农事记录工具",
+          "description": "用于记录农事的各类工具",
+          "children": [
+            {
+              "name": "农事历",
+              "description": "记录农事的历书",
+              "usage": "记录农事",
+              "material": "纸质",
+              "feature": "指导农事"
+            },
+            {
+              "name": "农事簿",
+              "description": "记录农事的簿册",
+              "usage": "记录农事",
+              "material": "纸质",
+              "feature": "详细记录"
+            },
+            {
+              "name": "农事图",
+              "description": "记录农事的图画",
+              "usage": "记录农事",
+              "material": "纸质",
+              "feature": "直观记录"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "三、树艺",
+      "description": "种植和培育各类农作物的技术",
+      "children": [
+        {
+          "name": "3.1 谷部上",
+          "description": "主要粮食作物",
+          "children": [
+            {
+              "name": "粱",
+              "description": "古代主要粮食作物",
+              "feature": "耐旱作物",
+              "usage": "粮食",
+              "cultivation": "春季播种，秋季收获"
+            },
+            {
+              "name": "黍",
+              "description": "古代重要粮食作物",
+              "feature": "耐旱耐瘠",
+              "usage": "粮食",
+              "cultivation": "春季播种，秋季收获"
+            },
+            {
+              "name": "梁",
+              "description": "古代粮食作物",
+              "feature": "耐旱作物",
+              "usage": "粮食",
+              "cultivation": "春季播种，秋季收获"
+            },
+            {
+              "name": "术",
+              "description": "药用植物",
+              "feature": "多年生草本",
+              "usage": [
+                "药用",
+                "食用"
+              ],
+              "cultivation": "春季播种，秋季收获"
+            },
+            {
+              "name": "稷",
+              "description": "古代主要粮食作物",
+              "feature": "耐旱作物",
+              "usage": "粮食",
+              "cultivation": "春季播种，秋季收获"
+            },
+            {
+              "name": "薥秫",
+              "description": "古代粮食作物",
+              "feature": "耐旱作物",
+              "usage": "粮食",
+              "cultivation": "春季播种，秋季收获"
+            },
+            {
+              "name": "稻",
+              "description": "主要粮食作物",
+              "feature": "水生作物",
+              "usage": "主食",
+              "cultivation": "春季播种，秋季收获"
+            },
+            {
+              "name": "椑附",
+              "description": "古代粮食作物",
+              "feature": "耐旱作物",
+              "usage": "粮食",
+              "cultivation": "春季播种，秋季收获"
+            }
+          ]
+        },
+        {
+          "name": "3.2 谷部下",
+          "description": "豆类和杂粮作物",
+          "children": [
+            {
+              "name": "大豆",
+              "description": "重要豆类作物",
+              "feature": "耐旱作物",
+              "usage": [
+                "粮食",
+                "油料"
+              ],
+              "cultivation": "春季播种，秋季收获"
+            },
+            {
+              "name": "豌豆",
+              "description": "豆类作物",
+              "feature": "耐寒作物",
+              "usage": [
+                "粮食",
+                "蔬菜"
+              ],
+              "cultivation": "春秋两季可种植"
+            },
+            {
+              "name": "小豆",
+              "description": "豆类作物",
+              "feature": "耐旱作物",
+              "usage": [
+                "粮食",
+                "药用"
+              ],
+              "cultivation": "春季播种，秋季收获"
+            },
+            {
+              "name": "豇豆",
+              "description": "豆类作物",
+              "feature": "耐旱作物",
+              "usage": [
+                "粮食",
+                "蔬菜"
+              ],
+              "cultivation": "春季播种，秋季收获"
+            },
+            {
+              "name": "菉豆",
+              "description": "豆类作物",
+              "feature": "耐旱作物",
+              "usage": [
+                "粮食",
+                "药用"
+              ],
+              "cultivation": "春季播种，秋季收获"
+            },
+            {
+              "name": "藊豆",
+              "description": "豆类作物",
+              "feature": "耐旱作物",
+              "usage": [
+                "粮食",
+                "蔬菜"
+              ],
+              "cultivation": "春季播种，秋季收获"
+            },
+            {
+              "name": "赤豆",
+              "description": "豆类作物",
+              "feature": "耐旱作物",
+              "usage": [
+                "粮食",
+                "药用"
+              ],
+              "cultivation": "春季播种，秋季收获"
+            },
+            {
+              "name": "刀豆",
+              "description": "豆类作物",
+              "feature": "耐旱作物",
+              "usage": [
+                "粮食",
+                "蔬菜"
+              ],
+              "cultivation": "春季播种，秋季收获"
+            },
+            {
+              "name": "蚕豆",
+              "description": "豆类作物",
+              "feature": "耐寒作物",
+              "usage": [
+                "粮食",
+                "蔬菜"
+              ],
+              "cultivation": "秋季播种，春季收获"
+            },
+            {
+              "name": "黎豆",
+              "description": "豆类作物",
+              "feature": "耐旱作物",
+              "usage": [
+                "粮食",
+                "饲料"
+              ],
+              "cultivation": "春季播种，秋季收获"
+            },
+            {
+              "name": "麦",
+              "description": "主要粮食作物",
+              "feature": "耐寒作物",
+              "usage": "粮食",
+              "cultivation": "秋季播种，夏季收获"
+            },
+            {
+              "name": "荞麦",
+              "description": "杂粮作物",
+              "feature": "耐瘠薄",
+              "usage": "粮食",
+              "cultivation": "春秋两季可种植"
+            },
+            {
+              "name": "胡麻",
+              "description": "油料作物",
+              "feature": "耐旱作物",
+              "usage": [
+                "油料",
+                "食用"
+              ],
+              "cultivation": "春季播种，秋季收获"
+            }
+          ]
+        },
+        {
+          "name": "3.3 蓏部",
+          "description": "瓜果类作物",
+          "children": [
+            {
+              "name": "黄瓜",
+              "description": "瓜类蔬菜",
+              "feature": "喜温作物",
+              "usage": "蔬菜",
+              "cultivation": "春季播种，夏季收获"
+            },
+            {
+              "name": "茄子",
+              "description": "茄科蔬菜",
+              "feature": "喜温作物",
+              "usage": "蔬菜",
+              "cultivation": "春季播种，夏季收获"
+            },
+            {
+              "name": "瓠",
+              "description": "葫芦科作物",
+              "feature": "喜温作物",
+              "usage": [
+                "蔬菜",
+                "容器"
+              ],
+              "cultivation": "春季播种，夏季收获"
+            },
+            {
+              "name": "王瓜",
+              "description": "瓜类作物",
+              "feature": "喜温作物",
+              "usage": "蔬菜",
+              "cultivation": "春季播种，夏季收获"
+            },
+            {
+              "name": "芋",
+              "description": "薯芋类作物",
+              "feature": "喜湿作物",
+              "usage": "粮食",
+              "cultivation": "春季种植，秋季收获"
+            },
+            {
+              "name": "丝瓜",
+              "description": "瓜类蔬菜",
+              "feature": "喜温作物",
+              "usage": "蔬菜",
+              "cultivation": "春季播种，夏季收获"
+            },
+            {
+              "name": "香芋",
+              "description": "薯芋类作物",
+              "feature": "喜湿作物",
+              "usage": "粮食",
+              "cultivation": "春季种植，秋季收获"
+            },
+            {
+              "name": "西瓜",
+              "description": "瓜类水果",
+              "feature": "喜温作物",
+              "usage": "水果",
+              "cultivation": "春季播种，夏季收获"
+            },
+            {
+              "name": "莲",
+              "description": "水生植物",
+              "feature": "水生作物",
+              "usage": [
+                "食用",
+                "药用"
+              ],
+              "cultivation": "春季种植，夏季收获"
+            },
+            {
+              "name": "菱",
+              "description": "水生植物",
+              "feature": "水生作物",
+              "usage": "食用",
+              "cultivation": "春季种植，秋季收获"
+            },
+            {
+              "name": "芡",
+              "description": "水生植物",
+              "feature": "水生作物",
+              "usage": [
+                "食用",
+                "药用"
+              ],
+              "cultivation": "春季种植，秋季收获"
+            },
+            {
+              "name": "乌芋",
+              "description": "水生植物",
+              "feature": "水生作物",
+              "usage": "食用",
+              "cultivation": "春季种植，秋季收获"
+            },
+            {
+              "name": "慈姑",
+              "description": "水生植物",
+              "feature": "水生作物",
+              "usage": "食用",
+              "cultivation": "春季种植，秋季收获"
+            },
+            {
+              "name": "菰",
+              "description": "水生植物",
+              "feature": "水生作物",
+              "usage": "食用",
+              "cultivation": "春季种植，秋季收获"
+            },
+            {
+              "name": "山药",
+              "description": "薯芋类作物",
+              "feature": "喜湿作物",
+              "usage": [
+                "食用",
+                "药用"
+              ],
+              "cultivation": "春季种植，秋季收获"
+            },
+            {
+              "name": "甘",
+              "description": "薯芋类作物",
+              "feature": "喜湿作物",
+              "usage": "食用",
+              "cultivation": "春季种植，秋季收获"
+            },
+            {
+              "name": "萝菔",
+              "description": "根菜类作物",
+              "feature": "耐寒作物",
+              "usage": "蔬菜",
+              "cultivation": "春秋两季可种植"
+            },
+            {
+              "name": "胡萝菔",
+              "description": "根菜类作物",
+              "feature": "耐寒作物",
+              "usage": "蔬菜",
+              "cultivation": "春秋两季可种植"
+            }
+          ]
+        },
+        {
+          "name": "3.4 蔬部",
+          "description": "蔬菜类作物",
+          "children": [
+            {
+              "name": "葵属",
+              "description": "葵科蔬菜",
+              "children": [
+                {
+                  "name": "乌松",
+                  "description": "葵科蔬菜",
+                  "feature": "耐寒作物",
+                  "usage": "蔬菜",
+                  "cultivation": "春秋两季可种植"
+                },
+                {
+                  "name": "蜀葵",
+                  "description": "葵科蔬菜",
+                  "feature": "耐寒作物",
+                  "usage": "蔬菜",
+                  "cultivation": "春秋两季可种植"
+                },
+                {
+                  "name": "夏松",
+                  "description": "葵科蔬菜",
+                  "feature": "耐寒作物",
+                  "usage": "蔬菜",
+                  "cultivation": "春秋两季可种植"
+                },
+                {
+                  "name": "龙葵",
+                  "description": "葵科蔬菜",
+                  "feature": "耐寒作物",
+                  "usage": "蔬菜",
+                  "cultivation": "春秋两季可种植"
+                },
+                {
+                  "name": "廿祘",
+                  "description": "葵科蔬菜",
+                  "feature": "耐寒作物",
+                  "usage": "蔬菜",
+                  "cultivation": "春秋两季可种植"
+                },
+                {
+                  "name": "蔠葵",
+                  "description": "葵科蔬菜",
+                  "feature": "耐寒作物",
+                  "usage": "蔬菜",
+                  "cultivation": "春秋两季可种植"
+                }
+              ]
+            },
+            {
+              "name": "辛菜类",
+              "description": "辛辣蔬菜",
+              "children": [
+                {
+                  "name": "葱",
+                  "description": "辛辣蔬菜",
+                  "feature": "耐寒作物",
+                  "usage": [
+                    "蔬菜",
+                    "调味"
+                  ],
+                  "cultivation": "春秋两季可种植"
+                },
+                {
+                  "name": "蔓菁",
+                  "description": "辛辣蔬菜",
+                  "feature": "耐寒作物",
+                  "usage": "蔬菜",
+                  "cultivation": "春秋两季可种植"
+                },
+                {
+                  "name": "韭",
+                  "description": "辛辣蔬菜",
+                  "feature": "耐寒作物",
+                  "usage": [
+                    "蔬菜",
+                    "调味"
+                  ],
+                  "cultivation": "春秋两季可种植"
+                },
+                {
+                  "name": "薤",
+                  "description": "辛辣蔬菜",
+                  "feature": "耐寒作物",
+                  "usage": [
+                    "蔬菜",
+                    "调味"
+                  ],
+                  "cultivation": "春秋两季可种植"
+                },
+                {
+                  "name": "姜",
+                  "description": "辛辣蔬菜",
+                  "feature": "喜温作物",
+                  "usage": [
+                    "蔬菜",
+                    "调味"
+                  ],
+                  "cultivation": "春季种植，秋季收获"
+                },
+                {
+                  "name": "芥",
+                  "description": "辛辣蔬菜",
+                  "feature": "耐寒作物",
+                  "usage": [
+                    "蔬菜",
+                    "调味"
+                  ],
+                  "cultivation": "春秋两季可种植"
+                }
+              ]
+            },
+            {
+              "name": "香菜与其他",
+              "description": "香草和其他蔬菜",
+              "children": [
+                {
+                  "name": "蒝荽",
+                  "description": "香草类蔬菜",
+                  "feature": "耐寒作物",
+                  "usage": [
+                    "蔬菜",
+                    "调味"
+                  ],
+                  "cultivation": "春秋两季可种植"
+                },
+                {
+                  "name": "芸云",
+                  "description": "香草类蔬菜",
+                  "feature": "耐寒作物",
+                  "usage": [
+                    "蔬菜",
+                    "调味"
+                  ],
+                  "cultivation": "春秋两季可种植"
+                },
+                {
+                  "name": "萱室",
+                  "description": "香草类蔬菜",
+                  "feature": "耐寒作物",
+                  "usage": [
+                    "蔬菜",
+                    "药用"
+                  ],
+                  "cultivation": "春秋两季可种植"
+                },
+                {
+                  "name": "菠菜",
+                  "description": "叶菜类蔬菜",
+                  "feature": "耐寒作物",
+                  "usage": "蔬菜",
+                  "cultivation": "春秋两季可种植"
+                },
+                {
+                  "name": "苋",
+                  "description": "叶菜类蔬菜",
+                  "feature": "耐热作物",
+                  "usage": "蔬菜",
+                  "cultivation": "春夏可种植"
+                },
+                {
+                  "name": "茼蒿",
+                  "description": "叶菜类蔬菜",
+                  "feature": "耐寒作物",
+                  "usage": "蔬菜",
+                  "cultivation": "春秋两季可种植"
+                },
+                {
+                  "name": "甜菜",
+                  "description": "根菜类蔬菜",
+                  "feature": "耐寒作物",
+                  "usage": [
+                    "蔬菜",
+                    "制糖"
+                  ],
+                  "cultivation": "春秋两季可种植"
+                },
+                {
+                  "name": "芹",
+                  "description": "叶菜类蔬菜",
+                  "feature": "耐寒作物",
+                  "usage": "蔬菜",
+                  "cultivation": "春秋两季可种植"
+                },
+                {
+                  "name": "蘧",
+                  "description": "叶菜类蔬菜",
+                  "feature": "耐寒作物",
+                  "usage": "蔬菜",
+                  "cultivation": "春秋两季可种植"
+                },
+                {
+                  "name": "苜蓿",
+                  "description": "豆科植物",
+                  "feature": "耐旱作物",
+                  "usage": [
+                    "饲料",
+                    "蔬菜"
+                  ],
+                  "cultivation": "春秋两季可种植"
+                },
+                {
+                  "name": "紫苏",
+                  "description": "香草类植物",
+                  "feature": "耐寒作物",
+                  "usage": [
+                    "蔬菜",
+                    "药用"
+                  ],
+                  "cultivation": "春秋两季可种植"
+                },
+                {
+                  "name": "蓼",
+                  "description": "香草类植物",
+                  "feature": "耐寒作物",
+                  "usage": [
+                    "蔬菜",
+                    "药用"
+                  ],
+                  "cultivation": "春秋两季可种植"
+                },
+                {
+                  "name": "兰",
+                  "description": "香草类植物",
+                  "feature": "耐寒作物",
+                  "usage": [
+                    "观赏",
+                    "药用"
+                  ],
+                  "cultivation": "春秋两季可种植"
+                },
+                {
+                  "name": "香蘘荷",
+                  "description": "香草类植物",
+                  "feature": "耐寒作物",
+                  "usage": [
+                    "蔬菜",
+                    "药用"
+                  ],
+                  "cultivation": "春秋两季可种植"
+                },
+                {
+                  "name": "菌类",
+                  "description": "食用菌类",
+                  "feature": "喜湿作物",
+                  "usage": "蔬菜",
+                  "cultivation": "春秋两季可种植"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "3.5 果部",
+          "description": "果树类作物",
+          "children": [
+            {
+              "name": "核果与仁果",
+              "description": "核果类和仁果类果树",
+              "children": [
+                {
+                  "name": "束束梨",
+                  "description": "梨树品种",
+                  "feature": "落叶乔木",
+                  "usage": "水果",
+                  "cultivation": "春季开花，秋季结果"
+                },
+                {
+                  "name": "桃",
+                  "description": "核果类果树",
+                  "feature": "落叶乔木",
+                  "usage": "水果",
+                  "cultivation": "春季开花，夏季结果"
+                },
+                {
+                  "name": "栗",
+                  "description": "坚果类果树",
+                  "feature": "落叶乔木",
+                  "usage": "坚果",
+                  "cultivation": "春季开花，秋季结果"
+                },
+                {
+                  "name": "李",
+                  "description": "核果类果树",
+                  "feature": "落叶乔木",
+                  "usage": "水果",
+                  "cultivation": "春季开花，夏季结果"
+                },
+                {
+                  "name": "榛",
+                  "description": "坚果类果树",
+                  "feature": "落叶乔木",
+                  "usage": "坚果",
+                  "cultivation": "春季开花，秋季结果"
+                },
+                {
+                  "name": "梅",
+                  "description": "核果类果树",
+                  "feature": "落叶乔木",
+                  "usage": [
+                    "水果",
+                    "药用"
+                  ],
+                  "cultivation": "春季开花，夏季结果"
+                },
+                {
+                  "name": "木示",
+                  "description": "果树品种",
+                  "feature": "落叶乔木",
+                  "usage": "水果",
+                  "cultivation": "春季开花，秋季结果"
+                },
+                {
+                  "name": "木口",
+                  "description": "果树品种",
+                  "feature": "落叶乔木",
+                  "usage": "水果",
+                  "cultivation": "春季开花，秋季结果"
+                },
+                {
+                  "name": "林檎",
+                  "description": "苹果类果树",
+                  "feature": "落叶乔木",
+                  "usage": "水果",
+                  "cultivation": "春季开花，秋季结果"
+                },
+                {
+                  "name": "柿",
+                  "description": "柿树类果树",
+                  "feature": "落叶乔木",
+                  "usage": "水果",
+                  "cultivation": "春季开花，秋季结果"
+                },
+                {
+                  "name": "椑柿",
+                  "description": "柿树品种",
+                  "feature": "落叶乔木",
+                  "usage": "水果",
+                  "cultivation": "春季开花，秋季结果"
+                },
+                {
+                  "name": "君迁子",
+                  "description": "柿树品种",
+                  "feature": "落叶乔木",
+                  "usage": "水果",
+                  "cultivation": "春季开花，秋季结果"
+                },
+                {
+                  "name": "安石榴",
+                  "description": "石榴类果树",
+                  "feature": "落叶乔木",
+                  "usage": "水果",
+                  "cultivation": "春季开花，秋季结果"
+                }
+              ]
+            },
+            {
+              "name": "热带与浆果类",
+              "description": "热带水果和浆果类果树",
+              "children": [
+                {
+                  "name": "荔枝",
+                  "description": "热带水果",
+                  "feature": "常绿乔木",
+                  "usage": "水果",
+                  "cultivation": "春季开花，夏季结果"
+                },
+                {
+                  "name": "野葡萄",
+                  "description": "浆果类植物",
+                  "feature": "藤本植物",
+                  "usage": "水果",
+                  "cultivation": "春季开花，夏季结果"
+                },
+                {
+                  "name": "龙眼",
+                  "description": "热带水果",
+                  "feature": "常绿乔木",
+                  "usage": "水果",
+                  "cultivation": "春季开花，夏季结果"
+                },
+                {
+                  "name": "橘",
+                  "description": "柑橘类果树",
+                  "feature": "常绿乔木",
+                  "usage": "水果",
+                  "cultivation": "春季开花，秋季结果"
+                },
+                {
+                  "name": "杨梅",
+                  "description": "浆果类果树",
+                  "feature": "常绿乔木",
+                  "usage": "水果",
+                  "cultivation": "春季开花，夏季结果"
+                },
+                {
+                  "name": "枇杷",
+                  "description": "常绿果树",
+                  "feature": "常绿乔木",
+                  "usage": "水果",
+                  "cultivation": "秋季开花，春季结果"
+                },
+                {
+                  "name": "柑",
+                  "description": "柑橘类果树",
+                  "feature": "常绿乔木",
+                  "usage": "水果",
+                  "cultivation": "春季开花，秋季结果"
+                },
+                {
+                  "name": "葡萄",
+                  "description": "浆果类植物",
+                  "feature": "藤本植物",
+                  "usage": "水果",
+                  "cultivation": "春季开花，夏季结果"
+                },
+                {
+                  "name": "银杏",
+                  "description": "古老树种",
+                  "feature": "落叶乔木",
+                  "usage": [
+                    "食用",
+                    "药用"
+                  ],
+                  "cultivation": "春季开花，秋季结果"
+                },
+                {
+                  "name": "柚",
+                  "description": "柑橘类果树",
+                  "feature": "常绿乔木",
+                  "usage": "水果",
+                  "cultivation": "春季开花，秋季结果"
+                },
+                {
+                  "name": "佛手柑",
+                  "description": "柑橘类果树",
+                  "feature": "常绿乔木",
+                  "usage": [
+                    "水果",
+                    "药用"
+                  ],
+                  "cultivation": "春季开花，秋季结果"
+                },
+                {
+                  "name": "金橘",
+                  "description": "柑橘类果树",
+                  "feature": "常绿乔木",
+                  "usage": "水果",
+                  "cultivation": "春季开花，秋季结果"
+                },
+                {
+                  "name": "桑椹",
+                  "description": "浆果类植物",
+                  "feature": "落叶乔木",
+                  "usage": "水果",
+                  "cultivation": "春季开花，夏季结果"
+                },
+                {
+                  "name": "木瓜",
+                  "description": "热带水果",
+                  "feature": "常绿乔木",
+                  "usage": "水果",
+                  "cultivation": "春季开花，秋季结果"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "3.6 蚕桑类",
+          "description": "蚕桑相关作物",
+          "children": [
+            {
+              "name": "蚕桑类",
+              "description": "桑树和蚕桑养殖",
+              "feature": "落叶乔木",
+              "usage": [
+                "养蚕",
+                "药用"
+              ],
+              "cultivation": "春季种植，全年可采叶"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "四、木本植物",
+      "description": "具有木质茎的多年生植物",
+      "children": [
+        {
+          "name": "榆",
+          "description": "落叶乔木",
+          "feature": "耐寒耐旱",
+          "usage": [
+            "木材",
+            "药用"
+          ],
+          "cultivation": "春季种植，秋季落叶"
+        },
+        {
+          "name": "桧",
+          "description": "常绿乔木",
+          "feature": "耐寒耐旱",
+          "usage": [
+            "木材",
+            "观赏"
+          ],
+          "cultivation": "全年可种植"
+        },
+        {
+          "name": "梓",
+          "description": "落叶乔木",
+          "feature": "耐寒耐旱",
+          "usage": [
+            "木材",
+            "药用"
+          ],
+          "cultivation": "春季种植，秋季落叶"
+        },
+        {
+          "name": "椿",
+          "description": "落叶乔木",
+          "feature": "耐寒耐旱",
+          "usage": [
+            "木材",
+            "药用"
+          ],
+          "cultivation": "春季种植，秋季落叶"
+        },
+        {
+          "name": "松",
+          "description": "常绿乔木",
+          "feature": "耐寒耐旱",
+          "usage": [
+            "木材",
+            "观赏"
+          ],
+          "cultivation": "全年可种植"
+        },
+        {
+          "name": "梧桐",
+          "description": "落叶乔木",
+          "feature": "耐寒耐旱",
+          "usage": [
+            "木材",
+            "观赏"
+          ],
+          "cultivation": "春季种植，秋季落叶"
+        },
+        {
+          "name": "杉",
+          "description": "常绿乔木",
+          "feature": "耐寒耐旱",
+          "usage": [
+            "木材",
+            "观赏"
+          ],
+          "cultivation": "全年可种植"
+        },
+        {
+          "name": "椒",
+          "description": "常绿乔木",
+          "feature": "耐寒耐旱",
+          "usage": [
+            "调味",
+            "药用"
+          ],
+          "cultivation": "全年可种植"
+        },
+        {
+          "name": "柏",
+          "description": "常绿乔木",
+          "feature": "耐寒耐旱",
+          "usage": [
+            "木材",
+            "观赏"
+          ],
+          "cultivation": "全年可种植"
+        },
+        {
+          "name": "谷",
+          "description": "落叶乔木",
+          "feature": "耐寒耐旱",
+          "usage": [
+            "木材",
+            "药用"
+          ],
+          "cultivation": "春季种植，秋季落叶"
+        },
+        {
+          "name": "槐",
+          "description": "落叶乔木",
+          "feature": "耐寒耐旱",
+          "usage": [
+            "木材",
+            "药用"
+          ],
+          "cultivation": "春季种植，秋季落叶"
+        },
+        {
+          "name": "杨",
+          "description": "落叶乔木",
+          "feature": "耐寒耐旱",
+          "usage": [
+            "木材",
+            "观赏"
+          ],
+          "cultivation": "春季种植，秋季落叶"
+        },
+        {
+          "name": "柳",
+          "description": "落叶乔木",
+          "feature": "耐寒耐旱",
+          "usage": [
+            "木材",
+            "观赏"
+          ],
+          "cultivation": "春季种植，秋季落叶"
+        },
+        {
+          "name": "白杨",
+          "description": "落叶乔木",
+          "feature": "耐寒耐旱",
+          "usage": [
+            "木材",
+            "观赏"
+          ],
+          "cultivation": "春季种植，秋季落叶"
+        },
+        {
+          "name": "女贞",
+          "description": "常绿乔木",
+          "feature": "耐寒耐旱",
+          "usage": [
+            "木材",
+            "药用"
+          ],
+          "cultivation": "全年可种植"
+        }
+      ]
+    },
+    {
+      "name": "五、境外果蓏类",
+      "description": "从国外引进的各类果蔬",
+      "children": [
+        {
+          "name": "稻",
+          "description": "主要粮食作物",
+          "origin": "东南亚",
+          "variants": [
+            "籼稻",
+            "粳稻",
+            "糯稻"
+          ],
+          "usage": "主食"
+        },
+        {
+          "name": "禾",
+          "description": "粮食作物",
+          "origin": "西亚",
+          "feature": "耐旱作物",
+          "usage": "粮食"
+        },
+        {
+          "name": "麦",
+          "description": "主要粮食作物",
+          "origin": "西亚",
+          "variants": [
+            "小麦",
+            "大麦",
+            "燕麦"
+          ],
+          "usage": "粮食"
+        },
+        {
+          "name": "豆",
+          "description": "豆类作物",
+          "origin": "美洲",
+          "variants": [
+            "大豆",
+            "绿豆",
+            "红豆"
+          ],
+          "usage": [
+            "粮食",
+            "油料"
+          ]
+        },
+        {
+          "name": "枣",
+          "description": "果树",
+          "origin": "西亚",
+          "feature": "果实甜美",
+          "usage": [
+            "食用",
+            "药用"
+          ]
+        },
+        {
+          "name": "桃",
+          "description": "果树",
+          "origin": "中亚",
+          "feature": "果实多汁",
+          "usage": "食用"
+        },
+        {
+          "name": "李",
+          "description": "果树",
+          "origin": "西亚",
+          "feature": "果实酸甜",
+          "usage": "食用"
+        },
+        {
+          "name": "梨",
+          "description": "果树",
+          "origin": "中亚",
+          "feature": "果实多汁",
+          "usage": "食用"
+        },
+        {
+          "name": "柰",
+          "description": "果树",
+          "origin": "西亚",
+          "feature": "果实香甜",
+          "usage": "食用"
+        },
+        {
+          "name": "橙",
+          "description": "柑橘类水果",
+          "origin": "南亚",
+          "feature": "果实酸甜",
+          "usage": "食用"
+        },
+        {
+          "name": "橘甘",
+          "description": "柑橘类水果",
+          "origin": "南亚",
+          "feature": "果实甜美",
+          "usage": "食用"
+        },
+        {
+          "name": "柚",
+          "description": "柑橘类水果",
+          "origin": "南亚",
+          "feature": "果实大而多汁",
+          "usage": "食用"
+        },
+        {
+          "name": "枷",
+          "description": "热带水果",
+          "origin": "东南亚",
+          "feature": "果实奇特",
+          "usage": "食用"
+        },
+        {
+          "name": "栗",
+          "description": "坚果类",
+          "origin": "西亚",
+          "feature": "果实可食",
+          "usage": "食用"
+        },
+        {
+          "name": "枇杷",
+          "description": "果树",
+          "origin": "东南亚",
+          "feature": "果实甜美",
+          "usage": "食用"
+        },
+        {
+          "name": "椑",
+          "description": "热带水果",
+          "origin": "东南亚",
+          "feature": "果实多汁",
+          "usage": "食用"
+        },
+        {
+          "name": "菱",
+          "description": "水生植物",
+          "origin": "东南亚",
+          "feature": "水生植物",
+          "usage": "食用"
+        },
+        {
+          "name": "棪",
+          "description": "热带水果",
+          "origin": "东南亚",
+          "feature": "果实香甜",
+          "usage": "食用"
+        },
+        {
+          "name": "益智",
+          "description": "热带植物",
+          "origin": "东南亚",
+          "feature": "果实药用",
+          "usage": "药用"
+        },
+        {
+          "name": "桶",
+          "description": "热带水果",
+          "origin": "东南亚",
+          "feature": "果实奇特",
+          "usage": "食用"
+        },
+        {
+          "name": "蒳子",
+          "description": "热带植物",
+          "origin": "东南亚",
+          "feature": "果实芳香",
+          "usage": [
+            "食用",
+            "药用"
+          ]
+        },
+        {
+          "name": "豆蔻",
+          "description": "热带香料植物",
+          "origin": "东南亚",
+          "feature": "果实芳香",
+          "usage": [
+            "调味",
+            "药用"
+          ]
+        },
+        {
+          "name": "榠",
+          "description": "热带水果",
+          "origin": "东南亚",
+          "feature": "果实酸甜",
+          "usage": "食用"
+        },
+        {
+          "name": "余甘",
+          "description": "热带水果",
+          "origin": "东南亚",
+          "feature": "果实酸甜",
+          "usage": "食用"
+        },
+        {
+          "name": "蒟子",
+          "description": "热带植物",
+          "origin": "东南亚",
+          "feature": "果实可食",
+          "usage": "食用"
+        },
+        {
+          "name": "芭蕉",
+          "description": "热带植物",
+          "origin": "东南亚",
+          "feature": "果实甜美",
+          "usage": "食用"
+        },
+        {
+          "name": "扶留",
+          "description": "热带植物",
+          "origin": "东南亚",
+          "feature": "果实可食",
+          "usage": "食用"
+        }
+      ]
+    },
+    {
+      "name": "六、救荒本草",
+      "description": "《农政全书》卷六十记载的可食野生植物",
+      "children": [
+        {
+          "name": "白鼓钉",
+          "alias": "蒲公英",
+          "description": "四季都有，极寒天时较小但可用",
+          "season": "四季",
+          "method": "采来熟食",
+          "taste": "甘",
+          "usage": "蔬食",
+          "poem": "白鼓钉！白鼓钉！丰年赛社，鼓不停；凶年罢社，鼓绝声。鼓绝声，社公恼，白鼓钉化为草救饥。"
+        },
+        {
+          "name": "猪殃殃",
+          "description": "猪吃了会生病，但人可食用",
+          "season": "春季",
+          "method": "采来熟食",
+          "taste": "苦",
+          "usage": "蔬食",
+          "poem": "猪殃殃，胡不祥？猪不食，遗道旁。我拾之，充糇粮。"
+        },
+        {
+          "name": "丝荞麦",
+          "description": "四月结角后就不能用了",
+          "season": "二三月",
+          "method": "采来熟食",
+          "taste": "甘",
+          "usage": "蔬食",
+          "poem": "丝荞麦，如丝缕。昔为养蚕人，今作挑菜侣。养蚕衣整齐，挑菜衣褴褛。张家姑，李家女，陇头相见泪如雨。"
+        },
+        {
+          "name": "牛塘利",
+          "description": "可做成齑",
+          "season": "二三月",
+          "method": "采来熟食，也可做成齑",
+          "taste": "甘",
+          "usage": "蔬食",
+          "poem": "牛塘利，牛得济。种草有余青，蓄水有余味。年来水草枯，忽变为荒荠。采采疗人饥，更得牛塘利。"
+        },
+        {
+          "name": "浮蔷",
+          "description": "生长在水中，无根可托，有茎可食。",
+          "habitat": "水生",
+          "method": "食茎",
+          "poem": "采采浮蔷，涉彼沧浪。无根可托，有茎可尝。"
+        },
+        {
+          "name": "看麦娘",
+          "description": "随麦生长在田陇上",
+          "season": "春季",
+          "method": "采来熟食",
+          "taste": "甘",
+          "usage": "蔬食",
+          "poem": "看麦娘，来何早？麦未登，人未饱。何当与尔还厥家，共咽糟糠暂相保。"
+        },
+        {
+          "name": "狗脚迹",
+          "description": "霜降时生长，叶子像狗的脚印。",
+          "season": "霜降",
+          "method": "熟食",
+          "poem": "狗脚迹何处寻？狡兔乱走妖孤吟。"
+        },
+        {
+          "name": "破破衲",
+          "description": "腊月至正二月采摘，三月变老不可食。",
+          "season": "腊月至正二月",
+          "method": "熟食",
+          "poem": "破破衲，不堪补，寒且饥聊作脯，饱暖时不想汝。"
+        },
+        {
+          "name": "斜蒿",
+          "description": "三四月生长，小的整棵可用，大的取嫩头。",
+          "season": "三四月",
+          "method": "焯后晒干复泡，油盐拌食",
+          "poem": "斜蒿复斜蒿，采采临春郊。"
+        },
+        {
+          "name": "江荠",
+          "description": "开花时不能吃，只能做成齑",
+          "season": "腊月",
+          "method": "生熟都可用，开花时只能做成齑",
+          "taste": "甘",
+          "usage": "蔬食",
+          "poem": "江荠青青江水绿。江边挑菜女儿哭，爷娘新丧兄趁熟，止存我与妹看屋。"
+        },
+        {
+          "name": "燕子不来香",
+          "description": "燕子来时就腥臭不能吃了",
+          "season": "早春",
+          "method": "采摘可熟食",
+          "taste": "甘",
+          "usage": "蔬食",
+          "poem": "燕子不来香，燕子来时便不香。我愿今年燕不来，常与吾民充糇粮。"
+        },
+        {
+          "name": "猢狲脚迹",
+          "description": "三月采摘",
+          "season": "三月",
+          "method": "采来熟食",
+          "taste": "甘",
+          "usage": "蔬食",
+          "poem": "猢狲脚迹，宜尔泉石。胡不自安，犯我田宅。遭彼侵凌，亩亩萧瑟。获而烹之，偿我稼穑。"
+        },
+        {
+          "name": "眼子菜",
+          "description": "六、七月采摘，生长在水泽中，叶子青色，背面紫色，茎柔软光滑且细，长可达数尺",
+          "season": "六七月",
+          "method": "采来熟食",
+          "taste": "甘",
+          "usage": "蔬食",
+          "poem": "眼子菜如张目。年年盼春听布谷，犹向秋来望时熟。何事频年倦不开，愁看四野波漂屋。"
+        },
+        {
+          "name": "猫耳朵",
+          "description": "正二月采摘，捣烂，和粉面做成饼蒸食",
+          "season": "正二月",
+          "method": "捣烂和面蒸食",
+          "taste": "甘",
+          "usage": "蔬食",
+          "poem": "猫耳朵，听我歌。今年水患伤田禾，仓廪空虚鼠弃窠，猫兮猫兮将奈何？"
+        },
+        {
+          "name": "地踏菜",
+          "description": "形状像木耳，见太阳就干枯消失了",
+          "season": "春夏",
+          "method": "雨后采来熟食",
+          "taste": "甘",
+          "usage": "蔬食",
+          "poem": "地踏菜生雨中，晴日一照郊原空。庄前阿婆呼阿翁，相携儿女去匆匆。须臾采得青满笼，还家饱食忘岁凶，东家懒妇睡正浓。"
+        },
+        {
+          "name": "马齿苋",
+          "description": "楚地风俗元旦食用",
+          "season": "入夏",
+          "method": "用沸汤焯过，晒干。冬天随时取用也可以",
+          "taste": "甘",
+          "usage": "蔬食",
+          "poem": "马齿苋，风俗相传食元旦，何事年来采更频。终朝赖尔供飡饭。"
+        },
+        {
+          "name": "雁肠子",
+          "description": "二月生长如豆芽",
+          "season": "二月",
+          "method": "做菜熟食，也可生食",
+          "taste": "甘",
+          "usage": "蔬食",
+          "poem": "雁肠子遗沟壑，应是今年绝饮啄。两翼低垂去不前，苦遭饿鹘相擒搏。嗟哉雁兮有羽翰，何况人生行路难。"
+        },
+        {
+          "name": "野落篱",
+          "description": "正二月采摘",
+          "season": "正二月",
+          "method": "用头汤焯过可食",
+          "taste": "甘",
+          "usage": "蔬食",
+          "poem": "野落篱，旧遮护。昔为里正家，今作逃亡户。春来荒荠满阶生，挑菜人穿屋里行。"
+        },
+        {
+          "name": "茭儿菜",
+          "description": "生长在水底，像芦芽，比菰米好吃",
+          "season": "入夏",
+          "method": "生熟都可用",
+          "taste": "甘",
+          "usage": "蔬食",
+          "poem": "茭儿菜生长在水底，像芦芽，比菰米好吃。"
+        },
+        {
+          "name": "倒灌荠",
+          "description": "生长在旱田",
+          "season": "四季",
+          "method": "采摘熟食，也可做成齑",
+          "taste": "甘",
+          "usage": "蔬食",
+          "poem": "倒灌荠，生旱田。上无雨露，下有泉，抱不来还自鲜，造物冥冥解倒悬。"
+        },
+        {
+          "name": "灰条",
+          "description": "叶间有粉状物，所以称为灰条",
+          "season": "四季",
+          "method": "用汤焯过，用油盐拌匀食用",
+          "taste": "甘",
+          "usage": "蔬食",
+          "poem": "北方藋条同音，灰条复灰条，采采何辞劳。野人当年饱藜藿，凶岁得此为佳肴。东家鼎食滋味饶，彻却少牢羹太牢。"
+        },
+        {
+          "name": "雷声菌",
+          "description": "夏秋雷雨过后，生长在茂草中，像麻菇，味道也相似",
+          "season": "夏秋",
+          "method": "采来熟食",
+          "taste": "甘",
+          "usage": "蔬食",
+          "poem": "雷声菌如卷耳，恐是蛰龙儿，雷声呼辄起。休夸瑞草生，莫叹灵芝丧。如此凶年谷不登，纵有祯祥，安足倚。"
+        },
+        {
+          "name": "乌英",
+          "alias": "乌英花",
+          "description": "入夏生长在水泽中，生熟都可食，六月就不能用了。",
+          "season": "入夏至六月",
+          "method": "生食或熟食",
+          "habitat": "水泽",
+          "poem": "乌英花，乌英菜。菜可茹兮花可爱。连朝摘菜不聊生，岂有心情摘花载。"
+        },
+        {
+          "name": "抱娘蒿",
+          "description": "二三月采来熟食，丛生所以得名。",
+          "season": "二三月",
+          "method": "熟食",
+          "feature": "丛生",
+          "poem": "抱娘蒿，结根牢，解不散如漆胶。君不见昨朝儿卖商船上，儿抱娘啼不肯放。"
+        },
+        {
+          "name": "枸杞头",
+          "description": "村人采来作为甜菜头。春夏采摘嫩头，秋季采摘果实，冬季采摘根。",
+          "season": {
+            "spring_summer": "采嫩头",
+            "autumn": "采果实（枸杞子）",
+            "winter": "采根（地骨皮）"
+          },
+          "method": "熟食",
+          "poem": "枸杞头生高丘，实为药饵。来甘州二载，淮南谷不收。春采夏，还采秋，饥人饱食，如珍馐。"
+        },
+        {
+          "name": "苦麻薹",
+          "description": "三月采用，叶子捣烂，和面粉做饼，也可生食。",
+          "season": "三月",
+          "method": [
+            "生食",
+            "捣烂和面做饼"
+          ],
+          "taste": "苦",
+          "poem": "苦麻薹带苦，味虽逆口胜空肠。但愿收租了官府，不辞吃尽田家苦。"
+        },
+        {
+          "name": "羊耳秃",
+          "description": "二三月采来熟食。",
+          "season": "二三月",
+          "method": "熟食",
+          "poem": "羊耳秃，短簇簇，穿藩篱如抵触。饥来进退无如何，前村后村荆棘多。"
+        },
+        {
+          "name": "剪刀股",
+          "description": "春季采来生食，也可做成齑。",
+          "season": "春季",
+          "method": [
+            "生食",
+            "制齑"
+          ],
+          "poem": "剪刀股，剪何益，剪得今年地皮赤。东家罗绮西家绫，今年不闻剪刀声。"
+        },
+        {
+          "name": "水马齿苋",
+          "description": "采来熟食，生长在水中，与旱马齿苋相似。",
+          "season": "夏季",
+          "method": "熟食",
+          "habitat": "水生",
+          "feature": "似旱马齿苋",
+          "poem": "水马齿苋何时落，食玉粒，衔金嚼。我民饿殍盈沟壑，惟皇震怒剔厥腭，化为野草充藜藿。"
+        },
+        {
+          "name": "野苋菜",
+          "description": "夏季采来熟食，类似家苋菜。",
+          "season": "夏季",
+          "method": "熟食",
+          "feature": "似家苋菜",
+          "poem": "野苋菜生何少，尽日采来充一饱。城中赤苋美且肥，一钱一束贱如草。"
+        },
+        {
+          "name": "黄花儿",
+          "description": "正二月采来熟食。",
+          "season": "正二月",
+          "method": "熟食",
+          "poem": "黄花儿，郊外草，不爱尔花，爱尔充我饱。洛阳姚家深院深，一年一赏费千金。"
+        },
+        {
+          "name": "野荸荠",
+          "description": "四季采摘，生熟都可食。",
+          "season": "四季",
+          "method": [
+            "生食",
+            "熟食"
+          ],
+          "poem": "野荸荠，生稻畦，苦薅不尽心力疲，造物有意防民饥。年来水患绝五谷，尔独结实何累累。"
+        },
+        {
+          "name": "蒿柴荠",
+          "description": "正二、三月采来熟食，又可做成齑。",
+          "season": "正二、三月",
+          "method": [
+            "熟食",
+            "制齑"
+          ],
+          "poem": "蒿柴荠，我独怜，叶可食，楷可燃。连朝风雪拦村路，饥寒不能出门去。"
+        },
+        {
+          "name": "蒌蒿",
+          "description": "夏秋茎可做成齑，心可入茶",
+          "season": "春季",
+          "method": "春季采苗、叶熟食。夏秋茎可做成齑，心可入茶",
+          "taste": "甘",
+          "usage": "蔬食",
+          "poem": "采蒌蒿，采枝采叶还采苗。我独采根卖城郭，城里人家半凋落。"
+        },
+        {
+          "name": "扫帚荠",
+          "description": "春季采摘",
+          "season": "春季",
+          "method": "采来熟食",
+          "taste": "甘",
+          "usage": "蔬食",
+          "poem": "扫帚荠，青簇簇。去年不收空倚屋。但愿今年收两熟，场头扫帚扫尽秃。"
+        },
+        {
+          "name": "雀儿绵单",
+          "description": "三月采摘可做成齑。此菜蔓延生长，铺地而生，所以得名。",
+          "season": "三月",
+          "method": "制齑",
+          "feature": "蔓生铺地",
+          "poem": "雀儿绵单，托彼终宿。如茵如衾，匪丝匪縠。年饥愿得充我餐。任穿我屋，蔽尔寒。"
+        },
+        {
+          "name": "菱科",
+          "description": "夏秋采来熟食。",
+          "season": "夏秋",
+          "method": "熟食",
+          "poem": "采菱科，采菱科，小舟日日临清波。菱科采得余几何，竟无人唱采菱歌。"
+        },
+        {
+          "name": "灯儿",
+          "description": "二月采来熟食。今年刚出土，挑菜人不停采摘。如今已老得不能吃了，哪还能等到三月三开花。",
+          "season": "二月",
+          "method": "熟食",
+          "warning": "老后不可食",
+          "poem": "灯儿落满地，化作草青青。遭此饥荒岁，曾见当年绕绛纱。于会灯火几人家。"
+        },
+        {
+          "name": "芽儿拳",
+          "description": "白如雪软似绵",
+          "season": "正二月",
+          "method": "采来熟食",
+          "taste": "甘",
+          "usage": "蔬食",
+          "poem": "芽儿拳，生树边，白如雪软似绵，煮来不食泪如雨。昨朝儿卖他州府。"
+        },
+        {
+          "name": "板荞麦",
+          "description": "三四月结籽，老了就不能用了",
+          "season": "正二月",
+          "method": "和菱一起采来炊食",
+          "taste": "甘",
+          "usage": "蔬食",
+          "poem": "板荞麦兮吾不识，出无路兮入无室，将学道兮归空山，草为衣兮木为食。"
+        },
+        {
+          "name": "碎米荠",
+          "description": "三月采摘",
+          "season": "三月",
+          "method": "只能做成齑",
+          "taste": "甘",
+          "usage": "蔬食",
+          "poem": "碎米荠，如布谷，想为民饥天雨粟，官仓一月一开放，造物生生无尽藏。"
+        },
+        {
+          "name": "天藕儿",
+          "description": "根像藕但小，茎叶不能吃",
+          "season": "四季",
+          "method": "熟食",
+          "taste": "甘",
+          "usage": "蔬食",
+          "poem": "天藕儿，降平陆，活生民如雨粟。昨日湖边闻野哭，忽忆当年采莲曲。"
+        },
+        {
+          "name": "老鹳筋",
+          "description": "二月采摘",
+          "season": "二月",
+          "method": "采来熟食，也可做成齑",
+          "taste": "甘",
+          "usage": "蔬食",
+          "poem": "老鹳筋，老鹳筋。去年水涸无织鳞，垤累累声不闻，老鹳何在筋独存。"
+        },
+        {
+          "name": "鹅观草",
+          "description": "正二月像麦一样青",
+          "season": "正二月",
+          "method": "炊食",
+          "taste": "甘",
+          "usage": "蔬食",
+          "poem": "鹅观草，满地青青鹅食饱。年来赤地不堪观，又被饥人分食了。"
+        },
+        {
+          "name": "牛尾瘟",
+          "description": "生长在深水中。叶子像头发，茎像藻",
+          "season": "四季",
+          "method": "冬季和鱼一起煮食，夏秋也可食",
+          "taste": "甘",
+          "usage": "蔬食",
+          "poem": "牛尾瘟，不敢吞，疫气重，流远村。黄毛牸，乌毛犉，十庄九□无一存。摩挲犁耙泪如涌，田中无牛更无种。"
+        },
+        {
+          "name": "野萝卜",
+          "description": "叶子像芦菔",
+          "season": "四季",
+          "method": "熟食",
+          "taste": "甘",
+          "usage": "蔬食",
+          "poem": "野萝卜，生平陆。匪蔓菁，若芦菔，求之不难，烹易熟。饥来获之，胜粱肉。"
+        },
+        {
+          "name": "兔丝根",
+          "alias": "兔丝苗",
+          "description": "春季采叶苗，秋冬采根，多吃会使人眩晕",
+          "season": "四季",
+          "method": "春季采叶苗，秋冬采根，蒸食",
+          "taste": "甜",
+          "usage": "蔬食",
+          "poem": "兔丝根，美可尝，千万结如我肠。饥人得食不辍。"
+        },
+        {
+          "name": "草鞋片",
+          "description": "二三月采摘",
+          "season": "二三月",
+          "method": "采来熟食",
+          "taste": "甘",
+          "usage": "蔬食",
+          "poem": "草鞋片，甘贫贱。不踏软红尘，常行芳草茵。从教恶且敝，忍向泥涂弃。一任前途阻，且长，着来犹能趁热场。"
+        },
+        {
+          "name": "撺撺儿",
+          "description": "像苎麻，清香可爱",
+          "season": "深秋",
+          "method": "采摘，晒干和谷物一起煮食",
+          "taste": "甘",
+          "usage": "蔬食",
+          "poem": "撺撺儿生水浊，却似瓦松初出时。须知可食不可弃，不能疗痒，能疗饥。"
+        },
+        {
+          "name": "雀舌草",
+          "description": "因形状相似得名",
+          "season": "初生时",
+          "method": "采来熟食",
+          "taste": "甘",
+          "usage": "蔬食",
+          "poem": "雀舌草，叶似茶。采之采之溪之涯，途中饥渴不能支，遍寻烟火无人家。"
+        },
+        {
+          "name": "葛根",
+          "alias": "鸡齐根",
+          "description": "根部可食，春夏采摘。",
+          "season": "春夏",
+          "method": "食根",
+          "usage": "药食两用",
+          "poem": "葛根深扎地，枝蔓绕高树。春来嫩叶香，秋至花开素。"
+        },
+        {
+          "name": "何首乌",
+          "alias": "夜合",
+          "description": "根部可食，秋季采挖。",
+          "season": "秋季",
+          "method": "食根",
+          "usage": "药食两用",
+          "poem": "何首乌，根如瓜。采之食之延年华，饥时充饥亦堪夸。"
+        },
+        {
+          "name": "菊花",
+          "alias": "节华",
+          "description": "花可食用，重阳前后采摘。",
+          "season": "重阳时节",
+          "method": [
+            "生食",
+            "泡茶"
+          ],
+          "usage": "药食两用",
+          "poem": "菊花开，满园黄。采来佐酒香满堂，饥时充腹也芬芳。"
+        },
+        {
+          "name": "金银花",
+          "alias": "忍冬",
+          "description": "花蕾可食，初夏采摘。",
+          "season": "初夏",
+          "method": [
+            "生食",
+            "泡茶"
+          ],
+          "usage": "药食两用",
+          "poem": "金银花，蕊如丝。清香沁人心脾，饥荒之年救人急。"
+        },
+        {
+          "name": "水慈菰",
+          "alias": "剪刀草",
+          "description": "水生植物，春季采摘嫩茎。",
+          "season": "春季",
+          "method": "食嫩茎",
+          "habitat": "水生",
+          "poem": "水慈菰，生水中。春来嫩茎香，饥时可充饥。"
+        },
+        {
+          "name": "茭笋",
+          "alias": "菰根",
+          "description": "水生植物，春季采挖根茎。",
+          "season": "春季",
+          "method": "食根茎",
+          "habitat": "水生",
+          "poem": "茭笋生，水底藏。挖来充饥肠，味美胜稻粱。"
+        },
+        {
+          "name": "夜合树",
+          "alias": "合欢",
+          "description": "树芽可食，春季采摘。",
+          "season": "春季",
+          "method": "食芽",
+          "usage": "药食两用",
+          "poem": "夜合树，花如绵。春来新芽嫩，饥时可果腹。"
+        },
+        {
+          "name": "木槿树",
+          "description": "花可食，夏季采摘。",
+          "season": "夏季",
+          "method": "食花",
+          "poem": "木槿花，朝荣夕落。采来充饥急，聊以度饥荒。"
+        },
+        {
+          "name": "椿树芽",
+          "description": "春季采摘嫩芽。",
+          "season": "春季",
+          "method": "食芽",
+          "poem": "椿树芽，味微苦。春来采食之，饥时当蔬食。"
+        },
+        {
+          "name": "槐树芽",
+          "description": "春季采摘嫩芽和花。",
+          "season": "春季",
+          "method": [
+            "食芽",
+            "食花"
+          ],
+          "poem": "槐花香，芽嫩黄。春来采食之，饥时解馋肠。"
+        },
+        {
+          "name": "野豌豆",
+          "description": "豆荚和嫩苗可食。",
+          "season": [
+            "春季采苗",
+            "夏秋采豆"
+          ],
+          "method": [
+            "食苗",
+            "食豆"
+          ],
+          "poem": "野豌豆，生路旁。春食嫩叶香，秋收豆满筐。"
+        },
+        {
+          "name": "山扁豆",
+          "description": "豆可食，秋季采收。",
+          "season": "秋季",
+          "method": "食豆",
+          "poem": "山扁豆，结实多。秋来采食之，饥时解饥饿。"
+        },
+        {
+          "name": "荞麦苗",
+          "description": "嫩苗可食。",
+          "season": "春季",
+          "method": "食苗",
+          "poem": "荞麦苗，嫩又娇。采来充饥急，聊以度春宵。"
+        },
+        {
+          "name": "芋苗",
+          "alias": "芋头",
+          "description": "根茎可食，秋季采挖。",
+          "season": "秋季",
+          "method": "食根茎",
+          "poem": "芋苗青，根茎肥。秋来挖食之，饥时当美味。"
+        },
+        {
+          "name": "莲藕",
+          "description": "藕可食，秋季采挖。",
+          "season": "秋季",
+          "method": "食藕",
+          "habitat": "水生",
+          "poem": "莲藕白，味甘美。秋来采食之，饥时解饥困。"
+        },
+        {
+          "name": "苋菜",
+          "description": "全株可食，夏季采摘。",
+          "season": "夏季",
+          "method": "全株食用",
+          "poem": "苋菜绿，叶柔嫩。夏日采食之，饥时当蔬菜。"
+        },
+        {
+          "name": "苦苣菜",
+          "alias": "天精菜",
+          "description": "叶可食，春夏采摘。",
+          "season": "春夏",
+          "method": "食叶",
+          "taste": "苦",
+          "poem": "苦苣菜，味虽苦。春来采食之，饥时当美味。"
+        },
+        {
+          "name": "马齿苋菜",
+          "alias": "五行草",
+          "description": "全株可食，夏季采摘。",
+          "season": "夏季",
+          "method": "全株食用",
+          "poem": "马齿苋，生满地。夏日采食之，饥时解饥困。"
+        },
+        {
+          "name": "冬葵菜",
+          "description": "叶可食，冬季采摘。",
+          "season": "冬季",
+          "method": "食叶",
+          "poem": "冬葵菜，耐寒霜。冬日采食之，饥时当蔬菜。"
+        },
+        {
+          "name": "蓼芽菜",
+          "description": "嫩芽可食，春季采摘。",
+          "season": "春季",
+          "method": "食芽",
+          "taste": "辛",
+          "poem": "蓼芽菜，味辛香。春来采食之，饥时解馋肠。"
+        },
+        {
+          "name": "苜蓿",
+          "description": "嫩苗可食，四季可采。",
+          "season": "四季",
+          "method": "食苗",
+          "poem": "苜蓿青，四季生。采来充饥急，聊以度饥荒。"
+        },
+        {
+          "name": "薄荷",
+          "alias": "鸡苏",
+          "description": "叶可食，夏季采摘。",
+          "season": "夏季",
+          "method": "食叶",
+          "taste": "辛凉",
+          "usage": "药食两用",
+          "poem": "薄荷香，味清凉。夏日采食之，饥时解暑热。"
+        },
+        {
+          "name": "荆芥",
+          "alias": "假苏",
+          "description": "嫩叶可食，春季采摘。",
+          "season": "春季",
+          "method": "食叶",
+          "taste": "辛",
+          "usage": "药食两用",
+          "poem": "荆芥香，味微辛。春来采食之，饥时当佳蔬。"
+        },
+        {
+          "name": "水蕲",
+          "alias": "芹菜",
+          "description": "全株可食，春季采摘。",
+          "season": "春季",
+          "method": "全株食用",
+          "habitat": "水生",
+          "poem": "水蕲青，生水边。春来采食之，饥时解饥馑。"
+        },
+        {
+          "name": "沙参",
+          "alias": "知母、白参、虎须",
+          "description": "根色黄白为佳，性微寒无毒。需区分杏叶沙参与细叶沙参。",
+          "season": "四季",
+          "method": "直接采根煮食",
+          "taste": "甘",
+          "usage": "蔬食",
+          "poem": "沙参根，色黄白。性微寒无毒，饥时当佳品。"
+        },
+        {
+          "name": "百合",
+          "alias": "重箱、摩罗",
+          "description": "常规蔬食，无需特殊处理。",
+          "season": "四季",
+          "method": "常规蔬食",
+          "taste": "甘",
+          "usage": "蔬食",
+          "poem": "百合根，重箱名。常规蔬食用，饥时当佳品。"
+        },
+        {
+          "name": "萎蕤",
+          "alias": "女萎、五竹、荧",
+          "description": "无毒，但需彻底煮透。",
+          "season": "四季",
+          "method": "采根后换水多次煮沸至极熟",
+          "taste": "甘",
+          "usage": "蔬食",
+          "poem": "萎蕤根，需煮透。换水多次煮，饥时当佳品。"
+        },
+        {
+          "name": "天门冬",
+          "alias": "万岁藤、娑罗树",
+          "description": "忌与鲤鱼同食，浮萍可解其毒。",
+          "season": "四季",
+          "method": "浸水去苦味后煮熟，或晒干磨粉制饼蒸食",
+          "taste": "甘苦",
+          "usage": "蔬食",
+          "poem": "天门冬，需浸水。去苦煮熟食，忌与鲤鱼同。"
+        },
+        {
+          "name": "章柳根",
+          "alias": "商陆、马尾、夜呼",
+          "description": "白色根可食，赤根有毒不可食。",
+          "season": "四季",
+          "method": "切块后多次换水煮沸，再煮至全熟淡食",
+          "taste": "甘",
+          "usage": "蔬食",
+          "poem": "章柳根，需谨慎。白根可食用，赤根有大毒。"
+        },
+        {
+          "name": "麦门冬",
+          "alias": "羊韭、禹余粮",
+          "description": "恶款冬、苦瓠，畏木耳。",
+          "season": "四季",
+          "method": "浸水去邪味后蒸熟，去心食用",
+          "taste": "甘",
+          "usage": "蔬食",
+          "poem": "麦门冬，需浸水。去邪蒸熟食，去心更安全。"
+        },
+        {
+          "name": "苎根",
+          "alias": "无",
+          "description": "宿根自生，不须藏种。",
+          "season": "四季",
+          "method": "刮去表皮，煮熟后味甘美",
+          "taste": "甘",
+          "usage": "蔬食",
+          "poem": "苎根皮，需刮去。煮熟味甘美，饥时当佳品。"
+        },
+        {
+          "name": "苍术",
+          "alias": "山蓟、山精",
+          "description": "防风、地榆可配伍，茅山产者最佳。",
+          "season": "四季",
+          "method": "去黑皮后浸泡2-3日去苦味，煮熟或煎汤",
+          "taste": "苦",
+          "usage": "蔬食",
+          "poem": "苍术根，需去皮。浸泡去苦味，茅山产最佳。"
+        },
+        {
+          "name": "菖蒲",
+          "alias": "尧韭、昌阳",
+          "description": "一寸九节者良，难食。",
+          "season": "四季",
+          "method": "不建议作为主要救荒植物",
+          "taste": "辛",
+          "usage": "药食两用",
+          "poem": "菖蒲根，九节良。难食不救荒，药用更相宜。"
+        },
+        {
+          "name": "葛子根",
+          "alias": "打碗花、狗儿秧、缠枝牡丹",
+          "description": "久食易致头晕、腹泻。",
+          "season": "四季",
+          "method": "蒸食、晒干炊饭或磨面制饼",
+          "taste": "甘",
+          "usage": "蔬食",
+          "poem": "葛子根，需谨慎。久食头晕泻，适量更相宜。"
+        },
+        {
+          "name": "蔽蒌根",
+          "alias": "面碌碡",
+          "description": "根形如鹰爪，色如墐泥，味甘。",
+          "season": "四季",
+          "method": "去表皮及毛，蒸熟、炒食或磨面蒸食",
+          "taste": "甘",
+          "usage": "蔬食",
+          "poem": "蔽蒌根，如鹰爪。去毛蒸熟食，味甘当佳品。"
+        },
+        {
+          "name": "野胡萝卜",
+          "alias": "无",
+          "description": "根细小，味甘无毒。",
+          "season": "四季",
+          "method": "洗净去皮生食或煮熟",
+          "taste": "甘",
+          "usage": "蔬食",
+          "poem": "野胡萝卜，根细小。洗净去皮食，味甘无毒。"
+        },
+        {
+          "name": "绵枣儿",
+          "alias": "石枣儿",
+          "description": "性寒，不换水煮可能致气胀。",
+          "season": "四季",
+          "method": "久煮极熟，需换水煮",
+          "taste": "甘",
+          "usage": "蔬食",
+          "poem": "绵枣儿，需换水。久煮极熟食，否则易气胀。"
+        },
+        {
+          "name": "土豳儿",
+          "alias": "地栗子",
+          "description": "根形如小土瓜，味甜。",
+          "season": "四季",
+          "method": "直接煮熟食用",
+          "taste": "甜",
+          "usage": "蔬食",
+          "poem": "土豳儿，如土瓜。直接煮熟食，味甜当佳品。"
+        },
+        {
+          "name": "野山药",
+          "alias": "无",
+          "description": "根细瘦但无毒，味微甜。",
+          "season": "四季",
+          "method": "煮熟食用",
+          "taste": "微甜",
+          "usage": "蔬食",
+          "poem": "野山药，根细瘦。煮熟味微甜，无毒当佳品。"
+        },
+        {
+          "name": "金瓜儿",
+          "alias": "无",
+          "description": "与酒相反，食用前后忌饮酒。",
+          "season": "四季",
+          "method": "多次换水煮去苦味，再煮极熟",
+          "taste": "苦",
+          "usage": "蔬食",
+          "poem": "金瓜儿，需换水。去苦煮熟食，忌酒更相宜。"
+        },
+        {
+          "name": "细叶沙参",
+          "alias": "无",
+          "description": "与普通沙参形态不同，需单独辨识。",
+          "season": "四季",
+          "method": "洗净煮熟",
+          "taste": "甜",
+          "usage": "蔬食",
+          "poem": "细叶沙参，需辨识。洗净煮熟食，味甜性微寒。"
+        },
+        {
+          "name": "鸡腿儿",
+          "alias": "翻白草",
+          "description": "根皮赤内白，味甜无毒。",
+          "season": "四季",
+          "method": "生食或煮熟",
+          "taste": "甜",
+          "usage": "蔬食",
+          "poem": "鸡腿儿，皮赤白。生熟皆可食，味甜无毒。"
+        },
+        {
+          "name": "山蔓菁",
+          "alias": "无",
+          "description": "根形似沙参，皮灰肉白。",
+          "season": "四季",
+          "method": "煮熟或生食",
+          "taste": "甜",
+          "usage": "蔬食",
+          "poem": "山蔓菁，似沙参。皮灰肉白甜，生熟皆可食。"
+        },
+        {
+          "name": "老鸦蒜",
+          "alias": "无",
+          "description": "含砒霜毒，需谨慎处理。",
+          "season": "四季",
+          "method": "焯熟后浸淘净，油盐调食",
+          "taste": "辛",
+          "usage": "蔬食",
+          "poem": "老鸦蒜，需谨慎。焯熟浸淘净，砒毒需去除。"
+        },
+        {
+          "name": "蕤核",
+          "alias": "蕤李子",
+          "description": "果实红紫色，味甘酸，无毒。",
+          "season": "四季",
+          "method": "摘取红紫色成熟果实食用",
+          "taste": "甘酸",
+          "usage": "蔬食",
+          "poem": "蕤核果实红紫色，味甘无毒可充饥。"
+        },
+        {
+          "name": "酸枣",
+          "alias": "樲枣",
+          "description": "果实红紫色，可酿酒。",
+          "season": "四季",
+          "method": "红熟时生食，未熟可煮食或酿酒",
+          "taste": "酸",
+          "usage": "蔬食",
+          "poem": "酸枣红紫味酸甜，酿酒煮食皆可充饥。"
+        },
+        {
+          "name": "橡子",
+          "alias": "橡实、杼斗",
+          "description": "需多次浸泡去涩味。",
+          "season": "四季",
+          "method": "浸煮15次去涩味，蒸熟食用",
+          "taste": "苦涩",
+          "usage": "蔬食",
+          "poem": "橡子需浸去涩味，蒸熟可厚肠胃。"
+        },
+        {
+          "name": "荆子",
+          "alias": "黄荆",
+          "description": "需去苦味后食用。",
+          "season": "四季",
+          "method": "浸去苦味后晒干磨面食用",
+          "taste": "苦",
+          "usage": "蔬食",
+          "poem": "荆子需去苦味，磨面可充饥。"
+        },
+        {
+          "name": "实枣儿",
+          "alias": "山茱萸",
+          "description": "红熟果实可食。",
+          "season": "四季",
+          "method": "摘取红熟果实食用",
+          "taste": "酸",
+          "usage": "蔬食",
+          "poem": "实枣儿红熟可食，味酸无毒可充饥。"
+        },
+        {
+          "name": "孩儿拳头",
+          "alias": "荚蒾",
+          "description": "果实和枝条汁可食。",
+          "season": "四季",
+          "method": "果实生食，枝条煮汁加米制粥",
+          "taste": "甘苦",
+          "usage": "蔬食",
+          "poem": "孩儿拳头果实红，枝条煮粥味更美。"
+        },
+        {
+          "name": "山䔧儿",
+          "alias": "金刚刺、铁刷子",
+          "description": "红黄色果实可食。",
+          "season": "四季",
+          "method": "采摘红黄色成熟果实食用",
+          "taste": "甘酸",
+          "usage": "蔬食",
+          "poem": "山䔧儿果实红黄，味甘酸可充饥。"
+        },
+        {
+          "name": "山里果儿",
+          "alias": "山里红、映山红果",
+          "description": "红熟果实可食。",
+          "season": "四季",
+          "method": "采摘红熟果实食用",
+          "taste": "甜",
+          "usage": "蔬食",
+          "poem": "山里果儿红熟甜，采摘食用可充饥。"
+        },
+        {
+          "name": "无花果",
+          "description": "紫茄色果实可食，叶可治病。",
+          "season": "四季",
+          "method": "采摘紫茄色成熟果实食用",
+          "taste": "甜",
+          "usage": "蔬食",
+          "poem": "无花果紫茄色，味甜可治病充饥。"
+        },
+        {
+          "name": "青舍子条",
+          "description": "紫黑色果实可食。",
+          "season": "四季",
+          "method": "采摘紫黑色成熟果实食用",
+          "taste": "甜",
+          "usage": "蔬食",
+          "poem": "青舍子条果实紫黑，味甜可充饥。"
+        },
+        {
+          "name": "雀麦",
+          "alias": "燕麦",
+          "description": "子实可磨面食用。",
+          "season": "四季",
+          "method": "采子去壳捣粉，蒸饼或煮粥食",
+          "taste": "甘",
+          "usage": "蔬食",
+          "poem": "雀麦子实可磨面，蒸饼煮粥皆可食。"
+        },
+        {
+          "name": "回回米",
+          "alias": "薏苡仁",
+          "description": "仁和叶都可食。",
+          "season": "四季",
+          "method": "仁煮粥，叶煮饮",
+          "taste": "甘",
+          "usage": "蔬食",
+          "poem": "回回米仁叶皆可食，煮粥煮饮可充饥。"
+        },
+        {
+          "name": "蒺梨子",
+          "alias": "蒺藜",
+          "description": "需去刺后食用。",
+          "season": "四季",
+          "method": "炒黄去刺，磨面制饼或蒸食",
+          "taste": "苦",
+          "usage": "蔬食",
+          "poem": "蒺梨子需去刺，磨面制饼可充饥。"
+        },
+        {
+          "name": "檾子",
+          "description": "嫩子和成熟子都可食。",
+          "season": "四季",
+          "method": "嫩子生食，成熟子浸去苦味后磨面蒸食",
+          "taste": "苦",
+          "usage": "蔬食",
+          "poem": "檾子嫩熟皆可食，去苦磨面可充饥。"
+        },
+        {
+          "name": "稗子",
+          "description": "子实可捣米或磨面。",
+          "season": "四季",
+          "method": "捣米煮粥或磨面蒸食",
+          "taste": "甘",
+          "usage": "蔬食",
+          "poem": "稗子可捣米磨面，煮粥蒸食可充饥。"
+        },
+        {
+          "name": "穇子",
+          "description": "子实可捣米或磨面。",
+          "season": "四季",
+          "method": "捣米煮粥或磨面蒸食",
+          "taste": "甘",
+          "usage": "蔬食",
+          "poem": "穇子可捣米磨面，煮粥蒸食可充饥。"
+        },
+        {
+          "name": "川谷",
+          "alias": "草珠儿",
+          "description": "子实可磨米煮粥或酿酒。",
+          "season": "四季",
+          "method": "磨米煮粥、炊饭或酿酒",
+          "taste": "甘",
+          "usage": "蔬食",
+          "poem": "川谷子实可磨米，煮粥酿酒可充饥。"
+        },
+        {
+          "name": "莠草子",
+          "alias": "狗尾草",
+          "description": "需揉穗取子后食用。",
+          "season": "四季",
+          "method": "揉穗取子，煮粥或炊饭",
+          "taste": "微苦",
+          "usage": "蔬食",
+          "poem": "莠草子需揉穗取，煮粥炊饭可充饥。"
+        },
+        {
+          "name": "野黍",
+          "description": "需去糠后食用。",
+          "season": "四季",
+          "method": "去糠后蒸食或磨面制饼",
+          "taste": "甜",
+          "usage": "蔬食",
+          "poem": "野黍需去糠，蒸食磨面可充饥。"
+        },
+        {
+          "name": "鸡眼草",
+          "alias": "掐不齐",
+          "description": "需多次淘洗去苦味。",
+          "season": "四季",
+          "method": "子冷水淘净后煮粥、炊饭或磨面制饼",
+          "taste": "微苦",
+          "usage": "蔬食",
+          "poem": "鸡眼草需淘洗，去苦煮食可充饥。"
+        },
+        {
+          "name": "燕麦",
+          "description": "子实可磨面食用。",
+          "season": "四季",
+          "method": "采子舂去皮，捣磨为面食",
+          "taste": "甘",
+          "usage": "蔬食",
+          "poem": "燕麦子实可磨面，捣磨为面可充饥。"
+        },
+        {
+          "name": "泼盘",
+          "alias": "托盘",
+          "description": "红熟果实可食。",
+          "season": "四季",
+          "method": "采摘红熟果实食用",
+          "taste": "甘酸",
+          "usage": "蔬食",
+          "poem": "泼盘果实红熟时，采摘食用可充饥。"
+        },
+        {
+          "name": "丝瓜苗",
+          "description": "嫩瓜可食。",
+          "season": "四季",
+          "method": "采嫩瓜切碎煠熟，水浸淘净，油盐调食",
+          "taste": "微甜",
+          "usage": "蔬食",
+          "poem": "丝瓜苗嫩瓜可食，煠熟调食可充饥。"
+        },
+        {
+          "name": "地角儿苗",
+          "alias": "地牛儿苗",
+          "description": "嫩角和硬角都可食。",
+          "season": "四季",
+          "method": "嫩角生食，硬角煮熟食豆",
+          "taste": "甘",
+          "usage": "蔬食",
+          "poem": "地角儿苗角可食，嫩生硬煮可充饥。"
+        },
+        {
+          "name": "马瓟儿",
+          "description": "熟果实可食。",
+          "season": "四季",
+          "method": "摘取熟果实食用",
+          "taste": "微酸",
+          "usage": "蔬食",
+          "poem": "马瓟儿熟果可食，采摘食用可充饥。"
+        },
+        {
+          "name": "山黧豆",
+          "alias": "山豌豆",
+          "description": "豆子可食。",
+          "season": "四季",
+          "method": "采取角儿煮食，或打取豆食",
+          "taste": "甜",
+          "usage": "蔬食",
+          "poem": "山黧豆角豆可食，煮食打食可充饥。"
+        },
+        {
+          "name": "龙牙草",
+          "alias": "瓜香草",
+          "description": "子可磨面食用。",
+          "season": "四季",
+          "method": "收取其子，或捣或磨作面食",
+          "taste": "甜",
+          "usage": "蔬食",
+          "poem": "龙牙草子可磨面，捣磨为面可充饥。"
+        },
+        {
+          "name": "地稍瓜",
+          "description": "嫩角和硬角都可食。",
+          "season": "四季",
+          "method": "嫩角煠食，硬角剥取嫩穰生食",
+          "taste": "甘",
+          "usage": "蔬食",
+          "poem": "地稍瓜角可食，嫩煠硬剥可充饥。"
+        },
+        {
+          "name": "锦荔枝",
+          "alias": "癞葡萄",
+          "description": "黄熟果实可食。",
+          "season": "四季",
+          "method": "采荔枝黄熟者食瓤",
+          "taste": "甘",
+          "usage": "蔬食",
+          "poem": "锦荔枝黄熟可食，采摘食瓤可充饥。"
+        },
+        {
+          "name": "鸡冠果",
+          "alias": "野杨梅",
+          "description": "红熟果实可食。",
+          "season": "四季",
+          "method": "采取红熟果实食用",
+          "taste": "甜酸",
+          "usage": "蔬食",
+          "poem": "鸡冠果红熟可食，采摘食用可充饥。"
+        },
+        {
+          "name": "羊蹄苗",
+          "alias": "东方宿、连虫陆、鬼目、蓄、猪耳朵",
+          "description": "嫩叶需去苦味。",
+          "season": "四季",
+          "method": "采嫩苗叶煠熟，水浸淘净苦味，油盐调食",
+          "taste": "苦",
+          "usage": "蔬食",
+          "poem": "羊蹄苗需去苦味，煠熟调食可充饥。"
+        },
+        {
+          "name": "苍耳",
+          "alias": "葈耳、道人头、喝起草、胡葈、地葵、葹、常思、羊负来、卷耳、苓耳",
+          "description": "叶和子都需去苦味，有小毒。",
+          "season": "四季",
+          "method": "采嫩苗叶煠熟，换水浸去苦味，淘净，油盐调食",
+          "taste": "苦辛",
+          "usage": "蔬食",
+          "poem": "苍耳需去苦味，煠熟调食需谨慎。"
+        },
+        {
+          "name": "姑娘菜",
+          "alias": "灯笼儿、挂金灯、酸浆、醋浆",
+          "description": "叶需去苦味。",
+          "season": "四季",
+          "method": "采叶煠熟，水浸淘去苦味，油盐调食",
+          "taste": "酸",
+          "usage": "蔬食",
+          "poem": "姑娘菜需去苦味，煠熟调食可充饥。"
+        },
+        {
+          "name": "土茜苗",
+          "alias": "茜根、地血、茹藘、茅蒐、蒨",
+          "description": "叶需浸泡去苦味。",
+          "season": "四季",
+          "method": "采叶煠熟，水浸作成黄色，淘净，油盐调食",
+          "taste": "苦",
+          "usage": "蔬食",
+          "poem": "土茜苗需浸泡，煠熟调食可充饥。"
+        },
+        {
+          "name": "王不留行",
+          "alias": "剪金草、禁宫花、剪金花",
+          "description": "叶需去苦味。",
+          "season": "四季",
+          "method": "采嫩叶煠熟，换水淘去苦味，油盐调食",
+          "taste": "苦甘",
+          "usage": "蔬食",
+          "poem": "王不留行需去苦，煠熟调食可充饥。"
+        },
+        {
+          "name": "白薇",
+          "alias": "白幕、薇草、春蔦、骨美",
+          "description": "嫩叶和嫩角可食。",
+          "season": "四季",
+          "method": "采嫩叶煠熟，水淘净，油盐调食",
+          "taste": "苦咸",
+          "usage": "蔬食",
+          "poem": "白薇嫩叶角可食，煠熟调食可充饥。"
+        },
+        {
+          "name": "蓬子菜",
+          "description": "嫩叶可食。",
+          "season": "四季",
+          "method": "采嫩苗叶煠熟，水浸淘净，油盐调食",
+          "taste": "甜",
+          "usage": "蔬食",
+          "poem": "蓬子菜嫩叶可食，煠熟调食可充饥。"
+        },
+        {
+          "name": "胡枝子",
+          "alias": "随军茶",
+          "description": "子和叶都可食。",
+          "season": "四季",
+          "method": "采子微舂即成米，冷水淘净，滚水汤三五次去水，下锅或作粥，或作炊饭",
+          "taste": "甘",
+          "usage": "蔬食",
+          "poem": "胡枝子子叶可食，煮粥炊饭可充饥。"
+        },
+        {
+          "name": "米布袋",
+          "description": "嫩叶和子可食。",
+          "season": "四季",
+          "method": "采角取子，水淘洗净下锅煮食",
+          "taste": "甜",
+          "usage": "蔬食",
+          "poem": "米布袋嫩叶子可食，煮食调食可充饥。"
+        },
+        {
+          "name": "天茄苗儿",
+          "description": "叶需去邪味。",
+          "season": "四季",
+          "method": "采嫩叶煠熟，水浸去邪味，淘净，油盐调食",
+          "taste": "甜",
+          "usage": "蔬食",
+          "poem": "天茄苗需去邪味，煠熟调食可充饥。"
+        },
+        {
+          "name": "苦马豆",
+          "description": "叶和子都需去苦味。",
+          "season": "四季",
+          "method": "采叶煠熟，换水浸去苦味，淘净，油盐调食",
+          "taste": "苦",
+          "usage": "蔬食",
+          "poem": "苦马豆需去苦味，煠熟调食可充饥。"
+        },
+        {
+          "name": "猪尾把苗",
+          "alias": "狗脚菜",
+          "description": "嫩叶可食。",
+          "season": "四季",
+          "method": "采嫩叶煠熟，换水浸淘净，油盐调食",
+          "taste": "甜",
+          "usage": "蔬食",
+          "poem": "猪尾把苗嫩叶可食，煠熟调食可充饥。"
+        },
+        {
+          "name": "水菜",
+          "description": "生长在水中，水太深难以获取",
+          "season": "秋季",
+          "method": "熟食",
+          "taste": "甘",
+          "usage": "蔬食",
+          "poem": "水菜生长在水中，水太深难以获取，提着筐绕堤行走才能采到。"
+        },
+        {
+          "name": "狗脚迹",
+          "description": "叶子像狗的脚印",
+          "season": "霜降时",
+          "method": "采来熟食",
+          "taste": "甘",
+          "usage": "蔬食",
+          "poem": "狗脚迹何处寻？狡兔乱走妖孤吟。北风扬沙一尺深，狗脚迹何处寻？"
+        },
+        {
+          "name": "破破衲",
+          "description": "三月变老就不能吃了",
+          "season": "正二月",
+          "method": "采来熟食",
+          "taste": "甘",
+          "usage": "蔬食",
+          "poem": "破破衲，不堪补，寒且饥聊作脯，饱暖时不想汝。"
+        },
+        {
+          "name": "斜蒿",
+          "description": "小的整棵都可用，大的摘取嫩头",
+          "season": "三四月",
+          "method": "在汤中略焯一下，晒干，再用汤泡发，用油盐拌匀食用，也可直接吃",
+          "taste": "甘",
+          "usage": "蔬食",
+          "poem": "斜蒿复斜蒿，采采临春郊。终日不盈把，怅望登□。欲进不能进，风日寒潇潇。"
+        },
+        {
+          "name": "窝荠",
+          "description": "形状像发髻",
+          "season": "正月二月",
+          "method": "采来熟食",
+          "taste": "甘",
+          "usage": "蔬食",
+          "poem": "窝荠如髻生，水边照华丽。去年郎家田不丰，挑菜女儿不上头。出门忽见窝，羞。"
+        },
+        {
+          "name": "乌蓝担",
+          "description": "只能熟食，乌是大的意思",
+          "season": "四季",
+          "method": "采来熟食",
+          "taste": "甘",
+          "usage": "蔬食",
+          "poem": "乌蓝担担不动。去时腹中饥，归来肩上重。肩上重，行路迟，日暮，还家方早炊。"
+        },
+        {
+          "name": "蒲儿根",
+          "description": "就是蒲草的嫩根",
+          "season": "四季",
+          "method": "生熟都可食",
+          "taste": "甘",
+          "usage": "蔬食",
+          "poem": "年年砍蒲千万束，水乡人家衣食足。今年水深淹绝蒲，食尽蒲根生意无。"
+        },
+        {
+          "name": "马拦头",
+          "description": "二三月丛生",
+          "season": "二三月",
+          "method": "熟食，又可做成齑",
+          "taste": "甘",
+          "usage": "蔬食",
+          "poem": "马拦头，拦路生，我为拔之容马行。只恐救荒人出城，骑马直到破柴荆。"
+        },
+        {
+          "name": "青蒿儿",
+          "alias": "茵陈蒿",
+          "description": "二月二日和粉面做饼用",
+          "season": "春季",
+          "method": "采来炊食",
+          "taste": "甘",
+          "usage": "蔬食",
+          "poem": "青蒿儿才发頛，二月二日春犹冷，家家竞作茵陈饼，茵陈疗病还疗饥。借问采蒿知不知。"
+        },
+        {
+          "name": "藩篱头",
+          "description": "入春就不能用了",
+          "season": "腊月",
+          "method": "采来熟食",
+          "taste": "甘",
+          "usage": "蔬食",
+          "poem": "藩篱头，延蔓草，傍篱生青袅袅。今年薪贵谷不丰，拆藩篱，煮藩篱头。"
+        }
+      ]
+    }
+  ]
+}

@@ -273,43 +273,173 @@
             position: fixed;
             right: 15px;
             top: 150px;
-            background: rgba(255, 250, 240, 0.85);
+            background: rgba(255, 250, 240, 0.95);
             padding: 20px;
             border-radius: 8px;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
             z-index: 1001;
             display: none;
-            width: 300px;
-            max-height: 60vh;
+            width: 350px;
+            max-height: 80vh;
             overflow-y: auto;
             border: 1px solid rgba(212, 180, 131, 0.5);
             backdrop-filter: blur(8px);
         }
 
-        .detail-window {
-            transition: all 0.3s ease;
-            opacity: 0;
+        .info-window h3 {
+            margin: 0 0 15px 0;
+            color: #333;
+            font-size: 18px;
+            padding-right: 30px;
         }
 
-        .detail-window.show {
-            opacity: 1;
+        .info-window h4 {
+            margin: 15px 0 10px 0;
+            color: #8B4513;
+            font-size: 16px;
+            border-bottom: 1px solid rgba(212, 180, 131, 0.3);
+            padding-bottom: 5px;
+        }
+
+        .info-window p {
+            margin: 10px 0;
+            color: #666;
+            line-height: 1.6;
+            font-size: 14px;
+        }
+
+        .info-window .section {
+            margin: 15px 0;
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 6px;
+            border: 1px solid rgba(212, 180, 131, 0.2);
+        }
+
+        /* 牧养六畜样式 */
+        .info-window .variety-item,
+        .info-window .method-item,
+        .info-window .disease-item {
+            margin: 10px 0;
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 4px;
+            border: 1px solid rgba(212, 180, 131, 0.1);
+        }
+
+        /* 农事占候样式 */
+        .info-window .time-item,
+        .info-window .weather-item,
+        .info-window .nature-item,
+        .info-window .geo-item,
+        .info-window .bio-item {
+            margin: 10px 0;
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 4px;
+            border: 1px solid rgba(212, 180, 131, 0.1);
+        }
+
+        /* 农器样式 */
+        .info-window .tool-item {
+            margin: 10px 0;
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 4px;
+            border: 1px solid rgba(212, 180, 131, 0.1);
+        }
+
+        /* 树艺样式 */
+        .info-window .planting-item {
+            margin: 10px 0;
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 4px;
+            border: 1px solid rgba(212, 180, 131, 0.1);
+        }
+
+        /* 木本植物样式 */
+        .info-window .characteristics-item {
+            margin: 10px 0;
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 4px;
+            border: 1px solid rgba(212, 180, 131, 0.1);
+        }
+
+        /* 救荒本草样式 */
+        .info-window .famine-relief-item {
+            margin: 10px 0;
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 4px;
+            border: 1px solid rgba(212, 180, 131, 0.1);
+        }
+
+        /* 境外作物样式 */
+        .info-window .foreign-crop-item {
+            margin: 10px 0;
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 4px;
+            border: 1px solid rgba(212, 180, 131, 0.1);
+        }
+
+        /* 通用悬停效果 */
+        .info-window .variety-item:hover,
+        .info-window .method-item:hover,
+        .info-window .disease-item:hover,
+        .info-window .time-item:hover,
+        .info-window .weather-item:hover,
+        .info-window .nature-item:hover,
+        .info-window .geo-item:hover,
+        .info-window .bio-item:hover,
+        .info-window .tool-item:hover,
+        .info-window .planting-item:hover,
+        .info-window .characteristics-item:hover,
+        .info-window .famine-relief-item:hover,
+        .info-window .foreign-crop-item:hover {
+            background: rgba(212, 180, 131, 0.1);
+            transform: translateX(5px);
+            transition: all 0.3s ease;
         }
 
         .info-window img {
             max-width: 100%;
             height: auto;
-            margin-bottom: 15px;
+            margin: 15px 0;
             border-radius: 4px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
         }
 
-        .info-window h3 {
-            margin: 0 0 10px 0;
-            color: #333;
+        /* 自定义滚动条样式 */
+        .info-window::-webkit-scrollbar {
+            width: 6px;
         }
 
-        .info-window p {
-            margin: 5px 0;
-            color: #666;
+        .info-window::-webkit-scrollbar-track {
+            background: rgba(212, 180, 131, 0.05);
+            border-radius: 3px;
+        }
+
+        .info-window::-webkit-scrollbar-thumb {
+            background: rgba(212, 180, 131, 0.2);
+            border-radius: 3px;
+        }
+
+        .info-window::-webkit-scrollbar-thumb:hover {
+            background: rgba(212, 180, 131, 0.4);
+        }
+
+        .detail-window {
+            transition: all 0.3s ease;
+            opacity: 0;
+            right: 385px !important;
+            width: 350px !important;
+        }
+
+        .detail-window.show {
+            opacity: 1;
         }
 
         .close-btn {
@@ -447,36 +577,87 @@
             searchBox.classList.toggle('active');
         });
 
-        // 查找节点信息的辅助函数
-        function findNodeInfo(nodeName, nodes) {
-            for (const node of nodes) {
-                if (node.name === nodeName) {
-                    return node;
-                }
-                if (node.children) {
-                    if (Array.isArray(node.children)) {
-                        // 如果children是数组，检查是否包含该名称
-                        if (node.children.includes(nodeName)) {
-                            return {
-                                name: nodeName,
-                                description: `属于${node.name}类别的农学知识`,
-                                image: `./images/${nodeName}.jpg`,
-                                category: node.name
-                            };
-                        }
+        // 查找节点信息的辅助函数 - 改进以处理嵌套类别和查找完整数据
+        function findNodeInfo(nodeName, dataStructure = window.agricultureData) {
+            // 查找函数，可在指定节点下递归查找目标名称
+            function findInChildren(targetName, nodesToSearch, currentCategory) {
+                for (const node of nodesToSearch) {
+                    if (typeof node === 'object' && node.name === targetName) {
+                        // 找到匹配的对象，返回包含所有属性和正确类别的对象
+                        return { ...node, category: currentCategory };
                     }
-                    const found = findNodeInfo(nodeName, Array.isArray(node.children)
-                        ? node.children.map(child => typeof child === 'string'
-                            ? { name: child, description: `属于${node.name}的农学知识`, image: `./images/${child}.jpg` }
-                            : child)
-                        : [node.children]);
-                    if (found) return found;
+                    // 如果当前节点是字符串且匹配
+                    if (typeof node === 'string' && node === targetName) {
+                        // 返回基本信息，表示找到了名称但无详细数据
+                         return {
+                            name: targetName,
+                            description: `属于 ${currentCategory} 类别的农学知识`,
+                            category: currentCategory,
+                            isBasic: true // 标记为只有基本信息
+                        };
+                    }
+                    // 如果当前节点有 children，递归查找
+                    if (typeof node === 'object' && node.children) {
+                        const found = findInChildren(targetName, Array.isArray(node.children) ? node.children : [node.children], currentCategory);
+                        if (found) return found;
+                    }
+                }
+                return null;
+            }
+
+            // 遍历所有顶层分类
+            for (let i = 0; i < dataStructure.nodes.length; i++) {
+                const mainCategoryNode = dataStructure.nodes[i];
+                const categoryInfo = dataStructure.categories[i]; // 获取顶层分类信息
+
+                // 检查顶层分类名称是否匹配
+                if (mainCategoryNode.name === nodeName) {
+                    // 查找该类别下的所有项目名称 (代码来自上次修改，用于显示分类列表)
+                    let items = [];
+                    if (mainCategoryNode.children) {
+                        function extractNames(children) {
+                            if (Array.isArray(children)) {
+                                children.forEach(child => {
+                                    if (typeof child === 'string') items.push(child);
+                                    else if (typeof child === 'object' && child.name) {
+                                        items.push(child.name);
+                                        if (child.children) extractNames(child.children);
+                                    }
+                                });
+                            } else if (typeof children === 'object' && children.name) {
+                                items.push(children.name);
+                                if (children.children) extractNames(children.children);
+                            }
+                        }
+                        extractNames(mainCategoryNode.children);
+                    }
+                     return {
+                        ...categoryInfo, // 使用 categories 中的信息
+                        category: '农学分类', // 标记为顶层分类
+                        isCategory: true,
+                        items: items
+                    };
+                }
+
+                // 在顶层分类的 children 中查找
+                if (mainCategoryNode.children) {
+                    const found = findInChildren(nodeName, Array.isArray(mainCategoryNode.children) ? mainCategoryNode.children : [mainCategoryNode.children], categoryInfo.name);
+                    if (found) {
+                        // 如果找到的是只有基本信息的对象，尝试在整个数据结构中再找一次详细信息
+                         if (found.isBasic) {
+                            const detailedFound = findInChildren(nodeName, dataStructure.nodes, categoryInfo.name); // 在所有节点里再找一遍
+                            if (detailedFound && !detailedFound.isBasic) return detailedFound; // 返回找到的详细信息
+                        }
+                        return found; // 返回在子节点中找到的对象（可能是完整或基本信息）
+                    }
                 }
             }
-            return null;
+
+            // console.log(`Node not found: ${nodeName}`); // 调试日志
+            return null; // 未找到
         }
 
-        fetch('./data/data.js')
+        fetch('./data/data.json')
             .then(response => response.json())
             .then(agricultureData => {
                 window.agricultureData = agricultureData; // 使数据全局可用
@@ -693,111 +874,363 @@
 
                 // 显示信息窗口
                 function showInfoWindow(item) {
-                    infoWindow.querySelector('h3').textContent = item.name;
-                    infoWindow.querySelector('img').src = item.image;/*
-                    
-                    infoWindow.querySelector('img').onerror = function () {
-                        this.src = './默认图片.jpg';
-                    };*/
-
-                    if (item.items) {
-                        // 显示类别信息和数据列表
-                        infoWindow.querySelector('.info-content').innerHTML = `
-                                    <p><strong>类别：</strong>${item.category}</p>
-                                    <p><strong>描述：</strong>${item.description}</p>
-                                    <div class="data-list">
-                                        ${item.items.map(name => {
-                            const nodeInfo = findNodeInfo(name, agricultureData.nodes) || {
-                                name: name,
-                                category: item.name,
-                                description: `属于${item.name}类别的农学知识`,
-                                image: `./images/${name}.jpg`
-                            };
-                            return `
-                                                <div class="data-item" data-name="${name}">
-                                                    <strong>${name}</strong>
-                                                    <div style="font-size: 12px; color: #666; margin-top: 4px;">
-                                                        点击查看详情
-                                                    </div>
-                                                </div>
-                                            `;
-                        }).join('')}
-                                    </div>
-                                `;
-
-                        // 为数据项添加点击事件
-                        const dataItems = infoWindow.querySelectorAll('.data-item');
-                        dataItems.forEach(dataItem => {
-                            dataItem.addEventListener('click', () => {
-                                const name = dataItem.dataset.name;
-                                const nodeInfo = findNodeInfo(name, agricultureData.nodes) || {
-                                    name: name,
-                                    category: item.name,
-                                    description: `属于${item.name}类别的农学知识`,
-                                    image: `./images/${name}.jpg`
-                                };
-                                showDetailWindow(nodeInfo);
-                            });
-                        });
-                    } else {
-                        // 显示普通项目信息
-                        infoWindow.querySelector('.info-content').innerHTML = `
-                                    <p><strong>类别：</strong>${item.category}</p>
-                                    <p><strong>描述：</strong>${item.description}</p>
-                                `;
+                    if (!item || !item.name) {
+                        console.error("无效的 item 数据传递给 showInfoWindow", item);
+                        return; // 如果没有找到信息或信息无效，则不显示
                     }
+
+                    // console.log("Showing info for:", JSON.stringify(item, null, 2)); // 调试日志
+
+                    infoWindow.querySelector('h3').textContent = item.name;
+                    infoWindow.querySelector('img').style.display = 'none'; // 隐藏图片
+
+                    let content = '';
+
+                    // 添加基本信息 (类别和描述)
+                    content += `<p><strong>类别：</strong>${item.category || '未知'}</p>`;
+                    if (item.description) {
+                        content += `<p><strong>描述：</strong>${item.description}</p>`;
+                    }
+
+                    // 根据不同类别显示不同信息
+                    const categoryName = item.isCategory ? item.name : item.category;
+
+                    // 如果只有基本信息，显示提示
+                    if (item.isBasic && !item.isCategory) {
+                         content += `<p style="color: #888; font-style: italic;">（暂无更多详细信息）</p>`;
+                    } else {
+                        // 否则，根据分类显示详细信息
+                        switch(categoryName) {
+                            case '牧养六畜':
+                                // 显示品种信息
+                                if (item.varieties) {
+                                    content += `<div class="section"><h4>品种信息</h4>`;
+                                    item.varieties.forEach(variety => {
+                                        content += `<div class="variety-item">
+                                            <p><strong>${variety.name}</strong></p>
+                                            <p>描述：${variety.description || '无'}</p>
+                                            ${variety.origin ? `<p>产地：${variety.origin}</p>` : ''}
+                                            ${variety.features ? `<p>特征：${variety.features.join('、')}</p>` : ''}
+                                        </div>`;
+                                    });
+                                    content += `</div>`;
+                                }
+                                // 显示饲养方法
+                                if (item.methods) {
+                                    content += `<div class="section"><h4>饲养方法</h4>`;
+                                    item.methods.forEach(method => {
+                                        content += `<div class="method-item">
+                                            <p><strong>${method.stage}</strong></p>
+                                            <p>护理：${method.care}</p>
+                                            ${method.feed ? `<p>饲料：${method.feed.join('、')}</p>` : ''}
+                                        </div>`;
+                                    });
+                                    content += `</div>`;
+                                }
+                                // 显示疾病防治
+                                if (item.diseases) {
+                                    content += `<div class="section"><h4>疾病防治</h4>`;
+                                    item.diseases.forEach(disease => {
+                                        content += `<div class="disease-item">
+                                            <p><strong>${disease.name}</strong></p>
+                                            ${disease.symptoms ? `<p>症状：${disease.symptoms.join('、')}</p>` : ''}
+                                            ${disease.treatment ? `<p>治疗方法：${disease.treatment}</p>` : ''}
+                                        </div>`;
+                                    });
+                                    content += `</div>`;
+                                }
+                                break;
+
+                            case '农事占候':
+                                // 时间
+                                if (item.children && item.children.find(c => c.name === '时间')) {
+                                     const timeInfo = item.children.find(c => c.name === '时间');
+                                     content += `<div class="section"><h4>时间信息</h4>`;
+                                     timeInfo.children.forEach(month => {
+                                         content += `<div class="time-item"><p><strong>${month.name}</strong></p><p>${month.description}</p></div>`;
+                                     });
+                                     content += `</div>`;
+                                }
+                                // 天象
+                                if (item.children && item.children.find(c => c.name === '天象')) {
+                                    const weatherInfo = item.children.find(c => c.name === '天象');
+                                    content += `<div class="section"><h4>天象信息</h4>`;
+                                    weatherInfo.children.forEach(weather => {
+                                        content += `<div class="weather-item"><p><strong>${weather.name}</strong></p><p>${weather.description}</p></div>`;
+                                    });
+                                    content += `</div>`;
+                                }
+                                // 自然现象
+                                if (item.children && item.children.find(c => c.name === '自然现象')) {
+                                    const natureInfo = item.children.find(c => c.name === '自然现象');
+                                    content += `<div class="section"><h4>自然现象</h4>`;
+                                    natureInfo.children.forEach(nature => {
+                                        content += `<div class="nature-item"><p><strong>${nature.name}</strong></p><p>${nature.description}</p></div>`;
+                                    });
+                                    content += `</div>`;
+                                }
+                                // 地理
+                                if (item.children && item.children.find(c => c.name === '地理')) {
+                                    const geoInfo = item.children.find(c => c.name === '地理');
+                                    content += `<div class="section"><h4>地理信息</h4>`;
+                                    geoInfo.children.forEach(geo => {
+                                        content += `<div class="geo-item"><p><strong>${geo.name}</strong></p><p>${geo.description}</p></div>`;
+                                    });
+                                    content += `</div>`;
+                                }
+                                // 动植物指征
+                                if (item.children && item.children.find(c => c.name === '动植物指征')) {
+                                    const bioInfo = item.children.find(c => c.name === '动植物指征');
+                                    content += `<div class="section"><h4>动植物指征</h4>`;
+                                    bioInfo.children.forEach(bio => {
+                                        content += `<div class="bio-item"><p><strong>${bio.name}</strong></p><p>${bio.description}</p></div>`;
+                                    });
+                                    content += `</div>`;
+                                }
+                                break;
+
+                            case '农器':
+                                // 简化显示逻辑，直接检查 children 是否存在并迭代
+                                if (item.children && Array.isArray(item.children)) {
+                                    item.children.forEach(toolCategory => {
+                                        if (toolCategory.children && Array.isArray(toolCategory.children)) {
+                                            content += `<div class="section"><h4>${toolCategory.name}</h4>`;
+                                            toolCategory.children.forEach(tool => {
+                                                content += `<div class="tool-item">
+                                                    <p><strong>${tool.name}</strong></p>
+                                                    <p>描述：${tool.description || '无'}</p>
+                                                    ${tool.variants ? `<p>种类：${tool.variants.join('、')}</p>` : ''}
+                                                    ${tool.usage ? `<p>用途：${Array.isArray(tool.usage) ? tool.usage.join('、') : tool.usage}</p>` : ''}
+                                                    ${tool.material ? `<p>材质：${Array.isArray(tool.material) ? tool.material.join('、') : tool.material}</p>` : ''}
+                                                    ${tool.power_source ? `<p>动力来源：${tool.power_source}</p>` : ''}
+                                                    ${tool.feature ? `<p>特点：${tool.feature}</p>` : ''}
+                                                    ${tool.components ? `<p>组成：${tool.components.join('、')}</p>` : ''}
+                                                </div>`;
+                                            });
+                                            content += `</div>`;
+                                        }
+                                    });
+                                }
+                                break;
+
+                            case '树艺':
+                                 // 树艺本身可能包含子类，如救荒本草，或其他种植技术
+                                 // 显示种植技术 (如果直接在树艺节点下)
+                                if (item.planting) {
+                                    content += `<div class="section"><h4>种植技术</h4>`;
+                                    item.planting.forEach(p => {
+                                        content += `<div class="planting-item">
+                                            <p><strong>${p.name}</strong></p>
+                                            <p>时间：${p.time}</p>
+                                            <p>方法：${p.method}</p>
+                                            ${p.tips ? `<p>注意事项：${p.tips}</p>` : ''}
+                                        </div>`;
+                                    });
+                                    content += `</div>`;
+                                }
+                                // 检查是否有子节点，并显示为相关项目 (改进)
+                                if (item.children && Array.isArray(item.children) && item.children.length > 0) {
+                                    content += `<div class="section"><h4>相关项目</h4>`;
+                                    content += `<div class="data-list">`;
+                                    item.children.forEach(child => {
+                                        const childName = (typeof child === 'string') ? child : child.name;
+                                        if (childName) {
+                                            // 尝试查找子项目的类别
+                                            const childInfo = findNodeInfo(childName); // 再次查找
+                                            const childCategory = childInfo ? childInfo.category : categoryName; // 默认为父类别
+                                            content += `
+                                                <div class="data-item" data-name="${childName}">
+                                                    <strong>${childName}</strong>
+                                                    <div style="font-size: 12px; color: #666; margin-top: 4px;">
+                                                        类别: ${childCategory} (点击查看详情)
+                                                    </div>
+                                                </div>`;
+                                        }
+                                    });
+                                     content += `</div></div>`;
+                                }
+                                break;
+
+                            case '木本植物':
+                                // 显示植物特征
+                                if (item.characteristics) {
+                                    content += `<div class="section"><h4>植物特征</h4>`;
+                                    content += `<div class="characteristics-item">
+                                        <p>生长环境：${item.characteristics.environment}</p>
+                                        <p>生长周期：${item.characteristics.growthCycle}</p>
+                                        <p>主要用途：${item.characteristics.uses}</p>
+                                    </div>`;
+                                    content += `</div>`;
+                                }
+                                break;
+
+                            case '救荒本草': // 确认 categoryName 正确匹配
+                                // 显示别名
+                                if (item.alias) {
+                                    content += `<div class="section"><h4>别名</h4>`;
+                                    content += `<div class="famine-relief-item"><p>${item.alias}</p></div>`;
+                                    content += `</div>`;
+                                }
+                                // 显示采集季节
+                                if (item.season) {
+                                    content += `<div class="section"><h4>采集季节</h4>`;
+                                    // 处理可能的对象或字符串格式
+                                    let seasonText = '';
+                                    if (typeof item.season === 'object') {
+                                        if (item.season.spring_summer) seasonText += `春夏：${item.season.spring_summer}；`;
+                                        if (item.season.autumn) seasonText += `秋季：${item.season.autumn}；`;
+                                        if (item.season.winter) seasonText += `冬季：${item.season.winter}；`;
+                                        seasonText = seasonText.replace(/；$/, ''); // 移除末尾分号
+                                    } else {
+                                        seasonText = item.season;
+                                    }
+                                    content += `<div class="famine-relief-item"><p>${seasonText}</p></div>`;
+                                    content += `</div>`;
+                                }
+                                // 显示食用方法
+                                if (item.method) {
+                                    content += `<div class="section"><h4>食用方法</h4>`;
+                                    // 处理可能的数组或字符串格式
+                                    const methodText = Array.isArray(item.method) ? item.method.join('； ') : item.method;
+                                    content += `<div class="famine-relief-item"><p>${methodText}</p></div>`;
+                                    content += `</div>`;
+                                }
+                                 // 显示生长环境
+                                if (item.habitat) {
+                                    content += `<div class="section"><h4>生长环境</h4>`;
+                                    content += `<div class="famine-relief-item"><p>${item.habitat}</p></div>`;
+                                    content += `</div>`;
+                                }
+                                 // 显示特征
+                                if (item.feature) {
+                                    content += `<div class="section"><h4>特征</h4>`;
+                                    content += `<div class="famine-relief-item"><p>${item.feature}</p></div>`;
+                                    content += `</div>`;
+                                }
+                                // 显示味道
+                                if (item.taste) {
+                                    content += `<div class="section"><h4>味道</h4>`;
+                                    content += `<div class="famine-relief-item"><p>${item.taste}</p></div>`;
+                                    content += `</div>`;
+                                }
+                                // 显示用途
+                                if (item.usage) {
+                                    content += `<div class="section"><h4>用途</h4>`;
+                                     // 处理可能的数组或字符串格式
+                                    const usageText = Array.isArray(item.usage) ? item.usage.join('、') : item.usage;
+                                    content += `<div class="famine-relief-item"><p>${usageText}</p></div>`;
+                                    content += `</div>`;
+                                }
+                                 // 显示警告信息 (如果存在 warning 字段)
+                                if (item.warning) {
+                                    content += `<div class="section"><h4>注意事项</h4>`;
+                                    content += `<div class="famine-relief-item warning"><p style="color: #d9534f;">⚠️ ${item.warning}</p></div>`;
+                                    content += `</div>`;
+                                }
+                                // 显示毒性信息 (基于描述中是否含"毒")
+                                if (item.description && item.description.includes('毒') && !item.warning) { // 避免重复显示警告
+                                    content += `<div class="section"><h4>毒性提示</h4>`;
+                                    content += `<div class="famine-relief-item warning"><p style="color: #d9534f;">⚠️ 描述中提及可能含毒性，请谨慎使用。</p></div>`;
+                                    content += `</div>`;
+                                }
+                                // 显示食用禁忌 (基于描述中是否含"忌"等)
+                                if (item.description && (item.description.includes('忌') || item.description.includes('不可') || item.description.includes('恶') || item.description.includes('畏'))) {
+                                    const warnings = item.description.match(/(?:忌|不可|恶|畏)[^，。；]*/g);
+                                    if (warnings) {
+                                        content += `<div class="section"><h4>食用禁忌/配伍</h4>`;
+                                        content += `<div class="famine-relief-item warning"><p style="color: #d9534f;">⚠️ ${warnings.join('； ')}</p></div>`;
+                                        content += `</div>`;
+                                    }
+                                }
+                                // 显示相关诗句
+                                if (item.poem) {
+                                    content += `<div class="section"><h4>相关诗句</h4>`;
+                                    content += `<div class="famine-relief-item"><p style="font-style: italic; color: #8B4513;">${item.poem}</p></div>`;
+                                    content += `</div>`;
+                                }
+                                break;
+
+                            case '境外作物':
+                                // 显示境外作物信息
+                                if (item.foreignCrops) {
+                                    content += `<div class="section"><h4>境外作物信息</h4>`;
+                                    content += `<div class="foreign-crop-item">
+                                        <p>原产地：${item.foreignCrops.origin}</p>
+                                        <p>引入时间：${item.foreignCrops.introductionTime}</p>
+                                        <p>适应地区：${item.foreignCrops.adaptationAreas}</p>
+                                        <p>种植价值：${item.foreignCrops.value}</p>
+                                    </div>`;
+                                    content += `</div>`;
+                                }
+                                break;
+
+                            // 处理顶层分类点击的情况
+                            case '农学分类':
+                                if (item.items && item.items.length > 0) {
+                                    content += `<div class="section"><h4>${item.name} 包含的项目</h4>`;
+                                    content += `<div class="data-list">`;
+                                    item.items.forEach(itemName => {
+                                        const nodeInfo = findNodeInfo(itemName);
+                                        const itemCategory = nodeInfo ? nodeInfo.category : '未知';
+                                        content += `
+                                            <div class="data-item" data-name="${itemName}">
+                                                <strong>${itemName}</strong>
+                                                <div style="font-size: 12px; color: #666; margin-top: 4px;">
+                                                    类别: ${itemCategory} (点击查看详情)
+                                                </div>
+                                            </div>`;
+                                    });
+                                    content += `</div></div>`;
+                                }
+                                break;
+                        }
+                    }
+
+                    infoWindow.querySelector('.info-content').innerHTML = content;
+
+                    // 为数据项添加点击事件 (如果存在)
+                    const dataItems = infoWindow.querySelectorAll('.data-item');
+                    dataItems.forEach(dataItem => {
+                        dataItem.addEventListener('click', () => {
+                            const name = dataItem.dataset.name;
+                            const nodeInfo = findNodeInfo(name); // 使用重构后的函数查找完整信息
+                            if (nodeInfo) {
+                                // 这里可能需要决定是再次调用 showInfoWindow 还是 showDetailWindow
+                                // 为了简单起见，我们继续使用 showInfoWindow 来显示详细信息
+                                showInfoWindow(nodeInfo);
+                            } else {
+                                console.error("无法找到项目信息:", name);
+                            }
+                        });
+                    });
 
                     infoWindow.style.display = 'block';
                     searchResults.style.display = 'none';
                 }
 
-                // 显示详细信息窗口
+                // 显示详细信息窗口 - 现在由 showInfoWindow 处理，可以简化或移除
                 function showDetailWindow(item) {
-                    // 检查是否已存在详细信息窗口
-                    const existingDetail = document.querySelector('.detail-window');
-                    if (existingDetail) {
-                        document.body.removeChild(existingDetail);
-                    }
-
-                    // 创建新的信息窗口
-                    const detailWindow = document.createElement('div');
-                    detailWindow.className = 'info-window detail-window';
-                    detailWindow.style.left = 'auto';
-                    detailWindow.style.right = '335px';
-                    detailWindow.style.display = 'block';
-                    detailWindow.innerHTML = `
-                                <span class="close-btn">&times;</span>
-                                <h3>${item.name}</h3>
-                                <div class="info-content">
-                                    <p><strong>类别：</strong>${item.category}</p>
-                                    <p><strong>描述：</strong>${item.description}</p>
-                                </div>
-                            `;
-
-                    // 添加关闭按钮事件
-                    detailWindow.querySelector('.close-btn').addEventListener('click', () => {
-                        document.body.removeChild(detailWindow);
-                    });
-
-                    document.body.appendChild(detailWindow);
-
-                    // 添加淡入效果
-                    setTimeout(() => {
-                        detailWindow.classList.add('show');
-                    }, 10);
+                   // 可以考虑将 showDetailWindow 的逻辑合并到 showInfoWindow
+                   // 或者确保 showDetailWindow 也使用 findNodeInfo 获取完整数据
+                   console.warn("showDetailWindow 可能需要更新以使用 findNodeInfo 获取完整数据");
+                   const fullItem = findNodeInfo(item.name); // 尝试获取完整信息
+                   if (fullItem) {
+                       showInfoWindow(fullItem); // 直接用 showInfoWindow 显示
+                   } else {
+                        // 回退到显示基本信息
+                       showInfoWindow(item);
+                   }
                 }
 
                 // 点击节点显示信息
                 myChart.on('click', 'series.graph', function (params) {
-                    if (params.data) {
-                        const nodeInfo = findNodeInfo(params.data.name, agricultureData.nodes);
+                    if (params.data && params.data.name) {
+                        const nodeInfo = findNodeInfo(params.data.name); // 使用重构后的函数
                         if (nodeInfo) {
-                            showInfoWindow({
-                                name: nodeInfo.name,
-                                category: params.data.category >= 0 ? agricultureData.categories[params.data.category].name : '',
-                                description: nodeInfo.description,
-                                image: nodeInfo.image
-                            });
+                            showInfoWindow(nodeInfo); // 传递完整的节点信息
+                        } else {
+                            console.error("无法找到节点信息:", params.data.name);
+                            // 可以选择显示一个提示信息
                         }
                     }
                 });
