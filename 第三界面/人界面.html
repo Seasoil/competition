@@ -12,140 +12,6 @@
   <script src="js/countUp.js"></script>
   <script src="js/data01.js"></script>
   <style>
-    /* 基础布局样式 */
-    body {
-      margin: 0;
-      padding: 0;
-      min-width: 1200px;
-      overflow-x: hidden;
-    }
-
-    .first-screen {
-      width: 100%;
-      min-width: 1200px;
-    }
-
-    .main {
-      display: flex;
-      padding: 20px;
-      min-height: 800px;
-    }
-
-    /* 左侧区域样式 */
-    .aside-left {
-      width: 320px;
-      min-width: 320px;
-      margin-right: 20px;
-    }
-
-    .aside-left .top {
-      background: rgba(0, 0, 0, 0.2);
-      border: 1px solid rgba(156, 204, 101, 0.3);
-      padding: 12px;
-      margin: 10px;
-      width: 300px;
-      box-sizing: border-box;
-      height: 450px;
-    }
-
-    .aside-left .top .con-wrap {
-      height: 380px;
-      overflow: hidden;
-    }
-
-    .aside-left .top .con {
-      height: 100%;
-      overflow-y: auto;
-    }
-
-    .aside-left .top .con li {
-      margin-bottom: 8px;
-      min-height: 30px;
-    }
-
-    /* 中间地图区域样式 */
-    .middle-map {
-      flex: 1;
-      min-width: 600px;
-      margin: 0 20px;
-    }
-
-    #map {
-      width: 100% !important;
-      height: 600px !important;
-      margin: 0 auto;
-    }
-
-    /* 右侧区域样式 */
-    .aside-right {
-      width: 320px;
-      min-width: 320px;
-      margin-left: 20px;
-    }
-
-    /* 饼图容器样式 */
-    .pie {
-      width: 100%;
-      height: 320px;
-      margin-bottom: 20px;
-    }
-
-    .pie1, .pie2 {
-      width: 45%;
-      height: 100%;
-    }
-
-    #pie1, #pie2 {
-      width: 100% !important;
-      height: 90% !important;
-    }
-
-    /* 农畜词频排行样式 */
-    .area-rank {
-      height: 300px;
-      margin: 20px 0;
-    }
-
-    .area-rank .con {
-      height: calc(100% - 40px);
-    }
-
-    /* 走势图样式 */
-    .trend {
-      height: 300px;
-      margin-top: 20px;
-    }
-
-    #trendBar1 {
-      width: 100% !important;
-      height: 90% !important;
-    }
-
-    /* 修复地图容器样式 */
-    .map-wrap {
-      width: 100%;
-      height: 100%;
-      position: relative;
-    }
-
-    .stats-info {
-      margin-bottom: 20px !important;
-    }
-
-    /* 确保滚动条样式 */
-    .aside-left .top .con::-webkit-scrollbar {
-      width: 6px;
-    }
-
-    .aside-left .top .con::-webkit-scrollbar-track {
-      background: rgba(0, 0, 0, 0.1);
-    }
-
-    .aside-left .top .con::-webkit-scrollbar-thumb {
-      background: rgba(156, 204, 101, 0.5);
-      border-radius: 3px;
-    }
-
     /* 统一的导航栏样式 */
     .main-nav {
       position: fixed;
@@ -1239,7 +1105,7 @@
               <div style="font-size: 16px; color: #D4E157; margin-top: 5px;">约50种</div>
             </div>
           </div>
-          <div id="map" style="width: 100%; height: 600px; margin: 0 auto;"></div>
+          <div id="map" style="width: 900px; height: 750px;"></div>
         </div>
       </div>
       <div class="aside-right fl">
