@@ -1,4 +1,3 @@
-
 var mapChart = echarts.init(document.getElementById("map"));
 // 获取所有按月循环的数据
 var bestSelling = dataOne().bestSelling;
@@ -624,21 +623,19 @@ var noneData = [
         kcmy: "面食、羊肉、粥类",
         itemStyle: {
             normal: { areaColor: 'rgb(244, 163, 13)' },
-            emphasis: { areaColor: "rgb(244, 71, 13)", opacity: 1}       
-        },
-        label: { show: false }                                         
+            emphasis: { areaColor: "rgb(244, 71, 13)" }       
+        }
     },
     {
         name: '海南省', 
-        uploadcnt: "火山地、平原、丘陵",
-        uploadpzs: "水稻、甘蔗、热带水果",
-        xsmy: "热带季风气候，全年高温",
-        kcmy: "米饭、椰子饭、热带果品",
+        uploadcnt: "丘陵、盆地",
+        uploadpzs: "水稻、甘蔗、椰子",
+        xsmy: "热带季风气候，高温多雨",
+        kcmy: "海鲜、热带水果、椰子",
         itemStyle: {
             normal: { areaColor: 'rgb(244, 163, 13)' },
-            emphasis: { areaColor: "rgb(244, 71, 13)", opacity: 1}
-        },
-        label: { show: false }                                         
+            emphasis: { areaColor: "rgb(244, 71, 13)" }
+        }
     },
     {
         name: '台湾省',  
@@ -648,9 +645,8 @@ var noneData = [
         kcmy: "米饭、海产、水果",
         itemStyle: {
             normal: { areaColor: 'rgb(244, 163, 13)' },
-            emphasis: { areaColor: "rgb(244, 71, 13)", opacity: 1}
-        },
-        label: { show: false }                     
+            emphasis: { areaColor: "rgb(244, 71, 13)" }
+        }
     },
     {
         name: '香港',  
@@ -660,9 +656,8 @@ var noneData = [
         kcmy: "粥粉面饭、海鲜、点心",
         itemStyle: {
             normal: { areaColor: 'rgb(244, 163, 13)' },
-            emphasis: { areaColor: "rgb(244, 71, 13)", opacity: 1}
-        },
-        label: { show: false }                                                              
+            emphasis: { areaColor: "rgb(244, 71, 13)" }
+        }
     },
     {
         name: '澳门', 
@@ -672,9 +667,8 @@ var noneData = [
         kcmy: "葡式米饭、点心、鱼虾",
         itemStyle: {
             normal: { areaColor: 'rgb(244, 163, 13)' },
-            emphasis: { areaColor: "rgb(244, 71, 13)", opacity: 1}
-        },
-        label: { show: false }                                                              
+            emphasis: { areaColor: "rgb(244, 71, 13)" }
+        }
     },
     {
         name: '北京市', 
@@ -684,9 +678,8 @@ var noneData = [
         kcmy: "面条、豆汁、驴打滚",
         itemStyle: {
             normal: { areaColor: 'rgb(244, 163, 13)' },
-            emphasis: { areaColor: "rgb(244, 71, 13)", opacity: 1}
-        },
-        label: { show: false }                      
+            emphasis: { areaColor: "rgb(244, 71, 13)" }
+        }
     },
     {
         name: '天津市', 
@@ -695,10 +688,9 @@ var noneData = [
         xsmy: "温带季风气候，冬冷夏热",
         kcmy: "煎饼果子、面食、海鲜",
         itemStyle: {
-            normal: { areaColor: '#rgb(244, 163, 13)' },
-            emphasis: { areaColor: "rgb(244, 71, 13)", opacity: 1}
-        },
-        label: { show: false }                      
+            normal: { areaColor: 'rgb(244, 163, 13)' },
+            emphasis: { areaColor: "rgb(244, 71, 13)" }
+        }
     },
     {
         name: '重庆市', 
@@ -708,9 +700,8 @@ var noneData = [
         kcmy: "米饭、火锅、小面",
         itemStyle: {
             normal: { areaColor: 'rgb(244, 163, 13)' },
-            emphasis: { areaColor: "rgb(244, 71, 13)", opacity: 1}         
-        },
-        label: { show: false }                                         
+            emphasis: { areaColor: "rgb(244, 71, 13)" }         
+        }
     },      
     {
         name: '辽宁省', 
@@ -720,9 +711,8 @@ var noneData = [
         kcmy: "面食、杂粮粥、鱼类",
         itemStyle: {
             normal: { areaColor: 'rgb(244, 163, 13)' },
-            emphasis: { areaColor: "rgb(244, 71, 13)", opacity: 1}
-        },
-        label: { show: false }                      
+            emphasis: { areaColor: "rgb(244, 71, 13)" }
+        }
     },
     {
         name: '安徽省', 
@@ -732,21 +722,19 @@ var noneData = [
         kcmy: "米饭、杂粮、鱼肉",                   
         itemStyle: {
             normal: { areaColor: 'rgb(244, 163, 13)' },
-            emphasis: { areaColor: "rgb(244, 71, 13)", opacity: 1}
-        },
-        label: { show: false }                                          
+            emphasis: { areaColor: "rgb(244, 71, 13)" }
+        }
     },      
     {
         name: '广西壮族自治区', 
-        uploadcnt: "喀斯特丘陵、河谷",
-        uploadpzs: "水稻、玉米、甘蔗",
-        xsmy: "南亚热带湿润气候，湿热多雨",
-        kcmy: "米饭、螺蛳粉、豆豉菜",
+        uploadcnt: "山地、盆地、平原",
+        uploadpzs: "水稻、甘蔗、香蕉",
+        xsmy: "亚热带季风气候，温暖湿润",
+        kcmy: "螺蛳粉、酸嘢、米粉",
         itemStyle: {
             normal: { areaColor: 'rgb(244, 163, 13)' },
-            emphasis: { areaColor: "rgb(244, 71, 13)", opacity: 1}       
-        },
-        label: { show: false }                      
+            emphasis: { areaColor: "rgb(244, 71, 13)" }
+        }
     },      
     {
         name: '山西省', 
@@ -756,9 +744,8 @@ var noneData = [
         kcmy: "杂粮、窝头、豆类制品",                  
         itemStyle: {
             normal: { areaColor: 'rgb(244, 163, 13)' },
-            emphasis: { areaColor: "rgb(244, 71, 13)", opacity: 1}
-        },
-        label: { show: false }                      
+            emphasis: { areaColor: "rgb(244, 71, 13)" }
+        }
     },
     {
         name: '陕西省', 
@@ -768,9 +755,8 @@ var noneData = [
         kcmy: "面食、凉皮、杂粮",
         itemStyle: {
             normal: { areaColor: 'rgb(244, 163, 13)' },
-            emphasis: { areaColor: "rgb(244, 71, 13)", opacity: 1}
-        },
-        label: { show: false }                                                                                                                          
+            emphasis: { areaColor: "rgb(244, 71, 13)" }
+        }
     },
     {
         name: '吉林省', 
@@ -780,9 +766,8 @@ var noneData = [
         kcmy: "豆制品、粟米饭、野菜",                  
         itemStyle: {
             normal: { areaColor: 'rgb(244, 163, 13)' },
-            emphasis: { areaColor: "rgb(244, 71, 13)", opacity: 1}
-        },
-        label: { show: false }                                                            
+            emphasis: { areaColor: "rgb(244, 71, 13)" }
+        }
     },
     {
         name: '福建省', 
@@ -792,9 +777,8 @@ var noneData = [
         kcmy: "米饭、番薯、海产",
         itemStyle: {
             normal: { areaColor: 'rgb(244, 163, 13)' },
-            emphasis: { areaColor: "rgb(244, 71, 13)", opacity: 1}
-        },
-        label: { show: false }                                        
+            emphasis: { areaColor: "rgb(244, 71, 13)" }
+        }
     },
     {
         name: '贵州省', 
@@ -804,9 +788,8 @@ var noneData = [
         kcmy: "酸汤饭、腊肉、米豆腐",
         itemStyle: {
             normal: { areaColor: 'rgb(244, 163, 13)' },
-            emphasis: { areaColor: "rgb(244, 71, 13)", opacity: 1}
-        },
-        label: { show: false }                                       
+            emphasis: { areaColor: "rgb(244, 71, 13)" }
+        }
     },      
     {
         name: '青海省', 
@@ -816,9 +799,8 @@ var noneData = [
         kcmy: "糌粑、奶制品、牛羊肉",                  
         itemStyle: {
             normal: { areaColor: 'rgb(244, 163, 13)' },
-            emphasis: { areaColor: "rgb(244, 71, 13)", opacity: 1}
-        },
-        label: { show: false }                                                             
+            emphasis: { areaColor: "rgb(244, 71, 13)" }
+        }
     },
     {
         name: '西藏自治区', 
@@ -828,910 +810,118 @@ var noneData = [
         kcmy: "糌粑、酥油茶、牦牛肉",                  
         itemStyle: {
             normal: { areaColor: 'rgb(244, 163, 13)' },
-            emphasis: { areaColor: "rgb(244, 71, 13)", opacity: 1}       
-        },
-        label: { show: false }
+            emphasis: { areaColor: "rgb(244, 71, 13)" }
+        }
     }
 ];
 
 
 for(key in mapData){
-    for(var i = 0; i < mapData[key].length; i++){
-
-        if(
-            mapData[key][i]["uploadcnt"].trim() == "" &&
-            mapData[key][i]["uploadpzs"].trim() == "" &&
-            mapData[key][i]["xsmy"].trim() == "" &&
-            mapData[key][i]["kcmy"].trim() == "" 
-        ){
-            mapData[key][i].label = {show: false}
-        }
-        for(var j = 0; j < itemStyleD.length; j++){
-            if(mapData[key][i]["name"] == itemStyleD[j]["name"]){
-                mapData[key][i].itemStyle = itemStyleD[j]["itemStyle"];
-            }
-        }
-    }
-    mapData[key] = mapData[key].concat(noneData)
+    mapData[key] = itemStyleD.concat(noneData);
 }
 
-function formatterShow (params){
-    var data = params.data;
-    // console.log(data.uploadcnt)
-    var numArr = [];
-    var numData = [];
-    var formatterStr = '';
-    var paramsData =  [
-        //     '{a|' + params.name + '}' + '\n',
-        "土地类型:" + data.uploadcnt ,
-        "主要作物:" + data.uploadpzs ,
-        "气候:" + data.xsmy ,
-        "主要食物:" + data.kcmy 
-    ]
-
-    if(data.uploadcnt != undefined && data.uploadcnt != ''){
-        numArr.push(0)
-    }
-    if(data.uploadpzs != undefined && data.uploadpzs != ''){
-        numArr.push(1)
-    }
-    if(data.xsmy != undefined && data.xsmy != ''){
-        numArr.push(2)
-    }
-    if(data.kcmy != undefined && data.kcmy != ''){
-        numArr.push(3)
-    }
-    for(var i = 0; i < numArr.length; i++){
-
-        numData.push(paramsData[numArr[i]])
-    }
-    // console.log(numData.join(""))
-    if(numData.length == 1){
-        formatterStr = '{a|' + params.name + '}' + '\n' + 
-                       '{b|' + numData[0] + '}'
-    }else if(numData.length == 2){
-        formatterStr = '{a|' + params.name + '}' + '\n' + 
-                       '{b|' + numData[0] + '}' + '\n' +
-                       '{c|' + numData[1] + '}'
-    }else if(numData.length == 3){
-        formatterStr = '{a|' + params.name + '}' + '\n' + 
-                       '{b|' + numData[0] + '}' + '\n' +
-                       '{c|' + numData[1] + '}' + '\n' +
-                       '{d|' + numData[2] + '}' + '\n'
-    }else if(numData.length == 4){
-        formatterStr = '{a|' + params.name + '}' + '\n' + 
-                       '{b|' + numData[0] + '}' + '\n' +
-                       '{c|' + numData[1] + '}' + '\n' +
-                       '{d|' + numData[2] + '}' + '\n' +
-                       '{e|' + numData[3] + '}' + '\n'
-    }
-
-    return formatterStr
-}
-
-
-// 有数据省份
-var hasData = [8,9,8,8,8,6,7,7,8,8,8,7,9,8,8,8,6,7,7,8,8,8,7,9,8,8,8,6,7,7,8,8,8,7];
-// 全国12个月数据
-
-var point = 'image://img/point.png';
-var curIndx = 0;
-
-var rich = {
-  a: {
-      color: '#fff',
-      fontSize: 18,
-      align: 'left',
-      padding: [0,0,64,44]
-  },
-  b: {
-      color: '#fff',
-      fontSize: 14,        
-      padding: [0,0,-60,110],
-      align: 'left'
-  },
-  c: {
-      color: '#fff',
-      fontSize: 14,       
-      padding: [0,0,-25,110],
-      align: 'left'
-
-  },
-  d: {
-      color: '#fff',
-      fontSize: 14,        
-      padding: [0,0,-2,110],
-      align: 'left'
-  },
-  e: {
-      color: '#fff',
-      fontSize: 14,       
-      padding: [3,0,3,110],
-      align: 'left'
-
-  }
-}
 var option = {
-  geo: {
-    map: "china",
-    label: {
-      emphasis: {
-        show: false
+  tooltip: {
+    trigger: 'item',
+    formatter: function(params) {
+      if(params.data) {
+        return `${params.name}<br/>
+                地形地貌：${params.data.uploadcnt || '暂无数据'}<br/>
+                主要作物：${params.data.uploadpzs || '暂无数据'}<br/>
+                气候特点：${params.data.xsmy || '暂无数据'}<br/>
+                主要食物：${params.data.kcmy || '暂无数据'}`;
       }
+      return params.name;
     },
-    roam: false,
-    layoutCenter: ["50%", "55%"],
-    layoutSize: "110%",
-    regions: [
-        {
-            name: '南海诸岛',
-            itemStyle: {
-                areaColor: 'rgb(244, 163, 13)',
-                opacity: 1
-            }
-        },
-        {
-            name: '北京市', 
-            itemStyle: {
-                areaColor: 'rgb(160, 124, 23)',
-                opacity: 1                           
-            }
-        },
-        {
-            name: '天津市', 
-            itemStyle: {
-							areaColor: 'rgb(244, 167, 13)',
-							opacity: 1                           
-						}
-        },
-        {
-            name: '上海市', 
-            itemStyle: {
-							areaColor: 'rgb(244, 179, 13)',
-							opacity: 1                           
-						}						
-						
-        },
-        {
-            name: '重庆市', 
-            itemStyle: {
-							areaColor: 'rgb(244, 163, 13)',
-							opacity: 1                           
-						}                  
-        },
-        {
-            name: '河北省', 
-						itemStyle: {
-							areaColor: 'rgb(244, 206, 13)',
-							opacity: 1                           
-						}                                      
-        },
-        {
-            name: '河南省', 
-            itemStyle: {
-							areaColor: 'rgb(192, 144, 14)',
-							opacity: 1                           
-						}
-        },
-        {
-            name: '云南省', 
-            itemStyle: {
-							areaColor: 'rgb(244, 167, 13)',
-							opacity: 1                           
-						}
-        },
-        {
-					name: '辽宁省', 
-					itemStyle: {
-						areaColor: 'rgb(213, 179, 85)',
-						opacity: 1                           
-					}                    
-        },
-        {
-					name: '黑龙江省', 
-					itemStyle: {
-						areaColor: 'rgb(174, 130, 11)',
-						opacity: 1                           
-					}
-        },
-        {
-					name: '湖南省', 
-					itemStyle: {
-						areaColor: 'rgb(244, 148, 13)',
-						opacity: 1                           
-					}
-        },
-        {
-            name: '安徽省', 
-            itemStyle: {
-							areaColor: 'rgb(141, 106, 10)',
-							opacity: 1                           
-						}                  
-        },
-        {
-            name: '山东省', 
-            itemStyle: {
-							areaColor: 'rgb(239, 206, 74)',
-							opacity: 1                           
-						}
-        },
-        {
-            name: '新疆维吾尔自治区', 
-						itemStyle: {
-							areaColor: 'rgb(244, 182, 13)',
-							opacity: 1                           
-						}
-        },
-        {
-            name: '江苏省', 
-            itemStyle: {
-							areaColor: 'rgb(193, 145, 14)',
-							opacity: 1                           
-						}                  
-        },
-        {
-            name: '浙江省', 
-            itemStyle: {
-							areaColor: 'rgb(200, 150, 12)',
-							opacity: 1                           
-						}                    
-        },
-        {
-            name: '江西省', 
-            itemStyle: {
-							areaColor: 'rgb(247, 195, 51)',
-							opacity: 1                           
-						} 
-        },
-        {
-            name: '湖北省', 
-            itemStyle: {
-							areaColor: 'rgba(244, 163, 13, 0.99)',
-							opacity: 1                           
-						} 
-        },
-        {
-            name: '广西壮族自治区', 
-            itemStyle: {
-							areaColor: 'rgb(152, 115, 15)',
-							opacity: 1                           
-						} 
-        },
-        {
-            name: '甘肃省', 
-            itemStyle: {
-							areaColor: 'rgb(244, 140, 13)',
-							opacity: 1                           
-						}                                       
-        },
-        {
-            name: '山西省', 
-            itemStyle: {
-							areaColor: 'rgb(238, 191, 63)',
-							opacity: 1                           
-						}                     
-        },
-        {
-            name: '内蒙古自治区', 
-            itemStyle: {
-                areaColor: 'rgb(247, 191, 36)',
-                opacity: 1                           
-            }                                       
-        },
-        {
-            name: '陕西省', 
-            itemStyle: {
-							areaColor: 'rgb(250, 195, 43)',
-							opacity: 1                           
-						} 
-        },
-        {
-            name: '吉林省', 
-            itemStyle: {
-							areaColor: 'rgb(232, 244, 13)',
-							opacity: 1                           
-						}                                       
-        },
-        {
-            name: '福建省', 
-            itemStyle: {
-							areaColor: 'rgb(164, 124, 13)',
-							opacity: 1                           
-						} 
-        },
-        {
-            name: '贵州省', 
-            itemStyle: {
-							areaColor: 'rgb(247, 202, 81)',
-							opacity: 1                           
-						}                    
-        },
-        {
-            name: '广东省', 
-            itemStyle: {
-							areaColor: 'rgb(244, 182, 13)',
-							opacity: 1                           
-						} 
-        },
-        {
-            name: '青海省', 
-            itemStyle: {
-							areaColor: 'rgba(243, 194, 61, 0.99)',
-							opacity: 1                           
-						} 
-        },
-        {
-            name: '西藏自治区', 
-            itemStyle: {
-							areaColor: 'rgb(244, 202, 13)',
-							opacity: 1                           
-						}                    
-        },
-        {
-					name: '四川省', 
-					itemStyle: {
-						areaColor: 'rgb(125, 96, 16)',
-						opacity: 1                           
-					} 
-        },
-        {
-					name: '宁夏回族自治区', 
-					itemStyle: {
-						areaColor: 'rgba(202, 244, 13, 0.99)',
-						opacity: 1                           
-					}                    
-        },
-        {
-					name: '海南省', 
-					itemStyle: {
-						areaColor: 'rgb(242, 199, 80)',
-						opacity: 1                           
-					}                   
-        },
-        {
-					name: '台湾省', 
-					itemStyle: {
-						areaColor: 'rgb(244, 182, 13)',
-						opacity: 1                           
-					}                                      
-        },
-        {
-					name: '香港', 
-					itemStyle: {
-						areaColor: 'rgba(244, 225, 13, 0.98)',
-						opacity: 1                           
-					} 
-        },
-        {
-					name: '澳门', 
-					itemStyle: {
-						areaColor: 'rgba(244, 182, 13, 0.96)',
-						opacity: 1                           
-					} 
-        } 
-]
+    confine: false,
+    enterable: true,  // 鼠标可以进入tooltip中
+    alwaysShowContent: true,  // 始终显示tooltip，不会因为鼠标移出而消失
+    position: function(point, params, dom, rect, size) {
+      // 获取地图容器位置信息
+      var viewWidth = size.viewSize[0];
+      var viewHeight = size.viewSize[1];
+      var contentWidth = size.contentSize[0];
+      var contentHeight = size.contentSize[1];
+      
+      // 计算 tooltip 的位置
+      var posX = point[0];
+      var posY = point[1];
+      
+      // 边界检测与调整
+      // 右边界
+      if (posX + contentWidth > viewWidth) {
+        posX = posX - contentWidth;
+      }
+      // 下边界
+      if (posY + contentHeight > viewHeight) {
+        posY = posY - contentHeight - 30; // 上移，避免遮挡
+      }
+      
+      // 确保不超出上边界
+      if (posY < 20) {
+        posY = 20;
+      }
+      
+      return [posX, posY];
+    },
+    // 添加自定义样式，让tooltip变得半透明并允许点击穿透
+    extraCssText: 'pointer-events: none; opacity: 0.8;'
   },
   series: [
     {
-      name: "中国",
+      name: "省份信息",
       type: "map",
       mapType: "china",
-      layoutCenter: ["50%", "55%"],
-      layoutSize: "110%",
-      label: {
-        width: 340,
-        height: 140,     
-        backgroundColor: {
-            image: "img/tip-bg.png"
-        },
-        emphasis: {               
-            show: true,
-            color: "#fff",    
-            formatter: function(params){
-                var tt = formatterShow(params)
-                return tt;
-            }
-        },
-        rich: rich
-      },
-      itemStyle: {
-        normal: {
-            opacity: 0.2
-        },
-        emphasis: {
-            opacity: 1,
-            borderWidth: 2,
-            borderColor: '#fff'
-        }
-      },
-      data: [
-        {
-          name: '北京市', 
-          itemStyle: {
-            normal: {
-                areaColor: '#034DE4'                            
-            },
-            emphasis: {
-            areaColor: '#034DE4',                            
-            opacity: 1 
-            }
-          },
-          label: {
-              show: false
-          }
-        },
-        {
-            name: '天津市', 
-            itemStyle: {
-                normal: {
-                    areaColor: '#034DE4'                            
-                },
-                emphasis: {
-                  areaColor: '#034DE4',                            
-                  opacity: 1 
-                }
-            },
-            label: {
-                show: false
-            }
-        },
-        {
-            name: '上海市', 
-            itemStyle: {
-                normal: {
-                    areaColor: '#27E9FD'   
-                },
-                emphasis: {
-                    areaColor: '#27E9FD'
-                }
-            }                    
-        },
-        {
-            name: '重庆市', 
-            itemStyle: {
-                normal: {                        
-                    areaColor: '#0E7DEB'
-                },
-                emphasis: {
-                    areaColor: '#0E7DEB',
-                    opacity: 1                 
-                }
-            },
-            label: {
-                show: false
-            }                   
-        },
-        {
-            name: '河北省',                    
-            itemStyle: {
-                normal: {                        
-                    areaColor: '#034DE4'
-                },
-                emphasis: {
-                    areaColor: '#034DE4'
-                }
-            }                                       
-        },
-        {
-            name: '河南省',                    
-            itemStyle: {
-                normal: {                        
-                    areaColor: '#034DE4'
-                },
-                emphasis: {
-                    areaColor: '#034DE4'
-                }
-            }                    
-        },
-        {
-            name: '云南省', 
-            itemStyle: {
-                normal: {                        
-                    areaColor: '#20CAF8'
-                },
-                emphasis: {
-                    areaColor: '#20CAF8'
-                }
-            }                     
-        },
-        {
-            name: '辽宁省', 
-            itemStyle: {
-                normal: {                        
-                    areaColor: '#034DE4'
-                },
-                emphasis: {
-                    areaColor: '#034DE4',
-                    opacity: 0.2
-                }
-            },
-            label: {
-                show: false
-            }                     
-        },
-        {
-            name: '黑龙江省', 
-            itemStyle: {
-                normal: {                        
-                    areaColor: '#17A3F1'
-                },
-                emphasis: {
-                    areaColor: "#17A3F1"
-                }                          
-            }
-        },
-        {
-            name: '湖南省', 
-            itemStyle: {
-                normal: {                       
-                    areaColor: '#0554E4'                      
-                },
-                emphasis: {
-                    areaColor: '#0554E4'                      
-                }      
-            } 
-        },
-        {
-            name: '安徽省', 
-            itemStyle: {
-                normal: {                        
-                    areaColor: '#27E8FD'
-                },
-                emphasis: {
-                    areaColor: '#27E8FD',
-                    opacity: 1                     
-                }      
-            },
-            label: {
-                show: false
-            }                    
-        },
-        {
-            name: '山东省', 
-            itemStyle: {
-                normal: {                        
-                    areaColor: '#4BFFFF'                    
-                },
-                emphasis: {
-                    areaColor: '#4BFFFF'
-                }       
-            }
-        },
-        {
-            name: '新疆维吾尔自治区', 
-            itemStyle: {
-                normal: {                        
-                    areaColor: '#17A3F1'    
-                },
-                emphasis: {
-                    areaColor: '#17A3F1'                       
-                }       
-            }
-        },
-        {
-            name: '江苏省', 
-            itemStyle: {
-                normal: {                        
-                    areaColor: '#00b6f6'
-                },
-                emphasis: {
-                    areaColor: '#00b6f6'
-                }
-            }                   
-        },
-        {
-            name: '浙江省', 
-            itemStyle: {
-                normal: {                        
-                    areaColor: '#00b6f6'
-                },
-                emphasis: {
-                    areaColor: '#00b6f6',
-                    opacity: 0.2
-                }
-            },
-            label: {
-                show: false
-            }                    
-        },
-        {
-            name: '江西省', 
-            itemStyle: {
-                normal: {                        
-                    areaColor: '#01a4f1'
-                },
-                emphasis: {
-                    areaColor: '#01a4f1'
-                }
-            }                                        
-        },
-        {
-            name: '湖北省', 
-            itemStyle: {
-                normal: {                        
-                    areaColor: '#005ce5'
-                },
-                emphasis: {
-                    areaColor: '#005ce5'
-                }
-            }                                                            
-        },
-        {
-            name: '广西壮族自治区', 
-            itemStyle: {
-                normal: {                        
-                    areaColor: '#0088ec'                           
-                },
-                emphasis: {
-                    areaColor: '#0088ec',
-                    opacity: 0.2
-                }
-            },
-            label: {
-                show: false
-            }                    
-        },
-        {
-            name: '甘肃省', 
-            itemStyle: {
-                normal: {                        
-                    areaColor: '#0042df'
-                },
-                emphasis: {
-                    areaColor: '#0042df'
-                }
-            }                    
-        },
-        {
-            name: '山西省', 
-            itemStyle: {
-                normal: {                        
-                    areaColor: '#01d0fa'
-                },
-                emphasis: {
-                    areaColor: '#01d0fa',
-                    opacity: 0.2
-                }
-            },
-            label: {
-                show: false
-            } 
-        },
-        {
-            name: '内蒙古自治区', 
-            itemStyle: {
-                normal: {                        
-                    areaColor: '#00ccf7'
-                },
-                emphasis: {
-                    areaColor: '#00ccf7'
-                }
-            }
-        },
-        {
-            name: '陕西省', 
-            itemStyle: {
-                normal: {                        
-                    areaColor: '#01b0f3'
-                },
-                emphasis: {
-                    areaColor: '#01b0f3',
-                    opacity: 0.2
-                }
-            },
-            label: {
-                show: false
-            }                                                              
-        },
-        {
-            name: '吉林省', 
-            itemStyle: {
-                normal: {                        
-                    areaColor: '#0051e1'
-                },
-                emphasis: {
-                    areaColor: '#0051e1',
-                    opacity: 0.2
-                }
-            },
-            label: {
-                show: false
-            }                                                                                
-        },
-        {
-            name: '福建省', 
-            itemStyle: {
-                normal: {                       
-                    areaColor: '#0158e3'
-                },
-                emphasis: {
-                    areaColor: '#0158e3',
-                    opacity: 0.2
-                }
-            },
-            label: {
-                show: false
-            }                                                                                                      
-        },
-        {
-            name: '贵州省', 
-            itemStyle: {
-                normal: {                        
-                    areaColor: '#0199ef'
-                },
-                emphasis: {
-                    areaColor: '#0199ef',
-                    opacity: 0.2
-                }
-            },
-            label: {
-                show: false
-            }                                                                                                                                            
-        },
-        {
-          name: '广东省', 
-          itemStyle: {
-              normal: {                        
-                  areaColor: '#00d9fc'                            
-              },
-              emphasis: {
-                  areaColor: '#00d9fc',
-                  opacity: 0.2
-              }
-          },
-          label: {
-              show: false
-          }                                                                                                      
-        },
-        {
-            name: '青海省', 
-            itemStyle: {
-                normal: {                        
-                    areaColor: '#005ae4'
-                },
-                emphasis: {
-                    areaColor: '#005ae4',
-                    opacity: 1                   
-                }
-            },
-            label: {
-                show: false
-            }                    
-        },
-        {
-            name: '西藏自治区', 
-            itemStyle: {
-                normal: {                        
-                    areaColor: '#01e9fd'                            
-                },
-                emphasis: {
-                    areaColor: '#01e9fd',
-                    opacity: 1                   
-                }
-            },
-            label: {
-                show: false
-            }
-        },
-        {
-            name: '四川省', 
-            itemStyle: {
-                normal: {                        
-                    areaColor: '#0069e8'                           
-                },
-                emphasis: {
-                    areaColor: '#0069e8'
-                }
-
-            }
-        },
-        {
-            name: '宁夏回族自治区', 
-            itemStyle: {
-                normal: {                        
-                    areaColor: '#01b0f3'                            
-                },
-                emphasis: {
-                    areaColor: '#01b0f3',
-                    opacity: 1                   
-                }
-            },
-            label: {
-                show: false
-            }
-        },
-        {
-            name: '海南省', 
-            itemStyle: {
-                normal: {                        
-                    areaColor: '#00f0ff'
-                },
-                emphasis: {
-                    areaColor: '#00f0ff',
-                    opacity: 1                   
-                }
-            },
-            label: {
-                show: false
-            }                    
-        },
-        {
-            name: '台湾省',                  
-            itemStyle: {
-                    normal: {                       
-                    areaColor: '#0067e7'
-                },
-                emphasis: {
-                    areaColor: '#0067e7',
-                    opacity: 1                   
-                }
-            },
-            label: {
-                show: false
-            }                    
-        },
-        {
-            name: '香港', 
-            itemStyle: {
-                normal: {                        
-                    areaColor: '#00dafa'
-                },
-                emphasis: {
-                    areaColor: '#00dafa',
-                    opacity: 1                   
-                }
-            },
-            label: {
-                show: false
-            }                                         
-        },
-        {
-            name: '澳门', 
-            itemStyle: {
-                normal: {                        
-                    areaColor: '#00dafa'                                                    
-                },
-                emphasis: {
-                    areaColor: '#00dafa',
-                    opacity: 1                   
-                }
-            },
-            label: {
-                show: false
-            }
-        }        
-      ],
-    },
-    {
-      name: "数据集中点",
-      type: "scatter",
-      coordinateSystem: "geo",
-			data: convertData(data),
-			symbol: point,
-      symbolSize: function(val) {
-        return val[2] / 8;
-      },
+      roam: false,
+      selectedMode: false,
       label: {
         normal: {
-          formatter: "{b}",
-          position: "right",
-          show: false
+              show: false
+                },
+                emphasis: {
+          show: true,
+          textStyle: {
+            color: '#fff'
+                }
+            }
         },
-        emphasis: {
-          show: true
+            itemStyle: {
+                normal: {
+          areaColor: 'rgb(244, 163, 13)',
+          borderColor: '#0692a4'
+                },
+                emphasis: {
+          areaColor: "rgb(244, 71, 13)",
+          opacity: 0.8
         }
       },
-      itemStyle: {
-        normal: {
-          color: "#ffff00"
-        }
-      }
+      data: mapData["map"]
     }
   ]
 };
 
-
 mapChart.setOption(option);
+
+// 移除之前添加的鼠标悬停事件监听
+mapChart.off('mouseover');
+mapChart.off('mouseout');
+
+// 添加用户悬停状态变量
+var userHovering = false;
+
+// 添加鼠标悬停事件监听
+mapChart.on('mouseover', function(params) {
+  if (params.seriesIndex === 0) {
+    userHovering = true;
+  }
+});
+
+// 添加鼠标移出事件监听
+mapChart.on('mouseout', function(params) {
+  if (params.seriesIndex === 0) {
+    userHovering = false;
+  }
+});
 
 // 渲染全国四种数据1月份
 $('#book-data').text(allMData["book"][0]);
@@ -2078,8 +1268,22 @@ var pieDataFn = function(monthIndex){
 pieDataFn(0);
 function setVal() {
   clearTimeout(timer);
+  
+  // 创建一个包含所有省份索引的数组，用于确保每个省份都能被随机到
+  var allProvinceIndices = [];
+  for (var i = 0; i < mapData["Jan"].length; i++) {
+    allProvinceIndices.push(i);
+  }
+  // 打乱数组顺序，实现随机但不重复
+  shuffleArray(allProvinceIndices);
+  // 当前展示的省份在打乱后数组中的位置
+  var currentProvinceIndexPosition = 0;
 
   timer = setInterval(function() {
+    // 如果用户正在悬停某个省份，则不进行随机切换
+    if (userHovering) {
+      return;
+    }
     
     if (mapChart.currentIndex == -1 && monthIndex == 0) {
         
@@ -2105,14 +1309,62 @@ function setVal() {
       seriesIndex: 0,
       dataIndex: mapChart.currentIndex
     });
-    mapChart.currentIndex = (mapChart.currentIndex + 1) % dataLen;
-    // 高亮当前图形
+    
+    // 使用打乱后的数组来选择下一个省份，确保所有省份都有机会被高亮
+    mapChart.currentIndex = allProvinceIndices[currentProvinceIndexPosition];
+    currentProvinceIndexPosition = (currentProvinceIndexPosition + 1) % allProvinceIndices.length;
+    
+    // 记录当前被系统高亮的省份索引
+    var currentSystemHighlightIndex = mapChart.currentIndex;
+    
+    // 高亮当前图形（使用蓝色）
+    var tempData = JSON.parse(JSON.stringify(mapData["Jan"][currentSystemHighlightIndex]));
+    if (!tempData.itemStyle) {
+      tempData.itemStyle = {};
+    }
+    if (!tempData.itemStyle.emphasis) {
+      tempData.itemStyle.emphasis = {};
+    }
+    tempData.itemStyle.emphasis.areaColor = "rgb(30, 144, 255)";
+    
+    // 临时修改数据，并应用高亮
+    mapData["Jan"][currentSystemHighlightIndex] = tempData;
+    mapChart.setOption({
+      series: [{
+        data: mapData["Jan"]
+      }]
+    });
     mapChart.dispatchAction({
       type: "highlight",
       seriesIndex: 0,
-      dataIndex: mapChart.currentIndex
+      dataIndex: currentSystemHighlightIndex
     });
-
+    
+    // 为随机高亮的省份显示tooltip弹窗
+    mapChart.dispatchAction({
+      type: 'showTip',
+      seriesIndex: 0,
+      dataIndex: currentSystemHighlightIndex
+    });
+    
+    // 还原数据，这样鼠标悬停时仍然是深橙色
+    setTimeout(function() {
+      mapData["Jan"][currentSystemHighlightIndex].itemStyle.emphasis.areaColor = "rgb(244, 71, 13)";
+    }, 100);
+    
+    // 移除自动隐藏tooltip的定时器
+    clearTimeout(window.tooltipHideTimer);
+    // 注释掉或删除以前的tooltip定时隐藏代码
+    /*
+    window.tooltipHideTimer = setTimeout(function() {
+      // 只有在用户不悬停的情况下才隐藏tooltip
+      if (!userHovering) {
+        mapChart.dispatchAction({
+          type: 'hideTip'
+        });
+      }
+    }, 1500); // tooltip显示1.5秒
+    */
 
     if (mapChart.currentIndex === hasData[monthIndex]) {
         mapChart.currentIndex = -1;
@@ -2158,7 +1410,7 @@ function setVal() {
         
     }
     
-  }, 2000);
+  }, 3000); // 将时间从2000毫秒改为3000毫秒，增加1秒
 }
 
 var chinaEchartsObj = echarts.getMap('china');
@@ -2230,5 +1482,16 @@ for(var i = 0, len = allDefProvince.length; i < len; i++){
 			sglProvinceProperties.cp[1] = 34.756967;
             break;
     }
+}
+
+// 随机打乱数组的辅助函数
+function shuffleArray(array) {
+  for (var i = array.length - 1; i > 0; i--) {
+    var j = Math.floor(Math.random() * (i + 1));
+    var temp = array[i];
+    array[i] = array[j];
+    array[j] = temp;
+  }
+  return array;
 }
 

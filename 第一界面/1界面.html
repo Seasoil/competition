@@ -75,7 +75,7 @@
             top: 50%;
             transform: translateY(-50%);
             height: 70vh;
-            width: 80px;
+            width: 80px; 
             background: rgba(255, 255, 255, 0.9);
             border-radius: 16px;
             box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
@@ -94,8 +94,7 @@
             height: 100%;
             background: rgba(0, 0, 0, 0.08);
             border-radius: 3px;
-            padding-bottom: 15px;
-            /* 增加底部内边距，为1月标签腾出空间 */
+            padding-bottom: 15px; /* 增加底部内边距，为1月标签腾出空间 */
             box-sizing: border-box;
         }
 
@@ -158,8 +157,7 @@
 
         /* 添加1月特殊样式 */
         .time-label-container[data-month="1"] .time-label-indicator {
-            width: 20px;
-            /* 增加刻度线长度 */
+            width: 20px;  /* 增加刻度线长度 */
         }
 
         .time-label-container:hover .time-label {
@@ -240,7 +238,7 @@
     </nav>
 
     <div id="chart-container"></div>
-
+    
     <!-- 新的时间轴结构 -->
     <div id="time-axis">
         <div class="time-axis-track">
@@ -249,7 +247,7 @@
             <div class="time-axis-labels" id="time-labels"></div>
         </div>
     </div>
-
+    
     <div id="term-tooltip" class="term-tooltip"></div>
 
     <script>
@@ -277,7 +275,7 @@
                 });
             });
         });
-
+        
         // 节气数据
         const solarTermsData = [
             { name: '立春', season: '春', date: '2月3-5日', desc: '春耕备耕开始，检查农具，准备早稻育秧' },
@@ -344,7 +342,7 @@
         monthLabels.forEach((label, index) => {
             // 反转位置计算，让1月在底部，12月在顶部
             let position = 100 - (index / (monthLabels.length - 1) * 100);
-
+            
             // 特殊处理1月位置，使其与进度条底部对齐但稍微上移
             if (label.month === 1) {
                 position = 96; // 底部对齐但稍微上移
@@ -353,7 +351,7 @@
             else if (label.month === 2) {
                 position = 89; // 调整2月位置，使其在1月和3月之间
             }
-
+            
             const elem = document.createElement('div');
             elem.className = 'time-label-container';
             elem.setAttribute('data-month', label.month);
@@ -362,7 +360,7 @@
                 <div class="time-label-indicator"></div>
                 <div class="time-label">${label.name}</div>
             `;
-
+            
             // 点击月份标签直接跳转
             elem.addEventListener('click', () => {
                 const day = getDayFromMonth(label.month);
@@ -371,7 +369,7 @@
                 updateHighlight(term);
                 showTooltip(term, day);
             });
-
+            
             labelsContainer.appendChild(elem);
         });
 
@@ -396,21 +394,21 @@
 
         function drag(e) {
             if (!isDragging) return;
-
+            
             const trackRect = axisTrack.getBoundingClientRect();
             let posY = e.clientY - trackRect.top;
-
+            
             // 限制在轨道范围内
             posY = Math.max(0, Math.min(posY, trackRect.height));
-
+            
             // 计算百分比位置 (0-1)，注意方向是从下到上
             const percentage = 1 - (posY / trackRect.height);
-
+            
             // 计算对应的天数 (0-365)
             const day = Math.round(percentage * 365);
-
+            
             updateTimeAxis(day);
-
+            
             // 找到最近的节气并更新
             const term = findNearestTerm(day);
             updateHighlight(term);
@@ -424,13 +422,13 @@
             const percentage = normalizedDay / 365;
             // 反转位置计算，让位置从下到上增长
             const position = 100 - (percentage * 100);
-
+            
             // 更新滑块位置
             axisHandle.style.top = `${position}%`;
-
+            
             // 更新进度条
             axisProgress.style.height = `${percentage * 100}%`;
-
+            
             // 更新月份标签激活状态
             const activeMonth = getMonthFromDay(normalizedDay);
             updateMonthLabels(activeMonth);
@@ -452,11 +450,11 @@
         chart.on('mouseover', ({ name }) => {
             const term = solarTermsData.find(t => t.name === name);
             clearTimeout(hoverTimer);
-
+            
             // 更新时间轴
             const day = getTermDay(term.date);
             updateTimeAxis(day);
-
+            
             showTooltip(term, day);
         });
 
@@ -518,7 +516,7 @@
         function getTermDay(dateStr) {
             const [month, days] = dateStr.split('月');
             const [startDay] = days.replace('日', '').split('-').map(Number);
-
+            
             let monthNum = parseInt(month);
             // 将月份直接映射到天数，1月是0-30天，12月是330-360天
             return (monthNum - 1) * 30 + startDay;
@@ -540,7 +538,7 @@
         function findNearestTerm(day) {
             // 确保day在0-365范围内
             const normalizedDay = day % 365;
-
+            
             return solarTermsData.reduce((nearest, term) => {
                 const termDay = getTermDay(term.date);
                 // 考虑循环情况，例如12月31日和1月1日其实很近
@@ -548,13 +546,13 @@
                 const dist2 = Math.abs(termDay - (normalizedDay + 365));
                 const dist3 = Math.abs(termDay + 365 - normalizedDay);
                 const minDist = Math.min(dist1, dist2, dist3);
-
+                
                 const nearestTermDay = getTermDay(nearest.date);
                 const nearestDist1 = Math.abs(nearestTermDay - normalizedDay);
                 const nearestDist2 = Math.abs(nearestTermDay - (normalizedDay + 365));
                 const nearestDist3 = Math.abs(nearestTermDay + 365 - normalizedDay);
                 const nearestMinDist = Math.min(nearestDist1, nearestDist2, nearestDist3);
-
+                
                 return minDist < nearestMinDist ? term : nearest;
             }, solarTermsData[0]);
         }

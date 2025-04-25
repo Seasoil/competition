@@ -78,6 +78,7 @@
             margin-top: 80px;
             padding: 20px;
             box-sizing: border-box;
+            position: relative;
         }
 
         .tooltip {
@@ -115,7 +116,7 @@
                             value: 60,
                             children: [
                                 { name: "历代帝王劝农诏令", value: 40 },
-                                { name: "田赋制度", value: 40, children: ["井田制", "均田制", "租佃制"] }
+                                { name: "田赋制度", value: 40 }
                             ]
                         },
                         {
@@ -124,15 +125,15 @@
                             children: [
                                 { name: "常平仓制度", value: 40 },
                                 { name: "社仓义仓", value: 40 },
-                                { name: "救荒本草", value: 40, children: ["可食草木分类", "救荒方法"] }
+                                { name: "救荒本草", value: 40 }
                             ]
                         },
                         {
                             name: "农书编撰",
                             value: 60,
                             children: [
-                                { name: "综合性农书", value: 40, children: ["齐民要术", "农政全书", "农桑辑要"] },
-                                { name: "专题农书", value: 40, children: ["蚕桑专论", "水利专论", "园艺专论"] }
+                                { name: "综合性农书", value: 40 },
+                                { name: "专题农书", value: 40 }
                             ]
                         }
                     ]
@@ -145,17 +146,17 @@
                             name: "天文历法",
                             value: 60,
                             children: [
-                                { name: "二十四节气", value: 40, children: ["节气应用", "农事安排"] },
-                                { name: "农事月令", value: 40, children: ["月令体系", "农时指导"] }
+                                { name: "二十四节气", value: 40 },
+                                { name: "农事月令", value: 40 }
                             ]
                         },
                         {
                             name: "气象占候",
                             value: 60,
                             children: [
-                                { name: "星象农谚", value: 40, children: ["箕星好风", "参星好雨"] },
-                                { name: "云霞雷电", value: 40, children: ["云象预测", "雷电预测"] },
-                                { name: "物候观测", value: 40, children: ["候雁北", "蚯蚓出", "草木萌动"] }
+                                { name: "星象农谚", value: 40 },
+                                { name: "云霞雷电", value: 40 },
+                                { name: "物候观测", value: 40 }
                             ]
                         }
                     ]
@@ -168,15 +169,15 @@
                             name: "土壤分类",
                             value: 60,
                             children: [
-                                { name: "九州土性", value: 40, children: ["黄壤", "黑壤", "赤壤"] },
-                                { name: "燥湿肥瘠", value: 40, children: ["燥土", "湿土", "肥土", "瘠土"] }
+                                { name: "九州土性", value: 40 },
+                                { name: "燥湿肥瘠", value: 40 }
                             ]
                         },
                         {
                             name: "耕作制度",
                             value: 60,
                             children: [
-                                { name: "畎亩法", value: 40, children: ["垄作", "沟作"] },
+                                { name: "畎亩法", value: 40 },
                                 { name: "代田法", value: 40 },
                                 { name: "区田法", value: 40 }
                             ]
@@ -191,8 +192,8 @@
                             name: "水利理论",
                             value: 60,
                             children: [
-                                { name: "治水策略", value: 40, children: ["疏浚", "障蓄"] },
-                                { name: "水文测量", value: 40, children: ["水平仪", "测深竿"] }
+                                { name: "治水策略", value: 40 },
+                                { name: "水文测量", value: 40 }
                             ]
                         },
                         {
@@ -211,7 +212,7 @@
                                     name: "灌溉工具",
                                     value: 40,
                                     children: [
-                                        { name: "翻车", value: 30, children: ["龙骨水车"] },
+                                        { name: "翻车", value: 30 },
                                         { name: "筒车", value: 30 },
                                         { name: "桔槔", value: 30 }
                                     ]
@@ -235,6 +236,9 @@
             tooltip: {
                 trigger: 'item',
                 formatter: function (params) {
+                    if (params.name === "古代农业知识体系") {
+                        return '';
+                    }
                     return `<div class="tooltip">
                         <div style="font-weight:bold;margin-bottom:5px">${params.name}</div>
                     </div>`;
@@ -245,137 +249,59 @@
                 data: [data],
                 layout: 'radial',
                 symbol: 'emptyCircle',
-                symbolSize: 10,
+                symbolSize: 8,
                 initialTreeDepth: -1,
                 lineStyle: {
                     color: '#4a6b8a',
-                    width: 2,
+                    width: 1.5,
                     curveness: 0.5,
                     opacity: 0.8
                 },
                 label: {
-                    show: false,
-                    color: '#2b2b2b',
-                    fontSize: 12,
-                    position: 'left',
-                    verticalAlign: 'middle',
-                    lineHeight: 16,
-                    backgroundColor: 'rgba(255,255,255,0.7)',
-                    padding: [4, 8],
-                    borderRadius: 4,
-                    distance: 8
+                    show: false
                 },
                 leaves: {
                     label: {
-                        show: false,
-                        color: '#555',
-                        fontSize: 11,
-                        backgroundColor: 'rgba(255,255,255,0.7)',
-                        padding: [3, 6],
-                        borderRadius: 3,
-                        distance: 6
+                        show: false
                     }
                 },
                 itemStyle: {
                     color: '#fff',
                     borderColor: '#4a6b8a',
-                    borderWidth: 2,
-                    shadowColor: 'rgba(0,0,0,0.1)',
-                    shadowBlur: 5
+                    borderWidth: 1.5
                 },
                 emphasis: {
                     itemStyle: {
-                        borderWidth: 3,
-                        shadowBlur: 10,
-                        shadowColor: 'rgba(74,107,138,0.3)'
+                        borderWidth: 2
                     },
                     label: {
-                        show: true,
-                        fontWeight: 'bold',
-                        backgroundColor: 'rgba(255,255,255,0.9)'
+                        show: true
                     }
                 },
-                expandAndCollapse: true,
-                animationDuration: 300,
-                animationDurationUpdate: 300,
-                top: '0%',
-                bottom: '0%',
-                left: '0%',
-                right: '0%',
+                top: '25%',
+                bottom: '25%',
+                left: '25%',
+                right: '25%',
                 roam: true,
-                zoom: 1.2,
-                layoutCenter: ['50%', '50%'],
-                layoutRadius: '40%',
-                orient: 'radial',
-                animation: true,
-                animationDuration: 500,
-                animationEasing: 'cubicInOut',
-                animationDelay: function (idx) {
-                    return idx * 50;
-                },
-                animationDurationUpdate: 300,
-                animationEasingUpdate: 'cubicInOut',
-                animationDelayUpdate: function (idx) {
-                    return idx * 50;
-                },
-                nodeLayout: {
-                    type: 'radial',
-                    center: ['50%', '50%'],
-                    radius: '60%',
-                    startAngle: 0,
-                    endAngle: 360,
-                    clockwise: true,
-                    sort: 'asc',
-                    symbol: 'emptyCircle',
-                    symbolSize: 10,
-                    label: {
-                        show: false,
-                        position: 'left',
-                        distance: 8
-                    }
-                },
-                nodeGap: 20,
-                rotateLabel: true,
-                align: 'center',
-                distribute: true,
+                zoom: 1.0,
                 levels: [
                     {
                         r0: '0%',
-                        r: '20%',
+                        r: '15%',
                         itemStyle: {
                             color: '#fff',
                             borderColor: '#4a6b8a',
-                            borderWidth: 2
+                            borderWidth: 1.5
                         },
                         label: {
                             show: true,
-                            position: ['5%', '50%'],
-                            fontSize: 16,
-                            fontWeight: 'bold'
-                        }
-                    },
-                    {
-                        r0: '20%',
-                        r: '40%',
-                        itemStyle: {
-                            color: '#fff',
-                            borderColor: '#4a6b8a',
-                            borderWidth: 2
-                        },
-                        label: {
-                            show: false
-                        }
-                    },
-                    {
-                        r0: '40%',
-                        r: '60%',
-                        itemStyle: {
-                            color: '#fff',
-                            borderColor: '#4a6b8a',
-                            borderWidth: 2
-                        },
-                        label: {
-                            show: false
+                            position: 'center',
+                            fontSize: 14,
+                            fontWeight: 'bold',
+                            backgroundColor: '#fff',
+                            padding: [8, 16],
+                            borderRadius: 4,
+                            color: '#333'
                         }
                     }
                 ]
