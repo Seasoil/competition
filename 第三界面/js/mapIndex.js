@@ -821,51 +821,130 @@ for(key in mapData){
 }
 
 var option = {
+  backgroundColor: 'transparent',
   tooltip: {
     trigger: 'item',
+    backgroundColor: 'transparent',
+    borderWidth: 0,
+    shadowBlur: 0,
+    axisPointer: { type: 'none' },
+    confine: true,
+    enterable: true,
+    alwaysShowContent: true,  // 添加此属性确保tooltip始终显示
+    triggerOn: 'mousemove',
+    className: 'echarts-tooltip-pointer-events-none',
+    position: function (point, params, dom, rect, size) {
+      // 如果是用户主动移动到省份，且不是在tooltip区域内，才切换回交互状态
+      if (params && params.event && params.event.type === 'mousemove') {
+        // 检查鼠标是否在tooltip区域内
+        var mouseX = params.event.offsetX;
+        var mouseY = params.event.offsetY;
+        var tooltipRect = dom.getBoundingClientRect();
+        var mapRect = document.getElementById('map').getBoundingClientRect();
+        var tooltipX = tooltipRect.left - mapRect.left;
+        var tooltipY = tooltipRect.top - mapRect.top;
+        
+        // 如果鼠标不在tooltip区域内，才切换状态
+        if (!(mouseX >= tooltipX && mouseX <= tooltipX + tooltipRect.width &&
+              mouseY >= tooltipY && mouseY <= tooltipY + tooltipRect.height)) {
+          isRandomMode = false;
+        }
+      }
+
+      // 保持tooltip对鼠标事件透明
+      dom.style.pointerEvents = 'none';
+      
+      // 获取地图容器的尺寸
+      var mapContainer = document.getElementById('map');
+      var mapRect = mapContainer.getBoundingClientRect();
+      
+      // 获取提示框的尺寸
+      var tipWidth = dom.offsetWidth;
+      var tipHeight = dom.offsetHeight;
+      
+      // 在随机模式下使用固定位置
+      if (isRandomMode) {
+        return [
+          mapRect.width / 2 + 100,
+          mapRect.height / 2 - tipHeight / 2
+        ];
+      }
+      
+      // 非随机模式下的动态位置计算
+      var safeDistance = 20;
+      var mouseBuffer = 50;
+      
+      // 计算最佳位置
+      var bestPosition;
+      
+      // 首选位置：鼠标右侧
+      if (point[0] + mouseBuffer + tipWidth <= mapRect.width - safeDistance) {
+        bestPosition = {
+          x: point[0] + mouseBuffer,
+          y: Math.min(Math.max(safeDistance, point[1] - tipHeight / 2), mapRect.height - tipHeight - safeDistance)
+        };
+      }
+      // 次选位置：鼠标左侧
+      else if (point[0] - mouseBuffer - tipWidth >= safeDistance) {
+        bestPosition = {
+          x: point[0] - mouseBuffer - tipWidth,
+          y: Math.min(Math.max(safeDistance, point[1] - tipHeight / 2), mapRect.height - tipHeight - safeDistance)
+        };
+      }
+      // 上方
+      else if (point[1] - mouseBuffer - tipHeight >= safeDistance) {
+        bestPosition = {
+          x: Math.min(Math.max(safeDistance, point[0] - tipWidth / 2), mapRect.width - tipWidth - safeDistance),
+          y: point[1] - mouseBuffer - tipHeight
+        };
+      }
+      // 下方
+      else {
+        bestPosition = {
+          x: Math.min(Math.max(safeDistance, point[0] - tipWidth / 2), mapRect.width - tipWidth - safeDistance),
+          y: point[1] + mouseBuffer
+        };
+      }
+      
+      // 确保位置在地图范围内
+      bestPosition.x = Math.min(Math.max(safeDistance, bestPosition.x), mapRect.width - tipWidth - safeDistance);
+      bestPosition.y = Math.min(Math.max(safeDistance, bestPosition.y), mapRect.height - tipHeight - safeDistance);
+      
+      return [bestPosition.x, bestPosition.y];
+    },
     formatter: function(params) {
-      if(params.data) {
-        return `${params.name}<br/>
-                地形地貌：${params.data.uploadcnt || '暂无数据'}<br/>
-                主要作物：${params.data.uploadpzs || '暂无数据'}<br/>
-                气候特点：${params.data.xsmy || '暂无数据'}<br/>
-                主要食物：${params.data.kcmy || '暂无数据'}`;
+      if (params.data) {
+        // 处理省份名称换行
+        var formatProvinceName = function(name) {
+          // 需要换行的省份名称
+          var longProvinces = {
+            '新疆维吾尔自治区': '新疆维吾尔\n自治区',
+            '宁夏回族自治区': '宁夏回族\n自治区',
+            '广西壮族自治区': '广西壮族\n自治区',
+            '内蒙古自治区': '内蒙古\n自治区',
+            '西藏自治区': '西藏\n自治区'
+          };
+          return longProvinces[name] || name;
+        };
+
+        return '<div style="display: flex; align-items: center; min-width: 280px; background: transparent; position: relative;">' +
+               '<div style="position: absolute; left: 0; top: 0; width: 100%; height: 100%; background: url(\'img/tip-bg.png\') no-repeat center center; background-size: contain; z-index: -1; pointer-events: none;"></div>' +
+               '<div style="width: 200px; height: 240px; display: flex; align-items: center; justify-content: center; pointer-events: none;">' +
+               '<span style="color: #fff; font-size: 28px; font-weight: bold; transform: translateX(-20px); text-align: center; white-space: pre-line; line-height: 1.2;">' + 
+               formatProvinceName(params.name) + 
+               '</span>' +
+               '</div>' +
+               '<div style="padding: 15px 40px 15px 0; height: 240px; display: flex; flex-direction: column; justify-content: center; pointer-events: none; transform: translateX(-30px);">' +
+               '<div style="line-height: 22px; color: #fff; margin-bottom: 3px;">地形：' + (params.data.uploadcnt || '') + '</div>' +
+               '<div style="line-height: 22px; color: #fff; margin-bottom: 3px;">作物：' + (params.data.uploadpzs || '') + '</div>' +
+               '<div style="line-height: 22px; color: #fff; margin-bottom: 3px;">气候：' + (params.data.xsmy || '') + '</div>' +
+               '<div style="line-height: 22px; color: #fff;">饮食：' + (params.data.kcmy || '') + '</div>' +
+               '</div>' +
+               '</div>';
       }
       return params.name;
     },
-    confine: false,
-    enterable: true,  // 鼠标可以进入tooltip中
-    alwaysShowContent: true,  // 始终显示tooltip，不会因为鼠标移出而消失
-    position: function(point, params, dom, rect, size) {
-      // 获取地图容器位置信息
-      var viewWidth = size.viewSize[0];
-      var viewHeight = size.viewSize[1];
-      var contentWidth = size.contentSize[0];
-      var contentHeight = size.contentSize[1];
-      
-      // 计算 tooltip 的位置
-      var posX = point[0];
-      var posY = point[1];
-      
-      // 边界检测与调整
-      // 右边界
-      if (posX + contentWidth > viewWidth) {
-        posX = posX - contentWidth;
-      }
-      // 下边界
-      if (posY + contentHeight > viewHeight) {
-        posY = posY - contentHeight - 30; // 上移，避免遮挡
-      }
-      
-      // 确保不超出上边界
-      if (posY < 20) {
-        posY = 20;
-      }
-      
-      return [posX, posY];
-    },
-    // 添加自定义样式，让tooltip变得半透明并允许点击穿透
-    extraCssText: 'pointer-events: none; opacity: 0.8;'
+    extraCssText: 'border: none; outline: none; box-shadow: none; padding: 0; pointer-events: auto; min-width: 280px;'
   },
   series: [
     {
@@ -1486,12 +1565,62 @@ for(var i = 0, len = allDefProvince.length; i < len; i++){
 
 // 随机打乱数组的辅助函数
 function shuffleArray(array) {
-  for (var i = array.length - 1; i > 0; i--) {
-    var j = Math.floor(Math.random() * (i + 1));
-    var temp = array[i];
-    array[i] = array[j];
-    array[j] = temp;
-  }
-  return array;
+    // 确保输入是数组且不为空
+    if (!Array.isArray(array) || array.length === 0) {
+        return array;
+    }
+    
+    // 只获取有效的省份数据（有name属性的）
+    var validProvinces = array.filter(function(item) {
+        return item && item.name;
+    });
+    
+    if (validProvinces.length === 0) {
+        return array;
+    }
+
+    var currentIndex = validProvinces.length;
+    var temporaryValue, randomIndex;
+
+    while (0 !== currentIndex) {
+        randomIndex = Math.floor(Math.random() * currentIndex);
+        currentIndex -= 1;
+
+        temporaryValue = validProvinces[currentIndex];
+        validProvinces[currentIndex] = validProvinces[randomIndex];
+        validProvinces[randomIndex] = temporaryValue;
+    }
+
+    // 确保至少选中一个省份
+    if (validProvinces.length > 0) {
+        validProvinces[0].selected = true;
+    }
+
+    return validProvinces;
 }
+
+// 在地图数据初始化时使用
+var option = {
+    // ... 其他配置 ...
+    series: [{
+        type: 'map',
+        map: 'china',
+        data: shuffleArray(itemStyleD),
+        // ... 其他系列配置 ...
+    }]
+};
+
+var isRandomMode = false; // 添加随机模式标志
+
+function setRandomProvince() {
+    isRandomMode = true;
+    // ... existing code ...
+}
+
+// 在随机结束时重置标志
+function stopRandom() {
+    isRandomMode = false;
+    // ... existing code ...
+}
+
 

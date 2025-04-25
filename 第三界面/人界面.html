@@ -57,6 +57,294 @@
       transform: translateY(-2px);
       box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
     }
+
+    .pie {
+      width: 100%;
+      height: 320px;
+      padding: 10px;
+      box-sizing: border-box;
+      position: relative;
+      display: flex;
+      justify-content: space-between;
+    }
+    .pie1, .pie2 {
+      width: 45%;
+      height: 100%;
+      padding: 5px;
+      box-sizing: border-box;
+      position: relative;
+    }
+    .pie h3 {
+      text-align: center;
+      margin-bottom: 10px;
+      color: #fff;
+      font-size: 16px;
+    }
+    #pie1, #pie2 {
+      height: 90% !important;
+    }
+
+    .area-rank {
+      height: 300px;
+      overflow: hidden;
+      margin-top: 5px;
+      padding-top: 10px;
+      background: rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+    }
+
+    .area-rank h3 {
+      font-size: 16px;
+      color: #fff;
+      margin-bottom: 10px;
+      padding-left: 15px;
+    }
+
+    .area-rank .con {
+      height: calc(100% - 40px);
+      overflow: hidden;
+      padding: 0 15px 15px;
+    }
+
+    .area-rank .con li {
+      height: 28px;
+      display: flex;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+
+    .area-rank .con li .num {
+      width: 24px;
+      color: #ffeb7b;
+      font-size: 14px;
+      font-weight: bold;
+    }
+
+    .area-rank .con li .city-name {
+      width: 30px;
+      color: #fff;
+      font-size: 14px;
+      padding-right: 15px;
+    }
+
+    .area-rank .con li .bar {
+      flex: 1;
+      height: 12px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 6px;
+      margin: 0 15px;
+      overflow: hidden;
+    }
+
+    .area-rank .con li .bar .bar-in {
+      width: 0;
+      height: 100%;
+      background: linear-gradient(to right, #D4E157, #558B2F);
+      border-radius: 6px;
+      transition: width 1s ease-out;
+    }
+
+    .area-rank .con li .rank-value {
+      display: none;  /* 隐藏数值显示 */
+    }
+
+    /* 修改左侧书籍展示区域的样式 */
+    .aside-left .top {
+        background: rgba(0, 0, 0, 0.2);
+        border: 1px solid rgba(156, 204, 101, 0.3);
+        padding: 12px;
+        margin: 10px;
+        width: 300px;
+        box-sizing: border-box;
+    }
+
+    .aside-left .top h3 {
+        color: #D4E157;
+        font-size: 16px;
+        margin-bottom: 12px;
+        padding-left: 8px;
+        border-left: 3px solid #9CCC65;
+    }
+
+    .aside-left .top .tit {
+        background: rgba(156, 204, 101, 0.1);
+        padding: 6px 10px;
+        margin-bottom: 8px;
+        border: 1px solid rgba(156, 204, 101, 0.2);
+    }
+
+    .aside-left .top .con {
+        height: auto;
+        overflow: visible;
+    }
+
+    .aside-left .top .con li {
+        background: rgba(0, 0, 0, 0.2);
+        margin-bottom: 4px;
+        padding: 4px 8px;
+        border: 1px solid rgba(156, 204, 101, 0.2);
+        transition: all 0.3s ease;
+        position: relative;
+    }
+
+    .aside-left .top .con li:hover,
+    .aside-left .top .con li.active {
+        background: rgba(156, 204, 101, 0.1);
+        border-color: rgba(156, 204, 101, 0.4);
+    }
+
+    /* 添加活跃状态的背景延伸效果 */
+    .aside-left .top .con li.active::before {
+        content: '';
+        position: absolute;
+        top: -1px;
+        left: -12px;
+        right: -12px;
+        bottom: -1px;
+        background: rgba(156, 204, 101, 0.1);
+        border-top: 1px solid rgba(156, 204, 101, 0.4);
+        border-bottom: 1px solid rgba(156, 204, 101, 0.4);
+        z-index: -1;
+    }
+
+    /* 调整内容区域的相对位置 */
+    .aside-left .top .con li > * {
+        position: relative;
+        z-index: 1;
+    }
+
+    .aside-left .top .con .book-rank {
+        padding: 2px 0;      /* 减小上下内边距 */
+        display: flex;
+        align-items: center;
+        min-height: 2px;    /* 设置最小高度 */
+    }
+
+    .aside-left .top .con .book-rank span {
+        color: #fff;
+        font-size: 12px;     /* 减小字体大小 */
+        line-height: 1.2;    /* 减小行高 */
+    }
+
+    .aside-left .top .con .book-rank .ranking {
+        color: #D4E157;
+        width: 25px;
+        text-align: center;
+    }
+
+    .aside-left .top .con .book-rank .name {
+        width: 100px;
+        padding-left: 8px;
+    }
+
+    .aside-left .top .con .book-rank .company {
+        width: 50px;
+        text-align: center;
+    }
+
+    .aside-left .top .con .book-rank .hot {
+        width: 50px;
+        text-align: center;
+    }
+
+    /* 非活跃状态显示作者信息 */
+    .aside-left .top .con li:not(.active) .book-rank {
+        border-bottom: none;
+    }
+
+    .aside-left .top .con li:not(.active) .author-info {
+        padding: 2px 0 2px 33px;  /* 减小上下内边距 */
+        font-size: 11px;          /* 稍微减小字体 */
+        line-height: 1.2;         /* 减小行高 */
+    }
+
+    .aside-left .top .con li.active .author-info {
+        display: none;
+    }
+
+    .aside-left .top .con .book-show {
+        padding: 4px 0;      /* 减小上下内边距 */
+    }
+
+    .aside-left .top .con li.active .book-show {
+        display: block;
+    }
+
+    .aside-left .top .con .book-show .img-box {
+        width: 60px;         /* 减小图片尺寸 */
+        height: 75px;
+        margin-right: 10px;
+    }
+
+    .aside-left .top .con .book-show .img-box img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .aside-left .top .con .book-show .content {
+        flex: 1;
+    }
+
+    .aside-left .top .con .book-show .content p {
+        color: #fff;
+        font-size: 11px;     /* 减小字体大小 */
+        line-height: 18px;   /* 减小行高 */
+        margin: 1px 0;       /* 减小段落间距 */
+    }
+
+    .aside-left .top .con .book-show .content p span:first-child {
+        color: #9CCC65;
+        margin-right: 5px;
+    }
+
+    /* 移除非活跃状态的作者信息显示 */
+    .aside-left .top .con li:not(.active) .author-info {
+        display: none;  /* 隐藏作者信息 */
+    }
+
+    /* 调整非活跃状态的样式 */
+    .aside-left .top .con .book-rank {
+        padding: 2px 0;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;  /* 调整对齐方式 */
+    }
+
+    .aside-left .top .con .book-rank .ranking {
+        width: 25px;
+        text-align: center;
+    }
+
+    .aside-left .top .con .book-rank .name {
+        width: 120px;  /* 增加书名宽度 */
+        padding-left: 8px;
+    }
+
+    .aside-left .top .con .book-rank .company {
+        width: 60px;
+        text-align: center;
+    }
+
+    .aside-left .top .con .book-rank .hot {
+        width: 50px;
+        text-align: center;
+    }
+
+    /* 修改地域信息标题的样式 */
+    .title-map {
+        display: block;
+        margin-top: 30px;  /* 增加上边距 */
+        margin-bottom: 10px;
+        color: #fff;
+        font-size: 16px;
+        padding-left: 10px;
+    }
+
+    .map-wrap {
+        position: relative;
+        padding-top: 20px;  /* 增加顶部内边距 */
+    }
   </style>
 </head>
 
@@ -689,31 +977,112 @@
       </div>
       <div class="middle-map fl">
         <div class="map-wrap">
-
-          <span class="title-map">地域信息(审图号：GS(2024)0650号)</span>
-          <div id="map" style="width: 900px; height: 750px;"></div>
-          <h3 class="clearfix">
-            <dl class="fl">
-              <dt>农学书籍</dt>
-              <dd id="book-data" class="unit-number">513</dd>
-            </dl>
-            <dl class="fl">
-              <dt>农具数</dt>
-              <dd id="varity-data" class="unit-type">25</dd>
-            </dl>
-            <dl class="fl">
-              <dt>作物数</dt>
-              <dd id="sales-data" class="unit-wanyuan">30,340</dd>
-            </dl>
-            <dl class="fl">
-              <dt>农谚数</dt>
-              <dd>2万余条</dd>
-            </dl>
-            <dl class="fl">
-              <dt>养殖种数</dt>
-              <dd id="stock-data" class="unit-wanyuan">12,710</dd>
-            </dl>
-          </h3>
+          <div style="margin-top: 5px; margin-bottom: 15px; color: #fff; font-size: 16px; padding-left: 10px;">
+            地域信息(审图号：GS(2024)0650号)
+          </div>
+            <div class="stats-info" style="
+                display: flex;
+                justify-content: space-around;
+                padding: 10px 0;
+                margin: 5px 0;
+                background: rgba(0, 0, 0, 0.2);
+                border: 1px solid rgba(156, 204, 101, 0.3);
+            ">
+                <div style="
+                    text-align: center;
+                    color: #fff;
+                    padding: 0 15px;
+                    position: relative;
+                ">
+                    <div style="font-size: 14px;">农学古籍</div>
+                    <div style="font-size: 16px; color: #D4E157; margin-top: 5px;">约550本</div>
+                </div>
+                <div style="
+                    width: 2px;
+                    background: linear-gradient(to bottom, 
+                        rgba(156, 204, 101, 0), 
+                        rgba(156, 204, 101, 0.8) 20%, 
+                        rgba(212, 225, 87, 1) 50%,
+                        rgba(156, 204, 101, 0.8) 80%,
+                        rgba(156, 204, 101, 0));
+                    height: 40px;
+                    margin: 5px 0;
+                    box-shadow: 0 0 5px rgba(156, 204, 101, 0.3);
+                "></div>
+                <div style="
+                    text-align: center;
+                    color: #fff;
+                    padding: 0 15px;
+                    position: relative;
+                ">
+                    <div style="font-size: 14px;">农具数</div>
+                    <div style="font-size: 16px; color: #D4E157; margin-top: 5px;">约280种</div>
+                </div>
+                <div style="
+                    width: 2px;
+                    background: linear-gradient(to bottom, 
+                        rgba(156, 204, 101, 0), 
+                        rgba(156, 204, 101, 0.8) 20%, 
+                        rgba(212, 225, 87, 1) 50%,
+                        rgba(156, 204, 101, 0.8) 80%,
+                        rgba(156, 204, 101, 0));
+                    height: 40px;
+                    margin: 5px 0;
+                    box-shadow: 0 0 5px rgba(156, 204, 101, 0.3);
+                "></div>
+                <div style="
+                    text-align: center;
+                    color: #fff;
+                    padding: 0 15px;
+                    position: relative;
+                ">
+                    <div style="font-size: 14px;">作物数</div>
+                    <div style="font-size: 16px; color: #D4E157; margin-top: 5px;">约150种</div>
+                </div>
+                <div style="
+                    width: 2px;
+                    background: linear-gradient(to bottom, 
+                        rgba(156, 204, 101, 0), 
+                        rgba(156, 204, 101, 0.8) 20%, 
+                        rgba(212, 225, 87, 1) 50%,
+                        rgba(156, 204, 101, 0.8) 80%,
+                        rgba(156, 204, 101, 0));
+                    height: 40px;
+                    margin: 5px 0;
+                    box-shadow: 0 0 5px rgba(156, 204, 101, 0.3);
+                "></div>
+                <div style="
+                    text-align: center;
+                    color: #fff;
+                    padding: 0 15px;
+                    position: relative;
+                ">
+                    <div style="font-size: 14px;">农谚数</div>
+                    <div style="font-size: 16px; color: #D4E157; margin-top: 5px;">2万余条</div>
+                </div>
+                <div style="
+                    width: 2px;
+                    background: linear-gradient(to bottom, 
+                        rgba(156, 204, 101, 0), 
+                        rgba(156, 204, 101, 0.8) 20%, 
+                        rgba(212, 225, 87, 1) 50%,
+                        rgba(156, 204, 101, 0.8) 80%,
+                        rgba(156, 204, 101, 0));
+                    height: 40px;
+                    margin: 5px 0;
+                    box-shadow: 0 0 5px rgba(156, 204, 101, 0.3);
+                "></div>
+                <div style="
+                    text-align: center;
+                    color: #fff;
+                    padding: 0 15px;
+                    position: relative;
+                ">
+                    <div style="font-size: 14px;">养殖种数</div>
+                    <div style="font-size: 16px; color: #D4E157; margin-top: 5px;">约50种</div>
+                </div>
+            </div>
+            <div id="map" style="width: 900px; height: 750px;"></div>
         </div>
       </div>
       <div class="aside-right fl">
@@ -733,288 +1102,734 @@
             <ul>
               <li>
                 <span class="num">1</span>
-                <span class="city-name">耒</span>
+                <span class="city-name">蚕</span>
                 <span class="bar">
                   <b class="bar-in"></b>
                 </span>
-                <span class="rank-value"></span>
               </li>
               <li>
                 <span class="num">2</span>
-                <span class="city-name">耜</span>
+                <span class="city-name">猪</span>
                 <span class="bar">
                   <b class="bar-in"></b>
                 </span>
-                <span class="rank-value"></span>
               </li>
               <li>
                 <span class="num">3</span>
-                <span class="city-name">犁</span>
+                <span class="city-name">牛</span>
                 <span class="bar">
                   <b class="bar-in"></b>
                 </span>
-                <span class="rank-value"></span>
               </li>
               <li>
                 <span class="num">4</span>
-                <span class="city-name">镰</span>
+                <span class="city-name">鸡</span>
                 <span class="bar">
                   <b class="bar-in"></b>
                 </span>
-                <span class="rank-value">1225万</span>
               </li>
               <li>
                 <span class="num">5</span>
-                <span class="city-name">锄</span>
+                <span class="city-name">羊</span>
                 <span class="bar">
                   <b class="bar-in"></b>
                 </span>
-                <span class="rank-value">1203万</span>
               </li>
               <li>
                 <span class="num">6</span>
-                <span class="city-name">耙</span>
+                <span class="city-name">鱼</span>
                 <span class="bar">
                   <b class="bar-in"></b>
                 </span>
-                <span class="rank-value">1108万</span>
               </li>
               <li>
                 <span class="num">7</span>
-                <span class="city-name">耱</span>
+                <span class="city-name">马</span>
                 <span class="bar">
                   <b class="bar-in"></b>
                 </span>
-                <span class="rank-value">740万</span>
               </li>
               <li>
                 <span class="num">8</span>
-                <span class="city-name">镢</span>
+                <span class="city-name">驴</span>
                 <span class="bar">
                   <b class="bar-in"></b>
                 </span>
-                <span class="rank-value">695万</span>
               </li>
               <li>
                 <span class="num">9</span>
-                <span class="city-name">铲</span>
+                <span class="city-name">兔</span>
                 <span class="bar">
                   <b class="bar-in"></b>
                 </span>
-                <span class="rank-value">667万</span>
               </li>
             </ul>
-            <ul class="con">
-              <li class="active">
-                <div class="book-rank clearfix">
-                  <span class="ranking fl">1</span>
-                  <span class="name fl">救荒本草</span>
-                  <span class="company fl">明代</span>
-                  <span class="hot fl">农业</span>
                 </div>
-                <div class="book-show clearfix">
-                  <div class="img-box fl">
-                    <img src="./img/救荒本草.png" alt="">
                   </div>
-                  <div class="content fl">
-                    <p><span>作者：</span><span class="authors">朱橚</span></p>
-                    <p><span>ISBN：</span><span class="isbn">25</span></p>
-                    <p><span>朝代：</span><span class="pub-date">明代</span></p>
-                    <p><span>性质：</span><span class="pricing">救荒植物学</span></p>
-                  </div>
-                </div>
-              </li>
-              <li>
-                <div class="book-rank clearfix">
-                  <span class="ranking fl">2</span>
-                  <span class="name fl">农圃四书</span>
-                  <span class="company fl">唐代</span>
-                  <span class="hot fl">农业</span>
-                </div>
-                <div class="book-show clearfix">
-                  <div class="img-box fl">
-                    <img src="./img/农圃四书.png" alt="">
-                  </div>
-                  <div class="content fl">
-                    <p><span>作者：</span><span class="authors">陆龟蒙</span></p>
-                    <p><span>ISBN：</span><span class="isbn">26</span></p>
-                    <p><span>朝代：</span><span class="pub-date">唐代</span></p>
-                    <p><span>性质：</span><span class="pricing">农事集成</span></p>
-                  </div>
-                </div>
-              </li>
-              <li>
-                <div class="book-rank clearfix">
-                  <span class="ranking fl">3</span>
-                  <span class="name fl">耕织图诗</span>
-                  <span class="company fl">南宋</span>
-                  <span class="hot fl">农业</span>
-                </div>
-                <div class="book-show clearfix">
-                  <div class="img-box fl">
-                    <img src="./img/耕织图诗.png" alt="">
-                  </div>
-                  <div class="content fl">
-                    <p><span>作者：</span><span class="authors">楼璹</span></p>
-                    <p><span>ISBN：</span><span class="isbn">27</span></p>
-                    <p><span>朝代：</span><span class="pub-date">南宋</span></p>
-                    <p><span>性质：</span><span class="pricing">耕织技术</span></p>
-                  </div>
-                </div>
-              </li>
-              <li>
-                <div class="book-rank clearfix">
-                  <span class="ranking fl">4</span>
-                  <span class="name fl">农说</span>
-                  <span class="company fl">明代</span>
-                  <span class="hot fl">农业</span>
-                </div>
-                <div class="book-show clearfix">
-                  <div class="img-box fl">
-                    <img src="./img/农说.png" alt="">
-                  </div>
-                  <div class="content fl">
-                    <p><span>作者：</span><span class="authors">马一龙</span></p>
-                    <p><span>ISBN：</span><span class="isbn">28</span></p>
-                    <p><span>朝代：</span><span class="pub-date">明代</span></p>
-                    <p><span>性质：</span><span class="pricing">耕作理论</span></p>
-                  </div>
-                </div>
-              </li>
-              <li>
-                <div class="book-rank clearfix">
-                  <span class="ranking fl">5</span>
-                  <span class="name fl">农政要览</span>
-                  <span class="company fl">清代</span>
-                  <span class="hot fl">农业</span>
-                </div>
-                <div class="book-show clearfix">
-                  <div class="img-box fl">
-                    <img src="./img/农政要览.png" alt="">
-                  </div>
-                  <div class="content fl">
-                    <p><span>作者：</span><span class="authors">张履祥</span></p>
-                    <p><span>ISBN：</span><span class="isbn">29</span></p>
-                    <p><span>朝代：</span><span class="pub-date">清代</span></p>
-                    <p><span>性质：</span><span class="pricing">农政实践</span></p>
-                  </div>
-                </div>
-              </li>
-            </ul>
-
-            <ul class="con">
-              <li class="active">
-                <div class="book-rank clearfix">
-                  <span class="ranking fl">1</span>
-                  <span class="name fl">农桑撮要</span>
-                  <span class="company fl">元代</span>
-                  <span class="hot fl">农业</span>
-                </div>
-                <div class="book-show clearfix">
-                  <div class="img-box fl">
-                    <img src="./img/农桑撮要.png" alt="">
-                  </div>
-                  <div class="content fl">
-                    <p><span>作者：</span><span class="authors">鲁明善</span></p>
-                    <p><span>ISBN：</span><span class="isbn">30</span></p>
-                    <p><span>朝代：</span><span class="pub-date">元代</span></p>
-                    <p><span>性质：</span><span class="pricing">农事月令</span></p>
-                  </div>
-                </div>
-              </li>
-              <li>
-                <div class="book-rank clearfix">
-                  <span class="ranking fl">2</span>
-                  <span class="name fl">农学纂要</span>
-                  <span class="company fl">清代</span>
-                  <span class="hot fl">农业</span>
-                </div>
-                <div class="book-show clearfix">
-                  <div class="img-box fl">
-                    <img src="./img/农学纂要.png" alt="">
-                  </div>
-                  <div class="content fl">
-                    <p><span>作者：</span><span class="authors">王毓瑚</span></p>
-                    <p><span>ISBN：</span><span class="isbn">31</span></p>
-                    <p><span>朝代：</span><span class="pub-date">清代</span></p>
-                    <p><span>性质：</span><span class="pricing">农学集成</span></p>
-                  </div>
-                </div>
-              </li>
-              <li>
-                <div class="book-rank clearfix">
-                  <span class="ranking fl">3</span>
-                  <span class="name fl">农候图说</span>
-                  <span class="company fl">明代</span>
-                  <span class="hot fl">农业</span>
-                </div>
-                <div class="book-show clearfix">
-                  <div class="img-box fl">
-                    <img src="./img/农候图说.png" alt="">
-                  </div>
-                  <div class="content fl">
-                    <p><span>作者：</span><span class="authors">徐光启</span></p>
-                    <p><span>ISBN：</span><span class="isbn">32</span></p>
-                    <p><span>朝代：</span><span class="pub-date">明代</span></p>
-                    <p><span>性质：</span><span class="pricing">农时观测</span></p>
-                  </div>
-                </div>
-              </li>
-              <li>
-                <div class="book-rank clearfix">
-                  <span class="ranking fl">4</span>
-                  <span class="name fl">耕织全图</span>
-                  <span class="company fl">宋代</span>
-                  <span class="hot fl">农业</span>
-                </div>
-                <div class="book-show clearfix">
-                  <div class="img-box fl">
-                    <img src="./img/耕织全图.png" alt="">
-                  </div>
-                  <div class="content fl">
-                    <p><span>作者：</span><span class="authors">刘松年</span></p>
-                    <p><span>ISBN：</span><span class="isbn">33</span></p>
-                    <p><span>朝代：</span><span class="pub-date">宋代</span></p>
-                    <p><span>性质：</span><span class="pricing">耕织图解</span></p>
-                  </div>
-                </div>
-              </li>
-              <li>
-                <div class="book-rank clearfix">
-                  <span class="ranking fl">5</span>
-                  <span class="name fl">农桑通诀</span>
-                  <span class="company fl">元代</span>
-                  <span class="hot fl">农业</span>
-                </div>
-                <div class="book-show clearfix">
-                  <div class="img-box fl">
-                    <img src="./img/农桑通诀.png" alt="">
-                  </div>
-                  <div class="content fl">
-                    <p><span>作者：</span><span class="authors">王祯</span></p>
-                    <p><span>ISBN：</span><span class="isbn">34</span></p>
-                    <p><span>朝代：</span><span class="pub-date">元代</span></p>
-                    <p><span>性质：</span><span class="pricing">农桑技术</span></p>
-                  </div>
-                </div>
-              </li>
-            </ul>
-          </div>
-        </div>
         <div class="trend">
           <h3>历朝农业发展走势图</h3>
           <div id="trendBar1" style="width: 100%;height: 80%;"></div>
-        </div>
-      </div>
-    </div>
+                  </div>
+                </div>
+                </div>
     <div class="main-bottom">
       <span class="line1"></span>
       <span class="line2"></span>
       <span class="line3"></span>
-    </div>
-  </div>
+                  </div>
+                  </div>
   <script src="js/index.js"></script>
   <script src="js/mapIndex.js"></script>
+  <script>
+    (function() {
+      console.log('初始化图表...');
+
+      const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'];
+      const dynastyNames = {
+        'Jan': '先秦',
+        'Feb': '汉',
+        'Mar': '魏晋',
+        'Apr': '唐',
+        'May': '宋',
+        'Jun': '明',
+        'Jul': '清'
+      };
+
+      // 作物数据
+      const cropData = {
+        Jan: [
+          { value: 27, name: '粟-先秦' },
+          { value: 23, name: '黍-先秦' },
+          { value: 15, name: '菽-先秦' },
+          { value: 8, name: '麦-先秦' },
+          { value: 7, name: '稻-先秦' },
+          { value: 17, name: '其他-先秦' }
+        ],
+        Feb: [
+          { value: 27, name: '粟-汉' },
+          { value: 22, name: '麦-汉' },
+          { value: 15, name: '稻-汉' },
+          { value: 11, name: '菽-汉' },
+          { value: 7, name: '黍-汉' },
+          { value: 18, name: '其他-汉' }
+        ],
+        Mar: [
+          { value: 26, name: '粟-魏晋' },
+          { value: 22, name: '麦-魏晋' },
+          { value: 14, name: '稻-魏晋' },
+          { value: 11, name: '菽-魏晋' },
+          { value: 8, name: '桑-魏晋' },
+          { value: 19, name: '其他-魏晋' }
+        ],
+        Apr: [
+          { value: 26, name: '粟-唐' },
+          { value: 22, name: '稻-唐' },
+          { value: 13, name: '麦-唐' },
+          { value: 11, name: '黍-唐' },
+          { value: 8, name: '菽-唐' },
+          { value: 19, name: '其他-唐' }
+        ],
+        May: [
+          { value: 27, name: '稻-宋' },
+          { value: 22, name: '麦-宋' },
+          { value: 15, name: '粟-宋' },
+          { value: 11, name: '菽-宋' },
+          { value: 7, name: '桑-宋' },
+          { value: 18, name: '其他-宋' }
+        ],
+        Jun: [
+          { value: 31, name: '稻-明' },
+          { value: 21, name: '麦-明' },
+          { value: 13, name: '粟-明' },
+          { value: 9, name: '玉米-明' },
+          { value: 7, name: '甘薯-明' },
+          { value: 19, name: '其他-明' }
+        ],
+        Jul: [
+          { value: 26, name: '稻-清' },
+          { value: 23, name: '玉米-清' },
+          { value: 13, name: '甘薯-清' },
+          { value: 11, name: '麦-清' },
+          { value: 7, name: '粟-清' },
+          { value: 18, name: '其他-清' }
+        ]
+      };
+
+      // 工具数据
+      const toolData = {
+        Jan: [
+          { value: 50, name: '犁-西汉' },
+          { value: 22, name: '耒-西汉' },
+          { value: 17, name: '镰-西汉' },
+          { value: 14, name: '锄-西汉' },
+          { value: 7, name: '耙-西汉' },
+          { value: 14, name: '磨盘-西汉' }
+        ],
+        Feb: [
+          { value: 28, name: '犁-魏晋' },
+          { value: 23, name: '镰-魏晋' },
+          { value: 17, name: '锄-魏晋' },
+          { value: 10, name: '耒-魏晋' },
+          { value: 9, name: '耙-魏晋' },
+          { value: 13, name: '铲-魏晋' }
+        ],
+        Mar: [
+          { value: 29, name: '犁-唐' },
+          { value: 21, name: '镰-唐' },
+          { value: 15, name: '耒-唐' },
+          { value: 12, name: '耙-唐' },
+          { value: 9, name: '锄-唐' },
+          { value: 14, name: '锯-唐' }
+        ],
+        Apr: [
+          { value: 25, name: '犁-宋' },
+          { value: 24, name: '镰-宋' },
+          { value: 14, name: '锄-宋' },
+          { value: 13, name: '耙-宋' },
+          { value: 6, name: '耒-宋' },
+          { value: 16, name: '铲-宋' }
+        ],
+        May: [
+          { value: 26, name: '犁-元' },
+          { value: 23, name: '镰-元' },
+          { value: 13, name: '锄-元' },
+          { value: 11, name: '耙-元' },
+          { value: 8, name: '耒-元' },
+          { value: 19, name: '铲-元' }
+        ],
+        Jun: [
+          { value: 30, name: '犁-明' },
+          { value: 22, name: '镰-明' },
+          { value: 11, name: '锄-明' },
+          { value: 10, name: '耙-明' },
+          { value: 8, name: '铲-明' },
+          { value: 19, name: '其他' }
+        ],
+        Jul: [
+          { value: 26, name: '犁-清' },
+          { value: 23, name: '镰-清' },
+          { value: 13, name: '锄-清' },
+          { value: 11, name: '铲-清' },
+          { value: 7, name: '耙-清' },
+          { value: 20, name: '其他' }
+        ]
+      };
+
+      let currentIndex = 0;
+      let currentItemIndex = -1;
+      let pie1, pie2;
+      let isAnimating = false;
+
+      function getChartOption(data, title, dynasty) {
+        return {
+          title: {
+            text: dynasty,
+            left: 'center',
+            top: 0,
+            textStyle: {
+              color: '#fff',
+              fontSize: 16
+            }
+          },
+          color: [
+            '#D4E157', // 浅黄绿
+            '#9CCC65', // 淡绿
+            '#7CB342', // 中绿
+            '#558B2F', // 深绿
+            '#33691E', // 暗绿
+            '#1B5E20'  // 深暗绿
+          ],
+          tooltip: {
+            trigger: 'item',
+            formatter: '{b}: {c}%'
+          },
+          legend: {
+            orient: 'vertical',
+            right: '-25%',
+            top: 'middle',
+            itemWidth: 14,
+            itemHeight: 10,
+            itemGap: 8,
+            width: '40%',
+            textStyle: {
+              color: '#fff',
+              fontSize: 11,
+              lineHeight: 12,
+              rich: {
+                value: {
+                  width: 40,
+                  align: 'right'
+                }
+              }
+            },
+            formatter: function(name) {
+              const value = data.find(item => item.name === name)?.value || '';
+              const shortName = name.split('-')[0];
+              return `{name|${shortName}}{value|}`;
+            },
+            textAlign: 'left',
+            icon: 'rect',
+            selectedMode: false,
+            padding: [0, 10],
+            itemStyle: {
+              borderWidth: 0
+            }
+          },
+          series: [{
+            name: title,
+            type: 'pie',
+            radius: ['38%', '60%'],
+            center: ['35%', '55%'],
+            avoidLabelOverlap: true,
+            itemStyle: {
+              borderRadius: 1,
+              borderColor: '#fff',
+              borderWidth: 1
+            },
+            label: {
+              show: false
+            },
+            labelLine: {
+              show: false
+            },
+            emphasis: {
+              scale: true,
+              scaleSize: 10,
+              focus: 'self'
+            },
+            data: data
+          }]
+        };
+      }
+
+      function updateCharts() {
+        if (isAnimating) return;
+        isAnimating = true;
+
+        const month = months[currentIndex];
+        const dynasty = dynastyNames[month];
+        currentItemIndex = (currentItemIndex + 1) % 6;
+        
+        const cropValue = cropData[month][currentItemIndex].value;
+        const toolValue = toolData[month][currentItemIndex].value;
+        
+        const cropOption = getChartOption(cropData[month], '作物占比', dynasty);
+        const toolOption = getChartOption(toolData[month], '工具占比', dynasty);
+        
+        cropOption.graphic = [{
+          type: 'text',
+          left: '25%',
+          top: '50%',
+          style: {
+            text: cropValue + '%',
+            textAlign: 'center',
+            fill: '#ffffff',
+            fontSize: 20,
+            fontWeight: 'bold'
+          }
+        }];
+        
+        toolOption.graphic = [{
+          type: 'text',
+          left: '25%',
+          top: '50%',
+          style: {
+            text: toolValue + '%',
+            textAlign: 'center',
+            fill: '#ffffff',
+            fontSize: 20,
+            fontWeight: 'bold'
+          }
+        }];
+
+        // 设置所有数据项显示
+        cropOption.series[0].data = cropData[month].map(item => ({
+          ...item,
+          itemStyle: {
+            opacity: 1
+          }
+        }));
+
+        toolOption.series[0].data = toolData[month].map(item => ({
+          ...item,
+          itemStyle: {
+            opacity: 1
+          }
+        }));
+
+        pie1.setOption(cropOption, true);
+        pie2.setOption(toolOption, true);
+
+        setTimeout(() => {
+          isAnimating = false;
+          currentIndex = (currentIndex + 1) % months.length;
+        }, 3000);
+      }
+
+      window.addEventListener('DOMContentLoaded', function() {
+        console.log('DOM加载完成，初始化图表...');
+
+        pie1 = echarts.init(document.getElementById('pie1'));
+        pie2 = echarts.init(document.getElementById('pie2'));
+
+        if (window.chartTimer) {
+          clearInterval(window.chartTimer);
+        }
+
+        updateCharts();
+        window.chartTimer = setInterval(updateCharts, 3500);
+
+        window.addEventListener('resize', function() {
+          if (pie1 && pie2) {
+            pie1.resize();
+            pie2.resize();
+          }
+        });
+      });
+
+      // 移除之前的动画相关代码，添加新的独立初始化代码
+      document.addEventListener('DOMContentLoaded', function() {
+        const rankItems = document.querySelectorAll('.area-rank .con li');
+        const widths = [95, 90, 85, 80, 75, 70, 65, 60, 55];
+        
+        // 延迟执行动画
+        setTimeout(() => {
+          rankItems.forEach((item, index) => {
+            const barIn = item.querySelector('.bar-in');
+            if (barIn) {
+              barIn.style.width = widths[index] + '%';
+            }
+          });
+        }, 500);
+      });
+
+      var trendBar1 = echarts.init(document.getElementById('trendBar1'));
+      var trendBar1Option = {
+        color: ['#D4E157', '#9CCC65'],
+        tooltip: {
+          trigger: 'axis',
+          axisPointer: {
+            type: 'shadow'
+          },
+          textStyle: {
+            color: '#fff'
+          }
+        },
+        legend: {
+          data: ['发展程度', '同比增长'],
+          textStyle: {
+            color: '#fff'
+          },
+          right: '10%'
+        },
+        grid: {
+          left: '3%',
+          right: '4%',
+          bottom: '3%',
+          containLabel: true
+        },
+        xAxis: [{
+          type: 'category',
+          data: ['先秦', '西汉', '东汉', '魏晋', '隋唐', '宋', '元', '明', '清'],
+          axisLine: {
+            lineStyle: {
+              color: '#fff'
+            }
+          },
+          axisLabel: {
+            color: '#fff',
+            textStyle: {
+              color: '#fff'
+            }
+          },
+          nameTextStyle: {
+            color: '#fff'
+          }
+        }],
+        yAxis: [{
+          type: 'value',
+          name: '发展指数',
+          nameTextStyle: {
+            color: '#fff'
+          },
+          min: 0,
+          max: 100,
+          interval: 20,
+          axisLine: {
+            lineStyle: {
+              color: '#fff'
+            }
+          },
+          axisLabel: {
+            color: '#fff',
+            textStyle: {
+              color: '#fff'
+            }
+          },
+          splitLine: {
+            show: true,
+            lineStyle: {
+              color: 'rgba(255, 255, 255, 0.1)'
+            }
+          },
+          axisTick: {
+            show: true,
+            lineStyle: {
+              color: '#fff'
+            }
+          }
+        }],
+        series: [{
+          name: '发展程度',
+          type: 'line',
+          smooth: true,
+          lineStyle: {
+            width: 3,
+            color: '#D4E157'
+          },
+          itemStyle: {
+            color: '#D4E157'
+          },
+          areaStyle: {
+            color: {
+              type: 'linear',
+              x: 0,
+              y: 0,
+              x2: 0,
+              y2: 1,
+              colorStops: [{
+                offset: 0,
+                color: 'rgba(212, 225, 87, 0.3)'
+              }, {
+                offset: 1,
+                color: 'rgba(212, 225, 87, 0.1)'
+              }]
+            }
+          },
+          data: [45, 52, 48, 55, 58, 62, 60, 75, 71]
+        }, {
+          name: '同比增长',
+          type: 'line',
+          smooth: true,
+          lineStyle: {
+            width: 3,
+            color: '#9CCC65'
+          },
+          itemStyle: {
+            color: '#9CCC65'
+          },
+          areaStyle: {
+            color: {
+              type: 'linear',
+              x: 0,
+              y: 0,
+              x2: 0,
+              y2: 1,
+              colorStops: [{
+                offset: 0,
+                color: 'rgba(156, 204, 101, 0.3)'
+              }, {
+                offset: 1,
+                color: 'rgba(156, 204, 101, 0.1)'
+              }]
+            }
+          },
+          data: [50, 48, 55, 50, 54, 60, 58, 70, 68]
+        }]
+      };
+      trendBar1.setOption(trendBar1Option);
+    })();
+
+    // 添加书籍轮播逻辑
+    function initBookCarousel() {
+        const bookGroups = [
+            // 第一组书籍
+            [
+                { ranking: 1, name: '齐民要术', dynasty: '北魏', type: '农业', author: '贾思勰', isbn: '1', period: '北魏', nature: '农政' },
+                { ranking: 2, name: '吕氏春秋·上农四篇', dynasty: '战国', type: '农业', author: '吕不韦', isbn: '2', period: '战国', nature: '农本思想' },
+                { ranking: 3, name: '四民月令', dynasty: '东汉', type: '农业', author: '崔寔', isbn: '5', period: '东汉', nature: '月令体' },
+                { ranking: 4, name: '氾胜之书', dynasty: '西汉', type: '农业', author: '氾胜之', isbn: '6', period: '西汉', nature: '区田法' },
+                { ranking: 5, name: '王祯农书', dynasty: '元代', type: '农业', author: '王祯', isbn: '7', period: '元代', nature: '农器图谱' }
+            ],
+            // 第二组书籍
+            [
+                { ranking: 1, name: '农政全书', dynasty: '明代', type: '农业', author: '徐光启', isbn: '3', period: '明代', nature: '农政' },
+                { ranking: 2, name: '授时通考', dynasty: '清代', type: '农业', author: '鄂尔泰', isbn: '4', period: '清代', nature: '官修农书' },
+                { ranking: 3, name: '群芳谱', dynasty: '明/清', type: '农业', author: '王象晋/汪灏', isbn: '8', period: '明/清', nature: '植物学' },
+                { ranking: 4, name: '月令七十二候集解', dynasty: '元代', type: '农业', author: '吴澄', isbn: '9', period: '元代', nature: '节气历法' },
+                { ranking: 5, name: '夏小正', dynasty: '先秦', type: '农业', author: '佚名', isbn: '10', period: '先秦', nature: '物候历' }
+            ],
+            // 第三组书籍
+            [
+                { ranking: 1, name: '月令广义', dynasty: '明代', type: '农业', author: '冯应京', isbn: '11', period: '明代', nature: '节气民俗' },
+                { ranking: 2, name: '陈旉农书', dynasty: '宋代', type: '农业', author: '陈旉', isbn: '12', period: '宋代', nature: '江南农事' },
+                { ranking: 3, name: '农桑辑要', dynasty: '元代', type: '农业', author: '司农司', isbn: '13', period: '元代', nature: '官修农书' },
+                { ranking: 4, name: '天工开物', dynasty: '明代', type: '农业', author: '宋应星', isbn: '14', period: '明代', nature: '手工业' },
+                { ranking: 5, name: '岁时广记', dynasty: '宋代', type: '农业', author: '陈元靓', isbn: '15', period: '宋代', nature: '节气民俗' }
+            ]
+        ];
+
+        let currentGroupIndex = 0;
+        let currentBookIndex = 0;
+        const bookList = document.querySelector('.left-top .con');
+        
+        function updateBookDisplay(groupIndex) {
+            const currentGroup = bookGroups[groupIndex];
+            let booksHtml = '';
+            
+            currentGroup.forEach((book, index) => {
+                booksHtml += `
+                    <li class="${index === currentBookIndex ? 'active' : ''}">
+                        <div class="book-rank clearfix">
+                            <span class="ranking fl">${book.ranking}</span>
+                            <span class="name fl">${book.name}</span>
+                            <span class="company fl">${book.dynasty}</span>
+                            <span class="hot fl">${book.type}</span>
+                        </div>
+                        <div class="book-show clearfix">
+                            <div class="img-box fl">
+                                <img src="./img/${book.name}.png" alt="">
+                            </div>
+                            <div class="content fl">
+                                <p><span>作者：</span><span class="authors">${book.author}</span></p>
+                                <p><span>ISBN：</span><span class="isbn">${book.isbn}</span></p>
+                                <p><span>朝代：</span><span class="pub-date">${book.period}</span></p>
+                                <p><span>性质：</span><span class="pricing">${book.nature}</span></p>
+                            </div>
+                        </div>
+                    </li>
+                `;
+            });
+            
+            bookList.innerHTML = booksHtml;
+        }
+
+        function nextBook() {
+            currentBookIndex++;
+            if (currentBookIndex >= 5) {
+                currentBookIndex = 0;
+                currentGroupIndex = (currentGroupIndex + 1) % bookGroups.length;
+                updateBookDisplay(currentGroupIndex);
+            } else {
+                const books = document.querySelectorAll('.left-top .con li');
+                books.forEach((book, index) => {
+                    book.classList.remove('active');
+                    if (index === currentBookIndex) {
+                        book.classList.add('active');
+                    }
+                });
+            }
+        }
+
+        // 初始显示第一组书籍
+        updateBookDisplay(0);
+
+        // 每3秒切换一次活跃的书籍
+        setInterval(nextBook, 3000);
+    }
+
+    // 在页面加载完成后初始化书籍轮播
+    document.addEventListener('DOMContentLoaded', function() {
+        initBookCarousel();
+    });
+
+    // 修改地图配置
+    var mapOption = {
+        tooltip: {
+            trigger: 'item',
+            formatter: '{b}'
+        },
+        visualMap: {
+            min: 0,
+            max: 100,
+            left: '10%',
+            bottom: '10%',
+            text: ['高', '低'],
+            inRange: {
+                color: [
+                    '#F4E4BC',  // 米黄色
+                    '#E4C17C',  // 浅驼色
+                    '#D4B168',  // 沙黄色
+                    '#C19A48',  // 土黄色
+                    '#B38B35',  // 枯黄色
+                    '#A67C00',  // 金黄色
+                    '#955C00'   // 赭黄色
+                ]
+            },
+            textStyle: {
+                color: '#fff'
+            }
+        },
+        series: [{
+            name: '中国',
+            type: 'map',
+            mapType: 'china',
+            roam: false,
+            label: {
+                normal: {
+                    show: true,
+                    textStyle: {
+                        color: '#333'
+                    }
+                },
+                emphasis: {
+                    show: true,
+                    textStyle: {
+                        color: '#333'
+                    }
+                }
+            },
+            itemStyle: {
+                normal: {
+                    borderColor: '#fff',
+                    areaColor: '#F4E4BC'
+                },
+                emphasis: {
+                    areaColor: '#A67C00',
+                    borderWidth: 1
+                }
+            },
+            data: [
+                {name: '北京', value: 95},
+                {name: '天津', value: 85},
+                {name: '上海', value: 90},
+                {name: '重庆', value: 80},
+                {name: '河北', value: 75},
+                {name: '河南', value: 85},
+                {name: '云南', value: 65},
+                {name: '辽宁', value: 70},
+                {name: '黑龙江', value: 65},
+                {name: '湖南', value: 80},
+                {name: '安徽', value: 75},
+                {name: '山东', value: 85},
+                {name: '新疆', value: 55},
+                {name: '江苏', value: 90},
+                {name: '浙江', value: 88},
+                {name: '江西', value: 75},
+                {name: '湖北', value: 80},
+                {name: '广西', value: 70},
+                {name: '甘肃', value: 60},
+                {name: '山西', value: 65},
+                {name: '内蒙古', value: 60},
+                {name: '陕西', value: 70},
+                {name: '吉林', value: 65},
+                {name: '福建', value: 75},
+                {name: '贵州', value: 65},
+                {name: '广东', value: 85},
+                {name: '青海', value: 55},
+                {name: '西藏', value: 50},
+                {name: '四川', value: 80},
+                {name: '宁夏', value: 60},
+                {name: '海南', value: 65},
+                {name: '台湾', value: 70},
+                {name: '香港', value: 80},
+                {name: '澳门', value: 80}
+            ]
+        }]
+    };
+    // 使用刚指定的配置项和数据显示图表
+    map.setOption(mapOption);
+  </script>
 </body>
 
 </html>
