@@ -6,6 +6,7 @@
     <title>农学关系界面</title>
     <script src="./js/jquery.min.js"></script>
     <script src="./js/echarts.min.js"></script>
+    <script src="../js/api.js"></script>
     <style>
         html,
         body {
@@ -657,9 +658,48 @@
             return null; // 未找到
         }
 
-        fetch('./data/data.json')
-            .then(response => response.json())
-            .then(agricultureData => {
+        // 使用新的API获取数据
+        async function loadData() {
+            try {
+                showLoading('main');
+                const response = await getCachedData('graph_data', () => window.agricultureAPI.getGraphData());
+                const agricultureData = response;
+                
+                // 将数据转换为原有格式以兼容现有代码
+                const formattedData = {
+                    categories: response.categories,
+                    nodes: [{
+                        name: "农事占候",
+                        children: []
+                    }, {
+                        name: "农器", 
+                        children: []
+                    }, {
+                        name: "树艺",
+                        children: []
+                    }, {
+                        name: "木本植物",
+                        children: []
+                    }, {
+                        name: "牧养六畜", 
+                        children: []
+                    }, {
+                        name: "救荒本草",
+                        children: []
+                    }, {
+                        name: "境外作物",
+                        children: []
+                    }]
+                };
+                
+                handleDataLoaded(formattedData, response);
+            } catch (error) {
+                console.error('数据加载失败:', error);
+                showError('main', error.message);
+            }
+        }
+        
+        function handleDataLoaded(agricultureData, graphData) {
                 window.agricultureData = agricultureData; // 使数据全局可用
 
                 function generateNodes(agricultureData) {
@@ -1258,11 +1298,10 @@
                     });
                     myChart.dispatchAction({ type: 'restore' });
                 }, 8);
-            })
-            .catch(error => {
-                console.error('数据加载失败:', error);
-                myChart.hideLoading();
-            });
+        }
+        
+        // 启动数据加载
+        loadData();
 
         window.addEventListener('resize', () => myChart.resize());
     </script>

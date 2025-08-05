@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>管理后台测试页面</title>
+    <style>
+        body {
+            font-family: 'Microsoft YaHei', Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+            color: white;
+        }
+        .container {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 40px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+        h1 { margin-bottom: 20px; }
+        .status { margin: 10px 0; padding: 10px; border-radius: 5px; }
+        .success { background: rgba(76, 175, 80, 0.3); }
+        .error { background: rgba(244, 67, 54, 0.3); }
+        .info { background: rgba(33, 150, 243, 0.3); }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🌾 农学文化管理后台</h1>
+        <div class="status success">✅ 管理后台文件访问正常</div>
+        <div class="status info">📍 当前地址: <span id="currentUrl"></span></div>
+        <div class="status info">⏰ 当前时间: <span id="currentTime"></span></div>
+        
+        <h3>下一步操作：</h3>
+        <ol style="text-align: left; display: inline-block;">
+            <li>上传完整的admin文件夹</li>
+            <li>上传api文件夹</li>
+            <li>配置数据库连接</li>
+            <li>运行数据库安装脚本</li>
+        </ol>
+        
+        <div style="margin-top: 20px;">
+            <a href="../index.html" style="color: #fff; text-decoration: none; background: rgba(255,255,255,0.2); padding: 10px 20px; border-radius: 5px;">返回主页</a>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('currentUrl').textContent = window.location.href;
+        document.getElementById('currentTime').textContent = new Date().toLocaleString('zh-CN');
+    </script>
+</body>
+</html>

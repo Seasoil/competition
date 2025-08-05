@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>农学文化数据管理后台</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Microsoft YaHei', Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 20px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        .header h1 {
+            color: #4a5568;
+            text-align: center;
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            text-align: center;
+            color: #718096;
+            font-size: 16px;
+        }
+
+        .nav-tabs {
+            display: flex;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 12px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .nav-tab {
+            flex: 1;
+            padding: 15px 20px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 500;
+            color: #718096;
+            transition: all 0.3s ease;
+        }
+
+        .nav-tab.active {
+            background: #667eea;
+            color: white;
+        }
+
+        .nav-tab:hover:not(.active) {
+            background: rgba(102, 126, 234, 0.1);
+            color: #667eea;
+        }
+
+        .tab-content {
+            display: none;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: #4a5568;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            font-size: 14px;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 500;
+            transition: transform 0.2s ease;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .btn:active {
+            transform: translateY(0);
+        }
+
+        .btn-secondary {
+            background: #718096;
+        }
+
+        .btn-danger {
+            background: #e53e3e;
+        }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        .data-table th,
+        .data-table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .data-table th {
+            background: #f7fafc;
+            font-weight: 600;
+            color: #4a5568;
+        }
+
+        .data-table tr:hover {
+            background: #f7fafc;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-tabs {
+                flex-direction: column;
+            }
+
+            .container {
+                padding: 10px;
+            }
+        }
+
+        .loading {
+            text-align: center;
+            padding: 40px;
+            color: #718096;
+        }
+
+        .success-message,
+        .error-message {
+            padding: 12px 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+
+        .success-message {
+            background: #f0fff4;
+            color: #22543d;
+            border: 1px solid #9ae6b4;
+        }
+
+        .error-message {
+            background: #fed7d7;
+            color: #742a2a;
+            border: 1px solid #feb2b2;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .stat-card {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        .stat-number {
+            font-size: 32px;
+            font-weight: 700;
+            color: #667eea;
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            color: #718096;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🌾 农学文化数据管理后台</h1>
+            <p>管理节气、农谚、农学知识等数据内容</p>
+        </div>
+
+        <!-- 统计概览 -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-number" id="solar-terms-count">24</div>
+                <div class="stat-label">节气数量</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="proverbs-count">0</div>
+                <div class="stat-label">农谚数量</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="knowledge-nodes-count">0</div>
+                <div class="stat-label">知识节点</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="categories-count">7</div>
+                <div class="stat-label">知识分类</div>
+            </div>
+        </div>
+
+        <!-- 导航标签 -->
+        <div class="nav-tabs">
+            <button class="nav-tab active" onclick="switchTab('solar-terms')">节气管理</button>
+            <button class="nav-tab" onclick="switchTab('proverbs')">农谚管理</button>
+            <button class="nav-tab" onclick="switchTab('knowledge')">知识管理</button>
+            <button class="nav-tab" onclick="switchTab('categories')">分类管理</button>
+        </div>
+
+        <!-- 节气管理 -->
+        <div class="tab-content active" id="solar-terms-tab">
+            <h3>节气管理</h3>
+            <div id="solar-terms-messages"></div>
+            
+            <form id="solar-terms-form">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="term-name">节气名称</label>
+                        <input type="text" id="term-name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="term-season">季节</label>
+                        <select id="term-season" required>
+                            <option value="">请选择季节</option>
+                            <option value="春">春</option>
+                            <option value="夏">夏</option>
+                            <option value="秋">秋</option>
+                            <option value="冬">冬</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="term-date">日期范围</label>
+                        <input type="text" id="term-date" placeholder="如：2月3-5日" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="term-description">农事描述</label>
+                        <textarea id="term-description" required></textarea>
+                    </div>
+                </div>
+                <button type="submit" class="btn">添加节气</button>
+                <button type="button" class="btn btn-secondary" onclick="resetForm('solar-terms-form')">重置</button>
+            </form>
+
+            <div class="loading" id="solar-terms-loading">加载节气数据中...</div>
+            <table class="data-table" id="solar-terms-table" style="display: none;">
+                <thead>
+                    <tr>
+                        <th>节气名称</th>
+                        <th>季节</th>
+                        <th>日期范围</th>
+                        <th>农事描述</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody id="solar-terms-tbody">
+                </tbody>
+            </table>
+        </div>
+
+        <!-- 农谚管理 -->
+        <div class="tab-content" id="proverbs-tab">
+            <h3>农谚管理</h3>
+            <div id="proverbs-messages"></div>
+            
+            <form id="proverbs-form">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="proverb-content">农谚内容</label>
+                        <textarea id="proverb-content" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="proverb-description">农谚解释</label>
+                        <textarea id="proverb-description"></textarea>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="proverb-month">月份</label>
+                        <select id="proverb-month" required>
+                            <option value="">请选择月份</option>
+                            <option value="1">1月</option>
+                            <option value="2">2月</option>
+                            <option value="3">3月</option>
+                            <option value="4">4月</option>
+                            <option value="5">5月</option>
+                            <option value="6">6月</option>
+                            <option value="7">7月</option>
+                            <option value="8">8月</option>
+                            <option value="9">9月</option>
+                            <option value="10">10月</option>
+                            <option value="11">11月</option>
+                            <option value="12">12月</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="proverb-season">季节</label>
+                        <select id="proverb-season" required>
+                            <option value="">请选择季节</option>
+                            <option value="春">春</option>
+                            <option value="夏">夏</option>
+                            <option value="秋">秋</option>
+                            <option value="冬">冬</option>
+                        </select>
+                    </div>
+                </div>
+                <button type="submit" class="btn">添加农谚</button>
+                <button type="button" class="btn btn-secondary" onclick="resetForm('proverbs-form')">重置</button>
+            </form>
+
+            <div class="loading" id="proverbs-loading">加载农谚数据中...</div>
+            <table class="data-table" id="proverbs-table" style="display: none;">
+                <thead>
+                    <tr>
+                        <th>农谚内容</th>
+                        <th>月份</th>
+                        <th>季节</th>
+                        <th>解释</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody id="proverbs-tbody">
+                </tbody>
+            </table>
+        </div>
+
+        <!-- 知识管理 -->
+        <div class="tab-content" id="knowledge-tab">
+            <h3>农学知识管理</h3>
+            <div id="knowledge-messages"></div>
+            
+            <form id="knowledge-form">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="node-name">知识点名称</label>
+                        <input type="text" id="node-name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="node-category">所属分类</label>
+                        <select id="node-category" required>
+                            <option value="">请选择分类</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="node-description">详细描述</label>
+                    <textarea id="node-description"></textarea>
+                </div>
+                <button type="submit" class="btn">添加知识点</button>
+                <button type="button" class="btn btn-secondary" onclick="resetForm('knowledge-form')">重置</button>
+            </form>
+
+            <div class="loading" id="knowledge-loading">加载知识数据中...</div>
+            <table class="data-table" id="knowledge-table" style="display: none;">
+                <thead>
+                    <tr>
+                        <th>知识点名称</th>
+                        <th>所属分类</th>
+                        <th>层级</th>
+                        <th>描述</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody id="knowledge-tbody">
+                </tbody>
+            </table>
+        </div>
+
+        <!-- 分类管理 -->
+        <div class="tab-content" id="categories-tab">
+            <h3>知识分类管理</h3>
+            <div id="categories-messages"></div>
+            
+            <form id="categories-form">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="category-name">分类名称</label>
+                        <input type="text" id="category-name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="category-color">分类颜色</label>
+                        <input type="color" id="category-color" value="#667eea" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="category-description">分类描述</label>
+                    <textarea id="category-description"></textarea>
+                </div>
+                <button type="submit" class="btn">添加分类</button>
+                <button type="button" class="btn btn-secondary" onclick="resetForm('categories-form')">重置</button>
+            </form>
+
+            <div class="loading" id="categories-loading">加载分类数据中...</div>
+            <table class="data-table" id="categories-table" style="display: none;">
+                <thead>
+                    <tr>
+                        <th>分类名称</th>
+                        <th>颜色</th>
+                        <th>描述</th>
+                        <th>创建时间</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody id="categories-tbody">
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script src="../js/api.js"></script>
+    <script src="admin.js"></script>
+</body>
+</html>

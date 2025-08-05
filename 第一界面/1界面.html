@@ -223,6 +223,7 @@
     <script src="./js/echarts (2).js"></script>
     <script src="./js/anime.min.js"></script>
     <script src="./js/lodash.min.js"></script>
+    <script src="../js/api.js"></script>
 </head>
 
 <body>
@@ -276,41 +277,64 @@
             });
         });
         
-        // 节气数据
-        const solarTermsData = [
-            { name: '立春', season: '春', date: '2月3-5日', desc: '春耕备耕开始，检查农具，准备早稻育秧' },
-            { name: '雨水', season: '春', date: '2月18-20日', desc: '冬小麦开始返青，江南地区油菜追肥' },
-            { name: '惊蛰', season: '春', date: '3月5-7日', desc: '春耕全面展开，防治越冬害虫，果树修剪' },
-            { name: '春分', season: '春', date: '3月20-22日', desc: '春播作物播种关键期，小麦进入拔节期' },
-            { name: '清明', season: '春', date: '4月4-6日', desc: '早稻插秧，玉米播种，茶园春管关键期' },
-            { name: '谷雨', season: '春', date: '4月19-21日', desc: '水稻移栽，棉花播种，防治小麦赤霉病' },
+        // 节气数据 - 从API加载
+        let solarTermsData = [];
+        
+        // 初始化节气数据
+        async function initSolarTermsData() {
+            try {
+                const response = await getCachedData('solar_terms', () => window.agricultureAPI.getAllSolarTerms());
+                solarTermsData = response;
+                console.log('节气数据加载成功:', solarTermsData.length, '个节气');
+                
+                // 初始化图表
+                initChart();
+            } catch (error) {
+                console.error('节气数据加载失败:', error);
+                // 使用备用数据
+                solarTermsData = [
+                    { name: '立春', season: '春', date: '2月3-5日', desc: '春耕备耕开始，检查农具，准备早稻育秧' },
+                    { name: '雨水', season: '春', date: '2月18-20日', desc: '冬小麦开始返青，江南地区油菜追肥' },
+                    { name: '惊蛰', season: '春', date: '3月5-7日', desc: '春耕全面展开，防治越冬害虫，果树修剪' },
+                    { name: '春分', season: '春', date: '3月20-22日', desc: '春播作物播种关键期，小麦进入拔节期' },
+                    { name: '清明', season: '春', date: '4月4-6日', desc: '早稻插秧，玉米播种，茶园春管关键期' },
+                    { name: '谷雨', season: '春', date: '4月19-21日', desc: '水稻移栽，棉花播种，防治小麦赤霉病' },
 
-            { name: '立夏', season: '夏', date: '5月5-7日', desc: '夏收作物灌浆关键期，早稻分蘖肥施用' },
-            { name: '小满', season: '夏', date: '5月20-22日', desc: '小麦籽粒饱满，油菜收获，水稻晒田控蘖' },
-            { name: '芒种', season: '夏', date: '6月5-7日', desc: '夏收夏种关键期，抢收小麦，播种晚稻' },
-            { name: '夏至', season: '夏', date: '6月21-22日', desc: '中稻追肥，棉花整枝，防治水稻纹枯病' },
-            { name: '小暑', season: '夏', date: '7月6-8日', desc: '早稻收割，晚稻移栽，玉米追肥' },
-            { name: '大暑', season: '夏', date: '7月22-24日', desc: '双季稻区抢收抢种，抗旱保苗关键期' },
+                    { name: '立夏', season: '夏', date: '5月5-7日', desc: '夏收作物灌浆关键期，早稻分蘖肥施用' },
+                    { name: '小满', season: '夏', date: '5月20-22日', desc: '小麦籽粒饱满，油菜收获，水稻晒田控蘖' },
+                    { name: '芒种', season: '夏', date: '6月5-7日', desc: '夏收夏种关键期，抢收小麦，播种晚稻' },
+                    { name: '夏至', season: '夏', date: '6月21-22日', desc: '中稻追肥，棉花整枝，防治水稻纹枯病' },
+                    { name: '小暑', season: '夏', date: '7月6-8日', desc: '早稻收割，晚稻移栽，玉米追肥' },
+                    { name: '大暑', season: '夏', date: '7月22-24日', desc: '双季稻区抢收抢种，抗旱保苗关键期' },
 
-            { name: '立秋', season: '秋', date: '8月7-9日', desc: '水稻孕穗期管理，玉米授粉期，棉花打顶' },
-            { name: '处暑', season: '秋', date: '8月22-24日', desc: '水稻防早衰，玉米灌浆期管理，果园施肥' },
-            { name: '白露', season: '秋', date: '9月7-9日', desc: '晚稻抽穗扬花期，冬小麦备耕，采摘秋茶' },
-            { name: '秋分', season: '秋', date: '9月22-24日', desc: '秋收秋种关键期，收获中稻，播种冬小麦' },
-            { name: '寒露', season: '秋', date: '10月8-9日', desc: '收获晚稻，播种油菜，果树秋季修剪' },
-            { name: '霜降', season: '秋', date: '10月23-24日', desc: '冬小麦出苗管理，蔬菜大棚防寒准备' },
+                    { name: '立秋', season: '秋', date: '8月7-9日', desc: '水稻孕穗期管理，玉米授粉期，棉花打顶' },
+                    { name: '处暑', season: '秋', date: '8月22-24日', desc: '水稻防早衰，玉米灌浆期管理，果园施肥' },
+                    { name: '白露', season: '秋', date: '9月7-9日', desc: '晚稻抽穗扬花期，冬小麦备耕，采摘秋茶' },
+                    { name: '秋分', season: '秋', date: '9月22-24日', desc: '秋收秋种关键期，收获中稻，播种冬小麦' },
+                    { name: '寒露', season: '秋', date: '10月8-9日', desc: '收获晚稻，播种油菜，果树秋季修剪' },
+                    { name: '霜降', season: '秋', date: '10月23-24日', desc: '冬小麦出苗管理，蔬菜大棚防寒准备' },
 
-            { name: '立冬', season: '冬', date: '11月7-8日', desc: '农田水利建设，油菜越冬管理，果树培土' },
-            { name: '小雪', season: '冬', date: '11月22-23日', desc: '冬小麦冬灌，蔬菜储藏，果园清园消毒' },
-            { name: '大雪', season: '冬', date: '12月6-8日', desc: '农田休耕养地，温室大棚温度调控' },
-            { name: '冬至', season: '冬', date: '12月21-23日', desc: '积肥造肥，果树防冻，冬季修剪' },
-            { name: '小寒', season: '冬', date: '1月5-7日', desc: '越冬作物防冻害，温室作物光照管理' },
-            { name: '大寒', season: '冬', date: '1月20-21日', desc: '农业机械保养，春耕物资准备，土壤改良' }
-        ];
+                    { name: '立冬', season: '冬', date: '11月7-8日', desc: '农田水利建设，油菜越冬管理，果树培土' },
+                    { name: '小雪', season: '冬', date: '11月22-23日', desc: '冬小麦冬灌，蔬菜储藏，果园清园消毒' },
+                    { name: '大雪', season: '冬', date: '12月6-8日', desc: '农田休耕养地，温室大棚温度调控' },
+                    { name: '冬至', season: '冬', date: '12月21-23日', desc: '积肥造肥，果树防冻，冬季修剪' },
+                    { name: '小寒', season: '冬', date: '1月5-7日', desc: '越冬作物防冻害，温室作物光照管理' },
+                    { name: '大寒', season: '冬', date: '1月20-21日', desc: '农业机械保养，春耕物资准备，土壤改良' }
+                ];
+                initChart();
+            }
+        }
 
-        // 初始化图表
-        const chart = echarts.init(document.getElementById('chart-container'));
+        // 图表相关变量
+        let chart;
         let activeTerm = null;
         let isAnimating = false;
+        
+        // 初始化图表函数
+        function initChart() {
+            if (!chart) {
+                chart = echarts.init(document.getElementById('chart-container'));
+            }
         let hoverTimer = null;
         let isDragging = false;
 
@@ -613,13 +637,21 @@
         chart.setOption(option);
         window.addEventListener('resize', () => chart.resize());
 
-        // 初始化时间轴位置（默认选中立春）
-        setTimeout(() => {
-            const initialTerm = solarTermsData[0]; // 立春
-            const initialDay = getTermDay(initialTerm.date);
-            updateTimeAxis(initialDay);
-            updateHighlight(initialTerm);
-        }, 500);
+            // 初始化时间轴位置（默认选中立春）
+            setTimeout(() => {
+                if (solarTermsData.length > 0) {
+                    const initialTerm = solarTermsData[0]; // 立春
+                    const initialDay = getTermDay(initialTerm.date);
+                    updateTimeAxis(initialDay);
+                    updateHighlight(initialTerm);
+                }
+            }, 500);
+        }
+        
+        // 页面加载完成后初始化数据
+        document.addEventListener('DOMContentLoaded', function() {
+            initSolarTermsData();
+        });
     </script>
 </body>
 
