@@ -87,38 +87,7 @@
             backdrop-filter: blur(2px);
         }
 
-        .nav-buttons {
-            position: fixed;
-            top: 15px;
-            right: 15px;
-            z-index: 1000;
-            display: flex;
-            gap: 10px;
-            background: rgba(255, 250, 240, 0.85);
-            padding: 8px 12px;
-            border-radius: 6px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-            border: 1px solid rgba(212, 180, 131, 0.5);
-            backdrop-filter: blur(8px);
-        }
-
-        .nav-btn {
-            cursor: pointer;
-            padding: 12px 28px;
-            border-radius: 6px;
-            background: linear-gradient(135deg, rgba(255, 250, 240, 0.85), rgba(255, 250, 240, 0.7));
-            border: 1px solid rgba(212, 180, 131, 0.5);
-            transition: all 0.2s;
-            font-size: 12px;
-            color: #8B4513;
-            backdrop-filter: blur(8px);
-        }
-
-        .nav-btn:hover {
-            background: linear-gradient(135deg, rgba(212, 180, 131, 0.15), rgba(212, 180, 131, 0.25));
-            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-            transform: translateY(-1px);
-        }
+        /* 移除重复的nav-buttons定义，使用统一的导航栏样式 */
 
         /* 分类按钮样式 */
         .category-buttons {
@@ -663,40 +632,46 @@
             try {
                 showLoading('main');
                 const response = await getCachedData('graph_data', () => window.agricultureAPI.getGraphData());
-                const agricultureData = response;
-                
-                // 将数据转换为原有格式以兼容现有代码
-                const formattedData = {
-                    categories: response.categories,
-                    nodes: [{
-                        name: "农事占候",
-                        children: []
-                    }, {
-                        name: "农器", 
-                        children: []
-                    }, {
-                        name: "树艺",
-                        children: []
-                    }, {
-                        name: "木本植物",
-                        children: []
-                    }, {
-                        name: "牧养六畜", 
-                        children: []
-                    }, {
-                        name: "救荒本草",
-                        children: []
-                    }, {
-                        name: "境外作物",
-                        children: []
-                    }]
-                };
-                
-                handleDataLoaded(formattedData, response);
+
+                // 检查API响应是否有效
+                if (response && response.categories && response.nodes) {
+                    handleDataLoaded(response, response);
+                } else {
+                    // 如果API数据无效，使用备用数据
+                    console.warn('API数据无效，使用备用数据');
+                    const fallbackData = createFallbackData();
+                    handleDataLoaded(fallbackData, fallbackData);
+                }
             } catch (error) {
                 console.error('数据加载失败:', error);
-                showError('main', error.message);
+                // 使用备用数据
+                const fallbackData = createFallbackData();
+                handleDataLoaded(fallbackData, fallbackData);
             }
+        }
+
+        // 创建备用数据
+        function createFallbackData() {
+            return {
+                categories: [
+                    { id: 0, name: "农事占候", color: "#8bc34a", description: "根据天象、物候预测农事时机" },
+                    { id: 1, name: "农器", color: "#ffb74d", description: "农业生产工具和设备" },
+                    { id: 2, name: "树艺", color: "#f44336", description: "树木种植和园艺技术" },
+                    { id: 3, name: "木本植物", color: "#2196f3", description: "各种木本作物和果树" },
+                    { id: 4, name: "牧养六畜", color: "#9c27b0", description: "家畜饲养技术" },
+                    { id: 5, name: "救荒本草", color: "#607d8b", description: "饥荒时期的野生植物利用" },
+                    { id: 6, name: "境外作物", color: "#795548", description: "从境外引进的农作物" }
+                ],
+                nodes: [
+                    { name: "农事占候", children: ["时间", "天象", "自然现象", "地理", "动植物指征"] },
+                    { name: "农器", children: ["耕作工具", "收获工具", "加工工具", "灌溉工具"] },
+                    { name: "树艺", children: ["果树栽培", "经济林木", "观赏植物", "药用植物"] },
+                    { name: "木本植物", children: ["果树", "经济树木", "观赏树木", "药用树木"] },
+                    { name: "牧养六畜", children: ["牛", "马", "羊", "猪", "鸡", "犬"] },
+                    { name: "救荒本草", children: ["野菜", "野果", "根茎类", "叶菜类"] },
+                    { name: "境外作物", children: ["玉米", "甘薯", "马铃薯", "番茄"] }
+                ]
+            };
         }
         
         function handleDataLoaded(agricultureData, graphData) {

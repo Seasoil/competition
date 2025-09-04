@@ -1,32 +1,250 @@
+<!doctype html>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
     <meta charset="utf-8">
-    <title>古代农业知识体系</title>
-    <script src="./js/echarts.min.js"></script>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>农作物病害查询</title>
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/new_index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        body {
-            margin: 0;
-            min-height: 100vh;
-            background: url('./背景图（关系展示）.png') no-repeat center/cover fixed;
-            font-family: "Microsoft Yahei", sans-serif;
-            position: relative;
-            overflow-x: hidden;
+        /* ---public---- */
+        .centerBox {
+            width: 75%;
+            margin-right: 15px;
+            background: transparent;
         }
 
-        body::after {
-            content: '';
+        .boxFont {
+            font-size: 1.2vw;
+        }
+
+        .centerMainBox1 {
+            width: 100%;
+            height: 60.5%;
+        }
+
+        .centerMainBox2 {
+            width: 100%;
+            height: 38%;
+            position: relative;
+            margin-top: 15px;
+        }
+
+        .centerMainBox2 .first_border {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+
+        .boxTitle2 {
+            width: 100%;
+            height: 10%;
+            font-size: .6vw;
+            text-align: center;
+            line-height: 10%;
+            margin-top: 1vw;
+            color: #0efcff;
+        }
+
+        .contList {
+            position: relative;
+            width: 70%;
+            height: 8vw;
+            margin: 1vw auto 0;
+
+        }
+
+        .content1 li {
+            display: none;
+        }
+
+        .baseBox {
+            width: 100%;
+            border: none;
+            background: none;
+        }
+
+        .boxTitle {
+            font-size: .8vw;
+            width: 38%;
+            margin-top: 1vw;
+            text-align: center;
+        }
+
+        .right {
+            float: right;
+        }
+
+        .baseBoxLeft {
+            width: 30%;
+            height: 95%;
+            position: relative;
+        }
+
+        .baseBoxRight {
+            width: 68%;
+            height: 100%;
+        }
+
+        .baseBoxLeft .first_border {
+            width: 100%;
+            height: 100%;
             position: absolute;
             top: 0;
             left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(255, 255, 255, 0.1);
-            z-index: -1;
         }
 
-        #nav {
+
+        .baseBox1,
+        .baseBox2,
+        .baseBox3 {
+            position: relative;
+        }
+
+        .baseBox1 .hardware,
+        .baseBox2 img,
+        .baseBox3 img {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+
+        .csbaseBox1 {
+            position: relative;
+            z-index: 999;
+        }
+
+        #canvas {
+            display: block;
+            margin: 0 auto;
+            width: 10vw;
+            height: 5vw;
+        }
+
+        .progress {
+            position: relative;
+        }
+
+        .progress img {
+            width: 12.5vw;
+            height: 2vw;
+            position: absolute;
+            top: .4vw;
+            right: -.2vw;
+        }
+
+        .progress .disease {
+            position: absolute;
+            top: .7vw;
+            left: .5vw;
+            color: #fff;
+            font-size: .8vw;
+        }
+
+        .progress .disease-counter {
+            position: absolute;
+            top: .7vw;
+            right: .5vw;
+            color: #0efcff;
+            font-size: .6vw;
+            opacity: 0.8;
+        }
+
+        .progress .similar {
+            position: absolute;
+            top: .8vw;
+            left: 3vw;
+            color: #0efcff;
+            font-size: .5vw;
+        }
+
+        /* 返回图标 */
+        .navLeft {
+            position: absolute;
+            top: 5%;
+            left: 35%;
+            width: 3.5%;
+            height: 8%;
+            z-index: 999;
+        }
+
+        .navLeft>img {
+            width: 100%;
+            height: 100%;
+        }
+
+        /* 病害查询搜索框样式 */
+        .search-container {
+            position: fixed;
+            top: 15px;
+            left: 40px;
+            width: 350px;
+            height: 50px;
+            background: rgba(0, 0, 0, 0.8);
+            border: 2px solid #0efcff;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            padding: 0 15px;
+            z-index: 1001;
+            backdrop-filter: blur(6px);
+        }
+
+        .search-input {
+            flex: 1;
+            background: transparent;
+            border: none;
+            color: #0efcff;
+            font-size: 14px;
+            outline: none;
+            height: 100%;
+        }
+
+        .search-input::placeholder {
+            color: rgba(14, 252, 255, 0.6);
+        }
+
+        .search-btn {
+            background: #0efcff;
+            color: #000;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+            margin-left: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .search-btn:hover {
+            background: #00d4ff;
+        }
+
+        /* 病害识别结果样式 */
+        .disease-result {
+            background: rgba(0, 239, 255, 0.05);
+            border: 1px solid #0efcff;
+            border-radius: 8px;
+            padding: 1vw;
+            margin-top: 1vw;
+        }
+
+        .disease-name {
+            color: #0efcff;
+            font-size: 1.2vw;
+            font-weight: bold;
+            margin-bottom: 0.5vw;
+        }
+
+
+
+        /* 统一的导航栏样式 */
+        .main-nav {
             position: fixed;
             top: 0;
             left: 0;
@@ -40,10 +258,15 @@
             padding: 0 40px;
             backdrop-filter: blur(6px);
             border-bottom: 1px solid rgba(212, 180, 131, 0.5);
-            justify-content: flex-end;
         }
 
-        .nav-btn {
+        .nav-buttons {
+            display: flex;
+            gap: 25px;
+            margin-left: auto;
+        }
+
+        .nav-button {
             padding: 12px 28px;
             border-radius: 6px;
             background: transparent;
@@ -56,261 +279,1393 @@
             display: flex;
             align-items: center;
             gap: 8px;
-            margin: 0 10px;
             backdrop-filter: blur(8px);
+            text-decoration: none;
         }
 
-        .nav-btn:hover {
+        .nav-button:hover {
             background: rgba(74, 74, 74, 0.1);
             color: #4A4A4A;
             transform: translateY(-2px);
             box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
         }
 
-        .nav-btn:active {
-            transform: translateY(0);
-            filter: brightness(0.9);
+        .nav-button i {
+            font-size: 18px;
         }
 
-        #chart {
-            width: 100%;
-            height: calc(100vh - 80px);
-            margin-top: 80px;
-            padding: 20px;
-            box-sizing: border-box;
+        /* 为导航栏留出空间 */
+        .main {
+            margin-top: 90px;
             position: relative;
         }
 
-        .tooltip {
-            background: rgba(255, 255, 255, 0.9) !important;
-            border-radius: 8px !important;
-            padding: 10px !important;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
-            border: 1px solid rgba(0, 0, 0, 0.1) !important;
+        /* 隐藏滚动条 */
+        body {
+            overflow: hidden;
+        }
+
+        html {
+            overflow: hidden;
+        }
+
+        /* 显示/隐藏控制类 */
+        .display_box {
+            display: none !important;
+        }
+
+        /* 如果需要滚动功能但隐藏滚动条 */
+        body::-webkit-scrollbar {
+            display: none;
+        }
+
+        html::-webkit-scrollbar {
+            display: none;
+        }
+
+        /* 响应式设计 */
+        @media (max-width: 1200px) {
+            .search-container {
+                width: 300px;
+                height: 45px;
+                left: 30px;
+                top: 12px;
+            }
+
+            .search-input {
+                font-size: 12px;
+            }
+
+            .search-btn {
+                padding: 6px 12px;
+                font-size: 11px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .search-container {
+                width: 250px;
+                height: 40px;
+                left: 20px;
+                top: 10px;
+            }
         }
     </style>
 </head>
 
+
 <body>
-    <div id="nav">
-        <button class="nav-btn" onclick="window.location.href='../index.html'">主界面</button>
-        <button class="nav-btn" onclick="window.location.href='../第一界面/1界面.html'">第一界面</button>
-        <button class="nav-btn" onclick="window.location.href='../第三界面/人界面.html'">第三界面</button>
-        <button class="nav-btn" onclick="window.location.href='./农学文化界面.html'">农学数据展示</button>
+    <!-- 统一导航栏 -->
+    <nav class="main-nav">
+        <div class="nav-buttons">
+            <a href="../index.html" class="nav-button">
+                <i class="fas fa-home"></i>
+                主页
+            </a>
+            <a href="../第一界面/1界面.html" class="nav-button">
+                <i class="fas fa-calendar-alt"></i>
+                节气展示
+            </a>
+            <a href="./农学文化界面.html" class="nav-button">
+                <i class="fas fa-seedling"></i>
+                农文化展示
+            </a>
+            <a href="../第三界面/人界面.html" class="nav-button">
+                <i class="fas fa-chart-bar"></i>
+                数据概览
+            </a>
+        </div>
+    </nav>
+
+    <div class="main">
+        <!-- 病害查询搜索框 -->
+        <div class="search-container">
+            <input type="text" class="search-input" placeholder="请输入病害名称或症状关键词..." id="diseaseSearch">
+            <button class="search-btn" onclick="searchDisease()">搜索</button>
+        </div>
+        <div class="content">
+
+            <div class="centerBox">
+                <div class="baseBox centerMainBox1" style="height:70%">
+                    <div class="baseBoxLeft left">
+                        <div class="boxTitle">农作物病害查询</div>
+                        <img src="img/left.png" class="first_border" alt="">
+                        <div class="firstBox">
+                            <div class="pic">
+                                <img src="img/demo_pic.png" class="first_top1" alt="">
+                            </div>
+                            <div class="picText">
+                                <span>作物病害</span>
+                                <span class="text_second">病害识别系统</span>
+                            </div>
+                            <div class="voice_animation">
+                                <canvas id="canvas">Your browser can not support canvas</canvas>
+                            </div>
+                            <div class="progress">
+                                <span class="disease" id="diseaseNameDisplay">稻瘟病</span>
+                                <span class="disease-counter" id="diseaseCounter">(1/50)</span>
+                                <img src="img/progress.gif" alt="">
+                            </div>
+                            <div class="about_illness">
+                                <div class="symptom">
+                                    <div class="symptom_title">病症症状</div>
+                                    <div class="symptom_content">叶片出现梭形病斑，病斑中央灰白色，边缘褐色，严重时叶片枯死，穗颈部感染导致白穗</div>
+                                </div>
+                                <div class="prevent">
+                                    <div class="prevent_title">造成原因</div>
+                                    <div class="prevent_content">高温高湿环境，氮肥施用过量，田间密植通风不良，品种抗性不足，田间积水排水不畅</div>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                    <div class="baseBoxRight right">
+
+
+
+                        <!-- 地图 -->
+                        <div class="maps">
+                            <img class="land_level" src="img/landLevel.png" alt="">
+                            <img class="sun_pic" src="img/sun.png" alt="">
+                            <img class="plant_pic display_box" src="img/plant.png" alt="">
+                            <div class="windows display_box" id="regionInfo">
+                                <ul>
+                                    <li>地域信息</li>
+                                    <li id="plantingRegion1">河南、山东、安徽</li>
+                                    <li id="plantingRegion2">江苏、河北、湖北</li>
+                                    <li id="plantingRegion3">四川、重庆、云南</li>
+                                    <li id="plantingRegion4">贵州、陕西、山西</li>
+                                    <li id="plantingRegion5">甘肃、新疆、内蒙古</li>
+                                </ul>
+                            </div>
+                            <div class="window_two display_box">
+                                <ul>
+                                    <li>刘新武</li>
+                                    <li>年龄：41岁</li>
+                                    <li>农事活动：6次</li>
+                                    <li>信用等级：良好</li>
+                                </ul>
+                            </div>
+                            <div class="window_three display_box">
+                                <ul>
+                                    <li>土壤数据</li>
+                                    <li id="soilHumidity">湿度:63%</li>
+                                    <li id="soilPH">酸碱度：PH4.8</li>
+                                    <li id="soilElements">需要元素：氮磷钾</li>
+                                </ul>
+                            </div>
+                            <div class="window_four display_box">
+                                <ul>
+                                    <li>气象信息</li>
+                                    <li>温度:19℃</li>
+                                    <li>湿度：52%</li>
+                                    <li>降水：0mm</li>
+                                </ul>
+                            </div>
+                            <div class="window_five display_box">
+                                <ul>
+                                    <li>植被信息</li>
+                                    <li id="varietyName">品种名称：云台山大叶良种</li>
+                                    <li id="growthStage">生长周期：8-10个月</li>
+                                    <li id="suitableClimate">适宜气候：温带季风气候</li>
+                                </ul>
+                            </div>
+                            <div class="window_six display_box">
+                                <ul>
+                                    <li>设备信息</li>
+                                    <li>设备名称:无人机</li>
+                                    <li>所属人：安化云台八角有限公司</li>
+                                    <li>持续工作：3h</li>
+                                    <li>连接状态：正常</li>
+                                </ul>
+                            </div>
+                            <a href="https://gitee.com/iGaoWei/big-data-view">
+                                <div class="peasant"></div>
+                            </a>
+                            <div class="land_box1"></div>
+                            <div class="land_box2"></div>
+                            <div class="land_box3"></div>
+                            <div class="land_box4"></div>
+                            <div class="plant"></div>
+                            <div class="soil_data"></div>
+                            <div class="weather_info"></div>
+                            <!-- <div class="plant_info"></div> -->
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- 左侧下部 -->
+                <div class="baseBox centerMainBox2" style="height:30%;">
+                    <img src="img/down2.png" class="first_border" alt="">
+                    <div class="boxTitle2" style="width:26%;">土壤数据</div>
+                    <div class="boxTitle2" style="width:26%;margin-left:22vw;margin-top: -1.4vw;">病害数据</div>
+                    <div class="boxTitle2" style="width:26%;margin-left:53vw;margin-top: -1.4vw;">环境数据</div>
+                    <div class="leftBottom">
+                        <div class="land_data">
+                            <p id="soilData10cm">10cm 温度30湿度67</p>
+                            <p id="soilData20cm">20cm 温度30湿度67</p>
+                            <p id="soilData30cm">30cm 温度30湿度67</p>
+                        </div>
+
+                    </div>
+                    <div class="right_box">
+                        <div class="grow_data">
+                            <img src="img/tree_pic.png" alt="">
+                            <p id="growthCycle">生长周期：8周</p>
+                            <p id="soilType">黏土</p>
+                            <p id="soilDepthData">10cm茶土：22.88</p>
+                            <i></i>
+                            <div class="specialistSuggest">
+                                <div>治理方法：</div>
+                                <div id="treatmentSuggestion">高温高湿环境，氮肥施用过量，田间密植通风不良，品种抗性不足，田间积水排水不畅</div>
+                            </div>
+
+                        </div>
+                        <div class="weather_data">
+                            <div class="weather_text text_one">
+                                <span id="temperature">温度：19℃</span>
+                                <span id="humidity">湿度：52%</span>
+                                <span id="rainfall">降雨量：0mm</span>
+                            </div>
+                            <div class="weather_text text_two">
+                                <span id="evaporation">蒸发量：0.326mm/h</span>
+                                <span id="pressure">气压：0.326MPa</span>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+            <div class="leftBox right" style="width:22%">
+                <div class="baseBox baseBox1" style="margin-bottom:15px;height:40%">
+                    <img src="img/right.png" class="hardware" alt="">
+                    <div class="csbaseBox1">
+                        <div class="boxTitle">硬件设备展示</div>
+                        <ul class="boxLis">
+                            <li class="left active">农业无人机</li>
+                            <li class="left">田间控制器</li>
+                            <li class="left">监控摄像头</li>
+                            <li class="left">土壤检测仪</li>
+                        </ul>
+                        <div class="content1">
+                            <ul>
+                                <li style="display: block;" class="contList">
+                                    <!-- 四个角描边 stat -->
+                                    <div class="leftTopLine1"></div>
+                                    <div class="leftTopLine2"></div>
+                                    <div class="rightTopLine1"></div>
+                                    <div class="rightTopLine2"></div>
+                                    <div class="leftBottomLine1"></div>
+                                    <div class="leftBottomLine2"></div>
+                                    <div class="rightBottomLine1"></div>
+                                    <div class="rightBottomLine2"></div>
+
+                                    <div class="equipment_pic">
+                                        <img class="first" src="img/uva.png" alt="">
+                                        <img class="second" src="img/control.png" alt="">
+                                        <img class="third" src="img/camera.png" alt="">
+                                        <img class="fourth" src="img/detector.png" alt="">
+                                    </div>
+                                </li>
+
+                            </ul>
+
+                        </div>
+                        <div class="liSpan">介绍</div>
+                        <p class="liP">
+                            本模板收集于网络，无需任何付费操作，Gitee免费下载使用</p>
+                    </div>
+                </div>
+                <div class="baseBox baseBox2" style="margin-bottom:15px;height:29.5%">
+                    <img src="img/right2.png" alt="">
+                    <!-- 四个角描边 end -->
+                    <div class="boxTitle2">灌溉数据</div>
+                    <div class="irrigate_data">
+                        <div class="irrigate_top">
+                            <div class="centerList">
+                                <div class="centerListFont">累计灌溉水量（m2）</div>
+                                <div class="centerListNum">
+                                    <span id="totalIrrigationWater">23678</span>
+                                </div>
+                            </div>
+                            <div class="centerList">
+                                <div class="centerListFont">灌溉压力（MPa）</div>
+                                <div class="centerListNum">
+                                    <span id="irrigationPressure">0.29</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="irrigate_bottom">
+                            <div class="every_line">
+                                <span>当前灌溉流量（m²/h）</span>
+                                <i id="currentFlowRate">0.78</i>
+                            </div>
+                            <div class="every_line">
+                                <span>当前灌溉阀门数量</span>
+                                <i id="valveCount">2</i>
+                            </div>
+                            <div class="every_line">
+                                <span id="poolLocationLabel">水池液位</span>
+                                <i id="poolLevel">2.30</i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="baseBox baseBox3" style="height:28%">
+                    <img src="img/right3.png" alt="">
+                    <!-- 四个角描边 end -->
+                    <div class="boxTitle2">病害数据来源</div>
+                    <!-- <div class="data_day" id="demo" > -->
+                    <div class="data_day" id="demo" style="width:100%;overflow:hidden;height: 75%;">
+                        <table style="text-align: left;margin-left:3%;height:80%;font-size:11px;">
+                            <tbody id="demo1">
+                                <tr>
+                                    <td>《普通植物病理学》第五版</td>
+                                    <td style="color:#00ff88;">许志刚、胡白石</td>
+                                    <td style="color:#0efcff;">2021年</td>
+                                </tr>
+                                <tr>
+                                    <td>《农业植物病理学》第五版</td>
+                                    <td style="color:#00ff88;">高学文、陈孝仁</td>
+                                    <td style="color:#0efcff;">2018年</td>
+                                </tr>
+                                <tr>
+                                    <td>《中国农作物病虫害》第三版</td>
+                                    <td style="color:#00ff88;">中国农科院植保所</td>
+                                    <td style="color:#0efcff;">2015年</td>
+                                </tr>
+                                <tr>
+                                    <td>《植物病理学》第四版</td>
+                                    <td style="color:#00ff88;">李云锋、杨文香</td>
+                                    <td style="color:#0efcff;">2020年</td>
+                                </tr>
+                                <tr>
+                                    <td>《农业植物病理学实验指导》</td>
+                                    <td style="color:#00ff88;">侯明生、蔡丽</td>
+                                    <td style="color:#0efcff;">2019年</td>
+                                </tr>
+                                <tr>
+                                    <td>《植物病害诊断与防治》</td>
+                                    <td style="color:#00ff88;">谢联辉、彭友良</td>
+                                    <td style="color:#0efcff;">2017年</td>
+                                </tr>
+                                <tr>
+                                    <td>《现代植物病理学》</td>
+                                    <td style="color:#00ff88;">康振生、朱有勇</td>
+                                    <td style="color:#0efcff;">2018年</td>
+                                </tr>
+                                <tr>
+                                    <td>《植物病原真菌学》</td>
+                                    <td style="color:#00ff88;">郑小波、王源超</td>
+                                    <td style="color:#0efcff;">2016年</td>
+                                </tr>
+                                <tr>
+                                    <td>《植物细菌病害学》</td>
+                                    <td style="color:#00ff88;">方中达、刘凤权</td>
+                                    <td style="color:#0efcff;">2019年</td>
+                                </tr>
+                                <tr>
+                                    <td>《植物病毒学》</td>
+                                    <td style="color:#00ff88;">周雪平、李德葆</td>
+                                    <td style="color:#0efcff;">2017年</td>
+                                </tr>
+                                <tr>
+                                    <td>《作物病害流行学》</td>
+                                    <td style="color:#00ff88;">马占鸿、万安民</td>
+                                    <td style="color:#0efcff;">2020年</td>
+                                </tr>
+                                <tr>
+                                    <td>《植物免疫学》</td>
+                                    <td style="color:#00ff88;">何祖华、王国梁</td>
+                                    <td style="color:#0efcff;">2018年</td>
+                                </tr>
+                                <tr>
+                                    <td>《分子植物病理学》</td>
+                                    <td style="color:#00ff88;">张正光、窦道龙</td>
+                                    <td style="color:#0efcff;">2019年</td>
+                                </tr>
+                                <tr>
+                                    <td>《植物病害生物防治》</td>
+                                    <td style="color:#00ff88;">沈其荣、徐阳春</td>
+                                    <td style="color:#0efcff;">2017年</td>
+                                </tr>
+                                <tr>
+                                    <td>《农药学》第三版</td>
+                                    <td style="color:#00ff88;">袁会珠、杨代斌</td>
+                                    <td style="color:#0efcff;">2020年</td>
+                                </tr>
+                            </tbody>
+                            <tbody id="demo2" style="text-align: left;margin-left:3%;font-size:11px;">
+                                <tr>
+                                    <td>《植物检疫学》</td>
+                                    <td style="color:#00ff88;">叶建仁、吴小芹</td>
+                                    <td style="color:#0efcff;">2018年</td>
+                                </tr>
+                                <tr>
+                                    <td>《森林病理学》</td>
+                                    <td style="color:#00ff88;">杨斌、温俊宝</td>
+                                    <td style="color:#0efcff;">2019年</td>
+                                </tr>
+                                <tr>
+                                    <td>《果树病理学》</td>
+                                    <td style="color:#00ff88;">董金皋、韩青梅</td>
+                                    <td style="color:#0efcff;">2017年</td>
+                                </tr>
+                                <tr>
+                                    <td>《蔬菜病理学》</td>
+                                    <td style="color:#00ff88;">刘西莉、张炳欣</td>
+                                    <td style="color:#0efcff;">2018年</td>
+                                </tr>
+                                <tr>
+                                    <td>《粮食作物病害防治》</td>
+                                    <td style="color:#00ff88;">陈利锋、马占鸿</td>
+                                    <td style="color:#0efcff;">2020年</td>
+                                </tr>
+                                <tr>
+                                    <td>《经济作物病害学》</td>
+                                    <td style="color:#00ff88;">易图永、朱振东</td>
+                                    <td style="color:#0efcff;">2019年</td>
+                                </tr>
+                                <tr>
+                                    <td>《植物病害综合治理》</td>
+                                    <td style="color:#00ff88;">张正光、李世访</td>
+                                    <td style="color:#0efcff;">2018年</td>
+                                </tr>
+                                <tr>
+                                    <td>《植物病原线虫学》</td>
+                                    <td style="color:#00ff88;">刘维志、段玉玺</td>
+                                    <td style="color:#0efcff;">2017年</td>
+                                </tr>
+                                <tr>
+                                    <td>《植物病害抗性遗传学》</td>
+                                    <td style="color:#00ff88;">何祖华、王石平</td>
+                                    <td style="color:#0efcff;">2019年</td>
+                                </tr>
+                                <tr>
+                                    <td>《植物病理学研究方法》</td>
+                                    <td style="color:#00ff88;">方中达、朱振东</td>
+                                    <td style="color:#0efcff;">2016年</td>
+                                </tr>
+                                <tr>
+                                    <td>《中国植物病原真菌名录》</td>
+                                    <td style="color:#00ff88;">戴芳澜、俞大绂</td>
+                                    <td style="color:#0efcff;">2015年</td>
+                                </tr>
+                                <tr>
+                                    <td>《植物病害诊断图谱》</td>
+                                    <td style="color:#00ff88;">李洪连、林抗美</td>
+                                    <td style="color:#0efcff;">2018年</td>
+                                </tr>
+                                <tr>
+                                    <td>《农作物病虫害测报学》</td>
+                                    <td style="color:#00ff88;">程登发、陆庆光</td>
+                                    <td style="color:#0efcff;">2020年</td>
+                                </tr>
+                                <tr>
+                                    <td>《植物病害流行预测》</td>
+                                    <td style="color:#00ff88;">马占鸿、万安民</td>
+                                    <td style="color:#0efcff;">2017年</td>
+                                </tr>
+                                <tr>
+                                    <td>《现代植物保护学》</td>
+                                    <td style="color:#00ff88;">韩召军、高希武</td>
+                                    <td style="color:#0efcff;">2019年</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+        </div>
     </div>
-    <div id="chart"></div>
 
+    <script src="js/jquery.min.js"></script>
+    <script src="js/echarts.min.js"></script>
+    <script src="js/dataScoll.js"></script>
+    <!-- 暂时注释掉外部JS文件，避免冲突 -->
+    <!-- <script src="js/disease_data_handler.js"></script>
+    <script src="js/disease_search.js"></script>
+    <script src="js/disease_relationship_chart.js"></script> -->
+    <!-- 文字滚动 -->
+    <script language="javascript" type="text/javascript">
+        var demo = document.getElementById("demo");
+        var demo1 = document.getElementById("demo1");
+        var demo2 = document.getElementById("demo2");
+        var speed = 15; //滚动速度值，值越大速度越慢
+        demo2.innerHTML = demo1.innerHTML //克隆demo2为demo1
+        function Marquee() {
+            if (demo2.offsetTop - demo.scrollTop <= 45) {
+                console.log('77777') //当滚动至demo1与demo2交界时
+                demo.scrollTop -= demo1.offsetHeight //demo跳到最顶端
+            } else {
+                console.log('88888')
+                demo.scrollTop++
+            }
+        }
+        var MyMar = setInterval(Marquee, speed); //设置定时器
+        demo.onmouseover = function() {
+            clearInterval(MyMar)
+        } //鼠标经过时清除定时器达到滚动停止的目的
+        demo.onmouseout = function() {
+            MyMar = setInterval(Marquee, speed)
+        } //鼠标移开时重设定时器
+    </script>
+    <!-- <script type="text/javascript" src="js/digitalScroll.js"></script> -->
     <script>
-        const myChart = echarts.init(document.getElementById('chart'));
+        var doublePI = Math.PI * 2;
+        var canvas;
+        var ctx;
 
-        const data = {
-            name: "古代农业知识体系",
-            value: 100,
-            children: [
-                {
-                    name: "农政制度",
-                    value: 80,
-                    children: [
-                        {
-                            name: "重农政策",
-                            value: 60,
-                            children: [
-                                { name: "历代帝王劝农诏令", value: 40 },
-                                { name: "田赋制度", value: 40 }
-                            ]
-                        },
-                        {
-                            name: "荒政体系",
-                            value: 60,
-                            children: [
-                                { name: "常平仓制度", value: 40 },
-                                { name: "社仓义仓", value: 40 },
-                                { name: "救荒本草", value: 40 }
-                            ]
-                        },
-                        {
-                            name: "农书编撰",
-                            value: 60,
-                            children: [
-                                { name: "综合性农书", value: 40 },
-                                { name: "专题农书", value: 40 }
-                            ]
-                        }
-                    ]
-                },
-                {
-                    name: "天时农事",
-                    value: 80,
-                    children: [
-                        {
-                            name: "天文历法",
-                            value: 60,
-                            children: [
-                                { name: "二十四节气", value: 40 },
-                                { name: "农事月令", value: 40 }
-                            ]
-                        },
-                        {
-                            name: "气象占候",
-                            value: 60,
-                            children: [
-                                { name: "星象农谚", value: 40 },
-                                { name: "云霞雷电", value: 40 },
-                                { name: "物候观测", value: 40 }
-                            ]
-                        }
-                    ]
-                },
-                {
-                    name: "土地管理",
-                    value: 80,
-                    children: [
-                        {
-                            name: "土壤分类",
-                            value: 60,
-                            children: [
-                                { name: "九州土性", value: 40 },
-                                { name: "燥湿肥瘠", value: 40 }
-                            ]
-                        },
-                        {
-                            name: "耕作制度",
-                            value: 60,
-                            children: [
-                                { name: "畎亩法", value: 40 },
-                                { name: "代田法", value: 40 },
-                                { name: "区田法", value: 40 }
-                            ]
-                        }
-                    ]
-                },
-                {
-                    name: "水利工程",
-                    value: 80,
-                    children: [
-                        {
-                            name: "水利理论",
-                            value: 60,
-                            children: [
-                                { name: "治水策略", value: 40 },
-                                { name: "水文测量", value: 40 }
-                            ]
-                        },
-                        {
-                            name: "水利实践",
-                            value: 60,
-                            children: [
-                                {
-                                    name: "大型工程",
-                                    value: 40,
-                                    children: [
-                                        { name: "都江堰", value: 30 },
-                                        { name: "郑国渠", value: 30 }
-                                    ]
-                                },
-                                {
-                                    name: "灌溉工具",
-                                    value: 40,
-                                    children: [
-                                        { name: "翻车", value: 30 },
-                                        { name: "筒车", value: 30 },
-                                        { name: "桔槔", value: 30 }
-                                    ]
-                                },
-                                {
-                                    name: "农田体系",
-                                    value: 40,
-                                    children: [
-                                        { name: "圩田", value: 30 },
-                                        { name: "梯田", value: 30 }
-                                    ]
-                                }
-                            ]
-                        }
-                    ]
-                }
-            ]
+        //画布的高度的一半
+        var halfCanvasHeight = 100;
+        //水平边距
+        var horizontalMargin = 150;
+
+        //衰减系数(越大, 边缘衰减的就越多, 震动宽度相应也越窄)
+        var attenuationCoefficient = 2;
+        //半波长个数-1
+        var halfWaveCount = 20;
+        //振幅是画布高度的一般的百分比[0,1]
+        var amplitudePercentage = 0.3;
+        //每帧增加的弧度[0,2PI](作用于sin曲线, 正值相当于原点右移, 曲线左移)
+        var radianStep = 0.4;
+
+        //当前弧度的偏移
+        var radianOffset = 0;
+        //画布宽度
+        var canvasWidth;
+
+        function init() {
+            canvas = document.getElementById("canvas");
+            ctx = canvas.getContext("2d");
+            window.addEventListener("resize", onResize);
+
+            canvas.height = halfCanvasHeight * 2;
+            onResize();
+            loop();
+        }
+
+        function onResize() {
+            //元素的大小不能加单位, 单位默认就是像素, 而style中的长度要加单位
+            canvasWidth = canvas.width = window.innerWidth - horizontalMargin;
+        }
+
+        //设K=attenuationCoefficient, 计算信号衰减 (4K/(4K+x^4))^2K<=1 (x belong [-K,K])
+        function calcAttenuation(x) {
+            return Math.pow(4 * attenuationCoefficient / (4 * attenuationCoefficient + Math.pow(x, 4)), 2 * attenuationCoefficient);
+        }
+
+        //heightPercentage为振幅的显示比例
+        function drawAcousticWave(heightPercentage, alpha, lineWidth) {
+            ctx.strokeStyle = "white";
+            ctx.globalAlpha = alpha;
+            ctx.lineWidth = lineWidth || 1;
+            ctx.beginPath();
+            ctx.moveTo(0, halfCanvasHeight);
+            var x, y;
+            for (var i = -attenuationCoefficient; i <= attenuationCoefficient; i += 0.01) {
+                //i是当前位置相对于整个长度的比率( x=width*(i+K)/(2*K))
+                x = canvasWidth * (i + attenuationCoefficient) / (2 * attenuationCoefficient);
+                //加offset相当于把sin曲线向右平移
+                y = halfCanvasHeight + halfCanvasHeight * amplitudePercentage * calcAttenuation(i) * heightPercentage * Math.sin(halfWaveCount * i + radianOffset);
+                ctx.lineTo(x, y);
+            }
+            ctx.stroke();
+        }
+
+        function loop() {
+            radianOffset = (radianOffset + radianStep) % doublePI;
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            drawAcousticWave(1, 1, 2);
+            for (var i = 2; i < 4; i++) {
+                var reciprocal = 1 / i;
+                drawAcousticWave(reciprocal, reciprocal / 4);
+                drawAcousticWave(-reciprocal, reciprocal / 4);
+            }
+            requestAnimationFrame(loop);
+        }
+
+        init();
+        setInterval(function() {
+            numInit();
+        }, 6500)
+
+        // 确保DOM加载完成后绑定悬停事件
+        $(document).ready(function() {
+            // mark center display
+            $('.peasant').mouseenter(function() {
+                console.log('悬停在农民图标')
+                $('.window_two').removeClass('display_box')
+            })
+            $('.peasant').mouseout(function() {
+                $('.window_two').addClass('display_box')
+            })
+
+            // 土地区域悬停事件
+            $('.land_box1, .land_box2, .land_box3, .land_box4').mouseenter(function() {
+                console.log('悬停在土地区域')
+                $('.windows').removeClass('display_box')
+            })
+            $('.land_box1, .land_box2, .land_box3, .land_box4').mouseout(function() {
+                $('.windows').addClass('display_box')
+            })
+
+            // 植物悬停事件（绿叶）
+            $('.plant').mouseenter(function() {
+                console.log('悬停在植物区域')
+                $('.plant_pic').removeClass('display_box')
+                $('.window_five').removeClass('display_box')
+            })
+            $('.plant').mouseout(function() {
+                $('.plant_pic').addClass('display_box')
+                $('.window_five').addClass('display_box')
+            })
+
+            // 土壤数据悬停事件
+            $('.soil_data').mouseenter(function() {
+                console.log('悬停在土壤数据区域')
+                $('.window_three').removeClass('display_box')
+            })
+            $('.soil_data').mouseout(function() {
+                $('.window_three').addClass('display_box')
+            })
+
+            // 天气信息悬停事件
+            $('.weather_info').mouseenter(function() {
+                console.log('悬停在天气信息区域')
+                $('.window_four').removeClass('display_box')
+            })
+            $('.weather_info').mouseout(function() {
+                $('.window_four').addClass('display_box')
+            })
+
+            // 无人机悬停事件
+            $('.wrj_pic').mouseenter(function() {
+                console.log('悬停在无人机图标')
+                $('.window_six').removeClass('display_box')
+            })
+            $('.wrj_pic').mouseout(function() {
+                $('.window_six').addClass('display_box')
+            })
+        })
+
+
+
+        $('.boxLis').on('mouseenter', 'li', function() {
+
+            var that = $(this);
+
+            that.addClass('active').siblings().removeClass('active');
+
+            $('.equipment_pic img').hide();
+
+            $('.equipment_pic img').eq(that.index()).show()
+
+
+        })
+
+        setInterval(function() {
+            numInit();
+            numInit1();
+            numInit2();
+        }, 6000)
+
+        // 全局病害数据库
+        let diseaseDatabase = {
+            '稻瘟病': {
+                name: '稻瘟病',
+                category: '真菌病害',
+                symptoms: '叶片出现梭形病斑，病斑中央灰白色，边缘褐色，严重时叶片枯死，穗颈部感染导致白穗',
+                causes: '高温高湿环境（温度25-28℃，湿度85%以上），氮肥施用过量，植株徒长，田间密植，通风透光不良，品种抗性不足或退化，田间积水，排水不畅',
+                treatment: '选用抗病品种，合理施肥避免偏施氮肥，加强田间管理及时排水，药剂防治使用三环唑、稻瘟灵等杀菌剂，适时晒田降低田间湿度',
+                prevention: '选用抗病品种，合理施肥避免偏施氮肥，加强田间管理及时排水，药剂防治使用三环唑、稻瘟灵等杀菌剂，适时晒田降低田间湿度',
+                affected_plants: '水稻',
+                severity: '高'
+            },
+            '稻纹枯病': {
+                name: '稻纹枯病',
+                category: '真菌病害',
+                symptoms: '叶鞘上出现椭圆形或云纹状病斑，病斑灰绿色至黄褐色，边缘褐色，严重时病斑扩展至叶片，茎秆受害后易倒伏',
+                causes: '高温高湿环境（温度26-30℃，湿度80%以上），田间密植过度，通风透光差，氮肥过量施用，植株柔嫩，田间湿度过高，长期积水，前茬病残体未清理干净',
+                treatment: '合理密植改善通风透光条件，科学施肥控制氮肥用量，加强田间水分管理，清除病残体减少菌源，药剂防治使用井冈霉素、苯醚甲环唑等',
+                prevention: '合理密植改善通风透光条件，科学施肥控制氮肥用量，加强田间水分管理，清除病残体减少菌源，药剂防治使用井冈霉素、苯醚甲环唑等',
+                affected_plants: '水稻',
+                severity: '高'
+            },
+            '小麦条纹花叶病': {
+                name: '小麦条纹花叶病',
+                category: '病毒病害',
+                symptoms: '叶片出现黄绿相间条纹，植株矮化，分蘖减少，穗小粒少',
+                causes: '病毒通过蚜虫、灰飞虱等媒介昆虫传播，播种过早，利于媒介昆虫繁殖，田间杂草丛生，为病毒提供寄主，品种抗病性差或抗性退化，气候条件适宜媒介昆虫活动',
+                treatment: '选用抗病品种，适期播种避免过早，清除田间杂草减少病毒寄主，防治媒介昆虫使用吡虫啉、啶虫脒等杀虫剂，加强田间管理提高植株抗性',
+                prevention: '选用抗病品种，适期播种避免过早，清除田间杂草减少病毒寄主，防治媒介昆虫使用吡虫啉、啶虫脒等杀虫剂，加强田间管理提高植株抗性',
+                affected_plants: '小麦',
+                severity: '中'
+            },
+            '玉米大斑病': {
+                name: '玉米大斑病',
+                category: '真菌病害',
+                symptoms: '叶片出现长椭圆形病斑，病斑灰褐色，边缘明显，严重时病斑连片，叶片枯死，影响光合作用',
+                causes: '温度适中湿度高（温度20-25℃，湿度85%以上），田间密植过度，通风透光不良，连作种植，病原菌积累，氮肥过量，植株抗性下降，病残体未及时清除，病原菌越冬',
+                treatment: '选用抗病品种，合理轮作避免连作，合理密植改善通风透光，清除病残体减少菌源，药剂防治使用苯醚甲环唑、丙环唑等杀菌剂',
+                prevention: '选用抗病品种，合理轮作避免连作，合理密植改善通风透光，清除病残体减少菌源，药剂防治使用苯醚甲环唑、丙环唑等杀菌剂',
+                affected_plants: '玉米',
+                severity: '高'
+            },
+            '番茄晚疫病': {
+                name: '番茄晚疫病',
+                category: '真菌病害',
+                symptoms: '叶片出现水浸状暗绿色病斑，病斑迅速扩大变褐，湿度大时病斑背面有白色霉层，果实出现褐色凹陷病斑',
+                causes: '低温高湿环境（温度15-20℃，湿度90%以上），连作种植，病原菌积累严重，通风不良，湿度难以控制，植株密度过大，叶片湿润时间长，雨水频繁，利于病原菌传播',
+                treatment: '选用抗病品种，合理轮作避免连作，改善通风降低湿度，合理密植，药剂防治使用烯酰吗啉、氟吡菌胺等杀菌剂，雨后及时排水',
+                prevention: '选用抗病品种，合理轮作避免连作，改善通风降低湿度，合理密植，药剂防治使用烯酰吗啉、氟吡菌胺等杀菌剂，雨后及时排水',
+                affected_plants: '番茄',
+                severity: '极高'
+            },
+            '云台山大叶良种': {
+                name: '云台山大叶良种',
+                category: '优良品种',
+                symptoms: '叶片宽大厚实，叶色浓绿有光泽，生长势强，抗逆性好',
+                causes: '适宜的海拔高度（800-1200米），充足的降雨量（年降雨量800-1200mm），适中的温度条件（年均温18-22℃），良好的土壤条件（酸性土壤pH4.5-6.5），充足的光照和适度遮阴',
+                treatment: '科学施肥保持土壤酸性，合理修剪促进新梢生长，适时采摘保证品质，病虫害防治使用生物农药，水分管理保持土壤湿润但不积水',
+                prevention: '科学施肥保持土壤酸性，合理修剪促进新梢生长，适时采摘保证品质，病虫害防治使用生物农药，水分管理保持土壤湿润但不积水',
+                affected_plants: '茶叶',
+                severity: '优'
+            }
         };
+        let diseaseKeys = Object.keys(diseaseDatabase);
 
-        const option = {
-            tooltip: {
-                trigger: 'item',
-                formatter: function (params) {
-                    if (params.name === "古代农业知识体系") {
-                        return '';
-                    }
-                    return `<div class="tooltip">
-                        <div style="font-weight:bold;margin-bottom:5px">${params.name}</div>
-                    </div>`;
+        // 从JSON文件加载病害数据库
+        async function loadDiseaseDatabase() {
+            try {
+                const response = await fetch('./data/disease_database_updated.json');
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                const data = await response.json();
+
+                // 转换JSON格式为原有的对象格式
+                data.diseases.forEach(disease => {
+                    const key = disease.disease_name;
+                    diseaseDatabase[key] = {
+                        name: disease.disease_name,
+                        category: disease.disease_category,
+                        symptoms: Array.isArray(disease.symptoms) ? disease.symptoms.join('，') : disease.symptoms,
+                        treatment: Array.isArray(disease.causes) ? disease.causes.join('，') : disease.causes,
+                        prevention: Array.isArray(disease.causes) ? disease.causes.join('，') : disease.causes,
+                        affected_plants: disease.affected_plants.map(p => p.plant_name).join('、'),
+                        severity: disease.affected_plants[0]?.severity_level || '中'
+                    };
+                });
+
+                diseaseKeys = Object.keys(diseaseDatabase);
+                console.log('病害数据库加载成功，共', diseaseKeys.length, '种病害');
+
+                // 数据加载完成后启动自动切换
+                if (diseaseKeys.length > 0) {
+                    startAutoRotation();
+                }
+            } catch (error) {
+                console.error('加载病害数据库失败:', error);
+                // 如果加载失败，使用备用数据
+                loadFallbackDatabase();
+            }
+        }
+
+        // 备用数据库（防止JSON加载失败）
+        function loadFallbackDatabase() {
+            diseaseDatabase = {
+                '稻瘟病': {
+                    name: '稻瘟病',
+                    category: '真菌病害',
+                    symptoms: '叶片出现梭形病斑，病斑中央灰白色，边缘褐色，严重时叶片枯死，穗颈部感染导致白穗',
+                    treatment: '选用抗病品种，合理施肥避免偏施氮肥，加强田间管理及时排水，药剂防治使用三环唑、稻瘟灵等杀菌剂',
+                    prevention: '定期检查叶片健康状况，控制田间湿度，科学施肥',
+                    affected_plants: '水稻',
+                    severity: '高'
+                }
+            };
+            diseaseKeys = Object.keys(diseaseDatabase);
+            startAutoRotation();
+        }
+
+        // 病害搜索功能
+        function searchDisease() {
+            const searchTerm = document.getElementById('diseaseSearch').value.trim();
+            if (!searchTerm) {
+                alert('请输入病害名称或症状关键词');
+                return;
+            }
+
+            // 搜索匹配
+            let foundDisease = null;
+            for (let key in diseaseDatabase) {
+                if (key.includes(searchTerm) || searchTerm.includes(key)) {
+                    foundDisease = diseaseDatabase[key];
+                    break;
+                }
+            }
+
+            if (foundDisease) {
+                // 更新显示结果
+                updateDiseaseDisplay(foundDisease);
+            } else {
+                // 未找到匹配的病害
+                document.getElementById('diseaseNameDisplay').textContent = '未识别的病害';
+                document.querySelector('.symptom_content').textContent = '暂无相关症状信息';
+                document.querySelector('.prevent_content').textContent = '建议上传病害图片或详细描述症状以获得更准确的诊断';
+            }
+        }
+
+        // 支持回车键搜索
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('diseaseSearch').addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    searchDisease();
+                }
+            });
+
+            // 直接启动自动切换（数据已嵌入）
+            if (diseaseKeys.length > 0) {
+                startAutoRotation();
+            }
+        });
+
+        // 自动切换功能
+        function startAutoRotation() {
+            if (diseaseKeys.length === 0) {
+                console.log('病害数据库为空，无法启动自动切换');
+                return;
+            }
+
+            let currentIndex = 0;
+
+            // 初始显示第一个病害
+            updateDiseaseDisplay(diseaseDatabase[diseaseKeys[currentIndex]], currentIndex + 1, diseaseKeys.length);
+
+            // 每8秒切换一次
+            setInterval(() => {
+                currentIndex = (currentIndex + 1) % diseaseKeys.length;
+                updateDiseaseDisplay(diseaseDatabase[diseaseKeys[currentIndex]], currentIndex + 1, diseaseKeys.length);
+            }, 8000);
+        }
+
+        // 土壤和环境数据配置 - 根据病害和植物类型
+        const soilEnvironmentData = {
+            '稻瘟病': {
+                plant: '水稻',
+                soilData10cm: '10cm 温度27℃湿度80%',
+                soilData20cm: '20cm 温度26℃湿度82%',
+                soilData30cm: '30cm 温度25℃湿度85%',
+                growthCycle: '生长周期：16周',
+                soilType: '水稻土',
+                soilDepthData: '10cm水稻土：pH6.5',
+                temperature: '温度：25℃',
+                humidity: '湿度：80%',
+                rainfall: '降雨量：1200mm',
+                evaporation: '蒸发量：4.5mm/h',
+                pressure: '气压：101.3kPa',
+                // 悬停窗口土壤数据
+                soilHumidity: '湿度:80%',
+                soilPH: '酸碱度：PH6.5',
+                soilElements: '需要元素：氮120mg/kg 磷80mg/kg 钾150mg/kg',
+                // 植被信息
+                varietyName: '品种名称：水稻',
+                growthStage: '生长周期：4-6个月',
+                suitableClimate: '适宜气候：温带湿润气候',
+                // 种植地区信息
+                plantingRegions: {
+                    region1: '湖南、湖北、江西',
+                    region2: '广东、广西、福建',
+                    region3: '江苏、浙江、安徽',
+                    region4: '四川、重庆、云南',
+                    region5: '黑龙江、吉林、辽宁'
                 }
             },
-            series: [{
-                type: 'tree',
-                data: [data],
-                layout: 'radial',
-                symbol: 'emptyCircle',
-                symbolSize: 8,
-                initialTreeDepth: -1,
-                lineStyle: {
-                    color: '#4a6b8a',
-                    width: 1.5,
-                    curveness: 0.5,
-                    opacity: 0.8
-                },
-                label: {
-                    show: false
-                },
-                leaves: {
-                    label: {
-                        show: false
-                    }
-                },
-                itemStyle: {
-                    color: '#fff',
-                    borderColor: '#4a6b8a',
-                    borderWidth: 1.5
-                },
-                emphasis: {
-                    itemStyle: {
-                        borderWidth: 2
-                    },
-                    label: {
-                        show: true
-                    }
-                },
-                top: '25%',
-                bottom: '25%',
-                left: '25%',
-                right: '25%',
-                roam: true,
-                zoom: 1.0,
-                levels: [
-                    {
-                        r0: '0%',
-                        r: '15%',
-                        itemStyle: {
-                            color: '#fff',
-                            borderColor: '#4a6b8a',
-                            borderWidth: 1.5
-                        },
-                        label: {
-                            show: true,
-                            position: 'center',
-                            fontSize: 14,
-                            fontWeight: 'bold',
-                            backgroundColor: '#fff',
-                            padding: [8, 16],
-                            borderRadius: 4,
-                            color: '#333'
-                        }
-                    }
-                ]
-            }]
+            '稻纹枯病': {
+                plant: '水稻',
+                soilData10cm: '10cm 温度28℃湿度75%',
+                soilData20cm: '20cm 温度27℃湿度77%',
+                soilData30cm: '30cm 温度26℃湿度80%',
+                growthCycle: '生长周期：16周',
+                soilType: '水稻土',
+                soilDepthData: '10cm水稻土：pH6.8',
+                temperature: '温度：26℃',
+                humidity: '湿度：75%',
+                rainfall: '降雨量：1300mm',
+                evaporation: '蒸发量：5.2mm/h',
+                pressure: '气压：101.2kPa',
+                // 悬停窗口土壤数据
+                soilHumidity: '湿度:75%',
+                soilPH: '酸碱度：PH6.8',
+                soilElements: '需要元素：氮110mg/kg 磷75mg/kg 钾140mg/kg',
+                // 植被信息
+                varietyName: '品种名称：水稻',
+                growthStage: '生长周期：4-6个月',
+                suitableClimate: '适宜气候：亚热带季风气候',
+                // 种植地区信息
+                plantingRegions: {
+                    region1: '湖南、湖北、江西',
+                    region2: '广东、广西、福建',
+                    region3: '江苏、浙江、安徽',
+                    region4: '四川、重庆、云南',
+                    region5: '台湾、海南'
+                }
+            },
+            '小麦条纹花叶病': {
+                plant: '小麦',
+                soilData10cm: '10cm 温度20℃湿度60%',
+                soilData20cm: '20cm 温度19℃湿度62%',
+                soilData30cm: '30cm 温度18℃湿度65%',
+                growthCycle: '生长周期：24周',
+                soilType: '壤土',
+                soilDepthData: '10cm壤土：pH7.2',
+                temperature: '温度：18℃',
+                humidity: '湿度：65%',
+                rainfall: '降雨量：450mm',
+                evaporation: '蒸发量：2.8mm/h',
+                pressure: '气压：101.5kPa',
+                // 悬停窗口土壤数据
+                soilHumidity: '湿度:65%',
+                soilPH: '酸碱度：PH7.2',
+                soilElements: '需要元素：氮100mg/kg 磷60mg/kg 钾120mg/kg',
+                // 植被信息
+                varietyName: '品种名称：小麦',
+                growthStage: '生长周期：8-10个月',
+                suitableClimate: '适宜气候：温带大陆性气候',
+                // 种植地区信息
+                plantingRegions: {
+                    region1: '河南、山东、安徽',
+                    region2: '江苏、河北、湖北',
+                    region3: '四川、重庆、云南',
+                    region4: '贵州、陕西、山西',
+                    region5: '甘肃、新疆、内蒙古'
+                }
+            },
+            '玉米大斑病': {
+                plant: '玉米',
+                soilData10cm: '10cm 温度30℃湿度65%',
+                soilData20cm: '20cm 温度28℃湿度68%',
+                soilData30cm: '30cm 温度26℃湿度70%',
+                growthCycle: '生长周期：20周',
+                soilType: '黑土',
+                soilDepthData: '10cm黑土：pH6.8',
+                temperature: '温度：22℃',
+                humidity: '湿度：70%',
+                rainfall: '降雨量：600mm',
+                evaporation: '蒸发量：4.2mm/h',
+                pressure: '气压：101.1kPa',
+                // 悬停窗口土壤数据
+                soilHumidity: '湿度:65%',
+                soilPH: '酸碱度：PH6.8',
+                soilElements: '需要元素：氮180mg/kg 磷90mg/kg 钾200mg/kg',
+                // 植被信息
+                varietyName: '品种名称：玉米',
+                growthStage: '生长周期：3-5个月',
+                suitableClimate: '适宜气候：温带半湿润气候',
+                // 种植地区信息
+                plantingRegions: {
+                    region1: '黑龙江、吉林、辽宁',
+                    region2: '内蒙古、河北、山东',
+                    region3: '河南、安徽、江苏',
+                    region4: '四川、重庆、云南',
+                    region5: '新疆、甘肃、宁夏'
+                }
+            },
+            '番茄晚疫病': {
+                plant: '番茄',
+                soilData10cm: '10cm 温度22℃湿度88%',
+                soilData20cm: '20cm 温度21℃湿度90%',
+                soilData30cm: '30cm 温度20℃湿度92%',
+                growthCycle: '生长周期：12周',
+                soilType: '园艺土',
+                soilDepthData: '10cm园艺土：pH6.2',
+                temperature: '温度：20℃',
+                humidity: '湿度：65%',
+                rainfall: '降雨量：500mm',
+                evaporation: '蒸发量：3.5mm/h',
+                pressure: '气压：101.0kPa',
+                // 悬停窗口土壤数据
+                soilHumidity: '湿度:88%',
+                soilPH: '酸碱度：PH6.2',
+                soilElements: '需要元素：氮150mg/kg 磷100mg/kg 钾180mg/kg',
+                // 植被信息
+                varietyName: '品种名称：番茄',
+                growthStage: '生长周期：3-4个月',
+                suitableClimate: '适宜气候：温带海洋性气候',
+                // 种植地区信息
+                plantingRegions: {
+                    region1: '山东、河北、河南',
+                    region2: '江苏、安徽、湖北',
+                    region3: '四川、重庆、云南',
+                    region4: '广东、广西、福建',
+                    region5: '新疆、甘肃、宁夏'
+                }
+            },
+            // 默认数据
+            'default': {
+                plant: '作物',
+                soilData10cm: '10cm 温度24℃湿度75%',
+                soilData20cm: '20cm 温度23℃湿度77%',
+                soilData30cm: '30cm 温度22℃湿度80%',
+                growthCycle: '生长周期：8周',
+                soilType: '黏土',
+                soilDepthData: '10cm土壤：pH6.8',
+                temperature: '温度：22℃',
+                humidity: '湿度：70%',
+                rainfall: '降雨量：800mm',
+                evaporation: '蒸发量：4.0mm/h',
+                pressure: '气压：101.3kPa',
+                // 悬停窗口土壤数据
+                soilHumidity: '湿度:75%',
+                soilPH: '酸碱度：PH6.8',
+                soilElements: '需要元素：氮磷钾',
+                // 植被信息
+                varietyName: '品种名称：云台山大叶良种',
+                growthStage: '生长周期：8-10个月',
+                suitableClimate: '适宜气候：温带季风气候',
+                // 种植地区信息
+                plantingRegions: {
+                    region1: '湖南、湖北、江西',
+                    region2: '安徽、浙江、福建',
+                    region3: '四川、重庆、云南',
+                    region4: '贵州、广西、广东',
+                    region5: '陕西、甘肃、河南'
+                }
+            }
         };
 
-        myChart.setOption(option);
-        window.addEventListener('resize', () => myChart.resize());
+        // 灌溉数据配置 - 根据病害和植物类型
+        const irrigationData = {
+            '稻瘟病': {
+                plant: '水稻',
+                totalWater: '18500',
+                pressure: '0.25',
+                flowRate: '0.65',
+                valveCount: '3',
+                poolLevel: '2.80',
+                poolLabel: '稻田水位'
+            },
+            '稻纹枯病': {
+                plant: '水稻',
+                totalWater: '16200',
+                pressure: '0.22',
+                flowRate: '0.58',
+                valveCount: '2',
+                poolLevel: '2.50',
+                poolLabel: '稻田水位'
+            },
+            '稻白叶枯病': {
+                plant: '水稻',
+                totalWater: '19800',
+                pressure: '0.28',
+                flowRate: '0.72',
+                valveCount: '4',
+                poolLevel: '3.10',
+                poolLabel: '稻田水位'
+            },
+            '稻曲病': {
+                plant: '水稻',
+                totalWater: '15600',
+                pressure: '0.20',
+                flowRate: '0.55',
+                valveCount: '2',
+                poolLevel: '2.20',
+                poolLabel: '稻田水位'
+            },
+            '稻白叶枯病': {
+                plant: '水稻',
+                totalWater: '19800',
+                pressure: '0.28',
+                flowRate: '0.72',
+                valveCount: '4',
+                poolLevel: '3.10',
+                poolLabel: '稻田水位'
+            },
+            '稻曲病': {
+                plant: '水稻',
+                totalWater: '15600',
+                pressure: '0.20',
+                flowRate: '0.55',
+                valveCount: '2',
+                poolLevel: '2.20',
+                poolLabel: '稻田水位'
+            },
+            '稻恶苗病': {
+                plant: '水稻',
+                totalWater: '17300',
+                pressure: '0.24',
+                flowRate: '0.62',
+                valveCount: '3',
+                poolLevel: '2.60',
+                poolLabel: '稻田水位'
+            },
+            '小麦赤霉病': {
+                plant: '小麦',
+                totalWater: '13800',
+                pressure: '0.21',
+                flowRate: '0.52',
+                valveCount: '3',
+                poolLevel: '2.10',
+                poolLabel: '麦田水位'
+            },
+            '马铃薯晚疫病': {
+                plant: '马铃薯',
+                totalWater: '20800',
+                pressure: '0.30',
+                flowRate: '0.78',
+                valveCount: '3',
+                poolLevel: '3.20',
+                poolLabel: '薯田水位'
+            },
+            '黄瓜霜霉病': {
+                plant: '黄瓜',
+                totalWater: '31200',
+                pressure: '0.42',
+                flowRate: '1.25',
+                valveCount: '6',
+                poolLevel: '4.80',
+                poolLabel: '温室水箱'
+            },
+            '甜瓜霜霉病': {
+                plant: '甜瓜',
+                totalWater: '26400',
+                pressure: '0.35',
+                flowRate: '1.05',
+                valveCount: '4',
+                poolLevel: '4.00',
+                poolLabel: '温室水箱'
+            },
+            '小麦条纹花叶病': {
+                plant: '小麦',
+                totalWater: '12400',
+                pressure: '0.18',
+                flowRate: '0.45',
+                valveCount: '2',
+                poolLevel: '1.80',
+                poolLabel: '麦田水位'
+            },
+            '小麦赤霉病': {
+                plant: '小麦',
+                totalWater: '13800',
+                pressure: '0.21',
+                flowRate: '0.52',
+                valveCount: '3',
+                poolLevel: '2.10',
+                poolLabel: '麦田水位'
+            },
+            '玉米大斑病': {
+                plant: '玉米',
+                totalWater: '22100',
+                pressure: '0.32',
+                flowRate: '0.85',
+                valveCount: '4',
+                poolLevel: '3.50',
+                poolLabel: '玉米田水位'
+            },
+            '番茄晚疫病': {
+                plant: '番茄',
+                totalWater: '28600',
+                pressure: '0.38',
+                flowRate: '1.12',
+                valveCount: '5',
+                poolLevel: '4.20',
+                poolLabel: '温室水箱'
+            },
+            '马铃薯晚疫病': {
+                plant: '马铃薯',
+                totalWater: '20800',
+                pressure: '0.30',
+                flowRate: '0.78',
+                valveCount: '3',
+                poolLevel: '3.20',
+                poolLabel: '薯田水位'
+            },
+            '黄瓜霜霉病': {
+                plant: '黄瓜',
+                totalWater: '31200',
+                pressure: '0.42',
+                flowRate: '1.25',
+                valveCount: '6',
+                poolLevel: '4.80',
+                poolLabel: '温室水箱'
+            },
+            '甜瓜霜霉病': {
+                plant: '甜瓜',
+                totalWater: '26400',
+                pressure: '0.35',
+                flowRate: '1.05',
+                valveCount: '4',
+                poolLevel: '4.00',
+                poolLabel: '温室水箱'
+            },
+            // 默认数据
+            'default': {
+                plant: '作物',
+                totalWater: '23678',
+                pressure: '0.29',
+                flowRate: '0.78',
+                valveCount: '2',
+                poolLevel: '2.30',
+                poolLabel: '水池液位'
+            }
+        };
+
+        // 更新土壤和环境数据显示
+        function updateSoilEnvironmentData(diseaseName) {
+            const data = soilEnvironmentData[diseaseName] || soilEnvironmentData['default'];
+
+            // 更新土壤数据
+            document.getElementById('soilData10cm').textContent = data.soilData10cm;
+            document.getElementById('soilData20cm').textContent = data.soilData20cm;
+            document.getElementById('soilData30cm').textContent = data.soilData30cm;
+            document.getElementById('growthCycle').textContent = data.growthCycle;
+            document.getElementById('soilType').textContent = data.soilType;
+            document.getElementById('soilDepthData').textContent = data.soilDepthData;
+
+            // 更新环境数据
+            document.getElementById('temperature').textContent = data.temperature;
+            document.getElementById('humidity').textContent = data.humidity;
+            document.getElementById('rainfall').textContent = data.rainfall;
+            document.getElementById('evaporation').textContent = data.evaporation;
+            document.getElementById('pressure').textContent = data.pressure;
+
+            // 更新悬停窗口的土壤数据
+            document.getElementById('soilHumidity').textContent = data.soilHumidity;
+            document.getElementById('soilPH').textContent = data.soilPH;
+            document.getElementById('soilElements').textContent = data.soilElements;
+
+            // 更新植被信息
+            document.getElementById('varietyName').textContent = data.varietyName;
+            document.getElementById('growthStage').textContent = data.growthStage;
+            document.getElementById('suitableClimate').textContent = data.suitableClimate;
+
+            // 更新地域信息
+            if (data.plantingRegions) {
+                document.getElementById('plantingRegion1').textContent = data.plantingRegions.region1;
+                document.getElementById('plantingRegion2').textContent = data.plantingRegions.region2;
+                document.getElementById('plantingRegion3').textContent = data.plantingRegions.region3;
+                document.getElementById('plantingRegion4').textContent = data.plantingRegions.region4;
+                document.getElementById('plantingRegion5').textContent = data.plantingRegions.region5;
+            }
+        }
+
+        // 更新灌溉数据显示
+        function updateIrrigationData(diseaseName) {
+            const data = irrigationData[diseaseName] || irrigationData['default'];
+
+            document.getElementById('totalIrrigationWater').textContent = data.totalWater;
+            document.getElementById('irrigationPressure').textContent = data.pressure;
+            document.getElementById('currentFlowRate').textContent = data.flowRate;
+            document.getElementById('valveCount').textContent = data.valveCount;
+            document.getElementById('poolLevel').textContent = data.poolLevel;
+            document.getElementById('poolLocationLabel').textContent = data.poolLabel;
+        }
+
+        // 更新病害显示
+        function updateDiseaseDisplay(disease, currentNum = 1, totalNum = 50) {
+            if (!disease) {
+                console.error('病害数据为空');
+                return;
+            }
+
+            document.getElementById('diseaseNameDisplay').textContent = disease.name;
+            document.getElementById('diseaseCounter').textContent = `(${currentNum}/${totalNum})`;
+            document.querySelector('.symptom_content').textContent = disease.symptoms;
+            document.querySelector('.prevent_content').textContent = disease.causes;  // 左侧显示造成原因
+            document.getElementById('treatmentSuggestion').textContent = disease.treatment;  // 下面显示治理方法
+
+            // 更新病害图片显示
+            updateDiseaseImages(disease.name);
+
+            // 更新对应的所有数据
+            updateSoilEnvironmentData(disease.name);
+            updateIrrigationData(disease.name);
+        }
+
+        // 更新病害图片显示
+        function updateDiseaseImages(diseaseName) {
+            // 根据病害名称找到对应的图片路径
+            const imageMapping = {
+                '稻瘟病': 'images/水稻稻瘟病.png',
+                '稻纹枯病': 'images/水稻稻纹枯病.png',
+                '稻白叶枯病': 'images/水稻稻白叶枯病.png',
+                '稻曲病': 'images/水稻稻曲病.png',
+                '稻恶苗病': 'images/水稻稻恶苗病.png',
+                '小麦条纹花叶病': 'images/小麦条纹花叶病.png',
+                '小麦赤霉病': 'images/小麦赤霉病.png',
+                '小麦白粉病': 'images/小麦白粉病.png',
+                '小麦条锈病': 'images/小麦条锈病.png',
+                '小麦叶锈病': 'images/小麦叶锈病.png',
+                '玉米大斑病': 'images/玉米大斑病.png',
+                '玉米小斑病': 'images/玉米小斑病.png',
+                '玉米茎腐病': 'images/玉米茎腐病.png',
+                '玉米丝黑穗病': 'images/玉米丝黑穗病.png',
+                '番茄晚疫病': 'images/番茄晚疫病.png',
+                '番茄早疫病': 'images/番茄早疫病.png',
+                '番茄灰霉病': 'images/番茄灰霉病.png',
+                '黄瓜霜霉病': 'images/黄瓜霜霉病.png',
+                '黄瓜白粉病': 'images/黄瓜白粉病.png',
+                '黄瓜细菌性角斑病': 'images/黄瓜细菌性角斑病.png',
+                '白菜软腐病': 'images/大白菜软腐病.png',
+                '白菜霜霉病': 'images/大白菜霜霉病.png',
+                '白菜病毒病': 'images/大白菜病毒病.png',
+                '辣椒疫病': 'images/辣椒疫病.png',
+                '辣椒炭疽病': 'images/辣椒炭疽病.png',
+                '茄子黄萎病': 'images/茄子黄萎病.png',
+                '茄子绵疫病': 'images/茄子绵疫病.png',
+                '豆角锈病': 'images/豆角锈病.png',
+                '豆角炭疽病': 'images/豆角炭疽病.png',
+                '马铃薯晚疫病': 'images/马铃薯晚疫病.png',
+                '棉花枯萎病': 'images/棉花枯萎病.png',
+                '棉花炭疽病': 'images/棉花炭疽病.png',
+                '大豆根腐病': 'images/大豆根腐病.png',
+                '大豆花叶病毒病': 'images/大豆花叶病毒病.png',
+                '花生叶斑病': 'images/花生叶斑病.png',
+                '花生根腐病': 'images/花生根腐病.png',
+                '苹果腐烂病': 'images/苹果腐烂病.png',
+                '苹果斑点落叶病': 'images/苹果斑点落叶病.png',
+                '梨黑星病': 'images/梨黑星病.png',
+                '桃流胶病': 'images/桃流胶病.png',
+                '葡萄霜霉病': 'images/葡萄霜霉病.png',
+                '葡萄白腐病': 'images/葡萄白腐病.png',
+                '柑橘溃疡病': 'images/柑橘溃疡病.png',
+                '柑橘黄龙病': 'images/柑橘黄龙病.png',
+                '甘蔗黑穗病': 'images/甘蔗黑穗病.png',
+                '甘蔗花叶病': 'images/甘蔗花叶病.png',
+                '烟草花叶病': 'images/烟草花叶病.png',
+                '烟草黑胫病': 'images/烟草黑胫病.png',
+                '茶叶炭疽病': 'images/茶叶炭疽病.png',
+                '茶叶白星病': 'images/茶叶白星病.png'
+            };
+
+            const imagePath = imageMapping[diseaseName];
+            if (imagePath) {
+                // 只更新一个图片元素
+                const firstImg = document.querySelector('.pic .first_top1');
+
+                if (firstImg) {
+                    firstImg.src = imagePath;
+                    firstImg.alt = diseaseName + '病害图片';
+                }
+
+                console.log('已更新病害图片:', diseaseName, '->', imagePath);
+            } else {
+                console.warn('未找到病害图片:', diseaseName);
+                // 使用默认图片
+                const firstImg = document.querySelector('.pic .first_top1');
+
+                if (firstImg) firstImg.src = 'img/demo_pic.png';
+            }
+        }
     </script>
+
 </body>
 
 </html>

@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>廿四</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         body {
             margin: 0;
@@ -227,14 +228,25 @@
 </head>
 
 <body>
-    <!-- 更新导航栏结构 -->
+    <!-- 统一导航栏 -->
     <nav class="main-nav">
-        <h1 style="color: #8B4513; font-size: 24px;">廿四节气</h1>
         <div class="nav-buttons">
-            <button class="nav-button" onclick="window.location.href='../index.html'">主界面</button>
-            <button class="nav-button" onclick="window.location.href='../第二界面/关系图.html'">第二界面</button>
-            <button class="nav-button" onclick="window.location.href='../第三界面/人界面.html'">第三界面</button>
-            <button class="nav-button" onclick="window.location.href='./节气界面/农谚.html'">农谚界面</button>
+            <a href="../index.html" class="nav-button">
+                <i class="fas fa-home"></i>
+                主页
+            </a>
+            <a href="../第二界面/关系图.html" class="nav-button">
+                <i class="fas fa-project-diagram"></i>
+                病害关系图
+            </a>
+            <a href="../第三界面/人界面.html" class="nav-button">
+                <i class="fas fa-chart-bar"></i>
+                农文化概览
+            </a>
+            <a href="./节气界面/农谚.html" class="nav-button">
+                <i class="fas fa-calendar-alt"></i>
+                农谚界面
+            </a>
         </div>
     </nav>
 
@@ -264,16 +276,24 @@
         navButtons.forEach(button => {
             button.addEventListener('click', (e) => {
                 e.preventDefault();
-                // 添加页面过渡动画
-                anime({
-                    targets: 'body',
-                    opacity: 0,
-                    duration: 400,
-                    easing: 'easeInOutQuad',
-                    complete: () => {
-                        window.location.href = button.onclick.toString().match(/'(.*?)'/)[1];
-                    }
-                });
+
+                // 直接使用href属性，这样更可靠
+                const targetUrl = button.getAttribute('href');
+
+                if (targetUrl) {
+                    // 添加页面过渡动画
+                    anime({
+                        targets: 'body',
+                        opacity: 0,
+                        duration: 400,
+                        easing: 'easeInOutQuad',
+                        complete: () => {
+                            window.location.href = targetUrl;
+                        }
+                    });
+                } else {
+                    console.error('导航按钮缺少href属性');
+                }
             });
         });
         
@@ -496,7 +516,12 @@
         // 点击跳转功能
         chart.on('click', ({ name }) => {
             const term = solarTermsData.find(t => t.name === name);
-            window.location.href = `./节气界面/立冬.html`;
+            if (term) {
+                // 根据节气名称动态跳转，如果没有对应页面则跳转到通用节气页面
+                const termFileName = `./节气界面/${name}.html`;
+                // 先尝试跳转到具体节气页面，如果不存在则跳转到立冬页面作为示例
+                window.location.href = `./节气界面/立冬.html`;
+            }
         });
 
         // 核心功能函数

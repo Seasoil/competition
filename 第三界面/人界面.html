@@ -5,6 +5,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet" href="css/index.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   <script src="js/echarts.min.js"></script>
   <script src="js/jquery.min.js"></script>
   <script src="js/macarons.js"></script>
@@ -49,6 +50,7 @@
       align-items: center;
       gap: 8px;
       backdrop-filter: blur(8px);
+      text-decoration: none;
     }
 
     .nav-button:hover {
@@ -58,59 +60,77 @@
       box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
     }
 
+    .nav-button i {
+      font-size: 18px;
+    }
+
+    /* 确保导航栏在所有界面中样式一致 */
+    .main-nav .nav-buttons {
+      margin-left: auto;
+    }
+
     .pie {
       width: 100%;
-      height: 320px;
-      padding: 10px;
+      height: 350px; /* 增加高度 */
+      padding: 15px; /* 增加内边距 */
       box-sizing: border-box;
       position: relative;
       display: flex;
       justify-content: space-between;
+      gap: 20px; /* 添加组件间距 */
     }
     .pie1, .pie2 {
-      width: 45%;
+      width: 48%; /* 稍微增加宽度 */
       height: 100%;
-      padding: 5px;
+      padding: 10px; /* 增加内边距 */
       box-sizing: border-box;
       position: relative;
+      background: rgba(0, 0, 0, 0.1); /* 添加轻微背景 */
+      border-radius: 8px; /* 添加圆角 */
     }
     .pie h3 {
       text-align: center;
-      margin-bottom: 10px;
+      margin-bottom: 15px; /* 增加底部间距 */
       color: #fff;
-      font-size: 16px;
+      font-size: 18px; /* 增大字体 */
+      font-weight: 500; /* 增加字重 */
     }
     #pie1, #pie2 {
       height: 90% !important;
     }
 
     .area-rank {
-      height: 300px;
+      height: 320px; /* 增加高度 */
       overflow: hidden;
-      margin-top: 5px;
-      padding-top: 10px;
-      background: rgba(0, 0, 0, 0.1);
-      border-radius: 8px;
+      margin-top: 15px; /* 增加顶部间距 */
+      padding: 15px; /* 增加内边距 */
+      background: rgba(0, 0, 0, 0.15); /* 稍微加深背景 */
+      border-radius: 10px; /* 增大圆角 */
+      border: 1px solid rgba(255, 255, 255, 0.1); /* 添加边框 */
     }
 
     .area-rank h3 {
-      font-size: 16px;
+      font-size: 18px; /* 增大字体 */
       color: #fff;
-      margin-bottom: 10px;
-      padding-left: 15px;
+      margin-bottom: 15px; /* 增加底部间距 */
+      padding-left: 0; /* 移除左边距，因为容器已有padding */
+      font-weight: 500; /* 增加字重 */
     }
 
     .area-rank .con {
-      height: calc(100% - 40px);
+      height: calc(100% - 50px); /* 调整高度计算 */
       overflow: hidden;
-      padding: 0 15px 15px;
+      padding: 0; /* 移除内边距，因为容器已有padding */
     }
 
     .area-rank .con li {
-      height: 28px;
+      height: 32px; /* 增加行高 */
       display: flex;
       align-items: center;
-      margin-bottom: 8px;
+      margin-bottom: 10px; /* 增加行间距 */
+      padding: 0 5px; /* 添加左右内边距 */
+      border-radius: 4px; /* 添加圆角 */
+      transition: background-color 0.2s ease; /* 添加过渡效果 */
     }
 
     .area-rank .con li .num {
@@ -152,18 +172,20 @@
     .aside-left .top {
         background: rgba(0, 0, 0, 0.2);
         border: 1px solid rgba(156, 204, 101, 0.3);
-        padding: 12px;
-        margin: 10px;
-        width: 300px;
+        padding: 18px; /* 增加内边距 */
+        margin: 15px; /* 增加外边距 */
+        width: 320px; /* 稍微增加宽度 */
         box-sizing: border-box;
+        border-radius: 10px; /* 添加圆角 */
     }
 
     .aside-left .top h3 {
         color: #D4E157;
-        font-size: 16px;
-        margin-bottom: 12px;
-        padding-left: 8px;
-        border-left: 3px solid #9CCC65;
+        font-size: 18px; /* 增大字体 */
+        margin-bottom: 18px; /* 增加底部间距 */
+        padding-left: 12px; /* 增加左边距 */
+        border-left: 4px solid #9CCC65; /* 增加边框宽度 */
+        font-weight: 500; /* 增加字重 */
     }
 
     .aside-left .top .tit {
@@ -180,11 +202,12 @@
 
     .aside-left .top .con li {
         background: rgba(0, 0, 0, 0.2);
-        margin-bottom: 4px;
-        padding: 4px 8px;
+        margin-bottom: 8px; /* 增加行间距 */
+        padding: 8px 12px; /* 增加内边距 */
         border: 1px solid rgba(156, 204, 101, 0.2);
         transition: all 0.3s ease;
         position: relative;
+        border-radius: 6px; /* 添加圆角 */
     }
 
     .aside-left .top .con li:hover,
@@ -214,16 +237,16 @@
     }
 
     .aside-left .top .con .book-rank {
-        padding: 2px 0;      /* 减小上下内边距 */
+        padding: 6px 0; /* 增加上下内边距 */
         display: flex;
         align-items: center;
-        min-height: 2px;    /* 设置最小高度 */
+        min-height: 30px; /* 增加最小高度 */
     }
 
     .aside-left .top .con .book-rank span {
         color: #fff;
-        font-size: 12px;     /* 减小字体大小 */
-        line-height: 1.2;    /* 减小行高 */
+        font-size: 14px; /* 增大字体大小 */
+        line-height: 1.4; /* 增加行高 */
     }
 
     .aside-left .top .con .book-rank .ranking {
@@ -345,21 +368,145 @@
         position: relative;
         padding-top: 20px;  /* 增加顶部内边距 */
     }
+
+    /* 地图交互动画效果 */
+    @keyframes fadeInSlide {
+        0% {
+            opacity: 0;
+            transform: translateY(10px) scale(0.95);
+        }
+        100% {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+    }
+
+    @keyframes pulseGlow {
+        0%, 100% {
+            box-shadow: 0 0 5px rgba(30, 144, 255, 0.3);
+        }
+        50% {
+            box-shadow: 0 0 20px rgba(30, 144, 255, 0.8);
+        }
+    }
+
+    /* 省份tooltip样式增强 */
+    .province-tooltip {
+        animation: fadeInSlide 0.3s ease-out;
+        transition: all 0.3s ease;
+    }
+
+    .province-tooltip-enhanced {
+        animation: fadeInSlide 0.3s ease-out;
+        transition: all 0.3s ease;
+        filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+    }
+
+    /* ECharts tooltip 增强样式 */
+    .echarts-tooltip {
+        transition: opacity 0.3s ease, transform 0.3s ease !important;
+        border-radius: 8px !important;
+        backdrop-filter: blur(10px) !important;
+    }
+
+    /* 地图省份悬停时的光晕效果 */
+    .province-hover-glow {
+        filter: drop-shadow(0 0 10px rgba(244, 71, 13, 0.6));
+    }
+
+    /* 地图省份选中时的光晕效果 */
+    .province-selected-glow {
+        filter: drop-shadow(0 0 15px rgba(30, 144, 255, 0.8));
+    }
+
+    /* 地图容器增强 */
+    #map {
+        transition: all 0.3s ease;
+        cursor: pointer;
+    }
+
+    /* 地图悬停时的容器效果 */
+    #map:hover {
+        filter: brightness(1.05);
+    }
+
+    /* 为选中的省份添加特殊效果 */
+    .province-selected {
+        animation: pulseGlow 2s infinite;
+    }
+
+    /* 添加整体布局优化 */
+    .main {
+        gap: 20px; /* 为主要区域添加间距 */
+    }
+
+    .aside-left, .aside-right {
+        padding: 10px; /* 为侧边栏添加内边距 */
+    }
+
+    .middle-map {
+        padding: 0 10px; /* 为中间地图区域添加左右内边距 */
+    }
+
+    /* 为悬停效果添加轻微的交互反馈 */
+    .area-rank .con li:hover {
+        background-color: rgba(255, 255, 255, 0.05);
+    }
+
+    /* 响应式调整 */
+    @media (max-width: 1200px) {
+        .province-tooltip {
+            min-width: 240px !important;
+        }
+
+        .province-tooltip span {
+            font-size: 24px !important;
+        }
+
+        .province-tooltip div {
+            font-size: 18px !important;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .province-tooltip {
+            min-width: 200px !important;
+        }
+
+        .province-tooltip span {
+            font-size: 20px !important;
+        }
+
+        .province-tooltip div {
+            font-size: 16px !important;
+        }
+    }
   </style>
 </head>
 
 <body>
-  <!-- 更新导航栏结构 -->
+  <!-- 统一导航栏 -->
   <nav class="main-nav">
-    <h1 style="color: #8B4513; font-size: 24px;">农学古籍</h1>
     <div class="nav-buttons">
-      <button class="nav-button" onclick="window.location.href='../index.html'">主界面</button>
-      <button class="nav-button" onclick="window.location.href='../第一界面/1界面.html'">第一界面</button>
-      <button class="nav-button" onclick="window.location.href='../第二界面/关系图.html'">第二界面</button>
-      <button class="nav-button" onclick="window.location.href='./four.html'">古籍展示界面</button>
+      <a href="../index.html" class="nav-button">
+        <i class="fas fa-home"></i>
+        主页
+      </a>
+      <a href="../第一界面/1界面.html" class="nav-button">
+        <i class="fas fa-calendar-alt"></i>
+        节气展示
+      </a>
+      <a href="../第二界面/关系图.html" class="nav-button">
+        <i class="fas fa-project-diagram"></i>
+        病害关系图
+      </a>
+      <a href="./four.html" class="nav-button">
+        <i class="fas fa-book"></i>
+        古籍展示
+      </a>
     </div>
   </nav>
-  <div class="first-screen root-wrap">
+  <div class="first-screen root-wrap" style="padding-top: 90px;"> <!-- 为导航栏留出空间 -->
     <header>
       <img src="img/title1.png">
       <div class="gifImg">
@@ -459,25 +606,7 @@
                   </div>
                 </li>
 
-                <li>
-                  <div class="book-rank clearfix">
-                    <span class="ranking fl">5</span>
-                    <span class="name fl">王祯农书</span>
-                    <span class="company fl">元代</span>
-                    <span class="hot fl">农业</span>
-                  </div>
-                  <div class="book-show clearfix">
-                    <div class="img-box fl">
-                      <img src="./img/王祯农书.png" alt="../img/王祯农书../img/封面">
-                    </div>
-                    <div class="content fl">
-                      <p><span>作者：</span><span class="authors">王祯</span></p>
-                      <p><span>ISBN：</span><span class="isbn">7</span></p>
-                      <p><span>朝代：</span><span class="pub-date">元代</span></p>
-                      <p><span>性质：</span><span class="pricing">农器图谱</span></p>
-                    </div>
-                  </div>
-                </li>
+
               </ul>
               <ul class="con">
                 <li class="active">
@@ -560,26 +689,7 @@
                   </div>
                 </li>
 
-                <!-- 10.../img/夏小正../img/（先秦） -->
-                <li>
-                  <div class="book-rank clearfix">
-                    <span class="ranking fl">5</span>
-                    <span class="name fl">夏小正</span>
-                    <span class="company fl">先秦</span>
-                    <span class="hot fl">农业</span>
-                  </div>
-                  <div class="book-show clearfix">
-                    <div class="img-box fl">
-                      <img src="./img/夏小正.png" alt="">
-                    </div>
-                    <div class="content fl">
-                      <p><span>作者：</span><span class="authors">佚名</span></p>
-                      <p><span>ISBN：</span><span class="isbn">10</span></p>
-                      <p><span>朝代：</span><span class="pub-date">先秦</span></p>
-                      <p><span>性质：</span><span class="pricing">物候历</span></p>
-                    </div>
-                  </div>
-                </li>
+
               </ul>
               <ul class="con">
                 <!-- 11.../img/月令广义../img/（明代） -->
@@ -664,26 +774,7 @@
                   </div>
                 </li>
 
-                <!-- 15.../img/岁时广记../img/（宋代） -->
-                <li>
-                  <div class="book-rank clearfix">
-                    <span class="ranking fl">5</span>
-                    <span class="name fl">岁时广记</span>
-                    <span class="company fl">宋代</span>
-                    <span class="hot fl">农业</span>
-                  </div>
-                  <div class="book-show clearfix">
-                    <div class="img-box fl">
-                      <img src="./img/岁时广记.png" alt="">
-                    </div>
-                    <div class="content fl">
-                      <p><span>作者：</span><span class="authors">陈元靓</span></p>
-                      <p><span>ISBN：</span><span class="isbn">15</span></p>
-                      <p><span>朝代：</span><span class="pub-date">宋代</span></p>
-                      <p><span>性质：</span><span class="pricing">节气民俗</span></p>
-                    </div>
-                  </div>
-                </li>
+
               </ul>
               <ul class="con">
                 <!-- 16.../img/淮南子·时则训../img/（西汉） -->
@@ -769,26 +860,7 @@
                   </div>
                 </li>
 
-                <!-- 20.../img/农桑衣食撮要../img/（元代） -->
-                <li>
-                  <div class="book-rank clearfix">
-                    <span class="ranking fl">5</span>
-                    <span class="name fl">农桑衣食撮要</span>
-                    <span class="company fl">元代</span>
-                    <span class="hot fl">农业</span>
-                  </div>
-                  <div class="book-show clearfix">
-                    <div class="img-box fl">
-                      <img src="./img/农桑衣食撮要.png" alt="">
-                    </div>
-                    <div class="content fl">
-                      <p><span>作者：</span><span class="authors">鲁明善</span></p>
-                      <p><span>ISBN：</span><span class="isbn">20</span></p>
-                      <p><span>朝代：</span><span class="pub-date">元代</span></p>
-                      <p><span>性质：</span><span class="pricing">月令体</span></p>
-                    </div>
-                  </div>
-                </li>
+
               </ul>
               <ul class="con">
                 <!-- 21.../img/田家五行../img/（元代） -->
@@ -875,26 +947,7 @@
                   </div>
                 </li>
 
-                <!-- 25.../img/农圃便览../img/（清代） -->
-                <li>
-                  <div class="book-rank clearfix">
-                    <span class="ranking fl">5</span>
-                    <span class="name fl">农圃便览</span>
-                    <span class="company fl">清代</span>
-                    <span class="hot fl">农业</span>
-                  </div>
-                  <div class="book-show clearfix">
-                    <div class="img-box fl">
-                      <img src="./img/农圃便览.png" alt="">
-                    </div>
-                    <div class="content fl">
-                      <p><span>作者：</span><span class="authors">丁宜曾</span></p>
-                      <p><span>ISBN：</span><span class="isbn">25</span></p>
-                      <p><span>朝代：</span><span class="pub-date">清代</span></p>
-                      <p><span>性质：</span><span class="pricing">山东农技</span></p>
-                    </div>
-                  </div>
-                </li>
+
               </ul>
             </div>
           </div>
@@ -980,22 +1033,43 @@
           <div style="margin-top: 0px; margin-bottom: 15px; color: #fff; font-size: 16px; padding-left: 10px;">
             地域信息(审图号：GS(2024)0650号)
           </div>
+          <div id="map-interaction-guide" style="
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: rgba(0, 0, 0, 0.7);
+            color: #fff;
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-size: 12px;
+            z-index: 1000;
+            opacity: 0.8;
+            transition: opacity 0.3s ease;
+            max-width: 200px;
+            line-height: 1.4;
+          ">
+            <div style="font-weight: bold; margin-bottom: 4px;">💡 交互提示</div>
+            <div>• 悬停查看省份信息</div>
+            <div>• 点击锁定/取消选中</div>
+            <div>• 按ESC或点击外部取消</div>
+          </div>
             <div class="stats-info" style="
                 display: flex;
                 justify-content: space-around;
-                padding: 10px 0;
-                margin: 5px 0;
-                background: rgba(0, 0, 0, 0.2);
-                border: 1px solid rgba(156, 204, 101, 0.3);
+                padding: 15px 10px; /* 增加内边距 */
+                margin: 10px 0; /* 增加外边距 */
+                background: rgba(0, 0, 0, 0.25); /* 稍微加深背景 */
+                border: 1px solid rgba(156, 204, 101, 0.4); /* 增强边框 */
+                border-radius: 8px; /* 添加圆角 */
             ">
                 <div style="
                     text-align: center;
                     color: #fff;
-                    padding: 0 15px;
+                    padding: 0 20px; /* 增加左右内边距 */
                     position: relative;
                 ">
-                    <div style="font-size: 14px;">农学古籍</div>
-                    <div style="font-size: 16px; color: #D4E157; margin-top: 5px;">约550本</div>
+                    <div style="font-size: 15px; font-weight: 500;">农学古籍</div> <!-- 增大字体并加粗 -->
+                    <div style="font-size: 18px; color: #D4E157; margin-top: 8px; font-weight: 600;">约550本</div> <!-- 增大字体、间距和字重 -->
                 </div>
                 <div style="
                     width: 2px;
@@ -1082,7 +1156,90 @@
                     <div style="font-size: 16px; color: #D4E157; margin-top: 5px;">约50种</div>
                 </div>
             </div>
-          <div id="map" style="width: 100%; max-width: 1000px; height: 70vh; max-height: 700px; margin: 0 auto; overflow: hidden;"></div>
+          <div id="map" style="width: 100%; max-width: 1200px; height: 80vh; max-height: 800px; margin: 0 auto; overflow: hidden;"></div>
+
+          <!-- 农作物控制面板 -->
+          <div id="crop-control-panel" style="
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: rgba(0, 0, 0, 0.8);
+            border: 2px solid #0692a4;
+            border-radius: 8px;
+            padding: 15px;
+            color: #fff;
+            font-size: 12px;
+            z-index: 1000;
+            display: none;
+            min-width: 200px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+          ">
+            <div style="font-size: 14px; font-weight: bold; margin-bottom: 10px; color: #FFD700;">
+              🌾 农作物分布
+            </div>
+
+            <!-- 显示/隐藏开关 -->
+            <div style="margin-bottom: 10px;">
+              <label style="display: flex; align-items: center; cursor: pointer;">
+                <input type="checkbox" id="crop-toggle" checked style="margin-right: 8px;">
+                <span>显示农作物分布点</span>
+              </label>
+            </div>
+
+            <!-- 刷新按钮 -->
+            <div style="margin-bottom: 10px;">
+              <button id="refresh-crops" onclick="forceRefreshCropData()" style="
+                background: linear-gradient(45deg, #32CD32, #228B22);
+                color: white;
+                border: none;
+                padding: 6px 12px;
+                border-radius: 4px;
+                cursor: pointer;
+                font-size: 12px;
+                transition: all 0.3s ease;
+              " onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+                🔄 刷新农作物数据
+              </button>
+            </div>
+
+            <!-- 数据统计显示 -->
+            <div id="crop-stats" style="margin-bottom: 10px; padding: 8px; background: rgba(0,0,0,0.3); border-radius: 4px;">
+              <div style="font-size: 12px; color: #FFD700; margin-bottom: 4px;">📊 数据统计</div>
+              <div id="crop-count" style="font-size: 11px; color: #ccc;">加载中...</div>
+            </div>
+
+            <!-- 农作物类型图例 -->
+            <div id="crop-legend" style="margin-top: 10px;">
+              <div style="font-size: 12px; margin-bottom: 8px; color: #ccc;">图例说明：</div>
+              <div style="display: flex; flex-direction: column; gap: 4px;">
+                <div style="display: flex; align-items: center;">
+                  <span style="width: 12px; height: 12px; background: #FFD700; border-radius: 50%; margin-right: 8px;"></span>
+                  <span>🌾 谷物类</span>
+                </div>
+                <div style="display: flex; align-items: center;">
+                  <span style="width: 12px; height: 12px; background: #32CD32; border-radius: 50%; margin-right: 8px;"></span>
+                  <span>🌱 经济作物</span>
+                </div>
+                <div style="display: flex; align-items: center;">
+                  <span style="width: 12px; height: 12px; background: #FF6347; border-radius: 50%; margin-right: 8px;"></span>
+                  <span>🍎 水果类</span>
+                </div>
+                <div style="display: flex; align-items: center;">
+                  <span style="width: 12px; height: 12px; background: #8B4513; border-radius: 50%; margin-right: 8px;"></span>
+                  <span>☕ 饮料作物</span>
+                </div>
+                <div style="display: flex; align-items: center;">
+                  <span style="width: 12px; height: 12px; background: #90EE90; border-radius: 50%; margin-right: 8px;"></span>
+                  <span>🥬 蔬菜类</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- 数据来源说明 -->
+            <div style="margin-top: 12px; padding-top: 8px; border-top: 1px solid #444; font-size: 10px; color: #999;">
+              数据来源：国家统计局、农业农村部
+            </div>
+          </div>
         </div>
       </div>
       <div class="aside-right fl">
@@ -1166,10 +1323,21 @@
             </ul>
                 </div>
                   </div>
-        <div class="trend">
-          <h3>历朝农业发展走势图</h3>
+        <div class="trend" style="
+          margin-top: 20px;
+          padding: 15px;
+          background: rgba(0, 0, 0, 0.15);
+          border-radius: 10px;
+          border: 1px solid rgba(255, 255, 255, 0.1);
+        ">
+          <h3 style="
+            font-size: 18px;
+            margin-bottom: 15px;
+            font-weight: 500;
+            color: #fff;
+          ">历朝农业发展走势图</h3>
           <div id="trendBar1" style="width: 100%;height: 80%;"></div>
-                  </div>
+        </div>
                 </div>
                 </div>
     <div class="main-bottom">
@@ -1179,7 +1347,250 @@
                   </div>
                   </div>
   <script src="js/index.js"></script>
+  <script src="js/cropData.js"></script>
   <script src="js/mapIndex.js"></script>
+
+  <!-- 农作物控制功能 -->
+  <script>
+    // 农作物显示控制功能
+    function initCropControl() {
+      const cropToggle = document.getElementById('crop-toggle');
+      const cropLegend = document.getElementById('crop-legend');
+
+      // 验证农作物数据加载
+      console.log('验证农作物数据加载状态...');
+      if (typeof getCropDistributionData === 'function') {
+        const cropData = getCropDistributionData();
+        console.log('农作物数据加载成功，数据点数量:', cropData.length);
+        console.log('前5个数据点:', cropData.slice(0, 5));
+
+        // 更新数据统计显示
+        updateCropStats(cropData);
+      } else {
+        console.error('农作物数据未加载！');
+        const cropCountElement = document.getElementById('crop-count');
+        if (cropCountElement) {
+          cropCountElement.innerHTML = '❌ 数据加载失败';
+        }
+      }
+
+      if (cropToggle) {
+        cropToggle.addEventListener('change', function() {
+          showCrops = this.checked;
+          console.log('农作物显示状态切换为:', showCrops);
+
+          // 清理所有tooltip，避免重叠
+          if (typeof clearAllTooltips === 'function') {
+            clearAllTooltips();
+          }
+
+          // 更新地图配置
+          if (typeof mapChart !== 'undefined' && typeof option !== 'undefined') {
+            // 重新构建series数组
+            const baseSeries = [{
+              name: "省份信息",
+              type: "map",
+              mapType: "china",
+              roam: false,
+              selectedMode: 'single',
+              label: {
+                normal: { show: false },
+                emphasis: {
+                  show: true,
+                  textStyle: { color: '#fff', fontSize: 14, fontWeight: 'bold' }
+                },
+                select: {
+                  show: true,
+                  textStyle: { color: '#fff', fontSize: 14, fontWeight: 'bold' }
+                }
+              },
+              itemStyle: {
+                normal: {
+                  areaColor: {
+                    type: 'linear',
+                    x: 0, y: 0, x2: 1, y2: 1,
+                    colorStops: [
+                      { offset: 0, color: 'rgb(255, 185, 45)' },
+                      { offset: 0.5, color: 'rgb(244, 163, 13)' },
+                      { offset: 1, color: 'rgb(180, 110, 8)' }
+                    ]
+                  },
+                  borderColor: '#0692a4',
+                  borderWidth: 2,
+                  shadowBlur: 8,
+                  shadowColor: 'rgba(180, 110, 8, 0.4)',
+                  shadowOffsetX: 3,
+                  shadowOffsetY: 3,
+                  opacity: 0.95
+                },
+                emphasis: {
+                  areaColor: {
+                    type: 'linear',
+                    x: 0, y: 0, x2: 1, y2: 1,
+                    colorStops: [
+                      { offset: 0, color: 'rgb(255, 120, 45)' },
+                      { offset: 0.5, color: 'rgb(244, 71, 13)' },
+                      { offset: 1, color: 'rgb(150, 30, 5)' }
+                    ]
+                  },
+                  borderColor: '#fff',
+                  borderWidth: 3,
+                  shadowBlur: 15,
+                  shadowColor: 'rgba(244, 71, 13, 0.7)',
+                  shadowOffsetX: 5,
+                  shadowOffsetY: 5,
+                  opacity: 1
+                },
+                select: {
+                  areaColor: {
+                    type: 'linear',
+                    x: 0, y: 0, x2: 1, y2: 1,
+                    colorStops: [
+                      { offset: 0, color: 'rgb(100, 180, 255)' },
+                      { offset: 0.5, color: 'rgb(30, 144, 255)' },
+                      { offset: 1, color: 'rgb(10, 90, 180)' }
+                    ]
+                  },
+                  borderColor: '#fff',
+                  borderWidth: 4,
+                  shadowBlur: 20,
+                  shadowColor: 'rgba(30, 144, 255, 0.8)',
+                  shadowOffsetX: 6,
+                  shadowOffsetY: 6,
+                  opacity: 1
+                }
+              },
+              emphasis: { scale: 1.1, focus: 'self' },
+              select: {
+                scale: 1.2,
+                itemStyle: {
+                  areaColor: "rgb(30, 144, 255)",
+                  borderColor: '#fff',
+                  borderWidth: 3,
+                  shadowBlur: 15,
+                  shadowColor: 'rgba(30, 144, 255, 0.6)'
+                }
+              },
+              data: mapData["map"]
+            }];
+
+            // 根据开关状态添加农作物系列
+            const newSeries = baseSeries.concat(showCrops ? createCropScatterSeries() : []);
+
+            // 更新地图
+            option.series = newSeries;
+            mapChart.setOption(option, true);
+          }
+
+          // 更新图例显示状态
+          if (cropLegend) {
+            cropLegend.style.opacity = this.checked ? '1' : '0.5';
+          }
+        });
+      }
+    }
+
+
+
+    // 强制刷新农作物数据显示
+    function forceRefreshCropData() {
+      console.log('强制刷新农作物数据...');
+
+      if (typeof getCropDistributionData === 'function' && typeof mapChart !== 'undefined') {
+        const cropData = getCropDistributionData();
+        console.log('重新加载农作物数据，数量:', cropData.length);
+
+        // 更新数据统计显示
+        updateCropStats(cropData);
+
+        // 强制显示农作物
+        showCrops = true;
+        const cropToggle = document.getElementById('crop-toggle');
+        if (cropToggle) {
+          cropToggle.checked = true;
+        }
+
+        // 重新构建地图配置
+        const baseSeries = [{
+          name: "省份信息",
+          type: "map",
+          mapType: "china",
+          roam: false,
+          selectedMode: 'single',
+          label: {
+            normal: { show: false },
+            emphasis: {
+              show: true,
+              textStyle: { color: '#fff', fontSize: 14, fontWeight: 'bold' }
+            }
+          },
+          itemStyle: {
+            normal: {
+              areaColor: 'rgb(244, 163, 13)',
+              borderColor: '#0692a4',
+              borderWidth: 1
+            },
+            emphasis: {
+              areaColor: "rgb(244, 71, 13)",
+              borderColor: '#fff',
+              borderWidth: 2
+            }
+          },
+          data: mapData["map"]
+        }];
+
+        // 添加农作物系列
+        const cropSeries = createCropScatterSeries();
+        console.log('创建的农作物系列数量:', cropSeries.length);
+
+        const newSeries = baseSeries.concat(cropSeries);
+
+        // 更新地图
+        option.series = newSeries;
+        mapChart.setOption(option, true);
+
+        console.log('农作物数据刷新完成');
+      }
+    }
+
+    // 更新农作物数据统计显示
+    function updateCropStats(cropData) {
+      const cropCountElement = document.getElementById('crop-count');
+      if (cropCountElement && cropData) {
+        // 统计各类型农作物数量
+        const typeStats = {};
+        cropData.forEach(crop => {
+          typeStats[crop.type] = (typeStats[crop.type] || 0) + 1;
+        });
+
+        const typeNames = {
+          'grain': '谷物',
+          'economic': '经济作物',
+          'fruit': '水果',
+          'beverage': '饮料作物',
+          'vegetable': '蔬菜'
+        };
+
+        let statsText = `总计: ${cropData.length} 个分布点<br>`;
+        Object.keys(typeStats).forEach(type => {
+          const name = typeNames[type] || type;
+          statsText += `${name}: ${typeStats[type]} 个<br>`;
+        });
+
+        cropCountElement.innerHTML = statsText;
+      }
+    }
+
+    // 页面加载完成后初始化控制功能
+    document.addEventListener('DOMContentLoaded', function() {
+      setTimeout(function() {
+        initCropControl();
+        // 延迟强制刷新农作物数据
+        setTimeout(forceRefreshCropData, 2000);
+      }, 1000);
+    });
+  </script>
+
   <script>
     (function() {
       console.log('初始化图表...');
@@ -1643,13 +2054,12 @@
     // 添加书籍轮播逻辑
     function initBookCarousel() {
         const bookGroups = [
-            // 第一组书籍
+            // 第一组书籍 - 古代农学古籍
             [
                 { ranking: 1, name: '齐民要术', dynasty: '北魏', type: '农业', author: '贾思勰', isbn: '1', period: '北魏', nature: '农政' },
                 { ranking: 2, name: '吕氏春秋·上农四篇', dynasty: '战国', type: '农业', author: '吕不韦', isbn: '2', period: '战国', nature: '农本思想' },
                 { ranking: 3, name: '四民月令', dynasty: '东汉', type: '农业', author: '崔寔', isbn: '5', period: '东汉', nature: '月令体' },
-                { ranking: 4, name: '氾胜之书', dynasty: '西汉', type: '农业', author: '氾胜之', isbn: '6', period: '西汉', nature: '区田法' },
-                { ranking: 5, name: '王祯农书', dynasty: '元代', type: '农业', author: '王祯', isbn: '7', period: '元代', nature: '农器图谱' }
+                { ranking: 4, name: '氾胜之书', dynasty: '西汉', type: '农业', author: '氾胜之', isbn: '6', period: '西汉', nature: '区田法' }
             ],
             // 第二组书籍
             [
@@ -1657,15 +2067,15 @@
                 { ranking: 2, name: '授时通考', dynasty: '清代', type: '农业', author: '鄂尔泰', isbn: '4', period: '清代', nature: '官修农书' },
                 { ranking: 3, name: '群芳谱', dynasty: '明/清', type: '农业', author: '王象晋/汪灏', isbn: '8', period: '明/清', nature: '植物学' },
                 { ranking: 4, name: '月令七十二候集解', dynasty: '元代', type: '农业', author: '吴澄', isbn: '9', period: '元代', nature: '节气历法' },
-                { ranking: 5, name: '夏小正', dynasty: '先秦', type: '农业', author: '佚名', isbn: '10', period: '先秦', nature: '物候历' }
+                { ranking: 5, name: '夏小正', dynasty: '先秦', type: '农业', author: '佚名', isbn: '10', period: '先秦', nature: '物候历' },
+                { ranking: 6, name: '陈旉农书', dynasty: '宋代', type: '农业', author: '陈旉', isbn: '12', period: '宋代', nature: '江南农事' }
             ],
             // 第三组书籍
             [
                 { ranking: 1, name: '月令广义', dynasty: '明代', type: '农业', author: '冯应京', isbn: '11', period: '明代', nature: '节气民俗' },
-                { ranking: 2, name: '陈旉农书', dynasty: '宋代', type: '农业', author: '陈旉', isbn: '12', period: '宋代', nature: '江南农事' },
-                { ranking: 3, name: '农桑辑要', dynasty: '元代', type: '农业', author: '司农司', isbn: '13', period: '元代', nature: '官修农书' },
-                { ranking: 4, name: '天工开物', dynasty: '明代', type: '农业', author: '宋应星', isbn: '14', period: '明代', nature: '手工业' },
-                { ranking: 5, name: '岁时广记', dynasty: '宋代', type: '农业', author: '陈元靓', isbn: '15', period: '宋代', nature: '节气民俗' }
+                { ranking: 2, name: '农桑辑要', dynasty: '元代', type: '农业', author: '司农司', isbn: '13', period: '元代', nature: '官修农书' },
+                { ranking: 3, name: '天工开物', dynasty: '明代', type: '农业', author: '宋应星', isbn: '14', period: '明代', nature: '手工业' },
+                { ranking: 4, name: '岁时广记', dynasty: '宋代', type: '农业', author: '陈元靓', isbn: '15', period: '宋代', nature: '节气民俗' }
             ]
         ];
 
@@ -1705,8 +2115,9 @@
         }
 
         function nextBook() {
+            const currentGroup = bookGroups[currentGroupIndex];
             currentBookIndex++;
-            if (currentBookIndex >= 5) {
+            if (currentBookIndex >= currentGroup.length) {
                 currentBookIndex = 0;
                 currentGroupIndex = (currentGroupIndex + 1) % bookGroups.length;
                 updateBookDisplay(currentGroupIndex);
@@ -1828,7 +2239,7 @@
         }]
     };
     // 使用刚指定的配置项和数据显示图表
-    map.setOption(mapOption);
+    // map.setOption(mapOption); // 注释掉，因为主地图已经在mapIndex.js中配置了
   </script>
 </body>
 

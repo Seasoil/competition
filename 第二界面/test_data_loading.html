@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数据加载测试</title>
+</head>
+<body>
+    <h1>病害数据库加载测试</h1>
+    <div id="status">正在测试...</div>
+    <div id="results"></div>
+
+    <script>
+        async function testDataLoading() {
+            const statusDiv = document.getElementById('status');
+            const resultsDiv = document.getElementById('results');
+            
+            try {
+                statusDiv.textContent = '正在加载 complete_disease_database.json...';
+                
+                const response = await fetch('./data/complete_disease_database.json');
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                
+                const data = await response.json();
+                
+                statusDiv.textContent = '✅ 数据加载成功！';
+                resultsDiv.innerHTML = `
+                    <h2>数据库信息：</h2>
+                    <p>版本: ${data.metadata.version}</p>
+                    <p>病害总数: ${data.metadata.total_diseases}</p>
+                    <p>最后更新: ${data.metadata.last_updated}</p>
+                    
+                    <h3>前5种病害：</h3>
+                    <ul>
+                        ${data.diseases.slice(0, 5).map(disease => 
+                            `<li>${disease.disease_name} (${disease.disease_category})</li>`
+                        ).join('')}
+                    </ul>
+                `;
+                
+                console.log('数据加载成功:', data);
+                
+            } catch (error) {
+                statusDiv.textContent = '❌ 数据加载失败';
+                resultsDiv.innerHTML = `<p style="color: red;">错误: ${error.message}</p>`;
+                console.error('数据加载失败:', error);
+            }
+        }
+
+        // 页面加载时自动测试
+        document.addEventListener('DOMContentLoaded', testDataLoading);
+    </script>
+</body>
+</html>

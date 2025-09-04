@@ -52,7 +52,7 @@ var bestSelling = {
       ISBN: "8",        
       pressDate: "1621年/1708年 ",
       pricing: "0.00",     
-      imageUrl: "../img/群芳谱.png",
+      imageUrl: "img/群芳谱.png",
       index: 0 
     },
     {
@@ -62,7 +62,7 @@ var bestSelling = {
       ISBN: "10",        
       pressDate: "约公元前十世纪 ",
       pricing: "0.00",     
-      imageUrl: "../img/夏小正.png",
+      imageUrl: "img/夏小正.png",
       index: 1 
     }   ,
     {
@@ -72,7 +72,7 @@ var bestSelling = {
       ISBN: "4",
       pressDate: "乾隆七年 ",
       pricing: "0.00",
-      imageUrl: "../img/授时通考.png",
+      imageUrl: "img/授时通考.png",
       index: 2
     }
   ],
@@ -84,7 +84,7 @@ var bestSelling = {
       ISBN: "6",
       pressDate: "公元前一世纪 ",
       pricing: "0.00",     
-      imageUrl: "../img/氾胜之书.png",
+      imageUrl: "img/氾胜之书.png",
       index: 0
     },
     {
@@ -94,7 +94,7 @@ var bestSelling = {
       ISBN: "7",        
       pressDate: "皇庆二年 ",
       pricing: "0.00",     
-      imageUrl: "../img/王祯农书.png", 
+      imageUrl: "img/王祯农书.png",
       index: 1   
     },
       {
@@ -104,7 +104,7 @@ var bestSelling = {
       ISBN: "5",
       pressDate: "二世纪中叶 ",
       pricing: "0.00",
-      imageUrl: "../img/四民月令.png",
+      imageUrl: "img/四民月令.png",
       index: 2 
     },
     
@@ -117,7 +117,7 @@ var bestSelling = {
       ISBN: "12",
       pressDate: "绍兴十九年",
       pricing: "0.00",
-      imageUrl: "../img/陈旉农书.png",
+      imageUrl: "img/陈旉农书.png",
       index: 0
     },
     {
@@ -127,7 +127,7 @@ var bestSelling = {
       ISBN: "16",
       pressDate: "公元前二世纪",
       pricing: "0.00",
-      imageUrl: "../img/淮南子时则训.png",
+      imageUrl: "img/淮南子时则训.png",
       index: 1
     },
     {
@@ -137,7 +137,7 @@ var bestSelling = {
       ISBN: "19",
       pressDate: "乾隆二十五年",
       pricing: "0.00",
-      imageUrl: "../img/三农纪.png",
+      imageUrl: "img/三农纪.png",
       index: 2
     }
   ],
@@ -150,7 +150,7 @@ var bestSelling = {
       ISBN: "20",
       pressDate: "延祐元年",
       pricing: "0.00",
-      imageUrl: "../img/农桑衣食撮要.png",
+      imageUrl: "img/农桑衣食撮要.png",
       index: 0
     },
     {
@@ -160,7 +160,7 @@ var bestSelling = {
       ISBN: "21",
       pressDate: "至正年间",
       pricing: "0.00",
-      imageUrl: "../img/田家五行.png",
+      imageUrl: "img/田家五行.png",
       index: 1
     },
     {
@@ -170,7 +170,7 @@ var bestSelling = {
       ISBN: "22",
       pressDate: "嘉靖年间",
       pricing: "0.00",
-      imageUrl: "../img/农候杂占.png",
+      imageUrl: "img/农候杂占.png",
       index: 2
     }
   ],
@@ -183,7 +183,7 @@ var bestSelling = {
       ISBN: "23",
       pressDate: "康熙年间",
       pricing: "0.00",
-      imageUrl: "../img/农丹.png",
+      imageUrl: "img/农丹.png",
       index: 0
     },
     {
@@ -193,7 +193,7 @@ var bestSelling = {
       ISBN: "24",
       pressDate: "乾隆初年",
       pricing: "0.00",
-      imageUrl: "../img/知本提纲农则.png",
+      imageUrl: "img/知本提纲农则.png",
       index: 1
     },
     {
@@ -203,7 +203,7 @@ var bestSelling = {
       ISBN: "17",
       pressDate: "公元前一世纪",
       pricing: "0.00",
-      imageUrl: "../img/礼记月令.png",
+      imageUrl: "img/礼记月令.png",
       index: 2
     }
   ],
@@ -216,7 +216,7 @@ var bestSelling = {
       ISBN: "15",
       pressDate: "宝祐四年",
       pricing: "0.00",
-      imageUrl: "../img/岁时广记.png",
+      imageUrl: "img/岁时广记.png",
       index: 0
     },
     {
@@ -226,7 +226,7 @@ var bestSelling = {
       ISBN: "14",
       pressDate: "崇祯十年",
       pricing: "0.00",
-      imageUrl: "../img/天工开物.png",
+      imageUrl: "img/天工开物.png",
       index: 1
     },
     {
@@ -236,7 +236,7 @@ var bestSelling = {
       ISBN: "18",
       pressDate: "崇祯末年",
       pricing: "0.00",
-      imageUrl: "../img/沈氏农书.png",
+      imageUrl: "img/沈氏农书.png",
       index: 2
     }
   ],
@@ -249,7 +249,7 @@ var bestSelling = {
       ISBN: "10",
       pressDate: "约公元前十世纪",
       pricing: "0.00",
-      imageUrl: "../img/夏小正.png",
+      imageUrl: "img/夏小正.png",
       index: 0
     },
     {
@@ -259,7 +259,7 @@ var bestSelling = {
       ISBN: "11",
       pressDate: "万历三十年",
       pricing: "0.00",
-      imageUrl: "../img/月令广义.png",
+      imageUrl: "img/月令广义.png",
       index: 1
     },
     {
@@ -269,7 +269,7 @@ var bestSelling = {
       ISBN: "8",
       pressDate: "1621年/1708年",
       pricing: "0.00",
-      imageUrl: "../img/群芳谱.png",
+      imageUrl: "img/群芳谱.png",
       index: 2
     }
   ],
@@ -282,7 +282,7 @@ var bestSelling = {
       ISBN: "6",
       pressDate: "公元前一世纪",
       pricing: "0.00",
-      imageUrl: "../img/氾胜之书.png",
+      imageUrl: "img/氾胜之书.png",
       index: 0
     },
     {
@@ -292,7 +292,7 @@ var bestSelling = {
       ISBN: "7",
       pressDate: "皇庆二年",
       pricing: "0.00",
-      imageUrl: "../img/王祯农书.png",
+      imageUrl: "img/王祯农书.png",
       index: 1
     },
     {
@@ -302,7 +302,7 @@ var bestSelling = {
       ISBN: "9",
       pressDate: "至治元年",
       pricing: "0.00",
-      imageUrl: "../img/月令七十二候集解.png",
+      imageUrl: "img/月令七十二候集解.png",
       index: 2
     }
   ],
@@ -315,7 +315,7 @@ var bestSelling = {
       ISBN: "5",
       pressDate: "二世纪中叶",
       pricing: "0.00",
-      imageUrl: "../img/四民月令.png",
+      imageUrl: "img/四民月令.png",
       index: 0
     },
     {
@@ -325,7 +325,7 @@ var bestSelling = {
       ISBN: "4",
       pressDate: "乾隆七年",
       pricing: "0.00",
-      imageUrl: "../img/授时通考.png",
+      imageUrl: "img/授时通考.png",
       index: 1
     },
     {
@@ -335,7 +335,7 @@ var bestSelling = {
       ISBN: "1",
       pressDate: "六世纪中叶",
       pricing: "0.00",
-      imageUrl: "../img/齐民要术.png",
+      imageUrl: "img/齐民要术.png",
       index: 2
     }
   ],
@@ -348,7 +348,7 @@ var bestSelling = {
       ISBN: "2",
       pressDate: "公元前239年",
       pricing: "0.00",
-      imageUrl: "../img/吕氏春秋.png",
+      imageUrl: "img/吕氏春秋.png",
       index: 0
     },
     {
@@ -358,7 +358,7 @@ var bestSelling = {
       ISBN: "3",
       pressDate: "崇祯年间",
       pricing: "0.00",
-      imageUrl: "../img/农政全书.png",
+      imageUrl: "img/农政全书.png",
       index: 1
     },
     {
@@ -368,7 +368,7 @@ var bestSelling = {
       ISBN: "6",
       pressDate: "公元前一世纪",
       pricing: "0.00",
-      imageUrl: "../img/氾胜之书.png",
+      imageUrl: "img/氾胜之书.png",
       index: 2
     }
   ],
@@ -380,18 +380,18 @@ var bestSelling = {
       ISBN: "25",        
       pressDate: "乾隆二十年 ",   
       pricing: "0.00",     
-      imageUrl: "../img/农圃便览.png",     
-      index: 0   
+      imageUrl: "img/农圃便览.png",
+      index: 0
     },
     {
-      bookName: "马首农言",   
-      pressName: "清代山西省刻本",   
-      author: "祁寯藻",      
-      ISBN: "26",        
-      pressDate: "道光十六年 ",   
-      pricing: "0.00",     
-      imageUrl: "../img/马首农言.png",     
-      index: 1    
+      bookName: "马首农言",
+      pressName: "清代山西省刻本",
+      author: "祁寯藻",
+      ISBN: "26",
+      pressDate: "道光十六年 ",
+      pricing: "0.00",
+      imageUrl: "img/马首农言.png",
+      index: 1
     },
     {
       bookName: "齐民要术",
@@ -400,7 +400,7 @@ var bestSelling = {
       ISBN: "1",
       pressDate: "六世纪中叶 ",
       pricing: "0.00",
-      imageUrl: "../img/齐民要术.png",
+      imageUrl: "img/齐民要术.png",
       index: 2
     }
 

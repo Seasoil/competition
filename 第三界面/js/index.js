@@ -1,6 +1,15 @@
 
-var bookData = dataOne().bookData;
-console.log(bookData)
+// 安全获取数据，避免函数不存在的错误
+var bookData = [];
+try {
+  if (typeof dataOne === 'function') {
+    bookData = dataOne().bookData || [];
+  }
+  console.log('书籍数据:', bookData);
+} catch (error) {
+  console.error('获取书籍数据失败:', error);
+  bookData = [];
+}
 
 $(function() {
   // 畅销书排行榜获取高度
@@ -16,7 +25,15 @@ $(function() {
   curBookRank.css("height", rankH + "px");
 
   //   畅销书数据获取
-  var pressData = dataOne().bestSelling;
+  var pressData = {};
+  try {
+    if (typeof dataOne === 'function') {
+      pressData = dataOne().bestSelling || {};
+    }
+  } catch (error) {
+    console.error('获取畅销书数据失败:', error);
+    pressData = {};
+  }
   var rankUl = $(".aside-left .top ul");
   var Month = [
     "Jan",
@@ -46,13 +63,25 @@ $(function() {
     var len = item.children.length;
 
     for (var i = 0; i < len; i++) {
-      bookName = pressData[Month[index]][i]["bookName"];
-      pressName = pressData[Month[index]][i]["pressName"];
-      author = pressData[Month[index]][i]["author"];
-      ISBN = pressData[Month[index]][i]["ISBN"];
-      pressDate = pressData[Month[index]][i]["pressDate"];
-      pricing = pressData[Month[index]][i]["pricing"];
-      imageUrl = pressData[Month[index]][i]["imageUrl"];
+      // 安全获取数据，避免数组越界
+      if (pressData[Month[index]] && pressData[Month[index]][i]) {
+        bookName = pressData[Month[index]][i]["bookName"] || "";
+        pressName = pressData[Month[index]][i]["pressName"] || "";
+        author = pressData[Month[index]][i]["author"] || "";
+        ISBN = pressData[Month[index]][i]["ISBN"] || "";
+        pressDate = pressData[Month[index]][i]["pressDate"] || "";
+        pricing = pressData[Month[index]][i]["pricing"] || "";
+        imageUrl = pressData[Month[index]][i]["imageUrl"] || "";
+      } else {
+        // 如果数据不存在，使用默认值
+        bookName = "数据加载中...";
+        pressName = "";
+        author = "";
+        ISBN = "";
+        pressDate = "";
+        pricing = "";
+        imageUrl = "";
+      }
 
       $(item.children[i])
         .find(".name")

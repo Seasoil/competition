@@ -8,6 +8,9 @@ var stockBL = dataOne().stockBL;
 var saleStockR = dataOne().saleStockR;
 var allMData = dataOne().allMData;
 
+// 农作物分布点显示状态
+var showCrops = true;
+
 // 获取各地区的经纬度
 var convertData = function(data) {
   var res = [];
@@ -22,6 +25,136 @@ var convertData = function(data) {
   }
   return res;
 };
+
+// 创建农作物散点图系列
+function createCropScatterSeries() {
+    console.log('开始创建农作物散点图系列...');
+
+    if (typeof getCropDistributionData === 'undefined' || typeof getCropTypes === 'undefined') {
+        console.warn('农作物数据未加载');
+        return [];
+    }
+
+    const cropTypes = getCropTypes();
+    const cropData = getCropDistributionData();
+    console.log('农作物数据加载成功:', {
+        cropTypesCount: Object.keys(cropTypes).length,
+        cropDataCount: cropData.length
+    });
+
+    const series = [];
+
+    // 按农作物类型分组创建散点图系列
+    Object.keys(cropTypes).forEach(typeKey => {
+        const typeConfig = cropTypes[typeKey];
+        const typeCrops = cropData.filter(crop => crop.type === typeKey);
+
+        if (typeCrops.length > 0) {
+            series.push({
+                name: typeConfig.name,
+                type: 'scatter',
+                coordinateSystem: 'geo',
+                data: typeCrops.map(crop => ({
+                    name: crop.name,
+                    value: crop.coord,  // 只使用坐标，不包含第三个值
+                    province: crop.province,
+                    area: crop.area,
+                    season: crop.season,
+                    varieties: crop.varieties,
+                    economicValue: crop.economicValue,
+                    description: crop.description,
+                    category: typeConfig.name,
+                    cropType: typeConfig.name,
+                    icon: typeConfig.icon,
+                    productionValue: crop.value  // 将产量作为单独字段
+                })),
+                symbolSize: 15,  // 固定大小，确保可见
+
+
+                itemStyle: {
+                    color: typeConfig.color,
+                    borderColor: '#fff',
+                    borderWidth: 3,
+                    shadowBlur: 10,
+                    shadowColor: typeConfig.color,
+                    shadowOffsetX: 3,
+                    shadowOffsetY: 3,
+                    opacity: 1  // 完全不透明，确保可见
+                },
+                zlevel: 10,  // 确保在地图之上
+                emphasis: {
+                    itemStyle: {
+                        color: typeConfig.color,
+                        borderColor: '#fff',
+                        borderWidth: 3,
+                        shadowBlur: 15,
+                        shadowColor: typeConfig.color,
+                        shadowOffsetX: 3,
+                        shadowOffsetY: 3,
+                        opacity: 1
+                    },
+                    scale: 1.3
+                },
+                tooltip: {
+                    trigger: 'item',
+                    backgroundColor: 'rgba(0, 0, 0, 0.9)',
+                    borderColor: typeConfig.color,
+                    borderWidth: 2,
+                    borderRadius: 8,
+                    textStyle: {
+                        color: '#fff',
+                        fontSize: 12
+                    },
+                    confine: true,
+                    enterable: false,
+                    triggerOn: 'mousemove',
+                    formatter: function(params) {
+                        const data = params.data;
+                        return `
+                            <div style="padding: 10px; max-width: 250px;">
+                                <div style="font-size: 14px; font-weight: bold; color: ${typeConfig.color}; margin-bottom: 8px;">
+                                    ${data.icon} ${data.name}
+                                </div>
+                                <div style="margin: 5px 0; color: #ccc;">
+                                    📍 ${data.province}
+                                </div>
+                                <div style="margin: 3px 0;">
+                                    <span style="color: #FFD700;">产量：</span>${data.productionValue}万吨
+                                </div>
+                                <div style="margin: 3px 0;">
+                                    <span style="color: #FFD700;">面积：</span>${data.area}
+                                </div>
+                                <div style="margin: 3px 0;">
+                                    <span style="color: #90EE90;">种植季节：</span>${data.season}
+                                </div>
+                                <div style="margin: 3px 0;">
+                                    <span style="color: #87CEEB;">主要品种：</span>${data.varieties}
+                                </div>
+                                <div style="margin: 3px 0;">
+                                    <span style="color: #FFA500;">经济价值：</span>${data.economicValue}
+                                </div>
+                                <div style="margin: 5px 0; color: #ddd; font-size: 11px; line-height: 1.4;">
+                                    ${data.description}
+                                </div>
+                                <div style="margin-top: 8px; padding-top: 6px; border-top: 1px solid #444; color: #aaa; font-size: 10px; text-align: center;">
+                                    点击查看详细信息
+                                </div>
+                            </div>
+                        `;
+                    }
+                },
+                zlevel: 2
+            });
+        }
+    });
+
+    console.log(`农作物散点图系列创建完成，共 ${series.length} 个系列`);
+    series.forEach((s, index) => {
+        console.log(`系列 ${index + 1}: ${s.name}, 数据点数量: ${s.data.length}`);
+    });
+
+    return series;
+}
 // 散点数据 和 对应经纬度
 
 var data = [
@@ -820,8 +953,28 @@ for(key in mapData){
     mapData[key] = itemStyleD.concat(noneData);
 }
 
+// 全局变量
+var selectedProvince = null;
+var isUserInteracting = false;
+var clickedProvince = null;
+
 var option = {
   backgroundColor: 'transparent',
+  geo: {
+    map: 'china',
+    roam: false,
+    silent: true,
+    itemStyle: {
+      areaColor: 'transparent',
+      borderColor: 'transparent'
+    },
+    emphasis: {
+      itemStyle: {
+        areaColor: 'transparent',
+        borderColor: 'transparent'
+      }
+    }
+  },
   tooltip: {
     trigger: 'item',
     backgroundColor: 'transparent',
@@ -830,115 +983,94 @@ var option = {
     axisPointer: { type: 'none' },
     confine: true,
     enterable: true,
-    alwaysShowContent: true,  // 添加此属性确保tooltip始终显示
-    triggerOn: 'mousemove',
+    alwaysShowContent: false,
+    triggerOn: 'mousemove',  // 只在悬停时触发，点击用单独处理
     className: 'echarts-tooltip-pointer-events-none',
     position: function (point, params, dom, rect, size) {
-      // 如果是用户主动移动到省份，且不是在tooltip区域内，才切换回交互状态
-      if (params && params.event && params.event.type === 'mousemove') {
-        // 检查鼠标是否在tooltip区域内
-        var mouseX = params.event.offsetX;
-        var mouseY = params.event.offsetY;
-        var tooltipRect = dom.getBoundingClientRect();
-        var mapRect = document.getElementById('map').getBoundingClientRect();
-        var tooltipX = tooltipRect.left - mapRect.left;
-        var tooltipY = tooltipRect.top - mapRect.top;
-        
-        // 如果鼠标不在tooltip区域内，才切换状态
-        if (!(mouseX >= tooltipX && mouseX <= tooltipX + tooltipRect.width &&
-              mouseY >= tooltipY && mouseY <= tooltipY + tooltipRect.height)) {
-          isRandomMode = false;
+      // 强制清理所有现有的tooltip，防止重叠
+      const existingTooltips = document.querySelectorAll('.echarts-tooltip, .province-tooltip, #crop-detail-tooltip');
+      existingTooltips.forEach(tooltip => {
+        if (tooltip !== dom && tooltip.parentNode) {
+          tooltip.style.display = 'none';
+          tooltip.style.opacity = '0';
         }
-      }
+      });
 
       // 保持tooltip对鼠标事件透明
       dom.style.pointerEvents = 'none';
-      
+
       // 获取地图容器的尺寸
       var mapContainer = document.getElementById('map');
       var mapRect = mapContainer.getBoundingClientRect();
-      
-      // 获取提示框的尺寸
-      var tipWidth = dom.offsetWidth;
-      var tipHeight = dom.offsetHeight;
-      
+
+      // 使用固定的安全位置，避免复杂的动态计算
+      var fixedWidth = 320;
+      var fixedHeight = 280;
+
       // 在随机模式下使用固定位置
       if (isRandomMode) {
         return [
           mapRect.width / 2 + 100,
-          mapRect.height / 2 - tipHeight / 2
+          mapRect.height / 2 - fixedHeight / 2
         ];
       }
-      
-      // 非随机模式下的动态位置计算
-      var safeDistance = 20;
-      var mouseBuffer = 50;
-      
-      // 计算最佳位置
-      var bestPosition;
-      
-      // 首选位置：鼠标右侧
-      if (point[0] + mouseBuffer + tipWidth <= mapRect.width - safeDistance) {
-        bestPosition = {
-          x: point[0] + mouseBuffer,
-          y: Math.min(Math.max(safeDistance, point[1] - tipHeight / 2), mapRect.height - tipHeight - safeDistance)
+
+      // 使用固定的安全位置策略，避免重叠
+      var safePosition;
+
+      // 优先使用右侧位置
+      if (mapRect.width > fixedWidth + 100) {
+        safePosition = {
+          x: mapRect.width - fixedWidth - 50,
+          y: Math.max(50, Math.min(mapRect.height - fixedHeight - 50, mapRect.height / 2 - fixedHeight / 2))
         };
       }
-      // 次选位置：鼠标左侧
-      else if (point[0] - mouseBuffer - tipWidth >= safeDistance) {
-        bestPosition = {
-          x: point[0] - mouseBuffer - tipWidth,
-          y: Math.min(Math.max(safeDistance, point[1] - tipHeight / 2), mapRect.height - tipHeight - safeDistance)
+      // 如果右侧空间不够，使用左侧
+      else if (mapRect.width > fixedWidth + 100) {
+        safePosition = {
+          x: 50,
+          y: Math.max(50, Math.min(mapRect.height - fixedHeight - 50, mapRect.height / 2 - fixedHeight / 2))
         };
       }
-      // 上方
-      else if (point[1] - mouseBuffer - tipHeight >= safeDistance) {
-        bestPosition = {
-          x: Math.min(Math.max(safeDistance, point[0] - tipWidth / 2), mapRect.width - tipWidth - safeDistance),
-          y: point[1] - mouseBuffer - tipHeight
-        };
-      }
-      // 下方
+      // 如果左右都不够，使用中央位置
       else {
-        bestPosition = {
-          x: Math.min(Math.max(safeDistance, point[0] - tipWidth / 2), mapRect.width - tipWidth - safeDistance),
-          y: point[1] + mouseBuffer
+        safePosition = {
+          x: Math.max(20, (mapRect.width - fixedWidth) / 2),
+          y: Math.max(20, (mapRect.height - fixedHeight) / 2)
         };
       }
-      
-      // 确保位置在地图范围内
-      bestPosition.x = Math.min(Math.max(safeDistance, bestPosition.x), mapRect.width - tipWidth - safeDistance);
-      bestPosition.y = Math.min(Math.max(safeDistance, bestPosition.y), mapRect.height - tipHeight - safeDistance);
-      
-      return [bestPosition.x, bestPosition.y];
+
+      // 确保位置在安全范围内
+      safePosition.x = Math.max(20, Math.min(safePosition.x, mapRect.width - fixedWidth - 20));
+      safePosition.y = Math.max(20, Math.min(safePosition.y, mapRect.height - fixedHeight - 20));
+
+      return [safePosition.x, safePosition.y];
     },
     formatter: function(params) {
       if (params.data) {
-        // 处理省份名称换行
-        var formatProvinceName = function(name) {
-          // 需要换行的省份名称
-          var longProvinces = {
-            '新疆维吾尔自治区': '新疆维吾尔\n自治区',
-            '宁夏回族自治区': '宁夏回族\n自治区',
-            '广西壮族自治区': '广西壮族\n自治区',
-            '内蒙古自治区': '内蒙古\n自治区',
-            '西藏自治区': '西藏\n自治区'
-          };
-          return longProvinces[name] || name;
-        };
-
-        return '<div style="display: flex; align-items: center; min-width: 280px; background: transparent; position: relative;">' +
-               '<div style="position: absolute; left: 0; top: 0; width: 100%; height: 100%; background: url(\'img/tip-bg.png\') no-repeat center center; background-size: contain; z-index: -1; pointer-events: none;"></div>' +
-               '<div style="width: 200px; height: 240px; display: flex; align-items: center; justify-content: center; pointer-events: none;">' +
-               '<span style="color: #fff; font-size: 28px; font-weight: bold; transform: translateX(-20px); text-align: center; white-space: pre-line; line-height: 1.2;">' + 
-               formatProvinceName(params.name) + 
-               '</span>' +
+        // 创建像图片中那样的悬停信息框
+        return '<div style="' +
+               'background: url(img/tip-bg.png) no-repeat center center; ' +
+               'background-size: cover; ' +
+               'width: 280px; ' +
+               'height: 160px; ' +
+               'padding: 20px; ' +
+               'color: #fff; ' +
+               'font-family: Microsoft YaHei, Arial, sans-serif; ' +
+               'position: relative; ' +
+               'border-radius: 8px; ' +
+               'box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);' +
+               '">' +
+               '<div style="position: absolute; left: 20px; top: 50%; transform: translateY(-50%); width: 120px;">' +
+               '<div style="font-size: 28px; font-weight: bold; color: #fff; text-shadow: 2px 2px 4px rgba(0,0,0,0.8); margin-bottom: 10px;">' +
+               params.name +
                '</div>' +
-               '<div style="padding: 15px 40px 15px 0; height: 240px; display: flex; flex-direction: column; justify-content: center; pointer-events: none; transform: translateX(-30px);">' +
-               '<div style="line-height: 22px; color: #fff; margin-bottom: 3px;">地形：' + (params.data.uploadcnt || '') + '</div>' +
-               '<div style="line-height: 22px; color: #fff; margin-bottom: 3px;">作物：' + (params.data.uploadpzs || '') + '</div>' +
-               '<div style="line-height: 22px; color: #fff; margin-bottom: 3px;">气候：' + (params.data.xsmy || '') + '</div>' +
-               '<div style="line-height: 22px; color: #fff;">饮食：' + (params.data.kcmy || '') + '</div>' +
+               '</div>' +
+               '<div style="position: absolute; right: 20px; top: 20px; width: 120px; font-size: 14px; line-height: 1.8;">' +
+               '<div style="margin-bottom: 5px;"><span style="color: #FFD700; font-weight: bold;">地形：</span>' + (params.data.uploadcnt || '暂无数据') + '</div>' +
+               '<div style="margin-bottom: 5px;"><span style="color: #90EE90; font-weight: bold;">作物：</span>' + (params.data.uploadpzs || '暂无数据') + '</div>' +
+               '<div style="margin-bottom: 5px;"><span style="color: #87CEEB; font-weight: bold;">气候：</span>' + (params.data.xsmy || '暂无数据') + '</div>' +
+               '<div><span style="color: #FFA500; font-weight: bold;">饮食：</span>' + (params.data.kcmy || '暂无数据') + '</div>' +
                '</div>' +
                '</div>';
       }
@@ -952,46 +1084,118 @@ var option = {
       type: "map",
       mapType: "china",
       roam: false,
-      selectedMode: false,
+      selectedMode: 'single',  // 启用单选模式
       label: {
         normal: {
-              show: false
-                },
-                emphasis: {
+          show: false
+        },
+        emphasis: {
           show: true,
           textStyle: {
-            color: '#fff'
-                }
-            }
+            color: '#fff',
+            fontSize: 14,
+            fontWeight: 'bold'
+          }
         },
-            itemStyle: {
-                normal: {
+        select: {
+          show: true,
+          textStyle: {
+            color: '#fff',
+            fontSize: 14,
+            fontWeight: 'bold'
+          }
+        }
+      },
+      itemStyle: {
+        normal: {
           areaColor: 'rgb(244, 163, 13)',
-          borderColor: '#0692a4'
-                },
-                emphasis: {
+          borderColor: '#0692a4',
+          borderWidth: 1,
+          shadowBlur: 0,
+          shadowColor: 'transparent'
+        },
+        emphasis: {
           areaColor: "rgb(244, 71, 13)",
-          opacity: 0.8
+          borderColor: '#fff',
+          borderWidth: 2,
+          shadowBlur: 10,
+          shadowColor: 'rgba(244, 71, 13, 0.5)',
+          opacity: 0.9
+        },
+        select: {
+          areaColor: "rgb(30, 144, 255)",
+          borderColor: '#fff',
+          borderWidth: 3,
+          shadowBlur: 15,
+          shadowColor: 'rgba(30, 144, 255, 0.6)',
+          opacity: 1
+        }
+      },
+      emphasis: {
+        scale: 1.1,  // 悬停时放大1.1倍
+        focus: 'self'
+      },
+      select: {
+        scale: 1.2,  // 选中时放大1.2倍
+        itemStyle: {
+          areaColor: "rgb(30, 144, 255)",
+          borderColor: '#fff',
+          borderWidth: 3,
+          shadowBlur: 15,
+          shadowColor: 'rgba(30, 144, 255, 0.6)'
         }
       },
       data: mapData["map"]
     }
-  ]
+  ].concat(showCrops ? createCropScatterSeries() : [])
 };
 
 mapChart.setOption(option);
 
+// 添加全局点击事件监听器，点击空白区域时清理tooltip
+document.addEventListener('click', function(e) {
+  const mapContainer = document.getElementById('map');
+  if (mapContainer && !mapContainer.contains(e.target)) {
+    // 点击地图外部时清理所有tooltip
+    clearAllTooltips();
+  }
+});
+
+// 添加窗口大小改变事件监听器
+window.addEventListener('resize', function() {
+  // 窗口大小改变时清理所有tooltip，避免位置错误
+  clearAllTooltips();
+});
+
+// 自动隐藏交互指南
+setTimeout(function() {
+    var guide = document.getElementById('map-interaction-guide');
+    if (guide) {
+        guide.style.opacity = '0';
+        setTimeout(function() {
+            guide.style.display = 'none';
+        }, 3000);
+    }
+}, 8000); // 8秒后开始淡出
+
 // 移除之前添加的鼠标悬停事件监听
 mapChart.off('mouseover');
 mapChart.off('mouseout');
+mapChart.off('click');
 
 // 添加用户悬停状态变量
 var userHovering = false;
 
-// 添加鼠标悬停事件监听
+// 添加鼠标悬停事件监听 - 悬停效果
 mapChart.on('mouseover', function(params) {
   if (params.seriesIndex === 0) {
     userHovering = true;
+    isRandomMode = false;  // 停止随机模式
+
+    // 如果没有点击选中的省份，显示悬停tooltip
+    if (!clickedProvince) {
+      showEnhancedTooltip(params.dataIndex);
+    }
   }
 });
 
@@ -999,8 +1203,253 @@ mapChart.on('mouseover', function(params) {
 mapChart.on('mouseout', function(params) {
   if (params.seriesIndex === 0) {
     userHovering = false;
+
+    // 如果没有点击选中的省份，隐藏tooltip
+    if (!clickedProvince) {
+      hideEnhancedTooltip();
+    }
   }
 });
+
+// 添加鼠标移动事件，在移动时清理tooltip
+mapChart.on('mousemove', function(params) {
+  // 如果鼠标移动到空白区域，清理所有tooltip
+  if (!params.data && !params.seriesIndex) {
+    clearAllTooltips();
+  }
+});
+
+// 添加鼠标离开事件
+mapChart.on('globalout', function() {
+  // 鼠标离开图表时清理所有tooltip
+  setTimeout(() => {
+    clearAllTooltips();
+  }, 500);
+});
+
+// 添加点击事件监听 - 点击选中效果
+mapChart.on('click', function(params) {
+  if (params.seriesIndex === 0) {
+    // 处理省份地图点击时才清理tooltip
+    clearAllTooltips();
+    // 处理省份地图点击
+    isRandomMode = false;  // 停止随机模式
+
+    // 如果点击的是已选中的省份，取消选中
+    if (clickedProvince === params.dataIndex) {
+      clickedProvince = null;
+      mapChart.dispatchAction({
+        type: 'unselect',
+        seriesIndex: 0,
+        dataIndex: params.dataIndex
+      });
+      hideEnhancedTooltip();
+    } else {
+      // 取消之前选中的省份
+      if (clickedProvince !== null) {
+        mapChart.dispatchAction({
+          type: 'unselect',
+          seriesIndex: 0,
+          dataIndex: clickedProvince
+        });
+      }
+
+      // 选中新的省份
+      clickedProvince = params.dataIndex;
+      mapChart.dispatchAction({
+        type: 'select',
+        seriesIndex: 0,
+        dataIndex: params.dataIndex
+      });
+
+      // 显示圆形信息框
+      showCircularTooltip(params);
+    }
+  } else if (params.seriesIndex > 0 && showCrops) {
+    // 处理农作物散点图点击
+    const data = params.data;
+    if (data) {
+      // 显示农作物详细信息
+      showCropDetailTooltip(data, params.event.offsetX, params.event.offsetY);
+    }
+  }
+});
+
+// 强化的清理所有tooltip的函数
+function clearAllTooltips() {
+  // 隐藏省份tooltip
+  if (typeof hideEnhancedTooltip === 'function') {
+    hideEnhancedTooltip();
+  }
+
+  // 强制清理所有可能的tooltip元素
+  const allTooltips = document.querySelectorAll('.echarts-tooltip, .province-tooltip, #crop-detail-tooltip, #circular-tooltip, [class*="tooltip"]');
+  allTooltips.forEach(tooltip => {
+    if (tooltip && tooltip.parentNode) {
+      tooltip.style.opacity = '0';
+      tooltip.style.display = 'none';
+      tooltip.style.visibility = 'hidden';
+      tooltip.style.transform = 'scale(0)';
+      // 延迟移除，确保动画完成
+      setTimeout(() => {
+        if (tooltip.parentNode) {
+          try {
+            tooltip.parentNode.removeChild(tooltip);
+          } catch (e) {
+            // 忽略移除错误
+          }
+        }
+      }, 100);
+    }
+  });
+
+  // 隐藏ECharts默认tooltip
+  if (typeof mapChart !== 'undefined' && mapChart) {
+    try {
+      mapChart.dispatchAction({
+        type: 'hideTip'
+      });
+    } catch (e) {
+      // 忽略错误
+    }
+  }
+
+  // 清理可能残留的tooltip容器
+  setTimeout(() => {
+    const containers = document.querySelectorAll('[style*="position: absolute"][style*="z-index"]');
+    containers.forEach(container => {
+      if (container.textContent && (
+          container.textContent.includes('地形：') ||
+          container.textContent.includes('作物：') ||
+          container.textContent.includes('产量/面积：')
+        )) {
+        container.style.display = 'none';
+        if (container.parentNode) {
+          try {
+            container.parentNode.removeChild(container);
+          } catch (e) {
+            // 忽略移除错误
+          }
+        }
+      }
+    });
+  }, 200);
+}
+
+// 显示农作物详细信息的函数
+function showCropDetailTooltip(data, x, y) {
+  // 只清理省份tooltip，保留农作物tooltip的显示
+  if (typeof hideEnhancedTooltip === 'function') {
+    hideEnhancedTooltip();
+  }
+
+  // 创建或获取农作物详情tooltip
+  let cropTooltip = document.getElementById('crop-detail-tooltip');
+  if (!cropTooltip) {
+    cropTooltip = document.createElement('div');
+    cropTooltip.id = 'crop-detail-tooltip';
+    cropTooltip.style.cssText = `
+      position: absolute;
+      background: rgba(0, 0, 0, 0.9);
+      border: 2px solid ${data.cropType === '粮食作物' ? '#FFD700' :
+                         data.cropType === '经济作物' ? '#FF6B6B' :
+                         data.cropType === '水果类' ? '#FF8C00' : '#90EE90'};
+      border-radius: 8px;
+      padding: 12px;
+      color: white;
+      font-size: 12px;
+      z-index: 9999;
+      max-width: 280px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      pointer-events: none;
+      opacity: 0;
+      transform: scale(0.8);
+      transition: all 0.3s ease;
+    `;
+    document.body.appendChild(cropTooltip);
+  }
+
+  // 设置内容
+  cropTooltip.innerHTML = `
+    <div style="font-size: 14px; font-weight: bold; color: ${data.cropType === '粮食作物' ? '#FFD700' :
+                                                           data.cropType === '经济作物' ? '#FF6B6B' :
+                                                           data.cropType === '水果类' ? '#FF8C00' : '#90EE90'}; margin-bottom: 8px;">
+      ${data.icon} ${data.name}
+    </div>
+    <div style="margin: 5px 0; color: #ccc;">
+      📍 ${data.province}
+    </div>
+    <div style="margin: 3px 0;">
+      <span style="color: #FFD700;">产量/面积：</span>${data.area}
+    </div>
+    <div style="margin: 3px 0;">
+      <span style="color: #90EE90;">种植季节：</span>${data.season}
+    </div>
+    <div style="margin: 3px 0;">
+      <span style="color: #87CEEB;">主要品种：</span>${data.varieties}
+    </div>
+    <div style="margin: 3px 0;">
+      <span style="color: #FFA500;">经济价值：</span>${data.economicValue}
+    </div>
+    <div style="margin: 5px 0; color: #ddd; font-size: 11px; line-height: 1.4;">
+      ${data.description}
+    </div>
+    <div style="margin-top: 8px; padding-top: 8px; border-top: 1px solid #444; color: #aaa; font-size: 10px; text-align: center;">
+      点击其他地方关闭
+    </div>
+  `;
+
+  // 计算位置，避免超出屏幕
+  const mapContainer = document.getElementById('map');
+  const mapRect = mapContainer.getBoundingClientRect();
+  const tooltipWidth = 280;
+  const tooltipHeight = 200;
+
+  let left = x + 10;
+  let top = y - tooltipHeight / 2;
+
+  // 防止超出右边界
+  if (left + tooltipWidth > mapRect.width) {
+    left = x - tooltipWidth - 10;
+  }
+
+  // 防止超出上下边界
+  if (top < 0) {
+    top = 10;
+  } else if (top + tooltipHeight > mapRect.height) {
+    top = mapRect.height - tooltipHeight - 10;
+  }
+
+  cropTooltip.style.left = left + 'px';
+  cropTooltip.style.top = top + 'px';
+
+  // 强制显示tooltip
+  cropTooltip.style.display = 'block';
+  cropTooltip.style.visibility = 'visible';
+
+  // 显示动画
+  requestAnimationFrame(() => {
+    cropTooltip.style.opacity = '1';
+    cropTooltip.style.transform = 'scale(1)';
+  });
+
+  // 添加点击其他地方关闭的事件
+  setTimeout(() => {
+    const closeHandler = (e) => {
+      if (!cropTooltip.contains(e.target)) {
+        cropTooltip.style.opacity = '0';
+        cropTooltip.style.transform = 'scale(0.8)';
+        setTimeout(() => {
+          if (cropTooltip.parentNode) {
+            cropTooltip.parentNode.removeChild(cropTooltip);
+          }
+        }, 300);
+        document.removeEventListener('click', closeHandler);
+      }
+    };
+    document.addEventListener('click', closeHandler);
+  }, 100);
+}
 
 // 渲染全国四种数据1月份
 $('#book-data').text(allMData["book"][0]);
@@ -1359,19 +1808,17 @@ function setVal() {
   var currentProvinceIndexPosition = 0;
 
   timer = setInterval(function() {
-    // 如果用户正在悬停某个省份，则不进行随机切换
-    if (userHovering) {
+    // 如果用户正在交互（悬停或点击），则不进行随机切换
+    if (userHovering || clickedProvince !== null) {
       return;
     }
-    
+
     if (mapChart.currentIndex == -1 && monthIndex == 0) {
-        
       option.series[0].data = mapData[Month[0]];
-
-
-      mapChart.setOption(option);0
+      // 确保农作物散点图系列被保留
+      option.series = [option.series[0]].concat(showCrops ? createCropScatterSeries() : []);
+      mapChart.setOption(option);
       pieDataFn(monthIndex);
-
       presstimerFn(monthIndex);
       stockRankFn(monthIndex);
 
@@ -1388,108 +1835,69 @@ function setVal() {
       seriesIndex: 0,
       dataIndex: mapChart.currentIndex
     });
-    
+
     // 使用打乱后的数组来选择下一个省份，确保所有省份都有机会被高亮
     mapChart.currentIndex = allProvinceIndices[currentProvinceIndexPosition];
     currentProvinceIndexPosition = (currentProvinceIndexPosition + 1) % allProvinceIndices.length;
-    
+
     // 记录当前被系统高亮的省份索引
     var currentSystemHighlightIndex = mapChart.currentIndex;
-    
-    // 高亮当前图形（使用蓝色）
-    var tempData = JSON.parse(JSON.stringify(mapData["Jan"][currentSystemHighlightIndex]));
-    if (!tempData.itemStyle) {
-      tempData.itemStyle = {};
-    }
-    if (!tempData.itemStyle.emphasis) {
-      tempData.itemStyle.emphasis = {};
-    }
-    tempData.itemStyle.emphasis.areaColor = "rgb(30, 144, 255)";
-    
-    // 临时修改数据，并应用高亮
-    mapData["Jan"][currentSystemHighlightIndex] = tempData;
-    mapChart.setOption({
-      series: [{
-        data: mapData["Jan"]
-      }]
-    });
+
+    // 设置随机模式标志
+    isRandomMode = true;
+
+    // 高亮当前图形（使用绿色表示随机高亮）
     mapChart.dispatchAction({
       type: "highlight",
       seriesIndex: 0,
       dataIndex: currentSystemHighlightIndex
     });
-    
-    // 为随机高亮的省份显示tooltip弹窗
-    mapChart.dispatchAction({
-      type: 'showTip',
-      seriesIndex: 0,
-      dataIndex: currentSystemHighlightIndex
-    });
-    
-    // 还原数据，这样鼠标悬停时仍然是深橙色
-    setTimeout(function() {
-      mapData["Jan"][currentSystemHighlightIndex].itemStyle.emphasis.areaColor = "rgb(244, 71, 13)";
-    }, 100);
-    
-    // 移除自动隐藏tooltip的定时器
-    clearTimeout(window.tooltipHideTimer);
-    // 注释掉或删除以前的tooltip定时隐藏代码
-    /*
-    window.tooltipHideTimer = setTimeout(function() {
-      // 只有在用户不悬停的情况下才隐藏tooltip
-      if (!userHovering) {
-        mapChart.dispatchAction({
-          type: 'hideTip'
-        });
-      }
-    }, 1500); // tooltip显示1.5秒
-    */
 
-    if (mapChart.currentIndex === hasData[monthIndex]) {
+    // 为随机高亮的省份显示tooltip弹窗
+    showEnhancedTooltip(currentSystemHighlightIndex);
+
+    if (mapChart.currentIndex === -1) {
         mapChart.currentIndex = -1;
         monthIndex++;
-        
+
         if(monthIndex > 11){
             monthIndex = monthIndex%12;
         }
 
         option.series[0].data = mapData[Month[monthIndex]];
-      
+        // 确保农作物散点图系列被保留
+        option.series = [option.series[0]].concat(showCrops ? createCropScatterSeries() : []);
         mapChart.setOption(option);
 
         // transition过渡动画
         bNum++;
         overWrapEle.addClass('go');
-        // debugger
+
         if(bNum > 12){
             bNum = 1;
             overWrapEle.css('top',0);
             overWrapEle.removeClass('go');
 
             for(var i = 0; i < ranktUl.length; i++){
-        
-                ranktUl.eq(i).children().removeClass('active');                
+                ranktUl.eq(i).children().removeClass('active');
                 ranktUl.eq(i).children().eq(0).addClass('active');
-
             }
         }
-       
+
         if(bNum == 1){
             overWrapEle.removeClass('top'+ 12);
         }else{
-            overWrapEle.removeClass('top'+ (bNum -1 ));        
+            overWrapEle.removeClass('top'+ (bNum -1 ));
         }
-        overWrapEle.addClass('top'+ bNum); 
-        ListenTr(bNum);        
+        overWrapEle.addClass('top'+ bNum);
+        ListenTr(bNum);
         pieDataFn(monthIndex);
-
         presstimerFn(monthIndex);
         stockRankFn(monthIndex);
         numGoFn(monthIndex);
-        
     }
-    
-  }, 3000); // 将时间从2000毫秒改为3000毫秒，增加1秒
+
+  }, 3000); // 3秒间隔
 }
 
 var chinaEchartsObj = echarts.getMap('china');
@@ -1499,6 +1907,12 @@ var allDefProvince = geoJSONChina.features;
 for(var i = 0, len = allDefProvince.length; i < len; i++){
    var sglProvinceProperties = allDefProvince[i].properties;
    var sglProvinceName = sglProvinceProperties.name;
+
+   // 确保cp属性存在
+   if (!sglProvinceProperties.cp) {
+       sglProvinceProperties.cp = [0, 0];
+   }
+
    switch(sglProvinceName){
         case '湖北省':
             sglProvinceProperties.cp[0] = 128.642464;
@@ -1599,6 +2013,43 @@ function shuffleArray(array) {
     return validProvinces;
 }
 
+// 增强的tooltip显示函数
+function showEnhancedTooltip(dataIndex) {
+    // 添加淡入动画效果
+    mapChart.dispatchAction({
+        type: 'showTip',
+        seriesIndex: 0,
+        dataIndex: dataIndex
+    });
+
+    // 为tooltip添加特殊样式类
+    setTimeout(function() {
+        var tooltipDom = document.querySelector('.echarts-tooltip');
+        if (tooltipDom) {
+            tooltipDom.classList.add('province-tooltip-enhanced');
+        }
+    }, 50);
+}
+
+// 隐藏tooltip的增强函数
+function hideEnhancedTooltip() {
+    var tooltipDom = document.querySelector('.echarts-tooltip');
+    if (tooltipDom) {
+        tooltipDom.style.opacity = '0';
+        tooltipDom.style.transform = 'translateY(10px) scale(0.95)';
+
+        setTimeout(function() {
+            mapChart.dispatchAction({
+                type: 'hideTip'
+            });
+        }, 200);
+    } else {
+        mapChart.dispatchAction({
+            type: 'hideTip'
+        });
+    }
+}
+
 // 在地图数据初始化时使用
 var option = {
     // ... 其他配置 ...
@@ -1612,6 +2063,38 @@ var option = {
 
 var isRandomMode = false; // 添加随机模式标志
 
+// 添加地图外部点击事件处理
+document.addEventListener('click', function(event) {
+    var mapContainer = document.getElementById('map');
+    var isClickInsideMap = mapContainer.contains(event.target);
+
+    // 如果点击在地图外部且有选中的省份，则取消选中
+    if (!isClickInsideMap && clickedProvince !== null) {
+        mapChart.dispatchAction({
+            type: 'unselect',
+            seriesIndex: 0,
+            dataIndex: clickedProvince
+        });
+        hideEnhancedTooltip();
+        clickedProvince = null;
+        isRandomMode = true; // 重新启动随机模式
+    }
+});
+
+// 添加键盘事件处理（ESC键取消选中）
+document.addEventListener('keydown', function(event) {
+    if (event.key === 'Escape' && clickedProvince !== null) {
+        mapChart.dispatchAction({
+            type: 'unselect',
+            seriesIndex: 0,
+            dataIndex: clickedProvince
+        });
+        hideEnhancedTooltip();
+        clickedProvince = null;
+        isRandomMode = true; // 重新启动随机模式
+    }
+});
+
 function setRandomProvince() {
     isRandomMode = true;
     // ... existing code ...
@@ -1621,6 +2104,94 @@ function setRandomProvince() {
 function stopRandom() {
     isRandomMode = false;
     // ... existing code ...
+}
+
+// 显示圆形信息框的函数
+function showCircularTooltip(params) {
+  if (!params.data) return;
+
+  // 简化省份名称显示
+  var formatProvinceName = function(name) {
+    var shortProvinces = {
+      '新疆维吾尔自治区': '新疆',
+      '宁夏回族自治区': '宁夏',
+      '广西壮族自治区': '广西',
+      '内蒙古自治区': '内蒙古',
+      '西藏自治区': '西藏',
+      '黑龙江省': '黑龙江',
+      '吉林省': '吉林',
+      '辽宁省': '辽宁',
+      '河北省': '河北',
+      '河南省': '河南',
+      '山东省': '山东',
+      '山西省': '山西',
+      '陕西省': '陕西',
+      '甘肃省': '甘肃',
+      '青海省': '青海',
+      '四川省': '四川',
+      '云南省': '云南',
+      '贵州省': '贵州',
+      '湖北省': '湖北',
+      '湖南省': '湖南',
+      '江西省': '江西',
+      '安徽省': '安徽',
+      '江苏省': '江苏',
+      '浙江省': '浙江',
+      '福建省': '福建',
+      '广东省': '广东',
+      '海南省': '海南'
+    };
+    return shortProvinces[name] || name;
+  };
+
+  var circularTooltipContent = '<div class="province-tooltip" style="' +
+         'width: 300px; height: 250px; ' +
+         'background: rgba(0, 0, 0, 0.9); ' +
+         'border: 2px solid #0692a4; ' +
+         'border-radius: 12px; ' +
+         'padding: 20px; ' +
+         'color: #fff; ' +
+         'font-family: Arial, sans-serif; ' +
+         'box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6); ' +
+         'position: relative; ' +
+         'overflow: hidden; ' +
+         'pointer-events: none;' +
+         '">' +
+         '<div style="position: absolute; top: 0; left: 0; width: 100%; height: 4px; background: linear-gradient(90deg, #0692a4, #FFD700, #0692a4); opacity: 0.8;"></div>' +
+         '<div style="text-align: center; margin-bottom: 20px;">' +
+         '<h3 style="margin: 0; font-size: 24px; font-weight: bold; color: #FFD700; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">' +
+         formatProvinceName(params.name) +
+         '</h3>' +
+         '</div>' +
+         '<div style="display: grid; grid-template-columns: 1fr; gap: 8px; font-size: 14px; line-height: 1.6;">' +
+         '<div style="display: flex; align-items: center;"><span style="color: #87CEEB; font-weight: bold; min-width: 50px;">🏔️ 地形：</span><span style="color: #fff;">' + (params.data.uploadcnt || '暂无数据') + '</span></div>' +
+         '<div style="display: flex; align-items: center;"><span style="color: #90EE90; font-weight: bold; min-width: 50px;">🌾 作物：</span><span style="color: #fff;">' + (params.data.uploadpzs || '暂无数据') + '</span></div>' +
+         '<div style="display: flex; align-items: center;"><span style="color: #FFB6C1; font-weight: bold; min-width: 50px;">🌤️ 气候：</span><span style="color: #fff;">' + (params.data.xsmy || '暂无数据') + '</span></div>' +
+         '<div style="display: flex; align-items: center;"><span style="color: #FFA500; font-weight: bold; min-width: 50px;">🍜 饮食：</span><span style="color: #fff;">' + (params.data.kcmy || '暂无数据') + '</span></div>' +
+         '</div>' +
+         '<div style="position: absolute; bottom: 8px; right: 12px; font-size: 10px; color: #888; font-style: italic;">点击其他地方关闭</div>' +
+         '</div>';
+
+  // 创建或更新圆形tooltip
+  var existingTooltip = document.getElementById('circular-tooltip');
+  if (existingTooltip) {
+    existingTooltip.remove();
+  }
+
+  var tooltipDiv = document.createElement('div');
+  tooltipDiv.id = 'circular-tooltip';
+  tooltipDiv.innerHTML = circularTooltipContent;
+  tooltipDiv.style.position = 'absolute';
+  tooltipDiv.style.zIndex = '9999';
+  tooltipDiv.style.pointerEvents = 'none';
+
+  // 计算位置
+  var mapContainer = document.getElementById('map');
+  var mapRect = mapContainer.getBoundingClientRect();
+  tooltipDiv.style.left = (mapRect.width / 2 + 100) + 'px';
+  tooltipDiv.style.top = (mapRect.height / 2 - 125) + 'px';
+
+  mapContainer.appendChild(tooltipDiv);
 }
 
 

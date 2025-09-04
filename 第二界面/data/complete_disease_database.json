@@ -1,0 +1,419 @@
+{
+  "diseases": [
+    {
+      "id": "001",
+      "disease_name": "稻瘟病",
+      "disease_category": "真菌病害",
+      "symptoms": ["叶片出现梭形病斑", "病斑中央灰白色，边缘褐色", "严重时叶片枯死", "穗颈部感染导致白穗"],
+      "affected_plants": [{"plant_name": "水稻", "severity_level": "高", "plant_images": ["images/水稻稻瘟病.png"]}],
+      "causes": ["高温高湿环境（温度25-28℃，湿度85%以上）", "氮肥施用过量，植株徒长", "田间密植，通风透光不良", "品种抗性不足或退化", "田间积水，排水不畅"]
+    },
+    {
+      "id": "002",
+      "disease_name": "稻纹枯病",
+      "disease_category": "真菌病害",
+      "symptoms": ["叶鞘上出现椭圆形或云纹状病斑", "病斑灰绿色至黄褐色，边缘褐色", "严重时病斑扩展至叶片", "茎秆受害后易倒伏"],
+      "affected_plants": [{"plant_name": "水稻", "severity_level": "高", "plant_images": ["images/水稻稻纹枯病.png"]}],
+      "causes": ["高温高湿环境（温度26-30℃，湿度80%以上）", "田间密植过度，通风透光差", "氮肥过量施用，植株柔嫩", "田间湿度过高，长期积水", "前茬病残体未清理干净"]
+    },
+    {
+      "id": "003",
+      "disease_name": "稻白叶枯病",
+      "disease_category": "细菌病害",
+      "symptoms": ["叶片边缘出现黄白色条斑", "病斑沿叶脉扩展，呈波浪状", "严重时整叶枯死呈灰白色", "病部有黄色菌脓溢出"],
+      "affected_plants": [{"plant_name": "水稻", "severity_level": "高", "plant_images": ["images/水稻稻白叶枯病.png"]}],
+      "causes": ["高温高湿环境（温度28-32℃，湿度90%以上）", "伤口感染，机械损伤或虫害造成", "氮肥过量，植株组织柔嫩", "田间积水，利于细菌繁殖传播", "种子带菌，未进行消毒处理"]
+    },
+    {
+      "id": "004",
+      "disease_name": "稻曲病",
+      "disease_category": "真菌病害",
+      "symptoms": ["穗部个别谷粒受害变成球状", "病粒初期淡黄色，后变橙黄色", "病粒表面有粉状孢子", "严重影响稻米品质"],
+      "affected_plants": [{"plant_name": "水稻", "severity_level": "中", "plant_images": ["images/水稻稻曲病.png"]}],
+      "causes": ["抽穗扬花期遇高温高湿天气", "氮肥过量，抽穗期延长", "田间湿度过高，利于病原菌侵染", "品种感病性强", "田间通风透光条件差"]
+    },
+    {
+      "id": "005",
+      "disease_name": "稻恶苗病",
+      "disease_category": "真菌病害",
+      "symptoms": ["病苗细长，叶片狭窄", "节间伸长，植株徒长", "叶色淡绿发黄", "根系发育不良"],
+      "affected_plants": [{"plant_name": "水稻", "severity_level": "中", "plant_images": ["images/水稻稻恶苗病.png"]}],
+      "causes": ["种子带菌，未进行消毒处理", "播种过深，出苗缓慢", "低温高湿条件，利于病原菌侵染", "氮肥过量，植株徒长", "土壤中病原菌积累"]
+    },
+    {
+      "id": "006",
+      "disease_name": "小麦条纹花叶病",
+      "disease_category": "病毒病害",
+      "symptoms": ["叶片出现黄绿相间条纹", "植株矮化", "分蘖减少", "穗小粒少"],
+      "affected_plants": [{"plant_name": "小麦", "severity_level": "中", "plant_images": ["images/小麦条纹花叶病.png"]}],
+      "causes": ["病毒通过蚜虫、灰飞虱等媒介昆虫传播", "播种过早，利于媒介昆虫繁殖", "田间杂草丛生，为病毒提供寄主", "品种抗病性差或抗性退化", "气候条件适宜媒介昆虫活动"]
+    },
+    {
+      "id": "007",
+      "disease_name": "小麦赤霉病",
+      "disease_category": "真菌病害",
+      "symptoms": ["穗部小花变褐枯死", "病穗呈漂白状", "湿度大时产生粉红色霉层", "籽粒干瘪，品质下降"],
+      "affected_plants": [{"plant_name": "小麦", "severity_level": "极高", "plant_images": ["images/小麦赤霉病.png"]}],
+      "causes": ["开花期遇连续阴雨天气", "温度适中湿度高（温度15-25℃，湿度85%以上）", "田间病残体未清除，病原菌越冬", "播种过密，田间通风不良", "品种抗病性差"]
+    },
+    {
+      "id": "008",
+      "disease_name": "小麦白粉病",
+      "disease_category": "真菌病害",
+      "symptoms": ["叶片表面出现白色粉状霉层", "病斑逐渐扩大", "叶片变黄枯死", "影响光合作用"],
+      "affected_plants": [{"plant_name": "小麦", "severity_level": "高", "plant_images": ["images/小麦白粉病.png"]}],
+      "causes": ["温度适中湿度高（温度16-22℃，湿度70%以上）", "田间密植过度，通风透光差", "氮肥过量，植株柔嫩易感病", "品种抗病性不足", "春季温暖多雨，利于病原菌繁殖"]
+    },
+    {
+      "id": "009",
+      "disease_name": "小麦条锈病",
+      "disease_category": "真菌病害",
+      "symptoms": ["叶片出现橙黄色条状锈斑", "锈斑沿叶脉排列", "严重时叶片枯黄", "影响籽粒饱满度"],
+      "affected_plants": [{"plant_name": "小麦", "severity_level": "高", "plant_images": ["images/小麦条锈病.png"]}],
+      "causes": ["低温高湿条件（温度10-15℃，湿度80%以上）", "春季气温回升缓慢，利于病原菌侵染", "品种抗病性差或抗性丧失", "田间小气候湿润", "病原菌孢子随风传播"]
+    },
+    {
+      "id": "010",
+      "disease_name": "小麦叶锈病",
+      "disease_category": "真菌病害",
+      "symptoms": ["叶片出现橙黄色圆形锈斑", "锈斑散生分布", "后期产生黑色冬孢子堆", "叶片提早枯死"],
+      "affected_plants": [{"plant_name": "小麦", "severity_level": "中", "plant_images": ["images/小麦叶锈病.png"]}],
+      "causes": ["温度适中湿度高（温度15-25℃，湿度75%以上）", "自生麦苗为病原菌提供越夏寄主", "品种抗病性不足", "田间湿度大，利于孢子萌发", "氮肥过量，植株抗性下降"]
+    },
+    {
+      "id": "011",
+      "disease_name": "玉米大斑病",
+      "disease_category": "真菌病害",
+      "symptoms": ["叶片出现长椭圆形病斑", "病斑灰褐色，边缘明显", "严重时病斑连片，叶片枯死", "影响光合作用"],
+      "affected_plants": [{"plant_name": "玉米", "severity_level": "高", "plant_images": ["images/玉米大斑病.png"]}],
+      "causes": ["温度适中湿度高（温度20-25℃，湿度85%以上）", "田间密植过度，通风透光不良", "连作种植，病原菌积累", "氮肥过量，植株抗性下降", "病残体未及时清除，病原菌越冬"]
+    },
+    {
+      "id": "012",
+      "disease_name": "玉米小斑病",
+      "disease_category": "真菌病害",
+      "symptoms": ["叶片出现椭圆形小病斑", "病斑黄褐色，周围有黄色晕圈", "病斑密集时叶片枯黄", "主要危害叶片和叶鞘"],
+      "affected_plants": [{"plant_name": "玉米", "severity_level": "中", "plant_images": ["images/玉米小斑病.png"]}],
+      "causes": ["高温高湿环境（温度25-30℃，湿度80%以上）", "连作种植，病原菌积累", "田间密植，通风透光不良", "病残体未清除，病原菌越冬", "品种抗病性差"]
+    },
+    {
+      "id": "013",
+      "disease_name": "玉米茎腐病",
+      "disease_category": "真菌病害",
+      "symptoms": ["茎基部变褐腐烂", "植株易倒伏", "叶片萎蔫变黄", "穗部发育不良"],
+      "affected_plants": [{"plant_name": "玉米", "severity_level": "高", "plant_images": ["images/玉米茎腐病.png"]}],
+      "causes": ["土壤排水不良，根部缺氧", "连作种植，土传病原菌积累", "高温高湿条件，利于病原菌侵染", "机械损伤，为病原菌提供侵入口", "土壤贫瘠，植株抗性差"]
+    },
+    {
+      "id": "014",
+      "disease_name": "玉米丝黑穗病",
+      "disease_category": "真菌病害",
+      "symptoms": ["雌穗变成黑色孢子堆", "苞叶内充满黑粉", "植株矮化", "分蘖增多"],
+      "affected_plants": [{"plant_name": "玉米", "severity_level": "高", "plant_images": ["images/玉米丝黑穗病.png"]}],
+      "causes": ["种子带菌，未进行包衣处理", "土壤中病原菌孢子积累", "播种期土壤温度低湿度高", "连作种植，病原菌密度增加", "品种抗病性不足"]
+    },
+    {
+      "id": "015",
+      "disease_name": "番茄晚疫病",
+      "disease_category": "真菌病害",
+      "symptoms": ["叶片出现水浸状暗绿色病斑", "病斑迅速扩大变褐", "湿度大时病斑背面有白色霉层", "果实出现褐色凹陷病斑"],
+      "affected_plants": [{"plant_name": "番茄", "severity_level": "极高", "plant_images": ["images/番茄晚疫病.png"]}, {"plant_name": "马铃薯", "severity_level": "极高", "plant_images": ["images/马铃薯晚疫病.png"]}],
+      "causes": ["低温高湿环境（温度15-20℃，湿度90%以上）", "连作种植，病原菌积累严重", "通风不良，湿度难以控制", "植株密度过大，叶片湿润时间长", "雨水频繁，利于病原菌传播"]
+    },
+    {
+      "id": "016",
+      "disease_name": "番茄早疫病",
+      "disease_category": "真菌病害",
+      "symptoms": ["叶片出现同心轮纹状病斑", "病斑褐色，有明显轮纹", "果实脐部出现凹陷病斑", "严重时叶片枯死脱落"],
+      "affected_plants": [{"plant_name": "番茄", "severity_level": "高", "plant_images": ["images/番茄早疫病.png"]}],
+      "prevention_treatment": ["选用抗病品种", "合理轮作", "清除病残体", "药剂防治：使用代森锰锌、百菌清等"]
+    },
+    {
+      "id": "017",
+      "disease_name": "番茄灰霉病",
+      "disease_category": "真菌病害",
+      "symptoms": ["果实出现水浸状病斑", "病部产生灰色霉层", "叶片边缘出现V字形病斑", "花器变褐枯死"],
+      "affected_plants": [{"plant_name": "番茄", "severity_level": "高", "plant_images": ["images/番茄灰霉病.png"]}],
+      "prevention_treatment": ["控制湿度", "加强通风", "及时清除病残体", "药剂防治：使用腐霉利、异菌脲等"]
+    },
+    {
+      "id": "018",
+      "disease_name": "黄瓜霜霉病",
+      "disease_category": "真菌病害",
+      "symptoms": ["叶片出现黄色多角形病斑", "病斑受叶脉限制呈多角形", "湿度大时叶背有灰黑色霉层", "严重时叶片枯黄脱落"],
+      "affected_plants": [{"plant_name": "黄瓜", "severity_level": "高", "plant_images": ["images/黄瓜霜霉病.png"]}, {"plant_name": "甜瓜", "severity_level": "中", "plant_images": ["images/甜瓜霜霉病.png"]}],
+      "prevention_treatment": ["选用抗病品种", "控制棚内湿度", "加强通风排湿", "药剂防治：使用烯酰吗啉、霜脲氰等"]
+    },
+    {
+      "id": "019",
+      "disease_name": "黄瓜白粉病",
+      "disease_category": "真菌病害",
+      "symptoms": ["叶片表面出现白色粉状霉层", "病斑逐渐扩大连片", "叶片变黄枯死", "果实表面也可受害"],
+      "affected_plants": [{"plant_name": "黄瓜", "severity_level": "中", "plant_images": ["images/黄瓜白粉病.png"]}],
+      "prevention_treatment": ["选用抗病品种", "合理密植", "科学施肥", "药剂防治：使用三唑酮、烯唑醇等"]
+    },
+    {
+      "id": "020",
+      "disease_name": "黄瓜细菌性角斑病",
+      "disease_category": "细菌病害",
+      "symptoms": ["叶片出现水浸状小斑点", "病斑受叶脉限制呈多角形", "病斑中央变褐枯死", "果实出现圆形凹陷病斑"],
+      "affected_plants": [{"plant_name": "黄瓜", "severity_level": "中", "plant_images": ["images/黄瓜细菌性角斑病.png"]}],
+      "prevention_treatment": ["选用无病种子", "避免伤口感染", "控制湿度", "药剂防治：使用铜制剂、链霉素等"]
+    },
+    {
+      "id": "021",
+      "disease_name": "白菜软腐病",
+      "disease_category": "细菌病害",
+      "symptoms": ["叶柄基部出现水浸状病斑", "病部软腐发臭", "外叶萎蔫下垂", "整株腐烂"],
+      "affected_plants": [{"plant_name": "大白菜", "severity_level": "高", "plant_images": ["images/大白菜软腐病.png"]}, {"plant_name": "小白菜", "severity_level": "高", "plant_images": ["images/小白菜软腐病.png"]}],
+      "prevention_treatment": ["选用抗病品种", "避免伤口", "合理浇水", "药剂防治：使用农用链霉素、铜制剂等"]
+    },
+    {
+      "id": "022",
+      "disease_name": "白菜霜霉病",
+      "disease_category": "真菌病害",
+      "symptoms": ["叶片出现淡黄色病斑", "病斑逐渐扩大变褐", "叶背产生白色霉层", "严重时叶片枯死"],
+      "affected_plants": [{"plant_name": "大白菜", "severity_level": "中", "plant_images": ["images/大白菜霜霉病.png"]}, {"plant_name": "小白菜", "severity_level": "中", "plant_images": ["images/小白菜霜霉病.png"]}],
+      "prevention_treatment": ["选用抗病品种", "控制湿度", "合理密植", "药剂防治：使用烯酰吗啉、霜脲氰等"]
+    },
+    {
+      "id": "023",
+      "disease_name": "白菜病毒病",
+      "disease_category": "病毒病害",
+      "symptoms": ["叶片出现花叶症状", "植株矮化", "叶片皱缩变形", "生长发育受阻"],
+      "affected_plants": [{"plant_name": "大白菜", "severity_level": "中", "plant_images": ["images/大白菜病毒病.png"]}, {"plant_name": "小白菜", "severity_level": "中", "plant_images": ["images/小白菜病毒病.png"]}],
+      "prevention_treatment": ["选用抗病品种", "控制蚜虫传播", "清除杂草", "药剂防治：使用吡虫啉防治蚜虫"]
+    },
+    {
+      "id": "024",
+      "disease_name": "辣椒疫病",
+      "disease_category": "真菌病害",
+      "symptoms": ["茎基部出现水浸状病斑", "病部缢缩变褐", "叶片萎蔫", "果实出现褐色病斑"],
+      "affected_plants": [{"plant_name": "辣椒", "severity_level": "高", "plant_images": ["images/辣椒疫病.png"]}],
+      "prevention_treatment": ["选用抗病品种", "改善排水", "避免连作", "药剂防治：使用甲霜灵、烯酰吗啉等"]
+    },
+    {
+      "id": "025",
+      "disease_name": "辣椒炭疽病",
+      "disease_category": "真菌病害",
+      "symptoms": ["果实出现圆形凹陷病斑", "病斑中央产生黑色小点", "叶片出现褐色病斑", "严重时果实腐烂"],
+      "affected_plants": [{"plant_name": "辣椒", "severity_level": "高", "plant_images": ["images/辣椒炭疽病.png"]}],
+      "prevention_treatment": ["选用抗病品种", "清除病残体", "合理轮作", "药剂防治：使用代森锰锌、苯醚甲环唑等"]
+    },
+    {
+      "id": "026",
+      "disease_name": "茄子黄萎病",
+      "disease_category": "真菌病害",
+      "symptoms": ["下部叶片发黄萎蔫", "叶脉变褐", "茎部维管束变褐", "植株逐渐枯死"],
+      "affected_plants": [{"plant_name": "茄子", "severity_level": "极高", "plant_images": ["images/茄子黄萎病.png"]}],
+      "prevention_treatment": ["选用抗病品种", "土壤消毒", "合理轮作", "药剂防治：使用多菌灵、甲基托布津等"]
+    },
+    {
+      "id": "027",
+      "disease_name": "茄子绵疫病",
+      "disease_category": "真菌病害",
+      "symptoms": ["果实出现水浸状病斑", "病部产生白色棉絮状霉层", "果实软腐", "叶片也可受害"],
+      "affected_plants": [{"plant_name": "茄子", "severity_level": "高", "plant_images": ["images/茄子绵疫病.png"]}],
+      "prevention_treatment": ["控制湿度", "改善通风", "避免积水", "药剂防治：使用甲霜灵、烯酰吗啉等"]
+    },
+    {
+      "id": "028",
+      "disease_name": "豆角锈病",
+      "disease_category": "真菌病害",
+      "symptoms": ["叶片出现橙黄色锈斑", "锈斑突起明显", "严重时叶片枯黄", "影响豆荚发育"],
+      "affected_plants": [{"plant_name": "豆角", "severity_level": "中", "plant_images": ["images/豆角锈病.png"]}],
+      "prevention_treatment": ["选用抗病品种", "合理密植", "科学施肥", "药剂防治：使用三唑酮、丙环唑等"]
+    },
+    {
+      "id": "029",
+      "disease_name": "豆角炭疽病",
+      "disease_category": "真菌病害",
+      "symptoms": ["豆荚出现圆形凹陷病斑", "病斑中央有黑色小点", "叶片出现褐色病斑", "严重时豆荚腐烂"],
+      "affected_plants": [{"plant_name": "豆角", "severity_level": "高", "plant_images": ["images/豆角炭疽病.png"]}],
+      "prevention_treatment": ["选用无病种子", "清除病残体", "合理轮作", "药剂防治：使用代森锰锌、苯醚甲环唑等"]
+    },
+    {
+      "id": "030",
+      "disease_name": "马铃薯晚疫病",
+      "disease_category": "真菌病害",
+      "symptoms": ["叶片出现水浸状暗绿色病斑", "病斑迅速扩大变褐", "湿度大时叶背有白色霉层", "块茎出现褐色凹陷病斑"],
+      "affected_plants": [{"plant_name": "马铃薯", "severity_level": "极高", "plant_images": ["images/马铃薯晚疫病.png"]}],
+      "prevention_treatment": ["选用抗病品种", "避免连作", "控制湿度", "药剂防治：使用甲霜灵、烯酰吗啉等"]
+    },
+    {
+      "id": "031",
+      "disease_name": "棉花枯萎病",
+      "disease_category": "真菌病害",
+      "symptoms": ["植株下部叶片发黄萎蔫", "叶脉变褐", "茎部维管束变褐", "严重时整株枯死"],
+      "affected_plants": [{"plant_name": "棉花", "severity_level": "极高", "plant_images": ["images/棉花枯萎病.png"]}],
+      "prevention_treatment": ["选用抗病品种", "实行轮作", "土壤消毒", "药剂防治：使用多菌灵、甲基托布津等"]
+    },
+    {
+      "id": "032",
+      "disease_name": "棉花炭疽病",
+      "disease_category": "真菌病害",
+      "symptoms": ["叶片出现圆形褐色病斑", "病斑中央有黑色小点", "棉铃受害出现凹陷病斑", "严重影响纤维品质"],
+      "affected_plants": [{"plant_name": "棉花", "severity_level": "高", "plant_images": ["images/棉花炭疽病.png"]}],
+      "prevention_treatment": ["选用抗病品种", "清除病残体", "合理施肥", "药剂防治：使用代森锰锌、苯醚甲环唑等"]
+    },
+    {
+      "id": "033",
+      "disease_name": "大豆根腐病",
+      "disease_category": "真菌病害",
+      "symptoms": ["根部变褐腐烂", "主根和侧根均受害", "地上部分叶片黄化", "植株矮小，严重时死苗"],
+      "affected_plants": [{"plant_name": "大豆", "severity_level": "高", "plant_images": ["images/大豆根腐病.png"]}],
+      "prevention_treatment": ["选用抗病品种", "种子包衣处理", "改善排水条件", "药剂防治：使用恶霉灵、多菌灵等"]
+    },
+    {
+      "id": "034",
+      "disease_name": "大豆花叶病毒病",
+      "disease_category": "病毒病害",
+      "symptoms": ["叶片出现花叶症状", "叶片皱缩变形", "植株矮化", "豆荚发育不良"],
+      "affected_plants": [{"plant_name": "大豆", "severity_level": "中", "plant_images": ["images/大豆花叶病毒病.png"]}],
+      "prevention_treatment": ["选用抗病品种", "控制蚜虫传播", "清除杂草", "药剂防治：使用吡虫啉防治蚜虫"]
+    },
+    {
+      "id": "035",
+      "disease_name": "花生叶斑病",
+      "disease_category": "真菌病害",
+      "symptoms": ["叶片出现圆形褐色病斑", "病斑有明显轮纹", "严重时叶片枯黄脱落", "影响荚果发育"],
+      "affected_plants": [{"plant_name": "花生", "severity_level": "高", "plant_images": ["images/花生叶斑病.png"]}],
+      "prevention_treatment": ["选用抗病品种", "合理轮作", "清除病残体", "药剂防治：使用代森锰锌、百菌清等"]
+    },
+    {
+      "id": "036",
+      "disease_name": "花生根腐病",
+      "disease_category": "真菌病害",
+      "symptoms": ["根部变黑腐烂", "主根萎缩", "地上部分萎蔫", "植株逐渐枯死"],
+      "affected_plants": [{"plant_name": "花生", "severity_level": "高", "plant_images": ["images/花生根腐病.png"]}],
+      "prevention_treatment": ["选用抗病品种", "改善排水", "种子处理", "药剂防治：使用多菌灵、恶霉灵等"]
+    },
+    {
+      "id": "037",
+      "disease_name": "苹果腐烂病",
+      "disease_category": "真菌病害",
+      "symptoms": ["树皮出现红褐色病斑", "病部凹陷开裂", "病斑扩展环绕枝干", "严重时枝条枯死"],
+      "affected_plants": [{"plant_name": "苹果", "severity_level": "极高", "plant_images": ["images/苹果腐烂病.png"]}],
+      "prevention_treatment": ["加强树体管理", "及时刮除病斑", "涂抹杀菌剂", "药剂防治：使用多菌灵、甲基托布津等"]
+    },
+    {
+      "id": "038",
+      "disease_name": "苹果斑点落叶病",
+      "disease_category": "真菌病害",
+      "symptoms": ["叶片出现褐色小斑点", "病斑逐渐扩大", "严重时大量落叶", "影响果实发育"],
+      "affected_plants": [{"plant_name": "苹果", "severity_level": "高", "plant_images": ["images/苹果斑点落叶病.png"]}],
+      "prevention_treatment": ["选用抗病品种", "清除落叶", "合理修剪", "药剂防治：使用代森锰锌、百菌清等"]
+    },
+    {
+      "id": "039",
+      "disease_name": "梨黑星病",
+      "disease_category": "真菌病害",
+      "symptoms": ["叶片出现黑色星状病斑", "果实表面有黑色斑点", "病斑开裂", "果实畸形"],
+      "affected_plants": [{"plant_name": "梨", "severity_level": "高", "plant_images": ["images/梨黑星病.png"]}],
+      "prevention_treatment": ["选用抗病品种", "清除病残体", "合理修剪", "药剂防治：使用代森锰锌、苯醚甲环唑等"]
+    },
+    {
+      "id": "040",
+      "disease_name": "桃流胶病",
+      "disease_category": "生理病害",
+      "symptoms": ["枝干流出胶状物质", "流胶部位变褐", "树势衰弱", "严重时枝条枯死"],
+      "affected_plants": [{"plant_name": "桃", "severity_level": "中", "plant_images": ["images/桃流胶病.png"]}],
+      "prevention_treatment": ["加强栽培管理", "避免机械损伤", "合理施肥", "涂抹保护剂"]
+    },
+    {
+      "id": "041",
+      "disease_name": "葡萄霜霉病",
+      "disease_category": "真菌病害",
+      "symptoms": ["叶片出现黄色油渍状病斑", "叶背产生白色霉层", "果实受害变褐", "严重时叶片枯死"],
+      "affected_plants": [{"plant_name": "葡萄", "severity_level": "高", "plant_images": ["images/葡萄霜霉病.png"]}],
+      "prevention_treatment": ["选用抗病品种", "控制湿度", "合理修剪", "药剂防治：使用烯酰吗啉、霜脲氰等"]
+    },
+    {
+      "id": "042",
+      "disease_name": "葡萄白腐病",
+      "disease_category": "真菌病害",
+      "symptoms": ["果实出现褐色病斑", "病部产生白色霉层", "果粒干缩", "穗轴变褐"],
+      "affected_plants": [{"plant_name": "葡萄", "severity_level": "高", "plant_images": ["images/葡萄白腐病.png"]}],
+      "prevention_treatment": ["清除病残体", "合理修剪", "避免伤口", "药剂防治：使用代森锰锌、百菌清等"]
+    },
+    {
+      "id": "043",
+      "disease_name": "柑橘溃疡病",
+      "disease_category": "细菌病害",
+      "symptoms": ["叶片出现黄色晕圈病斑", "病斑中央凹陷开裂", "果实表面有疮痂状病斑", "严重影响果实品质"],
+      "affected_plants": [{"plant_name": "柑橘", "severity_level": "极高", "plant_images": ["images/柑橘溃疡病.png"]}],
+      "prevention_treatment": ["选用抗病品种", "避免机械损伤", "控制湿度", "药剂防治：使用铜制剂、链霉素等"]
+    },
+    {
+      "id": "044",
+      "disease_name": "柑橘黄龙病",
+      "disease_category": "细菌病害",
+      "symptoms": ["叶片出现黄化斑驳", "新梢黄化", "果实畸形变小", "树势衰弱"],
+      "affected_plants": [{"plant_name": "柑橘", "severity_level": "极高", "plant_images": ["images/柑橘黄龙病.png"]}],
+      "prevention_treatment": ["选用无病苗木", "控制木虱传播", "及时清除病株", "药剂防治：使用吡虫啉防治木虱"]
+    },
+    {
+      "id": "045",
+      "disease_name": "甘蔗黑穗病",
+      "disease_category": "真菌病害",
+      "symptoms": ["顶端抽出黑色鞭状物", "植株矮化", "分蘖增多", "茎秆细弱"],
+      "affected_plants": [{"plant_name": "甘蔗", "severity_level": "高", "plant_images": ["images/甘蔗黑穗病.png"]}],
+      "prevention_treatment": ["选用抗病品种", "种苗消毒", "合理轮作", "药剂防治：使用戊唑醇、咪鲜胺等"]
+    },
+    {
+      "id": "046",
+      "disease_name": "甘蔗花叶病",
+      "disease_category": "病毒病害",
+      "symptoms": ["叶片出现黄绿相间条纹", "植株矮化", "茎秆细弱", "糖分含量下降"],
+      "affected_plants": [{"plant_name": "甘蔗", "severity_level": "中", "plant_images": ["images/甘蔗花叶病.png"]}],
+      "prevention_treatment": ["选用抗病品种", "控制蚜虫传播", "清除病株", "药剂防治：使用吡虫啉防治蚜虫"]
+    },
+    {
+      "id": "047",
+      "disease_name": "烟草花叶病",
+      "disease_category": "病毒病害",
+      "symptoms": ["叶片出现花叶症状", "叶片皱缩变形", "植株矮化", "烟叶品质下降"],
+      "affected_plants": [{"plant_name": "烟草", "severity_level": "高", "plant_images": ["images/烟草花叶病.png"]}],
+      "prevention_treatment": ["选用抗病品种", "控制蚜虫传播", "避免接触传播", "药剂防治：使用吡虫啉防治蚜虫"]
+    },
+    {
+      "id": "048",
+      "disease_name": "烟草黑胫病",
+      "disease_category": "真菌病害",
+      "symptoms": ["茎基部出现黑褐色病斑", "病部缢缩", "叶片萎蔫", "植株倒伏"],
+      "affected_plants": [{"plant_name": "烟草", "severity_level": "极高", "plant_images": ["images/烟草黑胫病.png"]}],
+      "prevention_treatment": ["选用抗病品种", "改善排水", "土壤消毒", "药剂防治：使用甲霜灵、烯酰吗啉等"]
+    },
+    {
+      "id": "049",
+      "disease_name": "茶叶炭疽病",
+      "disease_category": "真菌病害",
+      "symptoms": ["叶片出现圆形褐色病斑", "病斑中央有黑色小点", "严重时叶片枯死", "影响茶叶品质"],
+      "affected_plants": [{"plant_name": "茶叶", "severity_level": "高", "plant_images": ["images/茶叶炭疽病.png"]}],
+      "prevention_treatment": ["选用抗病品种", "合理修剪", "清除病叶", "药剂防治：使用代森锰锌、苯醚甲环唑等"]
+    },
+    {
+      "id": "050",
+      "disease_name": "茶叶白星病",
+      "disease_category": "真菌病害",
+      "symptoms": ["叶片出现白色星状病斑", "病斑中央灰白色", "边缘褐色", "严重时叶片穿孔"],
+      "affected_plants": [{"plant_name": "茶叶", "severity_level": "中", "plant_images": ["images/茶叶白星病.png"]}],
+      "prevention_treatment": ["合理修剪", "改善通风", "清除病叶", "药剂防治：使用代森锰锌、百菌清等"]
+    }
+  ],
+  "metadata": {
+    "version": "4.0",
+    "last_updated": "2025-01-15",
+    "total_diseases": 50,
+    "data_source": "中国农业科学院植物保护研究所、农业农村部病害防治数据库、全国农技推广中心",
+    "reference_sources": [
+      "中国农业科学院植物保护研究所",
+      "农业农村部全国农技推广中心",
+      "中国植物病理学会",
+      "《中国农作物病虫害》第三版",
+      "粮食作物重大病虫害防控技术方案",
+      "蔬菜病虫害绿色防控技术指南",
+      "果树病虫害综合防治技术规程"
+    ]
+  }
+}
