@@ -178,21 +178,16 @@
             height: 100%;
         }
 
-        /* 病害查询搜索框样式 */
-        .search-container {
-            position: fixed;
-            top: 15px;
-            left: 40px;
-            width: 350px;
-            height: 50px;
-            background: rgba(0, 0, 0, 0.8);
-            border: 2px solid #0efcff;
-            border-radius: 8px;
+        /* 新的搜索框样式 - 在右侧卡片内 */
+        .search-container-new {
             display: flex;
             align-items: center;
-            padding: 0 15px;
-            z-index: 1001;
-            backdrop-filter: blur(6px);
+            background: rgba(14, 252, 255, 0.1);
+            border: 1px solid #0efcff;
+            border-radius: 4px;
+            padding: 0 5px;
+            margin: 0 5px 0 35px !important;
+            height: 35px;
         }
 
         .search-input {
@@ -223,6 +218,148 @@
 
         .search-btn:hover {
             background: #00d4ff;
+        }
+
+        /* 新搜索框样式 */
+        .search-input-new {
+            flex: 1;
+            background: transparent;
+            border: none;
+            color: #0efcff;
+            font-size: 12px;
+            outline: none;
+            height: 100%;
+            padding: 0 8px;
+        }
+
+        .search-input-new::placeholder {
+            color: rgba(14, 252, 255, 0.6);
+        }
+
+        .search-btn-new {
+            background: #0efcff;
+            color: #000;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 3px;
+            cursor: pointer;
+            font-size: 11px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            margin-right: 3px;
+        }
+
+        .search-btn-new:hover {
+            background: #00d4ff;
+        }
+
+        .search-results {
+            position: relative;
+            height: 100%;
+            min-height: 120px;
+        }
+
+        .search-info {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80%;
+        }
+
+        /* 搜索建议列表样式 */
+        .search-suggestions {
+            max-height: 100px;
+            overflow-y: auto;
+            margin: 5px;
+            padding: 3px;
+            width: 90%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .suggestion-item {
+            padding: 4px 8px;
+            margin: 1px 0;
+            background: rgba(14, 252, 255, 0.1);
+            border: 1px solid rgba(14, 252, 255, 0.3);
+            border-radius: 3px;
+            color: #0efcff;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 11px;
+        }
+
+        .suggestion-item:hover {
+            background: rgba(14, 252, 255, 0.2);
+            border-color: #0efcff;
+        }
+
+        .suggestion-item .plant-name {
+            color: #00ff88;
+            font-weight: bold;
+        }
+
+        .suggestion-item .disease-name {
+            color: #0efcff;
+        }
+
+        /* 自定义滚动条样式 */
+        .search-suggestions::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .search-suggestions::-webkit-scrollbar-track {
+            background: rgba(14, 252, 255, 0.1);
+            border-radius: 3px;
+        }
+
+        .search-suggestions::-webkit-scrollbar-thumb {
+            background: rgba(14, 252, 255, 0.5);
+            border-radius: 3px;
+        }
+
+        .search-suggestions::-webkit-scrollbar-thumb:hover {
+            background: #0efcff;
+        }
+
+        /* 表格列宽度设置 */
+        .data_day table td:nth-child(1) {
+            width: 50%;
+        }
+        .data_day table td:nth-child(2) {
+            width: 35%;
+        }
+        .data_day table td:nth-child(3) {
+            width: 15%;
+            text-align: right;
+            padding-right: 10px;
+        }
+
+        /* 装饰区域样式 */
+        .voice-search-area {
+            position: relative;
+            height: 100%;
+            min-height: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .voice-container {
+            text-align: center;
+            width: 100%;
+            position: relative;
+            padding: 10px 0;
+        }
+
+
+
+        /* Canvas声波动画容器 */
+        .voice-canvas {
+            width: 100%;
+            height: 60px;
+            margin-bottom: 10px;
         }
 
         /* 病害识别结果样式 */
@@ -325,29 +462,18 @@
 
         /* 响应式设计 */
         @media (max-width: 1200px) {
-            .search-container {
-                width: 300px;
-                height: 45px;
-                left: 30px;
-                top: 12px;
+            .search-container-new {
+                height: 30px;
+                margin: 0 5px 0 25px !important;
             }
 
-            .search-input {
-                font-size: 12px;
-            }
-
-            .search-btn {
-                padding: 6px 12px;
+            .search-input-new {
                 font-size: 11px;
             }
-        }
 
-        @media (max-width: 768px) {
-            .search-container {
-                width: 250px;
-                height: 40px;
-                left: 20px;
-                top: 10px;
+            .search-btn-new {
+                padding: 5px 10px;
+                font-size: 10px;
             }
         }
     </style>
@@ -370,6 +496,10 @@
                 <i class="fas fa-seedling"></i>
                 农文化展示
             </a>
+            <a href="./关系图.html" class="nav-button">
+                <i class="fas fa-search"></i>
+                病害查询
+            </a>
             <a href="../第三界面/人界面.html" class="nav-button">
                 <i class="fas fa-chart-bar"></i>
                 数据概览
@@ -378,29 +508,21 @@
     </nav>
 
     <div class="main">
-        <!-- 病害查询搜索框 -->
-        <div class="search-container">
-            <input type="text" class="search-input" placeholder="请输入病害名称或症状关键词..." id="diseaseSearch">
-            <button class="search-btn" onclick="searchDisease()">搜索</button>
-        </div>
+
         <div class="content">
 
             <div class="centerBox">
                 <div class="baseBox centerMainBox1" style="height:70%">
                     <div class="baseBoxLeft left">
-                        <div class="boxTitle">农作物病害查询</div>
+
                         <img src="img/left.png" class="first_border" alt="">
                         <div class="firstBox">
                             <div class="pic">
                                 <img src="img/demo_pic.png" class="first_top1" alt="">
                             </div>
                             <div class="picText">
-                                <span>作物病害</span>
-                                <span class="text_second">病害识别系统</span>
                             </div>
-                            <div class="voice_animation">
-                                <canvas id="canvas">Your browser can not support canvas</canvas>
-                            </div>
+
                             <div class="progress">
                                 <span class="disease" id="diseaseNameDisplay">稻瘟病</span>
                                 <span class="disease-counter" id="diseaseCounter">(1/50)</span>
@@ -466,9 +588,9 @@
                             <div class="window_five display_box">
                                 <ul>
                                     <li>植被信息</li>
-                                    <li id="varietyName">品种名称：云台山大叶良种</li>
-                                    <li id="growthStage">生长周期：8-10个月</li>
-                                    <li id="suitableClimate">适宜气候：温带季风气候</li>
+                                    <li id="varietyName">品种名称：水稻优质品种</li>
+                                    <li id="growthStage">生长周期：4-6个月</li>
+                                    <li id="suitableClimate">适宜气候：亚热带季风气候</li>
                                 </ul>
                             </div>
                             <div class="window_six display_box">
@@ -500,7 +622,7 @@
                 <div class="baseBox centerMainBox2" style="height:30%;">
                     <img src="img/down2.png" class="first_border" alt="">
                     <div class="boxTitle2" style="width:26%;">土壤数据</div>
-                    <div class="boxTitle2" style="width:26%;margin-left:22vw;margin-top: -1.4vw;">病害数据</div>
+                    <div class="boxTitle2" style="width:26%;margin-left:22vw;margin-top: -1.4vw;">治理方法</div>
                     <div class="boxTitle2" style="width:26%;margin-left:53vw;margin-top: -1.4vw;">环境数据</div>
                     <div class="leftBottom">
                         <div class="land_data">
@@ -545,40 +667,55 @@
                 <div class="baseBox baseBox1" style="margin-bottom:15px;height:40%">
                     <img src="img/right.png" class="hardware" alt="">
                     <div class="csbaseBox1">
-                        <div class="boxTitle">硬件设备展示</div>
-                        <ul class="boxLis">
-                            <li class="left active">农业无人机</li>
-                            <li class="left">田间控制器</li>
-                            <li class="left">监控摄像头</li>
-                            <li class="left">土壤检测仪</li>
-                        </ul>
-                        <div class="content1">
-                            <ul>
-                                <li style="display: block;" class="contList">
-                                    <!-- 四个角描边 stat -->
-                                    <div class="leftTopLine1"></div>
-                                    <div class="leftTopLine2"></div>
-                                    <div class="rightTopLine1"></div>
-                                    <div class="rightTopLine2"></div>
-                                    <div class="leftBottomLine1"></div>
-                                    <div class="leftBottomLine2"></div>
-                                    <div class="rightBottomLine1"></div>
-                                    <div class="rightBottomLine2"></div>
-
-                                    <div class="equipment_pic">
-                                        <img class="first" src="img/uva.png" alt="">
-                                        <img class="second" src="img/control.png" alt="">
-                                        <img class="third" src="img/camera.png" alt="">
-                                        <img class="fourth" src="img/detector.png" alt="">
-                                    </div>
-                                </li>
-
-                            </ul>
-
+                        <div class="boxTitle">病害搜索</div>
+                        <!-- 搜索框区域 -->
+                        <div class="search-area" style="margin: 10px 0;">
+                            <div class="search-container-new">
+                                <input type="text" class="search-input-new" placeholder="请输入病害名称或症状关键词..." id="diseaseSearch">
+                                <button class="search-btn-new" onclick="searchDisease()">搜索</button>
+                            </div>
                         </div>
-                        <div class="liSpan">介绍</div>
-                        <p class="liP">
-                            本模板收集于网络，无需任何付费操作，Gitee免费下载使用</p>
+                        <!-- 搜索结果显示区域 -->
+                        <div class="content1">
+                            <div class="search-results" id="searchResults">
+                                <!-- 四个角描边 stat -->
+                                <div class="leftTopLine1"></div>
+                                <div class="leftTopLine2"></div>
+                                <div class="rightTopLine1"></div>
+                                <div class="rightTopLine2"></div>
+                                <div class="leftBottomLine1"></div>
+                                <div class="leftBottomLine2"></div>
+                                <div class="rightBottomLine1"></div>
+                                <div class="rightBottomLine2"></div>
+
+                                <!-- 搜索建议列表 -->
+                                <div class="search-suggestions" id="searchSuggestions" style="display: none;">
+                                </div>
+
+                                <!-- 装饰区域 -->
+                                <div class="voice-search-area" id="voiceSearchArea">
+                                    <div class="voice-container">
+                                        <canvas id="voiceCanvas" class="voice-canvas"></canvas>
+                                        <div class="voice-text">
+                                            <p style="color: #0efcff; text-align: center; margin: 10px 0; font-size: 14px;">
+                                                请输入病害名称进行搜索
+                                            </p>
+                                            <p style="color: #00ff88; text-align: center; margin: 5px 0; font-size: 12px;">
+                                                支持病害名称、症状关键词搜索
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- 默认提示信息 -->
+                                <div class="search-info" id="searchInfo" style="display: none;">
+                                    <p style="color: #0efcff; text-align: center; margin-top: 20px;">
+                                        请输入病害名称进行搜索
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
                 <div class="baseBox baseBox2" style="margin-bottom:15px;height:29.5%">
@@ -588,7 +725,7 @@
                     <div class="irrigate_data">
                         <div class="irrigate_top">
                             <div class="centerList">
-                                <div class="centerListFont">累计灌溉水量（m2）</div>
+                                <div class="centerListFont">每日平均灌溉水量（m2）</div>
                                 <div class="centerListNum">
                                     <span id="totalIrrigationWater">23678</span>
                                 </div>
@@ -602,11 +739,11 @@
                         </div>
                         <div class="irrigate_bottom">
                             <div class="every_line">
-                                <span>当前灌溉流量（m²/h）</span>
+                                <span>每日平均灌溉流量（m²/h）</span>
                                 <i id="currentFlowRate">0.78</i>
                             </div>
                             <div class="every_line">
-                                <span>当前灌溉阀门数量</span>
+                                <span>每日平均灌溉阀门数量</span>
                                 <i id="valveCount">2</i>
                             </div>
                             <div class="every_line">
@@ -619,10 +756,10 @@
                 <div class="baseBox baseBox3" style="height:28%">
                     <img src="img/right3.png" alt="">
                     <!-- 四个角描边 end -->
-                    <div class="boxTitle2">病害数据来源</div>
+                    <div class="boxTitle2">治理方法来源</div>
                     <!-- <div class="data_day" id="demo" > -->
                     <div class="data_day" id="demo" style="width:100%;overflow:hidden;height: 75%;">
-                        <table style="text-align: left;margin-left:3%;height:80%;font-size:11px;">
+                        <table style="text-align: left;margin-left:3%;height:80%;font-size:11px;width:95%;table-layout:fixed;">
                             <tbody id="demo1">
                                 <tr>
                                     <td>《普通植物病理学》第五版</td>
@@ -818,83 +955,92 @@
     </script>
     <!-- <script type="text/javascript" src="js/digitalScroll.js"></script> -->
     <script>
-        var doublePI = Math.PI * 2;
-        var canvas;
-        var ctx;
-
-        //画布的高度的一半
-        var halfCanvasHeight = 100;
-        //水平边距
-        var horizontalMargin = 150;
-
-        //衰减系数(越大, 边缘衰减的就越多, 震动宽度相应也越窄)
-        var attenuationCoefficient = 2;
-        //半波长个数-1
-        var halfWaveCount = 20;
-        //振幅是画布高度的一般的百分比[0,1]
-        var amplitudePercentage = 0.3;
-        //每帧增加的弧度[0,2PI](作用于sin曲线, 正值相当于原点右移, 曲线左移)
-        var radianStep = 0.4;
-
-        //当前弧度的偏移
-        var radianOffset = 0;
-        //画布宽度
-        var canvasWidth;
-
-        function init() {
-            canvas = document.getElementById("canvas");
-            ctx = canvas.getContext("2d");
-            window.addEventListener("resize", onResize);
-
-            canvas.height = halfCanvasHeight * 2;
-            onResize();
-            loop();
-        }
-
-        function onResize() {
-            //元素的大小不能加单位, 单位默认就是像素, 而style中的长度要加单位
-            canvasWidth = canvas.width = window.innerWidth - horizontalMargin;
-        }
-
-        //设K=attenuationCoefficient, 计算信号衰减 (4K/(4K+x^4))^2K<=1 (x belong [-K,K])
-        function calcAttenuation(x) {
-            return Math.pow(4 * attenuationCoefficient / (4 * attenuationCoefficient + Math.pow(x, 4)), 2 * attenuationCoefficient);
-        }
-
-        //heightPercentage为振幅的显示比例
-        function drawAcousticWave(heightPercentage, alpha, lineWidth) {
-            ctx.strokeStyle = "white";
-            ctx.globalAlpha = alpha;
-            ctx.lineWidth = lineWidth || 1;
-            ctx.beginPath();
-            ctx.moveTo(0, halfCanvasHeight);
-            var x, y;
-            for (var i = -attenuationCoefficient; i <= attenuationCoefficient; i += 0.01) {
-                //i是当前位置相对于整个长度的比率( x=width*(i+K)/(2*K))
-                x = canvasWidth * (i + attenuationCoefficient) / (2 * attenuationCoefficient);
-                //加offset相当于把sin曲线向右平移
-                y = halfCanvasHeight + halfCanvasHeight * amplitudePercentage * calcAttenuation(i) * heightPercentage * Math.sin(halfWaveCount * i + radianOffset);
-                ctx.lineTo(x, y);
-            }
-            ctx.stroke();
-        }
-
-        function loop() {
-            radianOffset = (radianOffset + radianStep) % doublePI;
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            drawAcousticWave(1, 1, 2);
-            for (var i = 2; i < 4; i++) {
-                var reciprocal = 1 / i;
-                drawAcousticWave(reciprocal, reciprocal / 4);
-                drawAcousticWave(-reciprocal, reciprocal / 4);
-            }
-            requestAnimationFrame(loop);
-        }
-
-        init();
         setInterval(function() {
             numInit();
         }, 6500)
+
+        // 语音Canvas声波动画
+        function initVoiceCanvas() {
+            const voiceCanvas = document.getElementById('voiceCanvas');
+            if (!voiceCanvas) return;
+
+            const ctx = voiceCanvas.getContext('2d');
+            const container = voiceCanvas.parentElement;
+
+            // 设置Canvas尺寸
+            voiceCanvas.width = container.offsetWidth;
+            voiceCanvas.height = 60;
+
+            let animationId;
+            let time = 0;
+
+            function drawVoiceWave() {
+                const width = voiceCanvas.width;
+                const height = voiceCanvas.height;
+                const centerY = height / 2;
+
+                // 清除画布
+                ctx.clearRect(0, 0, width, height);
+
+                // 设置线条样式
+                ctx.strokeStyle = '#0efcff';
+                ctx.lineWidth = 2;
+                ctx.globalAlpha = 0.8;
+
+                // 绘制主声波
+                ctx.beginPath();
+                for (let x = 0; x < width; x++) {
+                    const frequency = 0.02; // 波频率
+                    const amplitude = 15; // 波幅度
+                    const y = centerY + Math.sin(x * frequency + time) * amplitude * Math.sin(x * 0.01);
+
+                    if (x === 0) {
+                        ctx.moveTo(x, y);
+                    } else {
+                        ctx.lineTo(x, y);
+                    }
+                }
+                ctx.stroke();
+
+                // 绘制辅助声波
+                ctx.globalAlpha = 0.4;
+                ctx.lineWidth = 1;
+
+                for (let i = 0; i < 2; i++) {
+                    ctx.beginPath();
+                    const offset = (i + 1) * 0.5;
+                    for (let x = 0; x < width; x++) {
+                        const frequency = 0.015 + i * 0.005;
+                        const amplitude = 8 - i * 2;
+                        const y = centerY + Math.sin(x * frequency + time + offset) * amplitude * Math.sin(x * 0.008);
+
+                        if (x === 0) {
+                            ctx.moveTo(x, y);
+                        } else {
+                            ctx.lineTo(x, y);
+                        }
+                    }
+                    ctx.stroke();
+                }
+
+                time += 0.1;
+                animationId = requestAnimationFrame(drawVoiceWave);
+            }
+
+            // 开始动画
+            drawVoiceWave();
+
+            // 窗口大小改变时重新设置Canvas尺寸
+            window.addEventListener('resize', function() {
+                voiceCanvas.width = container.offsetWidth;
+                voiceCanvas.height = 60;
+            });
+        }
+
+        // 页面加载完成后初始化语音Canvas
+        document.addEventListener('DOMContentLoaded', function() {
+            setTimeout(initVoiceCanvas, 100);
+        });
 
         // 确保DOM加载完成后绑定悬停事件
         $(document).ready(function() {
@@ -1008,6 +1154,16 @@
                 affected_plants: '小麦',
                 severity: '中'
             },
+            '小麦赤霉病': {
+                name: '小麦赤霉病',
+                category: '真菌病害',
+                symptoms: '穗部小花变褐枯死，病穗呈漂白状，湿度大时产生粉红色霉层，籽粒干瘪，品质下降',
+                causes: '开花期遇连续阴雨天气，温度适中湿度高（温度15-25℃，湿度85%以上），田间病残体未清除，病原菌越冬，播种过密，田间通风不良，品种抗病性差',
+                treatment: '选用抗病品种，清除田间病残体，合理密植改善通风，开花期遇雨及时喷施多菌灵、戊唑醇等杀菌剂，收获后及时晾晒降低籽粒水分',
+                prevention: '选用抗病品种，清除田间病残体，合理密植改善通风，开花期遇雨及时喷施多菌灵、戊唑醇等杀菌剂，收获后及时晾晒降低籽粒水分',
+                affected_plants: '小麦',
+                severity: '极高'
+            },
             '玉米大斑病': {
                 name: '玉米大斑病',
                 category: '真菌病害',
@@ -1027,16 +1183,6 @@
                 prevention: '选用抗病品种，合理轮作避免连作，改善通风降低湿度，合理密植，药剂防治使用烯酰吗啉、氟吡菌胺等杀菌剂，雨后及时排水',
                 affected_plants: '番茄',
                 severity: '极高'
-            },
-            '云台山大叶良种': {
-                name: '云台山大叶良种',
-                category: '优良品种',
-                symptoms: '叶片宽大厚实，叶色浓绿有光泽，生长势强，抗逆性好',
-                causes: '适宜的海拔高度（800-1200米），充足的降雨量（年降雨量800-1200mm），适中的温度条件（年均温18-22℃），良好的土壤条件（酸性土壤pH4.5-6.5），充足的光照和适度遮阴',
-                treatment: '科学施肥保持土壤酸性，合理修剪促进新梢生长，适时采摘保证品质，病虫害防治使用生物农药，水分管理保持土壤湿润但不积水',
-                prevention: '科学施肥保持土壤酸性，合理修剪促进新梢生长，适时采摘保证品质，病虫害防治使用生物农药，水分管理保持土壤湿润但不积水',
-                affected_plants: '茶叶',
-                severity: '优'
             }
         };
         let diseaseKeys = Object.keys(diseaseDatabase);
@@ -1044,7 +1190,7 @@
         // 从JSON文件加载病害数据库
         async function loadDiseaseDatabase() {
             try {
-                const response = await fetch('./data/disease_database_updated.json');
+                const response = await fetch('./data/complete_disease_database.json');
                 if (!response.ok) {
                     throw new Error(`HTTP error! status: ${response.status}`);
                 }
@@ -1089,6 +1235,15 @@
                     prevention: '定期检查叶片健康状况，控制田间湿度，科学施肥',
                     affected_plants: '水稻',
                     severity: '高'
+                },
+                '小麦赤霉病': {
+                    name: '小麦赤霉病',
+                    category: '真菌病害',
+                    symptoms: '穗部小花变褐枯死，病穗呈漂白状，湿度大时产生粉红色霉层，籽粒干瘪，品质下降',
+                    treatment: '选用抗病品种，清除田间病残体，合理密植改善通风，开花期遇雨及时喷施多菌灵、戊唑醇等杀菌剂',
+                    prevention: '选用抗病品种，清除田间病残体，合理密植改善通风，开花期遇雨及时喷施杀菌剂',
+                    affected_plants: '小麦',
+                    severity: '极高'
                 }
             };
             diseaseKeys = Object.keys(diseaseDatabase);
@@ -1123,13 +1278,255 @@
             }
         }
 
-        // 支持回车键搜索
+        // 病害数据数组（用于搜索建议）
+        const allDiseases = [
+            {
+                "disease_name": "稻瘟病",
+                "disease_category": "真菌病害",
+                "symptoms": ["叶片出现梭形病斑", "病斑中央灰白色，边缘褐色", "严重时叶片枯死", "穗颈部感染导致白穗"],
+                "affected_plants": [{"plant_name": "水稻", "severity_level": "高"}]
+            },
+            {
+                "disease_name": "稻纹枯病",
+                "disease_category": "真菌病害",
+                "symptoms": ["叶鞘上出现椭圆形或云纹状病斑", "病斑灰绿色至黄褐色，边缘褐色", "严重时病斑扩展至叶片", "茎秆受害后易倒伏"],
+                "affected_plants": [{"plant_name": "水稻", "severity_level": "高"}]
+            },
+            {
+                "disease_name": "稻白叶枯病",
+                "disease_category": "细菌病害",
+                "symptoms": ["叶片边缘出现黄白色条斑", "病斑沿叶脉扩展，呈波浪状", "严重时整叶枯死呈灰白色", "病部有黄色菌脓溢出"],
+                "affected_plants": [{"plant_name": "水稻", "severity_level": "高"}]
+            },
+            {
+                "disease_name": "稻曲病",
+                "disease_category": "真菌病害",
+                "symptoms": ["穗部个别谷粒受害变成球状", "病粒初期淡黄色，后变橙黄色", "病粒表面有粉状孢子", "严重影响稻米品质"],
+                "affected_plants": [{"plant_name": "水稻", "severity_level": "中"}]
+            },
+            {
+                "disease_name": "稻恶苗病",
+                "disease_category": "真菌病害",
+                "symptoms": ["植株徒长", "叶片细长淡绿", "节间伸长", "易倒伏"],
+                "affected_plants": [{"plant_name": "水稻", "severity_level": "中"}]
+            },
+            {
+                "disease_name": "小麦条纹花叶病",
+                "disease_category": "病毒病害",
+                "symptoms": ["叶片出现黄绿相间条纹", "植株矮化", "分蘖减少", "穗小粒少"],
+                "affected_plants": [{"plant_name": "小麦", "severity_level": "中"}]
+            },
+            {
+                "disease_name": "小麦赤霉病",
+                "disease_category": "真菌病害",
+                "symptoms": ["穗部小花变褐枯死", "病穗呈红褐色", "籽粒干瘪", "产生粉红色霉层"],
+                "affected_plants": [{"plant_name": "小麦", "severity_level": "高"}]
+            },
+            {
+                "disease_name": "小麦白粉病",
+                "disease_category": "真菌病害",
+                "symptoms": ["叶片出现白色粉状霉层", "病斑逐渐扩大", "叶片黄化", "影响光合作用"],
+                "affected_plants": [{"plant_name": "小麦", "severity_level": "中"}]
+            },
+            {
+                "disease_name": "小麦条锈病",
+                "disease_category": "真菌病害",
+                "symptoms": ["叶片出现橙黄色条状锈斑", "锈斑沿叶脉排列", "严重时叶片枯死", "影响产量"],
+                "affected_plants": [{"plant_name": "小麦", "severity_level": "高"}]
+            },
+            {
+                "disease_name": "小麦叶锈病",
+                "disease_category": "真菌病害",
+                "symptoms": ["叶片出现橙黄色圆形锈斑", "锈斑散生", "后期变黑色", "叶片早衰"],
+                "affected_plants": [{"plant_name": "小麦", "severity_level": "中"}]
+            },
+            {
+                "disease_name": "玉米大斑病",
+                "disease_category": "真菌病害",
+                "symptoms": ["叶片出现长椭圆形病斑", "病斑灰褐色", "边缘有黄色晕圈", "严重时叶片枯死"],
+                "affected_plants": [{"plant_name": "玉米", "severity_level": "高"}]
+            },
+            {
+                "disease_name": "玉米小斑病",
+                "disease_category": "真菌病害",
+                "symptoms": ["叶片出现小型椭圆形病斑", "病斑黄褐色", "病斑周围有黄色晕圈", "叶片提早枯死"],
+                "affected_plants": [{"plant_name": "玉米", "severity_level": "中"}]
+            },
+            {
+                "disease_name": "玉米丝黑穗病",
+                "disease_category": "真菌病害",
+                "symptoms": ["雌穗变成黑色粉状物", "雄穗正常或略小", "病株矮化", "严重影响产量"],
+                "affected_plants": [{"plant_name": "玉米", "severity_level": "高"}]
+            },
+            {
+                "disease_name": "玉米茎腐病",
+                "disease_category": "真菌病害",
+                "symptoms": ["茎基部变褐腐烂", "植株易倒伏", "叶片萎蔫", "穗部发育不良"],
+                "affected_plants": [{"plant_name": "玉米", "severity_level": "高"}]
+            },
+            {
+                "disease_name": "大豆花叶病毒病",
+                "disease_category": "病毒病害",
+                "symptoms": ["叶片出现黄绿相间花叶", "植株矮化", "荚果减少", "种子变小"],
+                "affected_plants": [{"plant_name": "大豆", "severity_level": "中"}]
+            },
+            {
+                "disease_name": "大豆根腐病",
+                "disease_category": "真菌病害",
+                "symptoms": ["根部变褐腐烂", "植株萎蔫", "叶片黄化", "严重时植株死亡"],
+                "affected_plants": [{"plant_name": "大豆", "severity_level": "高"}]
+            },
+            {
+                "disease_name": "花生叶斑病",
+                "disease_category": "真菌病害",
+                "symptoms": ["叶片出现褐色斑点", "病斑有黄色晕圈", "严重时叶片枯死", "影响光合作用"],
+                "affected_plants": [{"plant_name": "花生", "severity_level": "中"}]
+            },
+            {
+                "disease_name": "花生根腐病",
+                "disease_category": "真菌病害",
+                "symptoms": ["根部变黑腐烂", "植株萎蔫", "叶片黄化脱落", "荚果发育不良"],
+                "affected_plants": [{"plant_name": "花生", "severity_level": "高"}]
+            },
+            {
+                "disease_name": "甘蔗花叶病",
+                "disease_category": "病毒病害",
+                "symptoms": ["叶片出现黄绿相间条纹", "植株矮化", "茎秆变细", "糖分含量下降"],
+                "affected_plants": [{"plant_name": "甘蔗", "severity_level": "中"}]
+            },
+            {
+                "disease_name": "甘蔗黑穗病",
+                "disease_category": "真菌病害",
+                "symptoms": ["顶端长出黑色鞭状物", "茎秆变细", "节间缩短", "严重影响产量"],
+                "affected_plants": [{"plant_name": "甘蔗", "severity_level": "高"}]
+            },
+            {
+                "disease_name": "烟草花叶病",
+                "disease_category": "病毒病害",
+                "symptoms": ["叶片出现黄绿相间花叶", "叶片皱缩变形", "植株矮化", "品质下降"],
+                "affected_plants": [{"plant_name": "烟草", "severity_level": "高"}]
+            },
+            {
+                "disease_name": "烟草黑胫病",
+                "disease_category": "真菌病害",
+                "symptoms": ["茎基部变黑腐烂", "植株萎蔫", "叶片下垂", "严重时植株死亡"],
+                "affected_plants": [{"plant_name": "烟草", "severity_level": "高"}]
+            },
+            {
+                "disease_name": "番茄晚疫病",
+                "disease_category": "真菌病害",
+                "symptoms": ["叶片出现水浸状病斑", "病斑迅速扩大", "果实出现褐色病斑", "湿度大时有白色霉层"],
+                "affected_plants": [{"plant_name": "番茄", "severity_level": "高"}]
+            },
+            {
+                "disease_name": "番茄早疫病",
+                "disease_category": "真菌病害",
+                "symptoms": ["叶片出现同心轮纹状病斑", "病斑褐色", "果实出现凹陷病斑", "影响品质"],
+                "affected_plants": [{"plant_name": "番茄", "severity_level": "中"}]
+            },
+            {
+                "disease_name": "番茄灰霉病",
+                "disease_category": "真菌病害",
+                "symptoms": ["果实出现水浸状病斑", "病部长灰色霉层", "叶片边缘枯死", "花器脱落"],
+                "affected_plants": [{"plant_name": "番茄", "severity_level": "中"}]
+            },
+            {
+                "disease_name": "黄瓜霜霉病",
+                "disease_category": "真菌病害",
+                "symptoms": ["叶片出现黄色斑点", "叶背有灰白色霉层", "病斑逐渐扩大", "叶片枯黄脱落"],
+                "affected_plants": [{"plant_name": "黄瓜", "severity_level": "高"}]
+            }
+        ];
+
+        // 实时搜索建议功能
+        function showSearchSuggestions(searchTerm) {
+            const suggestionsContainer = document.getElementById('searchSuggestions');
+            const searchInfo = document.getElementById('searchInfo');
+            const voiceArea = document.getElementById('voiceSearchArea');
+
+            if (!searchTerm.trim()) {
+                suggestionsContainer.style.display = 'none';
+                searchInfo.style.display = 'none';
+                voiceArea.style.display = 'block';
+                return;
+            }
+
+            // 搜索匹配的病害
+            const matches = allDiseases.filter(disease => {
+                const diseaseName = disease.disease_name.toLowerCase();
+                const searchLower = searchTerm.toLowerCase();
+                const plantNames = disease.affected_plants.map(p => p.plant_name.toLowerCase());
+
+                return diseaseName.includes(searchLower) ||
+                       plantNames.some(plant => plant.includes(searchLower)) ||
+                       disease.symptoms.some(symptom => symptom.toLowerCase().includes(searchLower));
+            });
+
+            if (matches.length > 0) {
+                searchInfo.style.display = 'none';
+                voiceArea.style.display = 'none';
+                suggestionsContainer.style.display = 'block';
+
+                suggestionsContainer.innerHTML = matches.map(disease => {
+                    const plantName = disease.affected_plants[0]?.plant_name || '未知作物';
+                    return `
+                        <div class="suggestion-item" onclick="selectDisease('${disease.disease_name}')">
+                            <span class="plant-name">${plantName}</span> -
+                            <span class="disease-name">${disease.disease_name}</span>
+                        </div>
+                    `;
+                }).join('');
+            } else {
+                suggestionsContainer.innerHTML = `
+                    <div style="color: #ff6b6b; text-align: center; padding: 20px;">
+                        未找到匹配的病害信息
+                    </div>
+                `;
+                searchInfo.style.display = 'none';
+                voiceArea.style.display = 'none';
+                suggestionsContainer.style.display = 'block';
+            }
+        }
+
+        // 选择病害
+        function selectDisease(diseaseName) {
+            document.getElementById('diseaseSearch').value = diseaseName;
+            searchDisease();
+        }
+
+        function showVoiceArea() {
+            document.getElementById('voiceSearchArea').style.display = 'block';
+            document.getElementById('searchSuggestions').style.display = 'none';
+            document.getElementById('searchInfo').style.display = 'none';
+        }
+
+        function hideVoiceArea() {
+            document.getElementById('voiceSearchArea').style.display = 'none';
+        }
+
+        // 支持回车键搜索和实时搜索
         document.addEventListener('DOMContentLoaded', function() {
-            document.getElementById('diseaseSearch').addEventListener('keypress', function(e) {
+            const searchInput = document.getElementById('diseaseSearch');
+
+            // 回车键搜索
+            searchInput.addEventListener('keypress', function(e) {
                 if (e.key === 'Enter') {
                     searchDisease();
                 }
             });
+
+            // 实时搜索建议
+            searchInput.addEventListener('input', function(e) {
+                const value = e.target.value;
+                if (value.trim()) {
+                    showSearchSuggestions(value);
+                    hideVoiceArea();
+                } else {
+                    showVoiceArea();
+                }
+            });
+
+
 
             // 直接启动自动切换（数据已嵌入）
             if (diseaseKeys.length > 0) {
@@ -1327,9 +1724,9 @@
                 soilPH: '酸碱度：PH6.8',
                 soilElements: '需要元素：氮磷钾',
                 // 植被信息
-                varietyName: '品种名称：云台山大叶良种',
-                growthStage: '生长周期：8-10个月',
-                suitableClimate: '适宜气候：温带季风气候',
+                varietyName: '品种名称：水稻优质品种',
+                growthStage: '生长周期：4-6个月',
+                suitableClimate: '适宜气候：亚热带季风气候',
                 // 种植地区信息
                 plantingRegions: {
                     region1: '湖南、湖北、江西',
