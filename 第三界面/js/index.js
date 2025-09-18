@@ -1,15 +1,6 @@
 
-// 安全获取数据，避免函数不存在的错误
-var bookData = [];
-try {
-  if (typeof dataOne === 'function') {
-    bookData = dataOne().bookData || [];
-  }
-  console.log('书籍数据:', bookData);
-} catch (error) {
-  console.error('获取书籍数据失败:', error);
-  bookData = [];
-}
+var bookData = dataOne().bookData;
+console.log(bookData)
 
 $(function() {
   // 畅销书排行榜获取高度
@@ -25,15 +16,7 @@ $(function() {
   curBookRank.css("height", rankH + "px");
 
   //   畅销书数据获取
-  var pressData = {};
-  try {
-    if (typeof dataOne === 'function') {
-      pressData = dataOne().bestSelling || {};
-    }
-  } catch (error) {
-    console.error('获取畅销书数据失败:', error);
-    pressData = {};
-  }
+  var pressData = dataOne().bestSelling;
   var rankUl = $(".aside-left .top ul");
   var Month = [
     "Jan",
@@ -63,24 +46,17 @@ $(function() {
     var len = item.children.length;
 
     for (var i = 0; i < len; i++) {
-      // 安全获取数据，避免数组越界
+      // 添加安全检查
       if (pressData[Month[index]] && pressData[Month[index]][i]) {
-        bookName = pressData[Month[index]][i]["bookName"] || "";
-        pressName = pressData[Month[index]][i]["pressName"] || "";
-        author = pressData[Month[index]][i]["author"] || "";
-        ISBN = pressData[Month[index]][i]["ISBN"] || "";
-        pressDate = pressData[Month[index]][i]["pressDate"] || "";
-        pricing = pressData[Month[index]][i]["pricing"] || "";
-        imageUrl = pressData[Month[index]][i]["imageUrl"] || "";
+        bookName = pressData[Month[index]][i]["bookName"];
+        pressName = pressData[Month[index]][i]["pressName"];
+        author = pressData[Month[index]][i]["author"];
+        ISBN = pressData[Month[index]][i]["ISBN"];
+        pressDate = pressData[Month[index]][i]["pressDate"];
+        pricing = pressData[Month[index]][i]["pricing"];
+        imageUrl = pressData[Month[index]][i]["imageUrl"];
       } else {
-        // 如果数据不存在，使用默认值
-        bookName = "数据加载中...";
-        pressName = "";
-        author = "";
-        ISBN = "";
-        pressDate = "";
-        pricing = "";
-        imageUrl = "";
+        continue; // 跳过无效数据
       }
 
       $(item.children[i])
@@ -116,29 +92,39 @@ $(function() {
 
 	//   添加点击事件
   $(".aside-left .top").on('click', 'li', function(el) {
-  var curItem = $(el.currentTarget);
-  var bookName = curItem.find('.name').text().trim();
-  var index = -1;
+    try {
+      var curItem = $(el.currentTarget);
+      var bookName = curItem.find('.name').text().trim();
+      var index = -1;
 
-  // 遍历 bookData 并匹配书名
-  bookData.forEach((book, i) => {
-    if (book.BookInformation.bookName === bookName) {
-      index = i;
+      console.log('点击的书名:', bookName);
+      console.log('bookData:', bookData);
+
+      // 遍历 bookData 并匹配书名
+      if (bookData && Array.isArray(bookData)) {
+        bookData.forEach((book, i) => {
+          if (book && book.BookInformation && book.BookInformation.bookName === bookName) {
+            index = i;
+          }
+        });
+      }
+
+      console.log('找到的索引:', index);
+
+      if (index === -1) {
+        console.log('未找到对应书籍，书名:', bookName);
+        return;
+      }
+
+      // 生成正确路径
+      var currentPath = window.location.href.replace(/[^/]*$/, ''); // 获取当前页面的目录
+      var newHref = currentPath + 'four.html?index=' + index;
+      console.log('跳转到:', newHref);
+      window.location.href = newHref;
+    } catch (error) {
+      console.error('点击事件处理错误:', error);
     }
   });
-
-  if (index === -1) return;
-
-  // 生成正确路径
-  var currentPath = window.location.href.replace(/[^/]*$/, ''); // 获取当前页面的目录
-var newHref = currentPath + 'four.html?index=' + index; // ✅
-    window.location.href = newHref; 
-
-  // four.js 使用事件委托
-  $(".aside-left").on("click", "ul li", function() {
-    // 处理点击逻辑
-  });
-});
 
   //   获取行高
   var topSpan = $(".aside-left .top .book-rank span");

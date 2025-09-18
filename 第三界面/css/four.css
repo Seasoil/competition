@@ -89,7 +89,7 @@ body:before {
 .root-wrap {
   height: 100%;
   padding: 0 1.5%;
-  background: url("../img/bg.png") no-repeat center top;
+  background: url("../img/bg1.png") no-repeat center top;
   background-size: 100% 100%;
 }
 header {
@@ -148,18 +148,21 @@ header:after {
 }
 .main .aside-left {
   position: relative;
-  width: 22%;
+  width: 20%;
   height: 100%;
+  margin-left: 0.5%;
+  margin-top: -3%;
 }
 .main .aside-left h3 {
-  padding-top: 6.5%;
+  padding-top: 1%;
   padding-left: 7%;
-  padding-bottom: 3%;
+  padding-bottom: 1%;
 }
 .main .aside-right {
   position: relative;
-  width: 22%;
+  width: 25%;
   height: 100%;
+  margin-right: 2%;
 }
 .left-top {
   position: relative;
@@ -308,7 +311,7 @@ body:before {
 .root-wrap {
   height: 100%;
   padding: 0 1.5%;
-  background: url("../img/bg.png") no-repeat center top;
+  background: url("../img/bg1.png") no-repeat center top;
   background-size: 100% 100%;
 }
 header {
@@ -384,17 +387,20 @@ header:before {
 }
 .main .aside-left {
   position: relative;
-  width: 22%;
+  width: 20%;
   height: 100%;
+  margin-left: 0.5%;
+  margin-top: -3%;
 }
 .main .aside-left h3 {
-  padding-top: 6.5%;
+  padding-top: 1%;
   padding-left: 13%;
 }
 .main .aside-right {
   position: relative;
-  width: 22%;
+  width: 25%;
   height: 100%;
+  margin-right: 2%;
 }
 .left-top {
   position: relative;
@@ -600,8 +606,14 @@ h3 {
 }
 .main .aside-left {
   position: relative;
-  width: 22%;
+  width: 20%;
   height: 100%;
+  margin-left: 0.5%;
+  margin-top: -1%;
+}
+.main .aside-left h3 {
+  padding-top: 0%;
+  padding-left: 13%;
 }
 .main .aside-left:before {
   content: "";
@@ -625,8 +637,8 @@ h3 {
   z-index: 100;
   width: 86%;
   height: 19%;
-  padding: 5% 8% 5% 4%;
-  margin: 1.5% auto;
+  padding: 2% 8% 2% 4%;
+  margin: 0.5% auto;
   background: rgba(102, 89, 6, 0.34) !important;
   cursor: pointer;
 }
@@ -670,8 +682,9 @@ h3 {
 }
 .main .aside-right {
   position: relative;
-  width: 22%;
+  width: 25%;
   height: 100%;
+  margin-right: 2%;
 }
 .main .aside-right .con_top {
   position: relative;
@@ -738,17 +751,17 @@ h3 {
 .main .middle_con {
   position: relative;
   width: 55%;
-  height: 105%;
-  margin: 0 0.5%;
+  height: 99%;
+  margin: -2% 0.5% 0 -0.5%;
   background-color: rgba(102, 89, 6, 0.34) !important;
 }
 .main .middle_con .middle_top {
   width: 100%;
-  height: 80%;
+  height: 85%;
 }
 .main .middle_con .middle_button {
   width: 100%;
-  height: 20%;
+  height: 15%;
   overflow: hidden;
 }
 .main .middle_con .middle_button .button_left,
@@ -813,12 +826,17 @@ h3 {
 }
 .main .middle_con .con_left,
 .main .middle_con .con_right {
-  width: 50%;
-  height: 37%;
-  padding-top: 1%;
+  height: 40%;
+  padding-top: 0.5%;
 }
 .main .middle_con .con_left {
-  padding: 2% 5%;
+  width: 45%;
+}
+.main .middle_con .con_right {
+  width: 55%;
+}
+.main .middle_con .con_left {
+  padding: 1% 5%;
   border-right: 1px solid #eca900 !important;
 }
 .main .middle_con .con_left img {
@@ -859,7 +877,7 @@ h3 {
   font-style: normal;
 }
 .main .middle_con .con_right {
-  padding-left: 2%;
+  padding-left: 0.5%;
 }
 .main .middle_con .con_right dl {
   width: 100%;
@@ -876,7 +894,7 @@ h3 {
   letter-spacing: normal;
 }
 .main .middle_con .con_right dl ul {
-  margin: 4% 0 0 7%;
+  margin: 4% 0 0 3%;
 }
 .main .middle_con .con_right dl ul li {
   float: left;
@@ -892,7 +910,7 @@ h3 {
   position: relative;
   float: left;
   width: 100%;
-  height: 22.33%;
+  height: 21%;
 }
 .main .middle_con .con_link li {
   overflow: hidden;
@@ -911,7 +929,7 @@ h3 {
 }
 .main .middle_con .con_link h3 {
   padding-left: 11%;
-  margin-top: -0.5%;
+  margin-top: -1%;
   font-size: 0.5em;
 }
 .main .middle_con .con_link .link_title,
@@ -923,7 +941,7 @@ h3 {
   font-style: normal;
   font-stretch: normal;
   line-height: 1.43;
-  margin: 2% auto;
+  margin: 1% auto;
   color: #fff;
   overflow: hidden;
   letter-spacing: normal;

@@ -312,8 +312,8 @@ window.addEventListener("DOMContentLoaded", function () {
   console.log("农学文化数据可视化系统已启动");
   console.log("API基础地址:", window.agricultureAPI.baseUrl);
 
-  // 预加载一些基础数据
-  preloadBasicData();
+  // 只有在明确需要时才预加载数据
+  // preloadBasicData();
 });
 
 /**
@@ -321,12 +321,23 @@ window.addEventListener("DOMContentLoaded", function () {
  */
 async function preloadBasicData() {
   try {
-    // 预加载分类数据
-    await getCachedData("knowledge_categories", () =>
-      window.agricultureAPI.getKnowledgeCategories()
-    );
-    console.log("基础数据预加载完成");
+    // 检查是否有PHP服务器运行
+    const testResponse = await fetch('./api/test_db.php', {
+      method: 'GET',
+      timeout: 2000
+    });
+
+    const contentType = testResponse.headers.get('content-type');
+    if (contentType && contentType.includes('application/json')) {
+      // 预加载分类数据
+      await getCachedData("knowledge_categories", () =>
+        window.agricultureAPI.getKnowledgeCategories()
+      );
+      console.log("基础数据预加载完成");
+    } else {
+      console.log("PHP服务器未运行，跳过预加载");
+    }
   } catch (error) {
-    console.warn("基础数据预加载失败:", error);
+    console.log("API不可用，跳过预加载:", error.message);
   }
 }

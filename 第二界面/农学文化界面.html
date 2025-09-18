@@ -7,6 +7,34 @@
     <script src="./js/jquery.min.js"></script>
     <script src="./js/echarts.min.js"></script>
     <script src="../js/api.js"></script>
+    <script>
+        // 重新配置API实例，使用正确的路径
+        window.agricultureAPI = new AgricultureAPI("../api/");
+
+        // 增强的getCachedData函数，支持静态数据回退
+        window.getCachedDataWithFallback = async function(cacheKey, apiCall, fallbackData) {
+            try {
+                // 先检查是否有PHP服务器运行
+                const testResponse = await fetch('../api/test_db.php', {
+                    method: 'GET',
+                    timeout: 2000
+                });
+
+                const contentType = testResponse.headers.get('content-type');
+                if (contentType && contentType.includes('application/json')) {
+                    // PHP服务器正常运行，尝试API调用
+                    console.log(`从API获取数据: ${cacheKey}`);
+                    return await getCachedData(cacheKey, apiCall);
+                } else {
+                    throw new Error('PHP服务器未正确配置');
+                }
+            } catch (error) {
+                console.warn(`API不可用 (${cacheKey}):`, error.message);
+                console.log(`使用静态数据: ${cacheKey}`);
+                return fallbackData;
+            }
+        };
+    </script>
     <style>
         html,
         body {
@@ -168,6 +196,8 @@
             display: flex;
             align-items: center;
         }
+
+
 
         .search-box {
             background: rgba(255, 250, 240, 0.85);
@@ -502,11 +532,13 @@
         <div class="category-btn">境外作物</div>
     </div>
 
+
+
     <!-- 搜索框 -->
     <div class="search-container">
         <div class="search-toggle">→</div>
         <div class="search-box">
-            <input type="text" class="search-input" placeholder="搜索农学知识...">
+            <input type="text" class="search-input" placeholder="搜索农学知识...（支持名称、标签、症状等）">
             <div class="search-results"></div>
         </div>
     </div>
@@ -535,6 +567,7 @@
         const searchBox = document.querySelector('.search-box');
         const categoryButtonsContainer = document.querySelector('.category-buttons');
         const toggleButton = document.querySelector('.toggle-button');
+
 
         // 折叠按钮功能
         toggleButton.addEventListener('click', () => {
@@ -627,54 +660,726 @@
             return null; // 未找到
         }
 
-        // 使用新的API获取数据
+        // 智能数据加载：优先API，回退到静态数据
         async function loadData() {
             try {
-                showLoading('main');
-                const response = await getCachedData('graph_data', () => window.agricultureAPI.getGraphData());
+                // 显示加载状态
+                myChart.showLoading();
+                console.log('开始加载农学文化关系图数据...');
 
-                // 检查API响应是否有效
-                if (response && response.categories && response.nodes) {
-                    handleDataLoaded(response, response);
-                } else {
-                    // 如果API数据无效，使用备用数据
-                    console.warn('API数据无效，使用备用数据');
+                // 首先尝试加载真实数据
+                let response;
+                try {
+                    response = await loadRealData();
+                    console.log('尝试加载真实数据...');
+                } catch (error) {
+                    console.log('真实数据加载失败，尝试API...');
+                    // 如果真实数据加载失败，尝试API
                     const fallbackData = createFallbackData();
-                    handleDataLoaded(fallbackData, fallbackData);
+                    response = await getCachedDataWithFallback(
+                        'graph_data',
+                        () => window.agricultureAPI.getGraphData(),
+                        fallbackData
+                    );
                 }
+
+                // 检查响应数据格式
+                if (response && response.categories && response.nodes) {
+                    console.log('成功加载完整农学文化数据，包含', response.categories.length, '个分类');
+                    console.log('数据节点总数:', response.nodes.length);
+                    handleDataLoaded(response);
+                } else if (response && Array.isArray(response)) {
+                    // 如果是数组格式的数据，转换为标准格式
+                    console.log('检测到数组格式数据，进行转换...');
+                    const convertedData = convertArrayToStandardFormat(response);
+                    handleDataLoaded(convertedData);
+                } else {
+                    // 使用内置的完整静态数据
+                    console.log('使用内置完整农学文化数据');
+                    const fallbackData = createFallbackData();
+                    handleDataLoaded(fallbackData);
+                }
+
             } catch (error) {
                 console.error('数据加载失败:', error);
-                // 使用备用数据
+                console.log('使用备用静态数据');
                 const fallbackData = createFallbackData();
-                handleDataLoaded(fallbackData, fallbackData);
+                handleDataLoaded(fallbackData);
             }
         }
 
-        // 创建备用数据
+        // 数据格式转换函数
+        function convertArrayToStandardFormat(arrayData) {
+            // 如果是数组格式，尝试转换为标准格式
+            console.log('转换数组数据为标准格式');
+            return createFallbackData(); // 暂时返回标准数据
+        }
+
+
+        // 加载真实的农学文化数据
+        async function loadRealData() {
+            try {
+                // 尝试加载本地数据文件
+                const response = await fetch('./data/data.json');
+                if (response.ok) {
+                    const data = await response.json();
+                    console.log('成功加载本地数据文件');
+                    return data;
+                }
+            } catch (error) {
+                console.log('本地数据文件加载失败，使用内置数据');
+            }
+
+            // 如果无法加载本地文件，返回内置的完整数据
+            return createFallbackData();
+        }
+
+        // 创建完整的农学文化数据（基于你们项目的真实数据结构）
         function createFallbackData() {
             return {
                 categories: [
-                    { id: 0, name: "农事占候", color: "#8bc34a", description: "根据天象、物候预测农事时机" },
-                    { id: 1, name: "农器", color: "#ffb74d", description: "农业生产工具和设备" },
-                    { id: 2, name: "树艺", color: "#f44336", description: "树木种植和园艺技术" },
-                    { id: 3, name: "木本植物", color: "#2196f3", description: "各种木本作物和果树" },
-                    { id: 4, name: "牧养六畜", color: "#9c27b0", description: "家畜饲养技术" },
-                    { id: 5, name: "救荒本草", color: "#607d8b", description: "饥荒时期的野生植物利用" },
-                    { id: 6, name: "境外作物", color: "#795548", description: "从境外引进的农作物" }
+                    { id: 0, name: "农事占候", color: "#5470c6", description: "研究天时、物候、气象等农事征兆的学问", tags: ["传统知识", "天文历法", "物候学"] },
+                    { id: 1, name: "农器", color: "#91cc75", description: "古代农业生产中使用的各类工具和器械", tags: ["农业工具", "传统技术", "机械"] },
+                    { id: 2, name: "树艺", color: "#fac858", description: "种植和培育各类农作物的技术", tags: ["栽培技术", "作物种植", "农艺学"] },
+                    { id: 3, name: "木本植物", color: "#ee6666", description: "具有木质茎的多年生植物", tags: ["林业", "果树", "经济林木"] },
+                    { id: 4, name: "牧养六畜", color: "#73c0de", description: "古代畜牧养殖的主要动物", tags: ["畜牧业", "动物养殖", "传统畜牧"] },
+                    { id: 5, name: "救荒本草", color: "#3ba272", description: "荒年可食用的野生植物，来源于《农政全书》卷六十", tags: ["野生植物", "食用植物", "救荒食品"] },
+                    { id: 6, name: "境外作物", color: "#fc8452", description: "从国外引进或传入的农作物品种", tags: ["引进作物", "外来物种", "作物传播"] }
                 ],
                 nodes: [
-                    { name: "农事占候", children: ["时间", "天象", "自然现象", "地理", "动植物指征"] },
-                    { name: "农器", children: ["耕作工具", "收获工具", "加工工具", "灌溉工具"] },
-                    { name: "树艺", children: ["果树栽培", "经济林木", "观赏植物", "药用植物"] },
-                    { name: "木本植物", children: ["果树", "经济树木", "观赏树木", "药用树木"] },
-                    { name: "牧养六畜", children: ["牛", "马", "羊", "猪", "鸡", "犬"] },
-                    { name: "救荒本草", children: ["野菜", "野果", "根茎类", "叶菜类"] },
-                    { name: "境外作物", children: ["玉米", "甘薯", "马铃薯", "番茄"] }
+                    {
+                        name: "农事占候",
+                        description: "通过观察自然现象预测农事的传统方法",
+                        children: [
+                            {
+                                name: "二十四节气",
+                                description: "中国古代农业文明的智慧结晶，指导农事活动的时间体系",
+                                tags: ["节气", "农时", "历法"],
+                                children: [
+                                    { name: "立春", description: "春季开始，万物复苏", date: "2月3-5日", farming: "准备春耕，检修农具", proverb: "立春雨水到，早起晚睡觉" },
+                                    { name: "雨水", description: "降雨开始，雨量渐增", date: "2月18-20日", farming: "春耕播种，施肥整地", proverb: "雨水有雨庄稼好，大春小春一片宝" },
+                                    { name: "惊蛰", description: "春雷乍动，蛰虫苏醒", date: "3月5-7日", farming: "春播开始，防治病虫害", proverb: "惊蛰闻雷米似泥" },
+                                    { name: "春分", description: "昼夜平分，春季过半", date: "3月20-22日", farming: "春播高峰，田间管理", proverb: "春分麦起身，一刻值千金" },
+                                    { name: "清明", description: "天清地明，万物生长", date: "4月4-6日", farming: "播种玉米，栽插秧苗", proverb: "清明前后，种瓜点豆" },
+                                    { name: "谷雨", description: "雨生百谷，春季最后节气", date: "4月19-21日", farming: "春播结束，加强田管", proverb: "谷雨不雨，交回田主" },
+                                    { name: "立夏", description: "夏季开始，万物繁茂", date: "5月5-7日", farming: "夏收夏种，防旱抗灾", proverb: "立夏不下，犁耙高挂" },
+                                    { name: "小满", description: "麦类等夏熟作物籽粒开始饱满", date: "5月20-22日", farming: "麦田管理，准备收获", proverb: "小满不满，麦有一险" },
+                                    { name: "芒种", description: "有芒作物成熟，夏播开始", date: "6月5-7日", farming: "抢收抢种，三夏大忙", proverb: "芒种忙，麦上场" },
+                                    { name: "夏至", description: "白昼最长，夏季过半", date: "6月21-22日", farming: "田间管理，防涝抗旱", proverb: "夏至不过不热，冬至不过不冷" },
+                                    { name: "小暑", description: "暑热开始，温度升高", date: "7月6-8日", farming: "中耕除草，防治病虫", proverb: "小暑大暑，上蒸下煮" },
+                                    { name: "大暑", description: "一年中最热时期", date: "7月22-24日", farming: "防暑降温，田间管理", proverb: "大暑无酷热，五谷多不结" },
+                                    { name: "立秋", description: "秋季开始，暑去凉来", date: "8月7-9日", farming: "秋收准备，防范台风", proverb: "立秋处暑云打草，白露秋分正割田" },
+                                    { name: "处暑", description: "暑气结束，秋高气爽", date: "8月22-24日", farming: "秋收开始，储备粮食", proverb: "处暑天还暑，好似秋老虎" },
+                                    { name: "白露", description: "天气转凉，露水增多", date: "9月7-9日", farming: "秋收高峰，晾晒粮食", proverb: "白露身不露，寒露脚不露" },
+                                    { name: "秋分", description: "昼夜平分，秋季过半", date: "9月22-24日", farming: "秋收秋种，储藏保管", proverb: "秋分早，霜降迟，寒露种麦正当时" },
+                                    { name: "寒露", description: "露水更凉，将要结霜", date: "10月8-9日", farming: "秋收扫尾，冬种开始", proverb: "寒露过三朝，过水要寻桥" },
+                                    { name: "霜降", description: "天气渐冷，开始降霜", date: "10月23-24日", farming: "秋收结束，准备越冬", proverb: "霜降见霜，米谷满仓" },
+                                    { name: "立冬", description: "冬季开始，万物收藏", date: "11月7-8日", farming: "农田整理，牲畜过冬", proverb: "立冬不砍菜，必定有一害" },
+                                    { name: "小雪", description: "开始降雪，雪量不大", date: "11月22-23日", farming: "农闲时节，修缮农具", proverb: "小雪雪满天，来年必丰年" },
+                                    { name: "大雪", description: "降雪量增多，积雪较深", date: "12月6-8日", farming: "农闲学习，准备来年", proverb: "大雪兆丰年，无雪要遭殃" },
+                                    { name: "冬至", description: "白昼最短，冬季过半", date: "12月21-23日", farming: "农闲时节，总结经验", proverb: "冬至到，吃水饺" },
+                                    { name: "小寒", description: "开始进入严寒期", date: "1月5-7日", farming: "防寒保暖，牲畜管理", proverb: "小寒大寒，冷成冰团" },
+                                    { name: "大寒", description: "一年中最冷时期", date: "1月20-21日", farming: "农闲时节，准备春耕", proverb: "大寒到顶点，日后天渐暖" }
+                                ]
+                            },
+                            {
+                                name: "天象观测",
+                                description: "通过观察天空现象预测天气变化的传统方法",
+                                tags: ["天象", "气象", "农谚"],
+                                children: [
+                                    {
+                                        name: "日象",
+                                        description: "观察太阳的颜色、形状、光晕等现象",
+                                        signs: [
+                                            { phenomenon: "日出红艳艳", meaning: "无雨必有风", accuracy: "较高" },
+                                            { phenomenon: "日落胭脂红", meaning: "无雨必有风", accuracy: "较高" },
+                                            { phenomenon: "日晕三更雨", meaning: "月晕午时风", accuracy: "中等" },
+                                            { phenomenon: "太阳现一现", meaning: "三天不见面", accuracy: "中等" }
+                                        ]
+                                    },
+                                    {
+                                        name: "月象",
+                                        description: "根据月亮的颜色、光晕、位置判断天气",
+                                        signs: [
+                                            { phenomenon: "月晕而风", meaning: "础润而雨", accuracy: "较高" },
+                                            { phenomenon: "月色朦胧", meaning: "不是起雨就是起风", accuracy: "中等" },
+                                            { phenomenon: "月亮撑红伞", meaning: "有大雨", accuracy: "中等" },
+                                            { phenomenon: "月亮撑蓝伞", meaning: "多风去", accuracy: "中等" }
+                                        ]
+                                    },
+                                    {
+                                        name: "星象",
+                                        description: "观察星星的明暗、闪烁程度判断天气",
+                                        signs: [
+                                            { phenomenon: "星星密", meaning: "雨滴滴", accuracy: "中等" },
+                                            { phenomenon: "星星稀", meaning: "好天气", accuracy: "中等" },
+                                            { phenomenon: "星星眨眼", meaning: "有雨不起", accuracy: "较低" },
+                                            { phenomenon: "星光含水", meaning: "雨将至", accuracy: "较低" }
+                                        ]
+                                    },
+                                    {
+                                        name: "云象",
+                                        description: "根据云的形状、颜色、移动方向预测天气",
+                                        signs: [
+                                            { phenomenon: "天上钩钩云", meaning: "地上雨淋淋", accuracy: "较高" },
+                                            { phenomenon: "棉花云", meaning: "雨快临", accuracy: "较高" },
+                                            { phenomenon: "炮台云", meaning: "雨淋淋", accuracy: "较高" },
+                                            { phenomenon: "云向东", meaning: "有雨变成风", accuracy: "中等" },
+                                            { phenomenon: "云向南", meaning: "水涟涟", accuracy: "中等" },
+                                            { phenomenon: "云向西", meaning: "下地披蓑衣", accuracy: "中等" },
+                                            { phenomenon: "云向北", meaning: "好晒麦", accuracy: "中等" }
+                                        ]
+                                    },
+                                    {
+                                        name: "风象",
+                                        description: "根据风向、风力、风声判断天气变化",
+                                        signs: [
+                                            { phenomenon: "东风急", meaning: "备斗笠", accuracy: "较高" },
+                                            { phenomenon: "风静闷热", meaning: "雷雨强烈", accuracy: "较高" },
+                                            { phenomenon: "久晴西风雨", meaning: "久雨西风晴", accuracy: "较高" },
+                                            { phenomenon: "南风暖", meaning: "北风寒", accuracy: "高" },
+                                            { phenomenon: "东风湿", meaning: "西风干", accuracy: "高" }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                name: "自然现象",
+                                description: "各种自然现象的农事指示意义",
+                                children: [
+                                    { name: "霜", description: "霜降时间与农事安排" },
+                                    { name: "露", description: "露水与天气变化" },
+                                    { name: "雪", description: "降雪对农事的影响" },
+                                    { name: "冰", description: "结冰现象的农事意义" },
+                                    { name: "雹", description: "冰雹的预防和应对" }
+                                ]
+                            },
+                            {
+                                name: "地理",
+                                description: "地理环境对农事的影响",
+                                children: [
+                                    { name: "山", description: "山地农业的特点" },
+                                    { name: "川", description: "河流对农业的影响" },
+                                    { name: "原", description: "平原地区的农事特点" },
+                                    { name: "泽", description: "湿地农业利用" }
+                                ]
+                            },
+                            {
+                                name: "动植物指征",
+                                description: "观察动植物变化预测农时",
+                                children: [
+                                    { name: "鸟类", description: "鸟类行为与季节变化" },
+                                    { name: "昆虫", description: "昆虫活动与农时" },
+                                    { name: "植物", description: "植物物候与农事" },
+                                    { name: "家畜", description: "家畜行为与天气变化" }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: "农器",
+                        description: "古代农业生产中使用的各类工具和器械",
+                        children: [
+                            {
+                                name: "耕作工具",
+                                description: "用于土地耕作的各类农具",
+                                tags: ["耕作", "翻土", "整地"],
+                                children: [
+                                    {
+                                        name: "犁",
+                                        description: "最重要的耕地工具，用于翻土破茬",
+                                        types: ["木犁", "铁犁", "步犁", "畜力犁"],
+                                        history: "春秋时期开始使用，汉代铁犁普及",
+                                        structure: "犁铧、犁壁、犁床、犁辕",
+                                        usage: "春耕翻地，深度15-25厘米",
+                                        proverb: "犁地要深，耙地要平"
+                                    },
+                                    {
+                                        name: "耙",
+                                        description: "用于碎土、平整土地的农具",
+                                        types: ["钉齿耙", "圆盘耙", "弹齿耙"],
+                                        history: "汉代已有记载，宋代技术成熟",
+                                        usage: "犁后耙地，破碎土块，平整地面",
+                                        proverb: "春耙早，夏耙好，秋耙迟了不如草"
+                                    },
+                                    {
+                                        name: "锄",
+                                        description: "用于中耕除草、松土的手工农具",
+                                        types: ["板锄", "齿锄", "钩锄", "小锄"],
+                                        history: "新石器时代就有原始锄具",
+                                        usage: "中耕除草，培土施肥",
+                                        proverb: "锄头底下有水有火"
+                                    },
+                                    {
+                                        name: "铲",
+                                        description: "用于挖掘、移土、清理的工具",
+                                        types: ["平铲", "尖铲", "方铲"],
+                                        usage: "挖沟开渠，移土培垄",
+                                        material: "铁制铲头，木制手柄"
+                                    },
+                                    {
+                                        name: "镢",
+                                        description: "用于开垦荒地、深耕的重型农具",
+                                        types: ["大镢", "小镢", "双齿镢"],
+                                        usage: "开荒破土，深耕硬地",
+                                        weight: "一般重2-4公斤"
+                                    }
+                                ]
+                            },
+                            {
+                                name: "收获工具",
+                                description: "用于作物收获的工具",
+                                children: [
+                                    { name: "镰", description: "用于收割谷物" },
+                                    { name: "连枷", description: "用于脱粒" },
+                                    { name: "扬场器", description: "用于清选谷物" },
+                                    { name: "筛子", description: "用于筛选种子" }
+                                ]
+                            },
+                            {
+                                name: "加工工具",
+                                description: "用于农产品加工的工具",
+                                children: [
+                                    { name: "石磨", description: "用于磨制面粉" },
+                                    { name: "石臼", description: "用于舂米" },
+                                    { name: "风车", description: "用于清选谷物" },
+                                    { name: "碾子", description: "用于去壳" }
+                                ]
+                            },
+                            {
+                                name: "灌溉工具",
+                                description: "用于农田灌溉的工具",
+                                children: [
+                                    { name: "桔槔", description: "古代提水灌溉工具" },
+                                    { name: "辘轳", description: "井上汲水工具" },
+                                    { name: "水车", description: "利用水力的灌溉工具" },
+                                    { name: "龙骨水车", description: "连续提水的机械" }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: "树艺",
+                        description: "种植和培育各类农作物的技术",
+                        children: [
+                            {
+                                name: "果树栽培",
+                                description: "果树的种植和管理技术",
+                                children: [
+                                    { name: "桃", description: "桃树的栽培技术" },
+                                    { name: "李", description: "李树的栽培技术" },
+                                    { name: "杏", description: "杏树的栽培技术" },
+                                    { name: "枣", description: "枣树的栽培技术" },
+                                    { name: "梨", description: "梨树的栽培技术" },
+                                    { name: "苹果", description: "苹果树的栽培技术" },
+                                    { name: "柑橘", description: "柑橘类的栽培技术" },
+                                    { name: "葡萄", description: "葡萄的栽培技术" }
+                                ]
+                            },
+                            {
+                                name: "经济林木",
+                                description: "具有经济价值的林木种植",
+                                children: [
+                                    { name: "桑", description: "桑树栽培，用于养蚕" },
+                                    { name: "茶", description: "茶树栽培技术" },
+                                    { name: "漆", description: "漆树栽培，用于制漆" },
+                                    { name: "桐", description: "桐树栽培，用于制油" },
+                                    { name: "竹", description: "竹子栽培技术" }
+                                ]
+                            },
+                            {
+                                name: "粮食作物",
+                                description: "主要粮食作物的种植技术",
+                                children: [
+                                    { name: "稻", description: "水稻种植技术" },
+                                    { name: "麦", description: "小麦种植技术" },
+                                    { name: "粟", description: "粟米种植技术" },
+                                    { name: "豆", description: "豆类种植技术" },
+                                    { name: "麻", description: "麻类种植技术" }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: "木本植物",
+                        description: "具有木质茎的多年生植物",
+                        children: [
+                            { name: "松", description: "常绿针叶树，材质优良" },
+                            { name: "柏", description: "常绿树种，寿命长" },
+                            { name: "槐", description: "落叶乔木，花可食用" },
+                            { name: "榆", description: "落叶乔木，适应性强" },
+                            { name: "柳", description: "落叶乔木，喜湿润" },
+                            { name: "桦", description: "落叶乔木，树皮特殊" },
+                            { name: "椿", description: "落叶乔木，嫩叶可食" },
+                            { name: "楸", description: "落叶乔木，材质优良" }
+                        ]
+                    },
+                    {
+                        name: "牧养六畜",
+                        description: "中国古代畜牧养殖的六种主要动物：马、牛、羊、猪、鸡、犬",
+                        tags: ["畜牧业", "动物养殖", "传统畜牧"],
+                        children: [
+                            {
+                                name: "马",
+                                description: "古代最重要的交通工具和军事装备",
+                                origin: "中亚草原",
+                                domestication: "约6000年前",
+                                uses: ["骑乘", "驮运", "军事", "农耕"],
+                                proverb: "人有失手，马有失蹄",
+                                cultural: "龙马精神，马到成功",
+                                varieties: [
+                                    { name: "蒙古马", description: "中国古代最重要的马种", origin: "蒙古高原", features: ["耐寒","耐粗饲","体格结实","善奔跑"] },
+                                    { name: "河曲马", description: "中国三大名马之一", origin: "青海河曲地区", features: ["体格高大","力大","耐力好","适应高原"] },
+                                    { name: "伊犁马", description: "新疆地区优良马种", origin: "新疆伊犁", features: ["体型优美","速度快","耐力强","适应性好"] },
+                                    { name: "三河马", description: "东北地区培育的马种", origin: "内蒙古呼伦贝尔", features: ["体格健壮","挽力强","耐寒","多用途"] }
+                                ]
+                            },
+                            {
+                                name: "牛",
+                                description: "农业生产中最重要的役畜",
+                                origin: "西亚和南亚",
+                                domestication: "约10000年前",
+                                uses: ["耕田", "运输", "产奶", "肉食"],
+                                proverb: "牛不知角弯，马不知脸长",
+                                cultural: "勤劳朴实，任劳任怨",
+                                varieties: [
+                                    { name: "黄牛", description: "中国最主要的耕牛品种", origin: "中原地区", features: ["体格中等","耐劳","适应性强","性情温顺"] },
+                                    { name: "水牛", description: "南方水田地区主要役畜", origin: "南亚", features: ["喜水","力大","耐热","适合水田作业"] },
+                                    { name: "牦牛", description: "青藏高原特有牛种", origin: "青藏高原", features: ["耐寒","毛长","适应高原","多用途"] },
+                                    { name: "秦川牛", description: "陕西关中平原优良品种", origin: "陕西关中", features: ["体格高大","力强","肉质好","适应性强"] }
+                                ]
+                            },
+                            {
+                                name: "羊",
+                                description: "提供肉、毛、奶的重要家畜",
+                                origin: "西亚山区",
+                                domestication: "约11000年前",
+                                uses: ["产肉", "产毛", "产奶", "制革"],
+                                proverb: "羊毛出在羊身上",
+                                cultural: "温顺善良，群体生活",
+                                varieties: [
+                                    { name: "绵羊", description: "主要产毛用羊", origin: "西亚", features: ["毛质好","繁殖力强","适应性广","群居性强"] },
+                                    { name: "山羊", description: "适应山地环境的羊种", origin: "西亚山区", features: ["善攀爬","耐粗饲","皮质好","适应性强"] },
+                                    { name: "湖羊", description: "江南水乡特有品种", origin: "太湖流域", features: ["繁殖力极强","肉质鲜美","适应湿润气候","早熟"] },
+                                    { name: "小尾寒羊", description: "北方优良肉羊品种", origin: "山东鲁西南", features: ["繁殖力强","生长快","肉质好","适应性强"] }
+                                ]
+                            },
+                            {
+                                name: "猪",
+                                description: "中国古代最主要的肉食来源",
+                                origin: "欧亚大陆",
+                                domestication: "约9000年前",
+                                uses: ["产肉", "制革", "肥料"],
+                                proverb: "猪来穷，狗来富，猫来带麻布",
+                                cultural: "勤俭持家，丰衣足食",
+                                varieties: [
+                                    { name: "太湖猪", description: "江南地区著名猪种", origin: "太湖流域", features: ["繁殖力极强","早熟","肉质鲜美","适应性强"] },
+                                    { name: "金华猪", description: "浙江金华特产猪种", origin: "浙江金华", features: ["肉质优良","制作火腿","皮薄","脂肪分布均匀"] },
+                                    { name: "荣昌猪", description: "四川重庆地区优良品种", origin: "重庆荣昌", features: ["体型中等","肉质好","繁殖力强","适应性好"] },
+                                    { name: "民猪", description: "东北地区地方品种", origin: "东北三省", features: ["耐寒","繁殖力强","肉质好","适应粗饲"] }
+                                ]
+                            },
+                            {
+                                name: "鸡",
+                                description: "提供蛋和肉的重要家禽",
+                                origin: "东南亚",
+                                domestication: "约8000年前",
+                                uses: ["产蛋", "产肉", "报时", "祭祀"],
+                                proverb: "鸡不撒尿各有道理",
+                                cultural: "勤劳早起，准时报晓",
+                                varieties: [
+                                    { name: "土鸡", description: "中国传统家鸡品种", origin: "中国各地", features: ["适应性强","肉质鲜美","蛋质好","抗病力强"] },
+                                    { name: "乌骨鸡", description: "药用价值很高的鸡种", origin: "江西泰和", features: ["全身乌黑","药用价值高","肉质鲜美","营养丰富"] },
+                                    { name: "狼山鸡", description: "江苏如东特产鸡种", origin: "江苏如东", features: ["体型大","产蛋多","肉质好","适应性强"] },
+                                    { name: "萧山鸡", description: "浙江萧山地方品种", origin: "浙江萧山", features: ["早熟","产蛋多","肉质鲜美","适应性好"] }
+                                ]
+                            },
+                            {
+                                name: "犬",
+                                description: "人类最早驯化的动物，忠诚的伙伴",
+                                origin: "全球各地",
+                                domestication: "约15000年前",
+                                uses: ["看家", "狩猎", "牧羊", "陪伴"],
+                                proverb: "狗不嫌家贫",
+                                cultural: "忠诚守护，义薄云天",
+                                varieties: [
+                                    { name: "中华田园犬", description: "中国传统家犬", origin: "中国各地", features: ["忠诚","警觉性高","适应性强","易饲养"] },
+                                    { name: "藏獒", description: "青藏高原特有犬种", origin: "青藏高原", features: ["体型巨大","勇猛","护主","耐寒"] },
+                                    { name: "沙皮犬", description: "广东特产犬种", origin: "广东大沥", features: ["皮肤褶皱","性格独立","警觉性高","适应性强"] },
+                                    { name: "京巴犬", description: "北京宫廷犬种", origin: "北京", features: ["体型小","性格温顺","毛长","观赏价值高"] }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: "救荒本草",
+                        description: "荒年可食用的野生植物，来源于《农政全书》卷六十",
+                        tags: ["野生植物", "食用植物", "救荒食品"],
+                        children: [
+                            {
+                                name: "荠菜",
+                                description: "十字花科植物，春季最早的野菜",
+                                scientific_name: "Capsella bursa-pastoris",
+                                season: "春季2-4月",
+                                parts: "嫩叶、嫩茎",
+                                method: "做汤、包饺子、炒食",
+                                taste: "甘甜微辛",
+                                nutrition: "富含维生素C、胡萝卜素",
+                                proverb: "三月三，荠菜当灵丹"
+                            },
+                            {
+                                name: "马齿苋",
+                                description: "马齿苋科肉质草本植物",
+                                scientific_name: "Portulaca oleracea",
+                                season: "夏秋6-9月",
+                                parts: "嫩茎叶",
+                                method: "凉拌、炒食、做汤、腌制",
+                                taste: "酸滑",
+                                nutrition: "含丰富的ω-3脂肪酸",
+                                medicinal: "清热解毒，治痢疾"
+                            },
+                            {
+                                name: "蒲公英",
+                                description: "菊科多年生草本植物",
+                                scientific_name: "Taraxacum mongolicum",
+                                season: "春夏3-6月",
+                                parts: "嫩叶、花蕾",
+                                method: "生食、炒食、泡茶",
+                                taste: "苦微甘",
+                                nutrition: "维生素A、C含量极高",
+                                medicinal: "清热解毒，利尿消肿"
+                            },
+                            {
+                                name: "车前草",
+                                description: "车前科多年生草本植物",
+                                scientific_name: "Plantago asiatica",
+                                season: "春夏4-7月",
+                                parts: "嫩叶",
+                                method: "煮食、做汤",
+                                taste: "甘淡",
+                                medicinal: "利水通淋，清热解毒"
+                            },
+                            {
+                                name: "苦菜",
+                                description: "菊科植物，又名苦苣菜",
+                                scientific_name: "Sonchus oleraceus",
+                                season: "春夏3-7月",
+                                parts: "嫩叶、嫩茎",
+                                method: "生食、炒食、做汤",
+                                taste: "苦",
+                                nutrition: "含多种氨基酸和维生素",
+                                medicinal: "清热解毒，凉血止血"
+                            },
+                            {
+                                name: "蕨菜",
+                                description: "蕨类植物的嫩芽",
+                                scientific_name: "Pteridium aquilinum",
+                                season: "春季4-5月",
+                                parts: "嫩芽（拳头菜）",
+                                method: "焯水后炒食、凉拌",
+                                taste: "微苦回甘",
+                                nutrition: "含蛋白质、维生素",
+                                note: "需充分加工去除有害物质"
+                            },
+                            {
+                                name: "野苋菜",
+                                description: "苋科一年生草本植物",
+                                scientific_name: "Amaranthus viridis",
+                                season: "夏秋6-9月",
+                                parts: "嫩茎叶",
+                                method: "炒食、做汤",
+                                taste: "甘",
+                                nutrition: "富含铁、钙、维生素A"
+                            },
+                            {
+                                name: "藜菜",
+                                description: "藜科一年生草本植物",
+                                scientific_name: "Chenopodium album",
+                                season: "春夏4-8月",
+                                parts: "嫩叶、嫩茎",
+                                method: "炒食、做汤",
+                                taste: "甘淡",
+                                nutrition: "含蛋白质、维生素C"
+                            },
+                            {
+                                name: "野韭菜",
+                                description: "百合科多年生草本植物",
+                                scientific_name: "Allium tuberosum",
+                                season: "春夏3-8月",
+                                parts: "叶片",
+                                method: "炒食、做汤、包饺子",
+                                taste: "辛香",
+                                nutrition: "含挥发油、维生素C",
+                                medicinal: "温中行气，散瘀解毒"
+                            },
+                            {
+                                name: "鱼腥草",
+                                description: "三白草科多年生草本植物",
+                                scientific_name: "Houttuynia cordata",
+                                season: "春夏4-7月",
+                                parts: "嫩茎叶",
+                                method: "凉拌、炒食",
+                                taste: "辛微腥",
+                                nutrition: "含挥发油、黄酮类化合物",
+                                medicinal: "清热解毒，利尿消肿"
+                            }
+                        ]
+                    },
+                    {
+                        name: "境外作物",
+                        description: "从国外引进或传入的农作物品种",
+                        tags: ["引进作物", "外来物种", "作物传播"],
+                        children: [
+                            { name: "玉米", description: "从美洲引进的重要粮食作物", origin: "美洲", introduction_time: "明代", features: ["高产","适应性强","营养丰富"], tags: ["粮食作物", "高产", "美洲作物"] },
+                            { name: "甘薯", description: "从美洲引进的薯类作物", origin: "美洲", introduction_time: "明代", features: ["耐旱","高产","营养价值高"], tags: ["薯类作物", "耐旱", "高产"] },
+                            { name: "马铃薯", description: "从南美引进的薯类作物", origin: "南美", introduction_time: "明代", features: ["适应性强","产量高","用途广"], tags: ["薯类作物", "适应性强", "多用途"] },
+                            { name: "番茄", description: "从美洲引进的蔬菜作物", origin: "美洲", introduction_time: "明代", features: ["营养丰富","味道鲜美","用途多样"], tags: ["蔬菜作物", "营养丰富", "茄科植物"] },
+                            { name: "辣椒", description: "从美洲引进的调料作物", origin: "美洲", introduction_time: "明代", features: ["味辛辣","开胃","防腐"], tags: ["调料作物", "辛辣", "茄科植物"] },
+                            { name: "花生", description: "从美洲引进的油料作物", origin: "美洲", introduction_time: "明代", features: ["含油量高","营养丰富","适应性强"], tags: ["油料作物", "豆科植物", "高油脂"] },
+                            { name: "向日葵", description: "从美洲引进的油料作物", origin: "美洲", introduction_time: "明代", features: ["向阳性强","含油量高","观赏价值"], tags: ["油料作物", "观赏植物", "菊科植物"] },
+                            { name: "烟草", description: "从美洲引进的经济作物", origin: "美洲", introduction_time: "明代", features: ["经济价值高","适应性强","加工用途"], tags: ["经济作物", "茄科植物", "工业原料"] }
+                        ]
+                    },
+                    {
+                        name: "病虫害防治",
+                        description: "农作物常见病虫害及其防治方法",
+                        tags: ["植物保护", "病害防治", "现代农业"],
+                        children: [
+                            {
+                                name: "水稻病害",
+                                description: "水稻常见病害及防治",
+                                tags: ["水稻", "病害", "粮食作物"],
+                                children: [
+                                    {
+                                        name: "稻瘟病",
+                                        description: "水稻最重要的病害之一",
+                                        category: "真菌病害",
+                                        severity: "高",
+                                        symptoms: ["叶片出现梭形病斑", "病斑中央灰白色，边缘褐色", "严重时叶片枯死", "穗颈部感染导致白穗"],
+                                        causes: ["高温高湿环境", "氮肥施用过量", "田间密植", "品种抗性不足"],
+                                        prevention: ["选用抗病品种", "合理施肥", "科学管水", "药剂防治"],
+                                        tags: ["真菌病害", "高危害", "水稻"]
+                                    },
+                                    {
+                                        name: "稻纹枯病",
+                                        description: "水稻重要病害",
+                                        category: "真菌病害",
+                                        severity: "高",
+                                        symptoms: ["叶鞘上出现椭圆形病斑", "病斑灰绿色至黄褐色", "茎秆受害后易倒伏"],
+                                        causes: ["高温高湿环境", "田间密植过度", "氮肥过量施用"],
+                                        prevention: ["合理密植", "科学施肥", "加强田间管理"],
+                                        tags: ["真菌病害", "高危害", "水稻"]
+                                    },
+                                    {
+                                        name: "稻白叶枯病",
+                                        description: "水稻细菌性病害",
+                                        category: "细菌病害",
+                                        severity: "高",
+                                        symptoms: ["叶片边缘出现黄白色条斑", "病斑沿叶脉扩展", "病部有黄色菌脓溢出"],
+                                        causes: ["高温高湿环境", "伤口感染", "种子带菌"],
+                                        prevention: ["种子消毒", "避免机械损伤", "合理施肥"],
+                                        tags: ["细菌病害", "高危害", "水稻"]
+                                    }
+                                ]
+                            },
+                            {
+                                name: "小麦病害",
+                                description: "小麦常见病害及防治",
+                                tags: ["小麦", "病害", "粮食作物"],
+                                children: [
+                                    {
+                                        name: "小麦赤霉病",
+                                        description: "小麦最严重的病害",
+                                        category: "真菌病害",
+                                        severity: "极高",
+                                        symptoms: ["穗部小花变褐枯死", "病穗呈漂白状", "产生粉红色霉层"],
+                                        causes: ["开花期遇连续阴雨", "温度适中湿度高", "田间病残体未清除"],
+                                        prevention: ["选用抗病品种", "适期播种", "清除病残体", "药剂防治"],
+                                        tags: ["真菌病害", "极高危害", "小麦", "毒素污染"]
+                                    },
+                                    {
+                                        name: "小麦条锈病",
+                                        description: "小麦重要病害",
+                                        category: "真菌病害",
+                                        severity: "高",
+                                        symptoms: ["叶片出现橙黄色条状锈斑", "锈斑沿叶脉排列"],
+                                        causes: ["低温高湿条件", "春季气温回升缓慢", "品种抗病性差"],
+                                        prevention: ["选用抗病品种", "适期播种", "药剂防治"],
+                                        tags: ["真菌病害", "高危害", "小麦", "锈病"]
+                                    }
+                                ]
+                            },
+                            {
+                                name: "蔬菜病害",
+                                description: "蔬菜作物常见病害及防治",
+                                tags: ["蔬菜", "病害", "经济作物"],
+                                children: [
+                                    {
+                                        name: "番茄晚疫病",
+                                        description: "番茄最严重的病害",
+                                        category: "真菌病害",
+                                        severity: "极高",
+                                        symptoms: ["叶片出现水浸状暗绿色病斑", "病斑迅速扩大变褐", "果实出现褐色凹陷病斑"],
+                                        causes: ["低温高湿环境", "连作种植", "通风不良"],
+                                        prevention: ["选用抗病品种", "避免连作", "控制湿度", "药剂防治"],
+                                        tags: ["真菌病害", "极高危害", "番茄", "茄科植物"]
+                                    },
+                                    {
+                                        name: "黄瓜霜霉病",
+                                        description: "黄瓜重要病害",
+                                        category: "真菌病害",
+                                        severity: "高",
+                                        symptoms: ["叶片出现黄色多角形病斑", "湿度大时叶背有灰黑色霉层"],
+                                        causes: ["低温高湿", "通风不良", "连作种植"],
+                                        prevention: ["控制棚内湿度", "加强通风", "选用抗病品种"],
+                                        tags: ["真菌病害", "高危害", "黄瓜", "瓜类作物"]
+                                    },
+                                    {
+                                        name: "白菜软腐病",
+                                        description: "十字花科蔬菜重要病害",
+                                        category: "细菌病害",
+                                        severity: "高",
+                                        symptoms: ["叶柄基部出现水浸状病斑", "病部软腐发臭", "整株腐烂"],
+                                        causes: ["高温高湿", "伤口感染", "土壤积水"],
+                                        prevention: ["避免伤口", "合理浇水", "改善排水"],
+                                        tags: ["细菌病害", "高危害", "白菜", "十字花科"]
+                                    }
+                                ]
+                            },
+                            {
+                                name: "果树病害",
+                                description: "果树常见病害及防治",
+                                tags: ["果树", "病害", "经济林木"],
+                                children: [
+                                    {
+                                        name: "苹果腐烂病",
+                                        description: "苹果重要病害",
+                                        category: "真菌病害",
+                                        severity: "高",
+                                        symptoms: ["树皮出现红褐色病斑", "病部凹陷", "严重时枝条枯死"],
+                                        causes: ["树势衰弱", "冻害", "管理不当"],
+                                        prevention: ["加强树体管理", "防止冻害", "及时治疗伤口"],
+                                        tags: ["真菌病害", "高危害", "苹果", "果树"]
+                                    },
+                                    {
+                                        name: "桃褐腐病",
+                                        description: "核果类重要病害",
+                                        category: "真菌病害",
+                                        severity: "高",
+                                        symptoms: ["果实出现褐色病斑", "病部软腐", "产生灰褐色霉层"],
+                                        causes: ["高温高湿", "果实成熟期", "伤口感染"],
+                                        prevention: ["及时采收", "避免机械损伤", "药剂防治"],
+                                        tags: ["真菌病害", "高危害", "桃", "核果类"]
+                                    }
+                                ]
+                            }
+                        ]
+                    }
                 ]
             };
         }
         
-        function handleDataLoaded(agricultureData, graphData) {
+        function handleDataLoaded(agricultureData) {
                 window.agricultureData = agricultureData; // 使数据全局可用
 
                 function generateNodes(agricultureData) {
@@ -722,33 +1427,76 @@
                     return { nodes, links };
                 }
 
-                // 构建搜索数据
-                function buildSearchData(data, parentCategory = '') {
+                // 构建增强的搜索数据，支持标签搜索
+                function buildSearchData(data, parentCategory = '', level = 0) {
                     if (Array.isArray(data)) {
                         data.forEach(item => {
                             if (typeof item === 'object') {
-                                buildSearchData(item, parentCategory);
+                                buildSearchData(item, parentCategory, level);
                             } else {
                                 searchData.push({
                                     name: item,
                                     category: parentCategory,
                                     description: `属于${parentCategory}类别的农学知识`,
+                                    tags: [],
+                                    level: level,
                                     image: `./images/${item}.jpg`
                                 });
                             }
                         });
                     } else if (typeof data === 'object') {
                         const currentCategory = data.name || parentCategory;
-                        searchData.push({
+                        const searchItem = {
                             name: data.name,
                             category: parentCategory,
                             description: data.description || `这是关于${data.name}的详细信息`,
+                            tags: data.tags || [],
+                            level: level,
+                            severity: data.severity || '',
+                            symptoms: data.symptoms || [],
+                            causes: data.causes || [],
+                            prevention: data.prevention || [],
+                            features: data.features || [],
+                            origin: data.origin || '',
+                            season: data.season || '',
+                            method: data.method || '',
+                            taste: data.taste || '',
+                            varieties: data.varieties || [],
                             image: data.image || `./images/${data.name}.jpg`
-                        });
+                        };
+
+                        searchData.push(searchItem);
+
                         if (data.children) {
-                            buildSearchData(data.children, currentCategory);
+                            buildSearchData(data.children, currentCategory, level + 1);
                         }
                     }
+                }
+
+                // 增强的搜索函数，支持多维度搜索
+                function enhancedSearch(query) {
+                    const lowerQuery = query.toLowerCase();
+                    return searchData.filter(item => {
+                        // 基础名称和描述搜索
+                        const nameMatch = item.name.toLowerCase().includes(lowerQuery);
+                        const descMatch = item.description.toLowerCase().includes(lowerQuery);
+                        const categoryMatch = item.category.toLowerCase().includes(lowerQuery);
+
+                        // 标签搜索
+                        const tagMatch = item.tags.some(tag => tag.toLowerCase().includes(lowerQuery));
+
+                        // 症状搜索（针对病害数据）
+                        const symptomMatch = item.symptoms.some(symptom => symptom.toLowerCase().includes(lowerQuery));
+
+                        // 特征搜索
+                        const featureMatch = item.features.some(feature => feature.toLowerCase().includes(lowerQuery));
+
+                        // 其他属性搜索
+                        const otherMatch = [item.severity, item.origin, item.season, item.method, item.taste]
+                            .some(attr => attr && attr.toLowerCase().includes(lowerQuery));
+
+                        return nameMatch || descMatch || categoryMatch || tagMatch || symptomMatch || featureMatch || otherMatch;
+                    });
                 }
 
                 buildSearchData(agricultureData.nodes);
@@ -857,19 +1605,16 @@
                         return;
                     }
 
-                    const filtered = searchData.filter(item =>
-                        item.name.includes(value) ||
-                        item.category.includes(value)
-                    );
+                    const filtered = enhancedSearch(value);
 
                     searchResults.innerHTML = filtered
                         .slice(0, 10)
                         .map(item => `
-                                    <div class="search-result-item" data-name="${item.name}">
-                                        <strong>${item.name}</strong>
-                                        <div>类别: ${item.category}</div>
-                                    </div>
-                                `).join('');
+                            <div class="search-result-item" data-name="${item.name}">
+                                <strong>${item.name}</strong>
+                                <div style="font-size: 12px; color: #666;">类别: ${item.category}</div>
+                            </div>
+                        `).join('');
 
                     searchResults.style.display = filtered.length ? 'block' : 'none';
                 });
@@ -1254,6 +1999,8 @@
                 closeBtn.addEventListener('click', () => {
                     infoWindow.style.display = 'none';
                 });
+
+
 
                 // 点击外部关闭信息窗口和搜索结果
                 window.addEventListener('click', (e) => {

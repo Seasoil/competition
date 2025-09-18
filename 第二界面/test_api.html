@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>API测试</title>
+</head>
+<body>
+    <h1>API测试页面</h1>
+    <div id="result"></div>
+    
+    <script src="../js/api.js"></script>
+    <script>
+        // 修正API基础路径
+        window.agricultureAPI = new AgricultureAPI("../api/");
+
+        async function testAPI() {
+            const resultDiv = document.getElementById('result');
+
+            try {
+                resultDiv.innerHTML = '<p>正在测试API...</p>';
+                resultDiv.innerHTML += '<p>API基础地址: ' + window.agricultureAPI.baseUrl + '</p>';
+
+                // 首先测试数据库连接
+                try {
+                    const dbTest = await fetch('../api/test_db.php');
+                    const dbResult = await dbTest.json();
+                    resultDiv.innerHTML += '<h3>数据库测试:</h3><pre>' + JSON.stringify(dbResult, null, 2) + '</pre>';
+                } catch (dbError) {
+                    resultDiv.innerHTML += '<h3>数据库测试失败:</h3><pre style="color: red;">' + dbError.message + '</pre>';
+                }
+
+                // 测试知识分类API
+                const categories = await window.agricultureAPI.getKnowledgeCategories();
+                resultDiv.innerHTML += '<h3>分类数据:</h3><pre>' + JSON.stringify(categories, null, 2) + '</pre>';
+
+                // 测试图数据API
+                const graphData = await window.agricultureAPI.getGraphData();
+                resultDiv.innerHTML += '<h3>图数据:</h3><pre>' + JSON.stringify(graphData, null, 2) + '</pre>';
+
+            } catch (error) {
+                resultDiv.innerHTML += '<h3>错误:</h3><pre style="color: red;">' + error.message + '</pre>';
+                console.error('API测试失败:', error);
+            }
+        }
+
+        // 页面加载后自动测试
+        window.addEventListener('DOMContentLoaded', testAPI);
+    </script>
+</body>
+</html>
