@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>农谚分类系统-完整版</title>
     <script src="./js/echarts.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/echarts-wordcloud@2.1.0/dist/echarts-wordcloud.min.js"></script>
     <style>
         /* 背景样式 */
         body {
@@ -35,14 +36,13 @@
             left: 0;
             right: 0;
             height: 80px;
-            background: rgba(255, 250, 240, 0.85);
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            background: rgba(255, 255, 255, 0.15);
             z-index: 1000;
             display: flex;
             align-items: center;
             padding: 0 40px;
-            backdrop-filter: blur(6px);
-            border-bottom: 1px solid rgba(212, 180, 131, 0.5);
+            backdrop-filter: blur(25px) saturate(1.8);
+            border-bottom: 1px solid rgba(212, 180, 131, 0.6);
         }
 
         .nav-buttons {
@@ -54,24 +54,26 @@
         .nav-button {
             padding: 12px 28px;
             border-radius: 6px;
-            background: transparent;
+            background: rgba(255, 255, 255, 0.25);
             color: #4A4A4A;
             font-size: 16px;
             font-weight: 500;
             cursor: pointer;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            border: 1px solid rgba(74, 74, 74, 0.3);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.3);
             display: flex;
             align-items: center;
             gap: 8px;
-            backdrop-filter: blur(8px);
+            backdrop-filter: blur(20px) saturate(1.5);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
         }
 
         .nav-button:hover {
-            background: rgba(74, 74, 74, 0.1);
+            background: rgba(255, 255, 255, 0.4);
             color: #4A4A4A;
             transform: translateY(-2px);
-            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+            backdrop-filter: blur(25px) saturate(1.8);
         }
 
         * {
@@ -262,6 +264,26 @@
             height: calc(100% - 40px);
             color: #E0DCE5;
             position: relative;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .detail-text {
+            flex: 0 0 auto;
+            max-height: 40%;
+            overflow-y: auto;
+            padding-bottom: 10px;
+            border-bottom: 1px solid rgba(109, 166, 93, 0.3);
+        }
+
+        .detail-wordcloud {
+            flex: 1;
+            min-height: 250px;
+            background: rgba(58, 50, 65, 0.3);
+            border-radius: 8px;
+            border: 2px solid rgba(109, 166, 93, 0.3);
+            margin: 0 10px;
         }
 
         .close-button {
@@ -306,8 +328,13 @@
             </div>
             <div id="proverb-detail-panel" class="proverb-detail-panel">
                 <div class="detail-content">
-                    <h3>谚语详细解释</h3>
-                    <p id="proverb-desc"></p>
+                    <div class="detail-text">
+                        <h3>谚语详细解释</h3>
+                        <p id="proverb-desc"></p>
+                    </div>
+                    <div class="detail-wordcloud">
+                        <div id="wordcloud-chart" style="width: 100%; height: 100%;"></div>
+                    </div>
                     <button id="close-detail" class="close-button">×</button>
                 </div>
             </div>
@@ -361,6 +388,131 @@
                     item.category.toLowerCase().includes(lowerKeyword) ||
                     item.tags.some(tag => tag.toLowerCase().includes(lowerKeyword)) // 标签搜索
                 );
+            },
+            generateWordCloudData(item) {
+                const words = [];
+                const addWord = (text, value) => {
+                    if (text && text.length > 0) {
+                        words.push({ name: text, value: value });
+                    }
+                };
+
+                // 从tags中添加关键词（高权重）
+                if (item.tags) {
+                    item.tags.forEach(tag => addWord(tag, Math.random() * 20 + 180));
+                }
+
+                // 从谚语文本中提取关键词
+                const proverbKeywords = this.extractKeywords(item.text);
+                proverbKeywords.forEach(keyword => addWord(keyword, Math.random() * 15 + 165));
+
+                // 从描述中提取关键词
+                const descKeywords = this.extractKeywords(item.desc);
+                descKeywords.forEach(keyword => addWord(keyword, Math.random() * 15 + 150));
+
+                // 添加更多相关词汇
+                const relatedWords = this.getRelatedWords(item);
+                relatedWords.forEach(word => addWord(word, Math.random() * 10 + 140));
+
+                // 添加基础农业词汇
+                const baseWords = ['农业', '种植', '收获', '季节', '气候', '土壤', '水分', '阳光', '温度', '湿度', '播种', '施肥', '除草', '灌溉', '收割'];
+                baseWords.forEach(word => addWord(word, Math.random() * 10 + 30));
+
+                return words.slice(0, 45); // 恢复到45个词
+            },
+            extractKeywords(text) {
+                if (!text) return [];
+
+                // 定义关键词模式
+                const patterns = [
+                    /([正二三四五六七八九十]+月)/g,
+                    /(春夏秋冬)/g,
+                    /(立春|雨水|惊蛰|春分|清明|谷雨|立夏|小满|芒种|夏至|小暑|大暑|立秋|处暑|白露|秋分|寒露|霜降|立冬|小雪|大雪|冬至|小寒|大寒)/g,
+                    /(小麦|水稻|玉米|棉花|大豆|高粱|谷子|红薯|花生)/g,
+                    /(播种|收割|施肥|灌溉|除草|耕作)/g,
+                    /(干旱|洪涝|霜冻|冰雹|大风|雷暴)/g,
+                    /(温度|湿度|降雨|降雪|风向)/g,
+                    /(丰收|减产|歉收|增产)/g
+                ];
+
+                const keywords = [];
+                patterns.forEach(pattern => {
+                    const matches = text.match(pattern);
+                    if (matches) {
+                        keywords.push(...matches);
+                    }
+                });
+
+                // 添加一些通用农业词汇
+                const commonWords = ['农事', '节气', '天气', '作物', '田间', '管理', '预测', '经验'];
+                commonWords.forEach(word => {
+                    if (text.includes(word)) {
+                        keywords.push(word);
+                    }
+                });
+
+                return [...new Set(keywords)]; // 去重
+            },
+            getRelatedWords(item) {
+                const relatedWords = [];
+
+                // 根据不同类型的谚语添加相关词汇
+                const text = item.text + ' ' + item.desc;
+
+                // 时间相关
+                if (text.includes('春') || text.includes('正月') || text.includes('二月') || text.includes('三月')) {
+                    relatedWords.push('春耕', '播种', '发芽', '回暖', '解冻', '春雨', '嫩芽', '万物复苏');
+                }
+                if (text.includes('夏') || text.includes('四月') || text.includes('五月') || text.includes('六月')) {
+                    relatedWords.push('夏种', '生长', '开花', '高温', '雷雨', '灌溉', '除草', '茂盛');
+                }
+                if (text.includes('秋') || text.includes('七月') || text.includes('八月') || text.includes('九月')) {
+                    relatedWords.push('秋收', '成熟', '丰收', '凉爽', '霜降', '储藏', '金黄', '硕果');
+                }
+                if (text.includes('冬') || text.includes('十月') || text.includes('十一月') || text.includes('十二月')) {
+                    relatedWords.push('冬藏', '休眠', '严寒', '雪花', '冰冻', '保暖', '储备', '静待');
+                }
+
+                // 天气相关
+                if (text.includes('雨') || text.includes('水')) {
+                    relatedWords.push('滋润', '湿润', '水分', '灌溉', '涝灾', '排水', '蓄水');
+                }
+                if (text.includes('晴') || text.includes('阳')) {
+                    relatedWords.push('阳光', '光照', '温暖', '干燥', '晾晒', '光合作用');
+                }
+                if (text.includes('风')) {
+                    relatedWords.push('通风', '传粉', '干燥', '降温', '倒伏', '风向');
+                }
+                if (text.includes('雪') || text.includes('霜') || text.includes('冰')) {
+                    relatedWords.push('冻害', '保温', '覆盖', '融化', '低温', '防寒');
+                }
+
+                // 作物相关
+                if (text.includes('麦') || text.includes('谷') || text.includes('稻')) {
+                    relatedWords.push('粮食', '主食', '收成', '磨面', '稻田', '麦田', '谷仓');
+                }
+                if (text.includes('棉')) {
+                    relatedWords.push('纤维', '纺织', '棉桃', '采摘', '经济作物');
+                }
+                if (text.includes('菜') || text.includes('瓜')) {
+                    relatedWords.push('蔬菜', '营养', '新鲜', '菜园', '瓜果', '维生素');
+                }
+
+                // 农事相关
+                if (text.includes('种') || text.includes('播')) {
+                    relatedWords.push('种子', '育苗', '发芽', '生根', '出苗', '农时');
+                }
+                if (text.includes('收') || text.includes('割')) {
+                    relatedWords.push('收获', '丰收', '储存', '晾晒', '脱粒', '入仓');
+                }
+                if (text.includes('肥') || text.includes('粪')) {
+                    relatedWords.push('营养', '土壤', '有机肥', '增产', '地力', '施肥');
+                }
+
+                // 通用农业词汇
+                relatedWords.push('农民', '田地', '庄稼', '收成', '经验', '智慧', '传统', '自然');
+
+                return [...new Set(relatedWords)]; // 去重
             }
         };
 
@@ -423,6 +575,10 @@
                         rotate: 'radial',
                         fontSize: 10,
                         color: '#E0DCE5',
+                        show: function(params) {
+                            // 只有在悬停时才显示第三层（谚语）的标签
+                            return params.treePathInfo.length < 3;
+                        },
                         formatter: function (params) {
                             // 根据层级设置不同的显示方式
                             if (params.treePathInfo.length === 1) {
@@ -494,7 +650,17 @@
                         label: {
                             show: true,
                             fontSize: 14,
-                            backgroundColor: 'rgba(58, 50, 65, 0.9)'
+                            backgroundColor: 'rgba(58, 50, 65, 0.9)',
+                            formatter: function (params) {
+                                // 悬停时显示农谚首字
+                                if (params.treePathInfo.length === 3) {
+                                    return params.name.charAt(0);
+                                } else if (params.treePathInfo.length === 2) {
+                                    return params.name;
+                                } else {
+                                    return params.name;
+                                }
+                            }
                         }
                     },
                     highlightPolicy: 'ancestor',
@@ -519,6 +685,56 @@
                 }
             });
             return chart;
+        }
+
+        function initWordCloud(data) {
+            const wordcloudChart = echarts.init(document.getElementById('wordcloud-chart'));
+            wordcloudChart.setOption({
+                backgroundColor: 'transparent',
+                tooltip: {
+                    show: true,
+                    formatter: function(params) {
+                        return params.name;
+                    },
+                    backgroundColor: 'rgba(58, 50, 65, 0.9)',
+                    borderColor: '#6DA65D',
+                    textStyle: {
+                        color: '#E0DCE5'
+                    }
+                },
+                series: [{
+                    type: 'wordCloud',
+                    gridSize: 10,
+                    sizeRange: [20, 60],
+                    rotationRange: [-30, 30],
+                    rotationStep: 40,
+                    shape: 'circle',
+                    width: '98%',
+                    height: '98%',
+                    left: 'center',
+                    top: 'center',
+                    drawOutOfBound: false,
+                    textStyle: {
+                        fontFamily: 'Microsoft YaHei, SimHei, sans-serif',
+                        fontWeight: function(params) {
+                            return params.value > 40 ? 'bold' : 'normal';
+                        },
+                        color: function() {
+                            const colors = ['#6DA65D', '#8BC34A', '#4A90E2', '#E8C547', '#C44D58', '#9C27B0', '#FF9800'];
+                            return colors[Math.floor(Math.random() * colors.length)];
+                        }
+                    },
+                    emphasis: {
+                        textStyle: {
+                            shadowBlur: 8,
+                            shadowColor: 'rgba(109, 166, 93, 0.8)',
+                            color: '#8BC34A'
+                        }
+                    },
+                    data: data
+                }]
+            });
+            return wordcloudChart;
         }
 
         document.addEventListener('DOMContentLoaded', async () => {
@@ -551,7 +767,7 @@
             }
 
             // 更新谚语列表显示
-            function updateProverbList(items, autoScroll = false) {
+            function updateProverbList(items, enableAutoScroll = false) {
                 const html = items.length ? items.map(item => `
                     <div class="proverb-item" 
                          data-text="${item.text}" 
@@ -566,7 +782,7 @@
                 scrollPosition = 0;
                 scrollContent.style.transform = 'translateY(0)';
 
-                if (autoScroll) {
+                if (enableAutoScroll) {
                     isAutoScrolling = true;
                     proverbList.classList.remove('scrollable');
                     autoScroll();
@@ -593,6 +809,13 @@
                             document.querySelector('.proverb-list').style.display = 'none';
                             document.getElementById('proverb-detail-panel').classList.add('active');
                             document.getElementById('proverb-desc').textContent = proverbItem.desc || '暂无详细解释';
+
+                            // 生成并显示词云
+                            const wordCloudData = DataManager.generateWordCloudData(proverbItem);
+                            setTimeout(() => {
+                                initWordCloud(wordCloudData);
+                            }, 100);
+
                             isAutoScrolling = false;
                         }
                     } else {
@@ -613,6 +836,17 @@
                     document.querySelector('.proverb-list').style.display = 'none';
                     document.getElementById('proverb-detail-panel').classList.add('active');
                     document.getElementById('proverb-desc').textContent = item.dataset.desc || '暂无详细解释';
+
+                    // 找到对应的谚语数据并生成词云
+                    const proverbText = item.dataset.text;
+                    const proverbItem = DataManager.items.find(p => p.text === proverbText);
+                    if (proverbItem) {
+                        const wordCloudData = DataManager.generateWordCloudData(proverbItem);
+                        setTimeout(() => {
+                            initWordCloud(wordCloudData);
+                        }, 100);
+                    }
+
                     isAutoScrolling = false;
                 }
             });

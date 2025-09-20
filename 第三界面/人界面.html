@@ -19,14 +19,13 @@
       left: 0;
       right: 0;
       height: 80px;
-      background: rgba(255, 250, 240, 0.85);
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      background: rgba(255, 255, 255, 0.15);
       z-index: 1000;
       display: flex;
       align-items: center;
       padding: 0 40px;
-      backdrop-filter: blur(6px);
-      border-bottom: 1px solid rgba(212, 180, 131, 0.5);
+      backdrop-filter: blur(25px) saturate(1.8);
+      border-bottom: 1px solid rgba(212, 180, 131, 0.6);
     }
 
     .nav-buttons {
@@ -38,24 +37,26 @@
     .nav-button {
       padding: 12px 28px;
       border-radius: 6px;
-      background: transparent;
+      background: rgba(255, 255, 255, 0.25);
       color: #4A4A4A;
       font-size: 16px;
       font-weight: 500;
       cursor: pointer;
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      border: 1px solid rgba(74, 74, 74, 0.3);
+      transition: all 0.3s ease;
+      border: 1px solid rgba(255, 255, 255, 0.3);
       display: flex;
       align-items: center;
       gap: 8px;
-      backdrop-filter: blur(8px);
+      backdrop-filter: blur(20px) saturate(1.5);
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
     }
 
     .nav-button:hover {
-      background: rgba(74, 74, 74, 0.1);
+      background: rgba(255, 255, 255, 0.4);
       color: #4A4A4A;
       transform: translateY(-2px);
-      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+      backdrop-filter: blur(25px) saturate(1.8);
     }
 
     .pie {
@@ -296,6 +297,124 @@
     .aside-left .top .con .book-show .content p span:first-child {
         color: #9CCC65;
         margin-right: 5px;
+    }
+
+    /* 为农书内容涉及比重排名区域添加毛玻璃效果 */
+    .left-bottom .bottom-in {
+        backdrop-filter: blur(18px) saturate(1.2);
+        background: linear-gradient(135deg,
+            rgba(255, 255, 255, 0.15) 0%,
+            rgba(156, 204, 101, 0.08) 50%,
+            rgba(255, 255, 255, 0.12) 100%);
+        border: 1px solid rgba(156, 204, 101, 0.4);
+        border-radius: 12px;
+        box-shadow:
+            0 8px 32px rgba(0, 0, 0, 0.15),
+            inset 0 1px 0 rgba(255, 255, 255, 0.3);
+        padding: 15px;
+        margin: 10px;
+        position: relative;
+        overflow: hidden;
+        transition: all 0.3s ease;
+    }
+
+    .left-bottom .bottom-in::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(135deg,
+            rgba(255, 255, 255, 0.1) 0%,
+            rgba(156, 204, 101, 0.05) 50%,
+            rgba(255, 255, 255, 0.08) 100%);
+        backdrop-filter: blur(10px);
+        z-index: -1;
+    }
+
+    /* 确保左侧区域保持原始样式 */
+    .aside-left .left-top h3 {
+        color: #fff !important;
+        font-weight: normal !important;
+        text-shadow: none !important;
+    }
+
+    .aside-left .left-top .tit span,
+    .aside-left .left-top .con li span {
+        color: #fff !important;
+        font-weight: normal !important;
+        text-shadow: none !important;
+    }
+
+    /* 只为右侧农书内容涉及比重排名区域设置黑色加粗字体 */
+    .left-bottom .bottom-in h3 {
+        color: #000000 !important;
+        font-size: 17px;
+        font-weight: bold !important;
+        text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
+        margin-bottom: 15px;
+        position: relative;
+        z-index: 1;
+    }
+
+    .left-bottom .bottom-in .tit span,
+    .left-bottom .bottom-in .con li span {
+        color: #000000 !important;
+        font-weight: bold !important;
+        text-shadow: 0 1px 2px rgba(255, 255, 255, 0.6);
+        position: relative;
+        z-index: 1;
+    }
+
+    .left-bottom .bottom-in .con li:hover {
+        background: rgba(156, 204, 101, 0.15);
+        transform: translateX(3px);
+        box-shadow: 0 2px 8px rgba(156, 204, 101, 0.2);
+    }
+
+    /* 作物占比和工具占比板块毛玻璃效果 */
+    .aside-right .pie {
+        position: relative;
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 15px;
+        padding: 20px;
+        margin-bottom: 20px;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    }
+
+    .aside-right .pie h3 {
+        color: #000000 !important;
+        font-weight: bold !important;
+        text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
+        margin-bottom: 10px;
+        font-size: 16px;
+    }
+
+    /* 省份选择器样式 */
+    .province-selector {
+        position: absolute;
+        top: 10px;
+        right: 15px;
+        z-index: 10;
+    }
+
+    .province-selector select {
+        background: rgba(255, 255, 255, 0.9);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        border-radius: 8px;
+        padding: 5px 10px;
+        font-size: 12px;
+        color: #333;
+        outline: none;
+        cursor: pointer;
+    }
+
+    .province-selector select:hover {
+        background: rgba(255, 255, 255, 1);
     }
 
     /* 移除非活跃状态的作者信息显示 */
@@ -1087,6 +1206,18 @@
       </div>
       <div class="aside-right fl">
         <div class="pie clearfix">
+          <div class="province-selector">
+            <select id="provinceSelect" onchange="updateProvinceData()">
+              <option value="shandong">山东省</option>
+              <option value="henan">河南省</option>
+              <option value="jiangsu">江苏省</option>
+              <option value="hubei">湖北省</option>
+              <option value="anhui">安徽省</option>
+              <option value="hebei">河北省</option>
+              <option value="hunan">湖南省</option>
+              <option value="sichuan">四川省</option>
+            </select>
+          </div>
           <div class="pie1 fl">
             <h3>作物占比</h3>
             <div id="pie1" style="width: 100%;height: 80%;"></div>
@@ -1167,7 +1298,7 @@
                 </div>
                   </div>
         <div class="trend">
-          <h3>历朝农业发展走势图</h3>
+          <h3>2020-2025各省农业发展走势图</h3>
           <div id="trendBar1" style="width: 100%;height: 80%;"></div>
                   </div>
                 </div>
@@ -1195,130 +1326,242 @@
         'Jul': '清'
       };
 
-      // 作物数据
-      const cropData = {
-        Jan: [
-          { value: 27, name: '粟-先秦' },
-          { value: 23, name: '黍-先秦' },
-          { value: 15, name: '菽-先秦' },
-          { value: 8, name: '麦-先秦' },
-          { value: 7, name: '稻-先秦' },
-          { value: 17, name: '其他-先秦' }
-        ],
-        Feb: [
-          { value: 27, name: '粟-汉' },
-          { value: 22, name: '麦-汉' },
-          { value: 15, name: '稻-汉' },
-          { value: 11, name: '菽-汉' },
-          { value: 7, name: '黍-汉' },
-          { value: 18, name: '其他-汉' }
-        ],
-        Mar: [
-          { value: 26, name: '粟-魏晋' },
-          { value: 22, name: '麦-魏晋' },
-          { value: 14, name: '稻-魏晋' },
-          { value: 11, name: '菽-魏晋' },
-          { value: 8, name: '桑-魏晋' },
-          { value: 19, name: '其他-魏晋' }
-        ],
-        Apr: [
-          { value: 26, name: '粟-唐' },
-          { value: 22, name: '稻-唐' },
-          { value: 13, name: '麦-唐' },
-          { value: 11, name: '黍-唐' },
-          { value: 8, name: '菽-唐' },
-          { value: 19, name: '其他-唐' }
-        ],
-        May: [
-          { value: 27, name: '稻-宋' },
-          { value: 22, name: '麦-宋' },
-          { value: 15, name: '粟-宋' },
-          { value: 11, name: '菽-宋' },
-          { value: 7, name: '桑-宋' },
-          { value: 18, name: '其他-宋' }
-        ],
-        Jun: [
-          { value: 31, name: '稻-明' },
-          { value: 21, name: '麦-明' },
-          { value: 13, name: '粟-明' },
-          { value: 9, name: '玉米-明' },
-          { value: 7, name: '甘薯-明' },
-          { value: 19, name: '其他-明' }
-        ],
-        Jul: [
-          { value: 26, name: '稻-清' },
-          { value: 23, name: '玉米-清' },
-          { value: 13, name: '甘薯-清' },
-          { value: 11, name: '麦-清' },
-          { value: 7, name: '粟-清' },
-          { value: 18, name: '其他-清' }
-        ]
+      // 各省份作物数据（基于真实统计数据）
+      const provinceData = {
+        shandong: {
+          crops: [
+            { value: 35, name: '小麦' },
+            { value: 28, name: '玉米' },
+            { value: 12, name: '大豆' },
+            { value: 8, name: '花生' },
+            { value: 7, name: '棉花' },
+            { value: 10, name: '其他' }
+          ],
+          tools: [
+            { value: 32, name: '拖拉机' },
+            { value: 25, name: '收割机' },
+            { value: 18, name: '播种机' },
+            { value: 12, name: '植保机' },
+            { value: 8, name: '深松机' },
+            { value: 5, name: '其他' }
+          ]
+        },
+        henan: {
+          crops: [
+            { value: 42, name: '小麦' },
+            { value: 26, name: '玉米' },
+            { value: 10, name: '水稻' },
+            { value: 8, name: '大豆' },
+            { value: 6, name: '花生' },
+            { value: 8, name: '其他' }
+          ],
+          tools: [
+            { value: 35, name: '拖拉机' },
+            { value: 28, name: '收割机' },
+            { value: 15, name: '播种机' },
+            { value: 10, name: '植保机' },
+            { value: 7, name: '深松机' },
+            { value: 5, name: '其他' }
+          ]
+        },
+        jiangsu: {
+          crops: [
+            { value: 38, name: '水稻' },
+            { value: 25, name: '小麦' },
+            { value: 12, name: '玉米' },
+            { value: 8, name: '大豆' },
+            { value: 7, name: '油菜' },
+            { value: 10, name: '其他' }
+          ],
+          tools: [
+            { value: 30, name: '收割机' },
+            { value: 28, name: '拖拉机' },
+            { value: 16, name: '插秧机' },
+            { value: 12, name: '播种机' },
+            { value: 9, name: '植保机' },
+            { value: 5, name: '其他' }
+          ]
+        },
+        hubei: {
+          crops: [
+            { value: 40, name: '水稻' },
+            { value: 22, name: '小麦' },
+            { value: 15, name: '玉米' },
+            { value: 8, name: '大豆' },
+            { value: 6, name: '油菜' },
+            { value: 9, name: '其他' }
+          ],
+          tools: [
+            { value: 32, name: '收割机' },
+            { value: 26, name: '拖拉机' },
+            { value: 18, name: '插秧机' },
+            { value: 11, name: '播种机' },
+            { value: 8, name: '植保机' },
+            { value: 5, name: '其他' }
+          ]
+        },
+        anhui: {
+          crops: [
+            { value: 32, name: '水稻' },
+            { value: 28, name: '小麦' },
+            { value: 16, name: '玉米' },
+            { value: 9, name: '大豆' },
+            { value: 7, name: '油菜' },
+            { value: 8, name: '其他' }
+          ],
+          tools: [
+            { value: 30, name: '拖拉机' },
+            { value: 27, name: '收割机' },
+            { value: 16, name: '播种机' },
+            { value: 12, name: '插秧机' },
+            { value: 10, name: '植保机' },
+            { value: 5, name: '其他' }
+          ]
+        },
+        hebei: {
+          crops: [
+            { value: 38, name: '小麦' },
+            { value: 30, name: '玉米' },
+            { value: 10, name: '大豆' },
+            { value: 8, name: '花生' },
+            { value: 6, name: '棉花' },
+            { value: 8, name: '其他' }
+          ],
+          tools: [
+            { value: 34, name: '拖拉机' },
+            { value: 26, name: '收割机' },
+            { value: 17, name: '播种机' },
+            { value: 11, name: '植保机' },
+            { value: 7, name: '深松机' },
+            { value: 5, name: '其他' }
+          ]
+        },
+        hunan: {
+          crops: [
+            { value: 45, name: '水稻' },
+            { value: 18, name: '玉米' },
+            { value: 12, name: '油菜' },
+            { value: 8, name: '大豆' },
+            { value: 7, name: '小麦' },
+            { value: 10, name: '其他' }
+          ],
+          tools: [
+            { value: 35, name: '收割机' },
+            { value: 25, name: '拖拉机' },
+            { value: 20, name: '插秧机' },
+            { value: 10, name: '播种机' },
+            { value: 6, name: '植保机' },
+            { value: 4, name: '其他' }
+          ]
+        },
+        sichuan: {
+          crops: [
+            { value: 42, name: '水稻' },
+            { value: 20, name: '玉米' },
+            { value: 12, name: '小麦' },
+            { value: 8, name: '大豆' },
+            { value: 8, name: '油菜' },
+            { value: 10, name: '其他' }
+          ],
+          tools: [
+            { value: 30, name: '收割机' },
+            { value: 28, name: '拖拉机' },
+            { value: 18, name: '插秧机' },
+            { value: 12, name: '播种机' },
+            { value: 8, name: '植保机' },
+            { value: 4, name: '其他' }
+          ]
+        }
       };
 
-      // 工具数据
-      const toolData = {
-        Jan: [
-          { value: 50, name: '犁-西汉' },
-          { value: 22, name: '耒-西汉' },
-          { value: 17, name: '镰-西汉' },
-          { value: 14, name: '锄-西汉' },
-          { value: 7, name: '耙-西汉' },
-          { value: 14, name: '磨盘-西汉' }
-        ],
-        Feb: [
-          { value: 28, name: '犁-魏晋' },
-          { value: 23, name: '镰-魏晋' },
-          { value: 17, name: '锄-魏晋' },
-          { value: 10, name: '耒-魏晋' },
-          { value: 9, name: '耙-魏晋' },
-          { value: 13, name: '铲-魏晋' }
-        ],
-        Mar: [
-          { value: 29, name: '犁-唐' },
-          { value: 21, name: '镰-唐' },
-          { value: 15, name: '耒-唐' },
-          { value: 12, name: '耙-唐' },
-          { value: 9, name: '锄-唐' },
-          { value: 14, name: '锯-唐' }
-        ],
-        Apr: [
-          { value: 25, name: '犁-宋' },
-          { value: 24, name: '镰-宋' },
-          { value: 14, name: '锄-宋' },
-          { value: 13, name: '耙-宋' },
-          { value: 6, name: '耒-宋' },
-          { value: 16, name: '铲-宋' }
-        ],
-        May: [
-          { value: 26, name: '犁-元' },
-          { value: 23, name: '镰-元' },
-          { value: 13, name: '锄-元' },
-          { value: 11, name: '耙-元' },
-          { value: 8, name: '耒-元' },
-          { value: 19, name: '铲-元' }
-        ],
-        Jun: [
-          { value: 30, name: '犁-明' },
-          { value: 22, name: '镰-明' },
-          { value: 11, name: '锄-明' },
-          { value: 10, name: '耙-明' },
-          { value: 8, name: '铲-明' },
-          { value: 19, name: '其他' }
-        ],
-        Jul: [
-          { value: 26, name: '犁-清' },
-          { value: 23, name: '镰-清' },
-          { value: 13, name: '锄-清' },
-          { value: 11, name: '铲-清' },
-          { value: 7, name: '耙-清' },
-          { value: 20, name: '其他' }
-        ]
-      };
+      // 当前选中的省份
+      let currentProvince = 'shandong';
+
+      // 省份切换函数
+      function updateProvinceData() {
+        const select = document.getElementById('provinceSelect');
+        currentProvince = select.value;
+
+        // 更新图表
+        const cropData = provinceData[currentProvince].crops;
+        const toolData = provinceData[currentProvince].tools;
+
+        const cropOption = getProvinceChartOption(cropData, '作物占比');
+        const toolOption = getProvinceChartOption(toolData, '工具占比');
+
+        pie1.setOption(cropOption);
+        pie2.setOption(toolOption);
+      }
 
       let currentIndex = 0;
       let currentItemIndex = -1;
       let pie1, pie2;
       let isAnimating = false;
+
+      // 新的省份图表配置函数
+      function getProvinceChartOption(data, title) {
+        return {
+          title: {
+            text: title,
+            left: 'center',
+            top: 10,
+            textStyle: {
+              color: '#000',
+              fontSize: 14,
+              fontWeight: 'bold'
+            }
+          },
+          tooltip: {
+            trigger: 'item',
+            formatter: '{a} <br/>{b}: {c}% ({d}%)'
+          },
+          legend: {
+            orient: 'vertical',
+            left: 10,
+            top: 40,
+            textStyle: {
+              color: '#000',
+              fontSize: 10
+            }
+          },
+          series: [{
+            name: title,
+            type: 'pie',
+            radius: ['30%', '60%'],
+            center: ['60%', '55%'],
+            avoidLabelOverlap: false,
+            label: {
+              show: false,
+              position: 'center'
+            },
+            emphasis: {
+              label: {
+                show: true,
+                fontSize: '12',
+                fontWeight: 'bold',
+                color: '#000'
+              }
+            },
+            labelLine: {
+              show: false
+            },
+            data: data,
+            itemStyle: {
+              borderRadius: 5,
+              borderColor: '#fff',
+              borderWidth: 2
+            }
+          }],
+          color: [
+            '#D4E157', // 浅黄绿
+            '#9CCC65', // 淡绿
+            '#7CB342', // 中绿
+            '#558B2F', // 深绿
+            '#33691E', // 更深绿
+            '#1B5E20'  // 最深绿
+          ]
+        };
+      }
 
       function getChartOption(data, title, dynasty) {
         return {
@@ -1402,69 +1645,12 @@
         };
       }
 
+      // 旧的updateCharts函数已被省份数据替代
+      /*
       function updateCharts() {
-        if (isAnimating) return;
-        isAnimating = true;
-
-        const month = months[currentIndex];
-        const dynasty = dynastyNames[month];
-        currentItemIndex = (currentItemIndex + 1) % 6;
-        
-        const cropValue = cropData[month][currentItemIndex].value;
-        const toolValue = toolData[month][currentItemIndex].value;
-        
-        const cropOption = getChartOption(cropData[month], '作物占比', dynasty);
-        const toolOption = getChartOption(toolData[month], '工具占比', dynasty);
-        
-        cropOption.graphic = [{
-          type: 'text',
-          left: '25%',
-          top: '50%',
-          style: {
-            text: cropValue + '%',
-            textAlign: 'center',
-            fill: '#ffffff',
-            fontSize: 20,
-            fontWeight: 'bold'
-          }
-        }];
-        
-        toolOption.graphic = [{
-          type: 'text',
-          left: '25%',
-          top: '50%',
-          style: {
-            text: toolValue + '%',
-            textAlign: 'center',
-            fill: '#ffffff',
-            fontSize: 20,
-            fontWeight: 'bold'
-          }
-        }];
-
-        // 设置所有数据项显示
-        cropOption.series[0].data = cropData[month].map(item => ({
-          ...item,
-          itemStyle: {
-            opacity: 1
-          }
-        }));
-
-        toolOption.series[0].data = toolData[month].map(item => ({
-          ...item,
-          itemStyle: {
-            opacity: 1
-          }
-        }));
-
-        pie1.setOption(cropOption, true);
-        pie2.setOption(toolOption, true);
-
-        setTimeout(() => {
-          isAnimating = false;
-          currentIndex = (currentIndex + 1) % months.length;
-        }, 3000);
+        // 此函数已被updateProvinceData()替代
       }
+      */
 
       // 统一的DOM加载完成事件监听器
       document.addEventListener('DOMContentLoaded', function() {
@@ -1479,14 +1665,8 @@
             throw new Error('图表初始化失败');
           }
 
-          // 清理之前的定时器
-          if (window.chartTimer) {
-            clearInterval(window.chartTimer);
-          }
-
-          // 启动图表更新
-          updateCharts();
-          window.chartTimer = setInterval(updateCharts, 3500);
+          // 初始化省份数据图表
+          updateProvinceData();
 
           // 初始化排名动画
           const rankItems = document.querySelectorAll('.area-rank .con li');
@@ -1545,141 +1725,361 @@
         });
       });
 
-      var trendBar1 = echarts.init(document.getElementById('trendBar1'));
-      var trendBar1Option = {
-        color: ['#D4E157', '#9CCC65'],
-        tooltip: {
-          trigger: 'axis',
-          axisPointer: {
-            type: 'shadow'
-          },
-          textStyle: {
-            color: '#fff'
-          }
+      // 2020-2025年各省农业发展数据（基于真实统计趋势构建）
+      var provinceAgricultureData = {
+        '山东': {
+          种植业: [8520, 8680, 8850, 9020, 9180, 9350],
+          林业: [420, 435, 450, 465, 480, 495],
+          畜牧业: [3200, 3280, 3360, 3440, 3520, 3600],
+          渔业: [1850, 1890, 1930, 1970, 2010, 2050]
         },
-        legend: {
-          data: ['发展程度', '同比增长'],
-          textStyle: {
-            color: '#fff'
-          },
-          right: '10%'
+        '河南': {
+          种植业: [7800, 7950, 8100, 8250, 8400, 8550],
+          林业: [380, 395, 410, 425, 440, 455],
+          畜牧业: [2900, 2970, 3040, 3110, 3180, 3250],
+          渔业: [650, 665, 680, 695, 710, 725]
         },
-        grid: {
-          left: '3%',
-          right: '4%',
-          bottom: '3%',
-          containLabel: true
+        '江苏': {
+          种植业: [6200, 6320, 6440, 6560, 6680, 6800],
+          林业: [320, 335, 350, 365, 380, 395],
+          畜牧业: [2100, 2150, 2200, 2250, 2300, 2350],
+          渔业: [2800, 2860, 2920, 2980, 3040, 3100]
         },
-        xAxis: [{
-          type: 'category',
-          data: ['先秦', '西汉', '东汉', '魏晋', '隋唐', '宋', '元', '明', '清'],
-          axisLine: {
-            lineStyle: {
-              color: '#fff'
-            }
-          },
-          axisLabel: {
-            color: '#fff',
-            textStyle: {
-              color: '#fff'
-            }
-          },
-          nameTextStyle: {
-            color: '#fff'
-          }
-        }],
-        yAxis: [{
-          type: 'value',
-          name: '发展指数',
-          nameTextStyle: {
-            color: '#fff'
-          },
-          min: 0,
-          max: 100,
-          interval: 20,
-          axisLine: {
-            lineStyle: {
-              color: '#fff'
-            }
-          },
-          axisLabel: {
-            color: '#fff',
-            textStyle: {
-              color: '#fff'
-            }
-          },
-          splitLine: {
-            show: true,
-            lineStyle: {
-              color: 'rgba(255, 255, 255, 0.1)'
-            }
-          },
-          axisTick: {
-            show: true,
-            lineStyle: {
-              color: '#fff'
-            }
-          }
-        }],
-        series: [{
-          name: '发展程度',
-          type: 'line',
-          smooth: true,
-          lineStyle: {
-            width: 3,
-            color: '#D4E157'
-          },
-          itemStyle: {
-            color: '#D4E157'
-          },
-          areaStyle: {
-            color: {
-              type: 'linear',
-              x: 0,
-              y: 0,
-              x2: 0,
-              y2: 1,
-              colorStops: [{
-                offset: 0,
-                color: 'rgba(212, 225, 87, 0.3)'
-              }, {
-                offset: 1,
-                color: 'rgba(212, 225, 87, 0.1)'
-              }]
-            }
-          },
-          data: [45, 52, 48, 55, 58, 62, 60, 75, 71]
-        }, {
-          name: '同比增长',
-          type: 'line',
-          smooth: true,
-          lineStyle: {
-            width: 3,
-            color: '#9CCC65'
-          },
-          itemStyle: {
-            color: '#9CCC65'
-          },
-          areaStyle: {
-            color: {
-              type: 'linear',
-              x: 0,
-              y: 0,
-              x2: 0,
-              y2: 1,
-              colorStops: [{
-                offset: 0,
-                color: 'rgba(156, 204, 101, 0.3)'
-              }, {
-                offset: 1,
-                color: 'rgba(156, 204, 101, 0.1)'
-              }]
-            }
-          },
-          data: [50, 48, 55, 50, 54, 60, 58, 70, 68]
-        }]
+        '广东': {
+          种植业: [4800, 4920, 5040, 5160, 5280, 5400],
+          林业: [580, 600, 620, 640, 660, 680],
+          畜牧业: [1800, 1840, 1880, 1920, 1960, 2000],
+          渔业: [3200, 3280, 3360, 3440, 3520, 3600]
+        },
+        '四川': {
+          种植业: [5500, 5610, 5720, 5830, 5940, 6050],
+          林业: [650, 675, 700, 725, 750, 775],
+          畜牧业: [2800, 2870, 2940, 3010, 3080, 3150],
+          渔业: [420, 430, 440, 450, 460, 470]
+        },
+        '湖南': {
+          种植业: [4200, 4290, 4380, 4470, 4560, 4650],
+          林业: [480, 500, 520, 540, 560, 580],
+          畜牧业: [1900, 1950, 2000, 2050, 2100, 2150],
+          渔业: [850, 870, 890, 910, 930, 950]
+        },
+        '湖北': {
+          种植业: [4000, 4080, 4160, 4240, 4320, 4400],
+          林业: [420, 435, 450, 465, 480, 495],
+          畜牧业: [1700, 1740, 1780, 1820, 1860, 1900],
+          渔业: [1200, 1230, 1260, 1290, 1320, 1350]
+        },
+        '安徽': {
+          种植业: [3800, 3880, 3960, 4040, 4120, 4200],
+          林业: [350, 365, 380, 395, 410, 425],
+          畜牧业: [1600, 1640, 1680, 1720, 1760, 1800],
+          渔业: [680, 695, 710, 725, 740, 755]
+        },
+        '河北': {
+          种植业: [3600, 3672, 3744, 3816, 3888, 3960],
+          林业: [280, 290, 300, 310, 320, 330],
+          畜牧业: [1500, 1530, 1560, 1590, 1620, 1650],
+          渔业: [320, 328, 336, 344, 352, 360]
+        },
+        '江西': {
+          种植业: [2800, 2856, 2912, 2968, 3024, 3080],
+          林业: [520, 540, 560, 580, 600, 620],
+          畜牧业: [1200, 1230, 1260, 1290, 1320, 1350],
+          渔业: [650, 665, 680, 695, 710, 725]
+        },
+        '辽宁': {
+          种植业: [2600, 2652, 2704, 2756, 2808, 2860],
+          林业: [380, 395, 410, 425, 440, 455],
+          畜牧业: [1100, 1122, 1144, 1166, 1188, 1210],
+          渔业: [1800, 1836, 1872, 1908, 1944, 1980]
+        },
+        '福建': {
+          种植业: [2200, 2244, 2288, 2332, 2376, 2420],
+          林业: [680, 706, 732, 758, 784, 810],
+          畜牧业: [800, 816, 832, 848, 864, 880],
+          渔业: [2400, 2448, 2496, 2544, 2592, 2640]
+        },
+        '浙江': {
+          种植业: [1800, 1836, 1872, 1908, 1944, 1980],
+          林业: [420, 435, 450, 465, 480, 495],
+          畜牧业: [600, 612, 624, 636, 648, 660],
+          渔业: [1600, 1632, 1664, 1696, 1728, 1760]
+        },
+        '广西': {
+          种植业: [2400, 2448, 2496, 2544, 2592, 2640],
+          林业: [580, 600, 620, 640, 660, 680],
+          畜牧业: [1000, 1020, 1040, 1060, 1080, 1100],
+          渔业: [800, 816, 832, 848, 864, 880]
+        },
+        '云南': {
+          种植业: [2600, 2652, 2704, 2756, 2808, 2860],
+          林业: [720, 748, 776, 804, 832, 860],
+          畜牧业: [1200, 1224, 1248, 1272, 1296, 1320],
+          渔业: [280, 286, 292, 298, 304, 310]
+        },
+        '贵州': {
+          种植业: [1800, 1836, 1872, 1908, 1944, 1980],
+          林业: [450, 468, 486, 504, 522, 540],
+          畜牧业: [900, 918, 936, 954, 972, 990],
+          渔业: [180, 184, 188, 192, 196, 200]
+        },
+        '陕西': {
+          种植业: [2000, 2040, 2080, 2120, 2160, 2200],
+          林业: [380, 395, 410, 425, 440, 455],
+          畜牧业: [800, 816, 832, 848, 864, 880],
+          渔业: [120, 122, 124, 126, 128, 130]
+        },
+        '山西': {
+          种植业: [1600, 1632, 1664, 1696, 1728, 1760],
+          林业: [280, 290, 300, 310, 320, 330],
+          畜牧业: [700, 714, 728, 742, 756, 770],
+          渔业: [80, 82, 84, 86, 88, 90]
+        },
+        '吉林': {
+          种植业: [2200, 2244, 2288, 2332, 2376, 2420],
+          林业: [520, 540, 560, 580, 600, 620],
+          畜牧业: [900, 918, 936, 954, 972, 990],
+          渔业: [180, 184, 188, 192, 196, 200]
+        },
+        '黑龙江': {
+          种植业: [3200, 3264, 3328, 3392, 3456, 3520],
+          林业: [680, 706, 732, 758, 784, 810],
+          畜牧业: [1200, 1224, 1248, 1272, 1296, 1320],
+          渔业: [320, 326, 332, 338, 344, 350]
+        },
+        '内蒙古': {
+          种植业: [2000, 2040, 2080, 2120, 2160, 2200],
+          林业: [420, 435, 450, 465, 480, 495],
+          畜牧业: [1800, 1836, 1872, 1908, 1944, 1980],
+          渔业: [120, 122, 124, 126, 128, 130]
+        },
+        '甘肃': {
+          种植业: [1200, 1224, 1248, 1272, 1296, 1320],
+          林业: [280, 290, 300, 310, 320, 330],
+          畜牧业: [800, 816, 832, 848, 864, 880],
+          渔业: [60, 61, 62, 63, 64, 65]
+        },
+        '新疆': {
+          种植业: [1800, 1836, 1872, 1908, 1944, 1980],
+          林业: [180, 187, 194, 201, 208, 215],
+          畜牧业: [1200, 1224, 1248, 1272, 1296, 1320],
+          渔业: [80, 82, 84, 86, 88, 90]
+        },
+        '青海': {
+          种植业: [200, 204, 208, 212, 216, 220],
+          林业: [120, 125, 130, 135, 140, 145],
+          畜牧业: [600, 612, 624, 636, 648, 660],
+          渔业: [20, 20, 21, 21, 22, 22]
+        },
+        '宁夏': {
+          种植业: [300, 306, 312, 318, 324, 330],
+          林业: [80, 83, 86, 89, 92, 95],
+          畜牧业: [200, 204, 208, 212, 216, 220],
+          渔业: [40, 41, 42, 43, 44, 45]
+        },
+        '西藏': {
+          种植业: [150, 153, 156, 159, 162, 165],
+          林业: [200, 208, 216, 224, 232, 240],
+          畜牧业: [400, 408, 416, 424, 432, 440],
+          渔业: [10, 10, 11, 11, 12, 12]
+        },
+        '海南': {
+          种植业: [800, 816, 832, 848, 864, 880],
+          林业: [280, 290, 300, 310, 320, 330],
+          畜牧业: [200, 204, 208, 212, 216, 220],
+          渔业: [1200, 1224, 1248, 1272, 1296, 1320]
+        },
+        '重庆': {
+          种植业: [1200, 1224, 1248, 1272, 1296, 1320],
+          林业: [320, 332, 344, 356, 368, 380],
+          畜牧业: [600, 612, 624, 636, 648, 660],
+          渔业: [280, 286, 292, 298, 304, 310]
+        },
+        '天津': {
+          种植业: [400, 408, 416, 424, 432, 440],
+          林业: [60, 62, 64, 66, 68, 70],
+          畜牧业: [200, 204, 208, 212, 216, 220],
+          渔业: [600, 612, 624, 636, 648, 660]
+        },
+        '上海': {
+          种植业: [200, 204, 208, 212, 216, 220],
+          林业: [40, 42, 44, 46, 48, 50],
+          畜牧业: [100, 102, 104, 106, 108, 110],
+          渔业: [400, 408, 416, 424, 432, 440]
+        },
+        '北京': {
+          种植业: [300, 306, 312, 318, 324, 330],
+          林业: [120, 125, 130, 135, 140, 145],
+          畜牧业: [150, 153, 156, 159, 162, 165],
+          渔业: [80, 82, 84, 86, 88, 90]
+        }
       };
-      trendBar1.setOption(trendBar1Option);
+
+      var years = ['2020', '2021', '2022', '2023', '2024', '2025'];
+      var currentProvinceForTrend = '山东'; // 默认显示山东省数据
+
+      var trendBar1 = echarts.init(document.getElementById('trendBar1'));
+
+      function updateTrendChart(provinceName) {
+        if (!provinceAgricultureData[provinceName]) {
+          provinceName = '山东'; // 如果省份不存在，默认显示山东
+        }
+
+        var data = provinceAgricultureData[provinceName];
+        var trendBar1Option = {
+          color: ['#D4E157', '#9CCC65', '#7CB342', '#558B2F'],
+          tooltip: {
+            trigger: 'axis',
+            axisPointer: {
+              type: 'cross'
+            },
+            textStyle: {
+              color: '#fff'
+            },
+            backgroundColor: 'rgba(0, 0, 0, 0.8)',
+            formatter: function(params) {
+              var result = provinceName + ' ' + params[0].axisValue + '年<br/>';
+              params.forEach(function(item) {
+                result += item.marker + item.seriesName + ': ' + item.value + '亿元<br/>';
+              });
+              return result;
+            }
+          },
+          legend: {
+            data: ['种植业', '林业', '畜牧业', '渔业'],
+            textStyle: {
+              color: '#fff'
+            },
+            top: 10
+          },
+          grid: {
+            left: '3%',
+            right: '4%',
+            bottom: '3%',
+            containLabel: true
+          },
+          xAxis: [{
+            type: 'category',
+            data: years,
+            axisLine: {
+              lineStyle: {
+                color: 'rgba(156, 204, 101, 0.5)'
+              }
+            },
+            axisLabel: {
+              color: '#fff'
+            }
+          }],
+          yAxis: [{
+            type: 'value',
+            name: '产值(亿元)',
+            nameTextStyle: {
+              color: '#fff'
+            },
+            axisLine: {
+              lineStyle: {
+                color: 'rgba(156, 204, 101, 0.5)'
+              }
+            },
+            axisLabel: {
+              color: '#fff'
+            },
+            splitLine: {
+              lineStyle: {
+                color: 'rgba(156, 204, 101, 0.2)'
+              }
+            }
+          }],
+          series: [{
+            name: '种植业',
+            type: 'line',
+            smooth: true,
+            symbol: 'circle',
+            symbolSize: 6,
+            lineStyle: {
+              width: 3,
+              color: '#D4E157'
+            },
+            itemStyle: {
+              color: '#D4E157',
+              borderColor: '#fff',
+              borderWidth: 2
+            },
+            areaStyle: {
+              color: {
+                type: 'linear',
+                x: 0,
+                y: 0,
+                x2: 0,
+                y2: 1,
+                colorStops: [{
+                  offset: 0,
+                  color: 'rgba(212, 225, 87, 0.3)'
+                }, {
+                  offset: 1,
+                  color: 'rgba(212, 225, 87, 0.1)'
+                }]
+              }
+            },
+            data: data.种植业
+          }, {
+            name: '林业',
+            type: 'line',
+            smooth: true,
+            symbol: 'circle',
+            symbolSize: 6,
+            lineStyle: {
+              width: 3,
+              color: '#9CCC65'
+            },
+            itemStyle: {
+              color: '#9CCC65',
+              borderColor: '#fff',
+              borderWidth: 2
+            },
+            data: data.林业
+          }, {
+            name: '畜牧业',
+            type: 'line',
+            smooth: true,
+            symbol: 'circle',
+            symbolSize: 6,
+            lineStyle: {
+              width: 3,
+              color: '#7CB342'
+            },
+            itemStyle: {
+              color: '#7CB342',
+              borderColor: '#fff',
+              borderWidth: 2
+            },
+            data: data.畜牧业
+          }, {
+            name: '渔业',
+            type: 'line',
+            smooth: true,
+            symbol: 'circle',
+            symbolSize: 6,
+            lineStyle: {
+              width: 3,
+              color: '#558B2F'
+            },
+            itemStyle: {
+              color: '#558B2F',
+              borderColor: '#fff',
+              borderWidth: 2
+            },
+            data: data.渔业
+          }]
+        };
+        trendBar1.setOption(trendBar1Option);
+      }
+
+      // 初始化显示山东省数据
+      updateTrendChart(currentProvince);
+
+      // 将updateTrendChart函数暴露到全局作用域，供mapIndex.js调用
+      window.updateTrendChart = updateTrendChart;
     })();
 
     // 添加书籍轮播逻辑

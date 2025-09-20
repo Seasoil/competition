@@ -387,14 +387,13 @@
             left: 0;
             right: 0;
             height: 80px;
-            background: rgba(255, 250, 240, 0.85);
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            background: rgba(255, 255, 255, 0.15);
             z-index: 1000;
             display: flex;
             align-items: center;
             padding: 0 40px;
-            backdrop-filter: blur(6px);
-            border-bottom: 1px solid rgba(212, 180, 131, 0.5);
+            backdrop-filter: blur(25px) saturate(1.8);
+            border-bottom: 1px solid rgba(212, 180, 131, 0.6);
         }
 
         .nav-buttons {
@@ -406,25 +405,27 @@
         .nav-button {
             padding: 12px 28px;
             border-radius: 6px;
-            background: transparent;
+            background: rgba(255, 255, 255, 0.25);
             color: #4A4A4A;
             font-size: 16px;
             font-weight: 500;
             cursor: pointer;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            border: 1px solid rgba(74, 74, 74, 0.3);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.3);
             display: flex;
             align-items: center;
             gap: 8px;
-            backdrop-filter: blur(8px);
+            backdrop-filter: blur(20px) saturate(1.5);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
             text-decoration: none;
         }
 
         .nav-button:hover {
-            background: rgba(74, 74, 74, 0.1);
+            background: rgba(255, 255, 255, 0.4);
             color: #4A4A4A;
             transform: translateY(-2px);
-            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+            backdrop-filter: blur(25px) saturate(1.8);
         }
 
         .nav-button i {

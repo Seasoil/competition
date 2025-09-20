@@ -17,6 +17,24 @@
         body {
             background: url('./节气界面/img/背景图（节气）.png') center/cover no-repeat;
             font-family: 'Microsoft YaHei', sans-serif;
+            position: relative;
+        }
+
+        /* 毛玻璃背景层 */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background:
+                radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.06) 0%, transparent 50%),
+                radial-gradient(circle at 40% 80%, rgba(255, 255, 255, 0.04) 0%, transparent 50%);
+            backdrop-filter: blur(2px);
+            z-index: -1;
+            pointer-events: none;
         }
 
         /* 主容器布局 */
@@ -42,16 +60,17 @@
         /* 右侧降水图表区域 */
         .right-panel {
             flex: 1;
-            background: transparent;
+            background: rgba(255, 255, 255, 0.35);
             border-radius: 12px;
             padding: 15px;
-            box-shadow: none;
-            border: none;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+            border: 2px solid rgba(255, 255, 255, 0.6);
             min-width: 0; /* 允许弹性收缩 */
             display: flex;
             flex-direction: column;
             height: 100%;
             box-sizing: border-box;
+            backdrop-filter: blur(25px) saturate(1.8);
         }
 
         /* 搜索控制区域 */
@@ -61,25 +80,34 @@
             gap: 10px;
             align-items: center;
             flex-shrink: 0; /* 不允许收缩 */
+            background: rgba(255, 255, 255, 0.4);
+            border-radius: 8px;
+            padding: 12px;
+            backdrop-filter: blur(20px) saturate(1.5);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
         }
 
         .search-input {
             flex: 1;
             min-width: 0; /* 允许收缩 */
             padding: 8px 12px;
-            border: 2px solid rgba(255, 255, 255, 0.8);
+            border: 2px solid rgba(255, 255, 255, 0.6);
             border-radius: 6px;
             font-size: 13px;
-            background: transparent;
+            background: rgba(255, 255, 255, 0.3);
             color: #333;
             transition: all 0.3s ease;
+            backdrop-filter: blur(15px) saturate(1.3);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
         }
 
         .search-input:focus {
             outline: none;
             border-color: #4CAF50;
-            background: rgba(255, 255, 255, 0.2);
-            box-shadow: 0 0 0 2px rgba(76, 175, 80, 0.3);
+            background: rgba(255, 255, 255, 0.4);
+            box-shadow: 0 0 0 2px rgba(76, 175, 80, 0.3), 0 6px 20px rgba(0, 0, 0, 0.15);
+            backdrop-filter: blur(20px) saturate(1.5);
         }
 
         .search-input::placeholder {
@@ -88,20 +116,57 @@
 
         .year-selector {
             padding: 8px 12px;
-            border: 2px solid rgba(255, 255, 255, 0.8);
+            border: 2px solid rgba(255, 255, 255, 0.6);
             border-radius: 6px;
             font-size: 13px;
-            background: transparent;
+            background: rgba(255, 255, 255, 0.3);
             color: #333;
             cursor: pointer;
             transition: all 0.3s ease;
             flex-shrink: 0; /* 不允许收缩 */
+            backdrop-filter: blur(15px) saturate(1.3);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
         }
 
         .year-selector:focus {
             outline: none;
             border-color: #4CAF50;
-            background: rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(20px) saturate(1.5);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .year-controls {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+            flex-shrink: 0;
+        }
+
+        .year-input {
+            padding: 8px 12px;
+            border: 2px solid rgba(255, 255, 255, 0.6);
+            border-radius: 6px;
+            font-size: 13px;
+            background: rgba(255, 255, 255, 0.3);
+            color: #333;
+            width: 100px;
+            text-align: center;
+            backdrop-filter: blur(15px) saturate(1.3);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .year-input:focus {
+            outline: none;
+            border-color: #4CAF50;
+            background: rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(20px) saturate(1.5);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .year-input::placeholder {
+            color: rgba(51, 51, 51, 0.7);
         }
 
         /* 降水图表容器 */
@@ -117,27 +182,42 @@
             top: 100%;
             left: 0;
             right: 0;
-            background: rgba(255, 255, 255, 0.95);
-            border: 1px solid rgba(255, 255, 255, 0.8);
+            background: rgba(255, 255, 255, 0.85);
+            border: 2px solid rgba(255, 255, 255, 0.9);
             border-top: none;
-            border-radius: 0 0 6px 6px;
-            max-height: 150px;
+            border-radius: 0 0 12px 12px;
+            max-height: 200px;
             overflow-y: auto;
-            z-index: 1000;
+            z-index: 999999;
             display: none;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 8px 16px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(35px) saturate(2.0);
+            -webkit-backdrop-filter: blur(35px) saturate(2.0);
         }
 
         .suggestion-item {
-            padding: 8px 12px;
+            padding: 12px 16px;
             cursor: pointer;
-            border-bottom: 1px solid #f0f0f0;
-            transition: background-color 0.2s ease;
+            border-bottom: 1px solid rgba(240, 240, 240, 0.4);
+            transition: all 0.3s ease;
             font-size: 13px;
+            backdrop-filter: blur(20px);
+            position: relative;
+            z-index: 999998;
+            background: rgba(255, 255, 255, 0.1);
         }
 
         .suggestion-item:hover {
-            background-color: #f5f5f5;
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(25px) saturate(1.8);
+            transform: translateX(2px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.6);
+        }
+
+        .suggestion-item:active {
+            transform: translateX(1px);
+            background: rgba(255, 255, 255, 0.8);
         }
 
         .suggestion-item:last-child {
@@ -148,6 +228,7 @@
             position: relative;
             flex: 1;
             min-width: 200px;
+            z-index: 1000;
         }
 
         /* 响应式设计 */
@@ -237,14 +318,14 @@
             left: 0;
             right: 0;
             height: 80px;
-            background: rgba(255, 250, 240, 0.85);
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            background: rgba(255, 250, 240, 0.45);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
             z-index: 1000;
             display: flex;
             align-items: center;
             padding: 0 40px;
-            backdrop-filter: blur(6px);
-            border-bottom: 1px solid rgba(212, 180, 131, 0.5);
+            backdrop-filter: blur(25px) saturate(1.8);
+            border-bottom: 1px solid rgba(212, 180, 131, 0.6);
         }
 
         .nav-buttons {
@@ -256,24 +337,26 @@
         .nav-button {
             padding: 12px 28px;
             border-radius: 6px;
-            background: transparent;
+            background: rgba(255, 255, 255, 0.25);
             color: #4A4A4A;
             font-size: 16px;
             font-weight: 500;
             cursor: pointer;
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            border: 1px solid rgba(74, 74, 74, 0.3);
+            border: 1px solid rgba(74, 74, 74, 0.4);
             display: flex;
             align-items: center;
             gap: 8px;
-            backdrop-filter: blur(8px);
+            backdrop-filter: blur(20px) saturate(1.5);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
         }
 
         .nav-button:hover {
-            background: rgba(74, 74, 74, 0.1);
+            background: rgba(255, 255, 255, 0.4);
             color: #4A4A4A;
             transform: translateY(-2px);
-            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+            backdrop-filter: blur(25px) saturate(1.8);
         }
 
         .nav-button i {
@@ -295,16 +378,16 @@
             transform: translateY(-50%);
             height: 60vh;
             width: 70px;
-            background: rgba(255, 255, 255, 0.9);
+            background: rgba(255, 255, 255, 0.4);
             border-radius: 12px;
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
             z-index: 2;
             padding: 15px 0;
             display: flex;
             flex-direction: column;
             align-items: center;
-            backdrop-filter: blur(8px);
-            border: 1px solid rgba(220, 220, 220, 0.6);
+            backdrop-filter: blur(25px) saturate(1.8);
+            border: 1px solid rgba(255, 255, 255, 0.5);
         }
 
         .time-axis-track {
@@ -493,11 +576,14 @@
                     <input type="text" id="location-search" class="search-input" placeholder="搜索县市名称..." autocomplete="off">
                     <div id="search-suggestions" class="search-suggestions"></div>
                 </div>
-                <select id="year-selector" class="year-selector">
-                    <option value="2023">2023年</option>
-                    <option value="2024" selected>2024年</option>
-                    <option value="2025">2025年</option>
-                </select>
+                <div class="year-controls">
+                    <input type="number" id="solar-year-input" class="year-input" placeholder="节气年份" value="2025" min="1900" max="2100">
+                    <select id="year-selector" class="year-selector">
+                        <option value="2023">2023年</option>
+                        <option value="2024" selected>2024年</option>
+                        <option value="2025">2025年</option>
+                    </select>
+                </div>
             </div>
             <div id="precipitation-chart" class="precipitation-chart"></div>
         </div>
@@ -511,6 +597,62 @@
             '秋': '#f44336',
             '冬': '#2196f3'
         };
+
+        // 节气计算相关常量和函数
+        const celestialStems = ["甲", "乙", "丙", "丁", "戊", "己", "庚", "辛", "壬", "癸"];
+        const terrestrialBranches = ["子", "丑", "寅", "卯", "辰", "巳", "午", "未", "申", "酉", "戌", "亥"];
+        const solarTermsCN = ["小寒", "大寒", "立春", "雨水", "惊蛰", "春分", "清明", "谷雨",
+            "立夏", "小满", "芒种", "夏至", "小暑", "大暑", "立秋", "处暑", "白露", "秋分",
+            "寒露", "霜降", "立冬", "小雪", "大雪", "冬至"];
+
+        // 当前节气年份
+        let currentSolarYear = 2025;
+
+        // 节气计算核心函数
+        function jdToDate(jd) {
+            jd += 0.5;
+            let z = Math.floor(jd);
+            let f = jd - z;
+            let a = z < 2299161 ? z : z + 1 + Math.floor((z - 1867216.25) / 36524.25) - Math.floor(Math.floor((z - 1867216.25) / 36524.25) / 4);
+            let b = a + 1524;
+            let c = Math.floor((b - 122.1) / 365.25);
+            let d = Math.floor(365.25 * c);
+            let e = Math.floor((b - d) / 30.6001);
+            let day = b - d - Math.floor(30.6001 * e) + f;
+
+            return {
+                year: (e < 14 ? c - 4716 : c - 4715),
+                month: e < 14 ? e - 1 : e - 13,
+                day: Math.floor(day)
+            };
+        }
+
+        function computeSunLongitude(jd) {
+            const T = (jd - 2451545.0) / 36525;
+            let M = (357.52910 + 35999.05030 * T - 0.0001559 * T * T) * Math.PI / 180;
+            return (280.46645 + 36000.76983 * T +
+                (1.914600 - 0.004817 * T) * Math.sin(M) +
+                0.019993 * Math.sin(2 * M)) % 360;
+        }
+
+        function getSolarTerm(year, index) {
+            const termAngles = [285, 300, 315, 330, 345, 0, 15, 30, 45, 60, 75, 90, 105, 120, 135, 150, 165, 180, 195, 210, 225, 240, 255, 270];
+            let jd = 2451545.5 + (year - 2000) * 365.2422 + index * 15.2184;
+            for (let i = 0; i < 3; i++) {
+                let diff = (computeSunLongitude(jd) - termAngles[index]) / 360 * 365.25;
+                jd -= diff;
+            }
+            return jd;
+        }
+
+        // 获取指定年份和节气的具体日期
+        function getSolarTermDate(year, termName) {
+            const termIndex = solarTermsCN.indexOf(termName);
+            if (termIndex === -1) return null;
+
+            const { month, day } = jdToDate(getSolarTerm(year, termIndex));
+            return `${month}月${day}日`;
+        }
 
         // 降水数据和图表相关变量
         let precipitationData = null;
@@ -774,10 +916,8 @@
         chart.on('click', ({ name }) => {
             const term = solarTermsData.find(t => t.name === name);
             if (term) {
-                // 根据节气名称动态跳转，如果没有对应页面则跳转到通用节气页面
-                const termFileName = `./节气界面/${name}.html`;
-                // 先尝试跳转到具体节气页面，如果不存在则跳转到立冬页面作为示例
-                window.location.href = `./节气界面/立冬.html`;
+                // 点击节气跳转到农谚界面
+                window.location.href = `./节气界面/农谚.html`;
             }
         });
 
@@ -800,6 +940,10 @@
             const x = Math.cos(angle * Math.PI / 180) * 200 + window.innerWidth / 2;
             const y = Math.sin(angle * Math.PI / 180) * 200 + window.innerHeight / 2;
 
+            // 获取当前年份的具体节气日期
+            const specificDate = getSolarTermDate(currentSolarYear, term.name);
+            const displayDate = specificDate || term.date;
+
             anime({
                 targets: tooltip,
                 left: `${x}px`,
@@ -811,7 +955,7 @@
                 begin: () => {
                     tooltip.innerHTML = `
                         <h3 style="color:${seasonColors[term.season]}">${term.name}</h3>
-                        <p>📅 ${term.date}</p>
+                        <p>📅 ${currentSolarYear}年 ${displayDate}</p>
                         <p>${term.desc}</p>
                     `;
                 }
@@ -945,7 +1089,8 @@
                 updatePrecipitationChart();
             } catch (error) {
                 console.error('降水数据加载失败:', error);
-                chartContainer.innerHTML = '<div style="text-align: center; color: #f44336; padding: 20px;">数据加载失败，使用默认数据</div>';
+                console.log('使用备用降水数据');
+                chartContainer.innerHTML = '<div style="text-align: center; color: #ff9800; padding: 20px; font-size: 14px;">使用备用数据显示</div>';
 
                 // 使用默认数据
                 precipitationData = {
@@ -953,10 +1098,147 @@
                     regions: {
                         "华北地区": {
                             "北京市": {
-                                "东城区": {
-                                    "2023": [8.2, 12.5, 18.3, 25.6, 42.8, 68.9, 85.4, 92.1, 78.6, 45.2, 28.7, 15.3, 12.8, 18.4, 22.1, 35.6, 18.9, 12.4, 8.7, 5.2, 3.8, 2.1, 4.6, 6.8],
-                                    "2024": [9.1, 13.2, 19.8, 27.3, 45.6, 71.2, 88.7, 95.3, 81.2, 47.8, 30.1, 16.7, 14.2, 19.8, 24.5, 38.2, 20.3, 13.8, 9.4, 6.1, 4.2, 2.8, 5.3, 7.5],
-                                    "2025": [7.8, 11.9, 17.6, 24.1, 40.3, 65.7, 82.1, 89.6, 75.9, 43.6, 27.4, 14.8, 11.5, 17.2, 20.8, 33.9, 17.6, 11.2, 8.1, 4.8, 3.5, 1.9, 4.1, 6.2]
+                                "北京": {
+                                    "2023": [45, 52, 78, 95, 120, 180, 220, 195, 85, 65, 35, 25],
+                                    "2024": [38, 48, 82, 105, 135, 195, 240, 210, 90, 70, 40, 30]
+                                }
+                            },
+                            "河北省": {
+                                "石家庄": {
+                                    "2023": [42, 48, 75, 92, 115, 175, 215, 190, 80, 62, 32, 22],
+                                    "2024": [35, 45, 79, 102, 130, 190, 235, 205, 85, 67, 37, 27]
+                                },
+                                "唐山": {
+                                    "2023": [40, 46, 72, 88, 110, 170, 210, 185, 78, 60, 30, 20],
+                                    "2024": [33, 43, 76, 98, 125, 185, 230, 200, 82, 65, 35, 25]
+                                }
+                            },
+                            "山西省": {
+                                "太原": {
+                                    "2023": [38, 44, 70, 85, 105, 165, 205, 180, 75, 58, 28, 18],
+                                    "2024": [31, 41, 74, 95, 120, 180, 225, 195, 80, 63, 33, 23]
+                                }
+                            }
+                        },
+                        "华东地区": {
+                            "上海市": {
+                                "上海": {
+                                    "2023": [65, 72, 98, 115, 140, 200, 240, 215, 105, 85, 55, 45],
+                                    "2024": [58, 68, 102, 125, 155, 215, 255, 230, 110, 90, 60, 50]
+                                }
+                            },
+                            "江苏省": {
+                                "南京": {
+                                    "2023": [62, 69, 95, 112, 137, 197, 237, 212, 102, 82, 52, 42],
+                                    "2024": [55, 65, 99, 122, 152, 212, 252, 227, 107, 87, 57, 47]
+                                },
+                                "苏州": {
+                                    "2023": [60, 67, 93, 110, 135, 195, 235, 210, 100, 80, 50, 40],
+                                    "2024": [53, 63, 97, 120, 150, 210, 250, 225, 105, 85, 55, 45]
+                                }
+                            },
+                            "浙江省": {
+                                "杭州": {
+                                    "2023": [58, 65, 91, 108, 133, 193, 233, 208, 98, 78, 48, 38],
+                                    "2024": [51, 61, 95, 118, 148, 208, 248, 223, 103, 83, 53, 43]
+                                }
+                            }
+                        },
+                        "华中地区": {
+                            "湖北省": {
+                                "武汉": {
+                                    "2023": [55, 62, 88, 105, 130, 190, 230, 205, 95, 75, 45, 35],
+                                    "2024": [48, 58, 92, 115, 145, 205, 245, 220, 100, 80, 50, 40]
+                                },
+                                "黄石": {
+                                    "2023": [52, 59, 85, 102, 127, 187, 227, 202, 92, 72, 42, 32],
+                                    "2024": [45, 55, 89, 112, 142, 202, 242, 217, 97, 77, 47, 37]
+                                },
+                                "黄冈": {
+                                    "2023": [54, 61, 87, 104, 129, 189, 229, 204, 94, 74, 44, 34],
+                                    "2024": [47, 57, 91, 114, 144, 204, 244, 219, 99, 79, 49, 39]
+                                }
+                            },
+                            "湖南省": {
+                                "长沙": {
+                                    "2023": [56, 63, 89, 106, 131, 191, 231, 206, 96, 76, 46, 36],
+                                    "2024": [49, 59, 93, 116, 146, 206, 246, 221, 101, 81, 51, 41]
+                                }
+                            },
+                            "河南省": {
+                                "郑州": {
+                                    "2023": [43, 49, 76, 93, 116, 176, 216, 191, 81, 63, 33, 23],
+                                    "2024": [36, 46, 80, 103, 131, 191, 236, 206, 86, 68, 38, 28]
+                                }
+                            }
+                        },
+                        "华南地区": {
+                            "广东省": {
+                                "广州": {
+                                    "2023": [75, 82, 108, 125, 150, 210, 250, 225, 115, 95, 65, 55],
+                                    "2024": [68, 78, 112, 135, 165, 225, 265, 240, 120, 100, 70, 60]
+                                },
+                                "深圳": {
+                                    "2023": [73, 80, 106, 123, 148, 208, 248, 223, 113, 93, 63, 53],
+                                    "2024": [66, 76, 110, 133, 163, 223, 263, 238, 118, 98, 68, 58]
+                                }
+                            },
+                            "广西壮族自治区": {
+                                "南宁": {
+                                    "2023": [70, 77, 103, 120, 145, 205, 245, 220, 110, 90, 60, 50],
+                                    "2024": [63, 73, 107, 130, 160, 220, 260, 235, 115, 95, 65, 55]
+                                }
+                            }
+                        },
+                        "西南地区": {
+                            "四川省": {
+                                "成都": {
+                                    "2023": [48, 55, 81, 98, 123, 183, 223, 198, 88, 68, 38, 28],
+                                    "2024": [41, 51, 85, 108, 138, 198, 238, 213, 93, 73, 43, 33]
+                                }
+                            },
+                            "重庆市": {
+                                "重庆": {
+                                    "2023": [50, 57, 83, 100, 125, 185, 225, 200, 90, 70, 40, 30],
+                                    "2024": [43, 53, 87, 110, 140, 200, 240, 215, 95, 75, 45, 35]
+                                }
+                            }
+                        },
+                        "西北地区": {
+                            "陕西省": {
+                                "西安": {
+                                    "2023": [40, 46, 72, 89, 112, 172, 212, 187, 77, 59, 29, 19],
+                                    "2024": [33, 43, 76, 99, 127, 187, 227, 202, 82, 64, 34, 24]
+                                }
+                            },
+                            "甘肃省": {
+                                "兰州": {
+                                    "2023": [35, 41, 67, 84, 107, 167, 207, 182, 72, 54, 24, 14],
+                                    "2024": [28, 38, 71, 94, 122, 182, 222, 197, 77, 59, 29, 19]
+                                }
+                            }
+                        },
+                        "东北地区": {
+                            "辽宁省": {
+                                "沈阳": {
+                                    "2023": [32, 38, 64, 81, 104, 164, 204, 179, 69, 51, 21, 11],
+                                    "2024": [25, 35, 68, 91, 119, 179, 219, 194, 74, 56, 26, 16]
+                                },
+                                "大连": {
+                                    "2023": [34, 40, 66, 83, 106, 166, 206, 181, 71, 53, 23, 13],
+                                    "2024": [27, 37, 70, 93, 121, 181, 221, 196, 76, 58, 28, 18]
+                                }
+                            },
+                            "吉林省": {
+                                "长春": {
+                                    "2023": [30, 36, 62, 79, 102, 162, 202, 177, 67, 49, 19, 9],
+                                    "2024": [23, 33, 66, 89, 117, 177, 217, 192, 72, 54, 24, 14]
+                                }
+                            },
+                            "黑龙江省": {
+                                "哈尔滨": {
+                                    "2023": [28, 34, 60, 77, 100, 160, 200, 175, 65, 47, 17, 7],
+                                    "2024": [21, 31, 64, 87, 115, 175, 215, 190, 70, 52, 22, 12]
                                 }
                             }
                         }
@@ -1103,21 +1385,146 @@
             updatePrecipitationChart();
         }
 
+        // 静态地区数据作为备用
+        const staticLocations = [
+            { name: '北京', fullPath: '华北地区 > 北京市 > 北京' },
+            { name: '天津', fullPath: '华北地区 > 天津市 > 天津' },
+            { name: '石家庄', fullPath: '华北地区 > 河北省 > 石家庄' },
+            { name: '唐山', fullPath: '华北地区 > 河北省 > 唐山' },
+            { name: '秦皇岛', fullPath: '华北地区 > 河北省 > 秦皇岛' },
+            { name: '邯郸', fullPath: '华北地区 > 河北省 > 邯郸' },
+            { name: '邢台', fullPath: '华北地区 > 河北省 > 邢台' },
+            { name: '保定', fullPath: '华北地区 > 河北省 > 保定' },
+            { name: '张家口', fullPath: '华北地区 > 河北省 > 张家口' },
+            { name: '承德', fullPath: '华北地区 > 河北省 > 承德' },
+            { name: '沧州', fullPath: '华北地区 > 河北省 > 沧州' },
+            { name: '廊坊', fullPath: '华北地区 > 河北省 > 廊坊' },
+            { name: '衡水', fullPath: '华北地区 > 河北省 > 衡水' },
+            { name: '太原', fullPath: '华北地区 > 山西省 > 太原' },
+            { name: '大同', fullPath: '华北地区 > 山西省 > 大同' },
+            { name: '阳泉', fullPath: '华北地区 > 山西省 > 阳泉' },
+            { name: '长治', fullPath: '华北地区 > 山西省 > 长治' },
+            { name: '晋城', fullPath: '华北地区 > 山西省 > 晋城' },
+            { name: '朔州', fullPath: '华北地区 > 山西省 > 朔州' },
+            { name: '晋中', fullPath: '华北地区 > 山西省 > 晋中' },
+            { name: '运城', fullPath: '华北地区 > 山西省 > 运城' },
+            { name: '忻州', fullPath: '华北地区 > 山西省 > 忻州' },
+            { name: '临汾', fullPath: '华北地区 > 山西省 > 临汾' },
+            { name: '吕梁', fullPath: '华北地区 > 山西省 > 吕梁' },
+            { name: '呼和浩特', fullPath: '华北地区 > 内蒙古自治区 > 呼和浩特' },
+            { name: '包头', fullPath: '华北地区 > 内蒙古自治区 > 包头' },
+            { name: '乌海', fullPath: '华北地区 > 内蒙古自治区 > 乌海' },
+            { name: '赤峰', fullPath: '华北地区 > 内蒙古自治区 > 赤峰' },
+            { name: '通辽', fullPath: '华北地区 > 内蒙古自治区 > 通辽' },
+            { name: '鄂尔多斯', fullPath: '华北地区 > 内蒙古自治区 > 鄂尔多斯' },
+            { name: '呼伦贝尔', fullPath: '华北地区 > 内蒙古自治区 > 呼伦贝尔' },
+            { name: '巴彦淖尔', fullPath: '华北地区 > 内蒙古自治区 > 巴彦淖尔' },
+            { name: '乌兰察布', fullPath: '华北地区 > 内蒙古自治区 > 乌兰察布' },
+            { name: '兴安盟', fullPath: '华北地区 > 内蒙古自治区 > 兴安盟' },
+            { name: '锡林郭勒盟', fullPath: '华北地区 > 内蒙古自治区 > 锡林郭勒盟' },
+            { name: '阿拉善盟', fullPath: '华北地区 > 内蒙古自治区 > 阿拉善盟' },
+            { name: '上海', fullPath: '华东地区 > 上海市 > 上海' },
+            { name: '南京', fullPath: '华东地区 > 江苏省 > 南京' },
+            { name: '无锡', fullPath: '华东地区 > 江苏省 > 无锡' },
+            { name: '徐州', fullPath: '华东地区 > 江苏省 > 徐州' },
+            { name: '常州', fullPath: '华东地区 > 江苏省 > 常州' },
+            { name: '苏州', fullPath: '华东地区 > 江苏省 > 苏州' },
+            { name: '南通', fullPath: '华东地区 > 江苏省 > 南通' },
+            { name: '连云港', fullPath: '华东地区 > 江苏省 > 连云港' },
+            { name: '淮安', fullPath: '华东地区 > 江苏省 > 淮安' },
+            { name: '盐城', fullPath: '华东地区 > 江苏省 > 盐城' },
+            { name: '扬州', fullPath: '华东地区 > 江苏省 > 扬州' },
+            { name: '镇江', fullPath: '华东地区 > 江苏省 > 镇江' },
+            { name: '泰州', fullPath: '华东地区 > 江苏省 > 泰州' },
+            { name: '宿迁', fullPath: '华东地区 > 江苏省 > 宿迁' },
+            { name: '杭州', fullPath: '华东地区 > 浙江省 > 杭州' },
+            { name: '宁波', fullPath: '华东地区 > 浙江省 > 宁波' },
+            { name: '温州', fullPath: '华东地区 > 浙江省 > 温州' },
+            { name: '嘉兴', fullPath: '华东地区 > 浙江省 > 嘉兴' },
+            { name: '湖州', fullPath: '华东地区 > 浙江省 > 湖州' },
+            { name: '绍兴', fullPath: '华东地区 > 浙江省 > 绍兴' },
+            { name: '金华', fullPath: '华东地区 > 浙江省 > 金华' },
+            { name: '衢州', fullPath: '华东地区 > 浙江省 > 衢州' },
+            { name: '舟山', fullPath: '华东地区 > 浙江省 > 舟山' },
+            { name: '台州', fullPath: '华东地区 > 浙江省 > 台州' },
+            { name: '丽水', fullPath: '华东地区 > 浙江省 > 丽水' },
+            { name: '合肥', fullPath: '华东地区 > 安徽省 > 合肥' },
+            { name: '芜湖', fullPath: '华东地区 > 安徽省 > 芜湖' },
+            { name: '蚌埠', fullPath: '华东地区 > 安徽省 > 蚌埠' },
+            { name: '淮南', fullPath: '华东地区 > 安徽省 > 淮南' },
+            { name: '马鞍山', fullPath: '华东地区 > 安徽省 > 马鞍山' },
+            { name: '淮北', fullPath: '华东地区 > 安徽省 > 淮北' },
+            { name: '铜陵', fullPath: '华东地区 > 安徽省 > 铜陵' },
+            { name: '安庆', fullPath: '华东地区 > 安徽省 > 安庆' },
+            { name: '黄山', fullPath: '华东地区 > 安徽省 > 黄山' },
+            { name: '滁州', fullPath: '华东地区 > 安徽省 > 滁州' },
+            { name: '阜阳', fullPath: '华东地区 > 安徽省 > 阜阳' },
+            { name: '宿州', fullPath: '华东地区 > 安徽省 > 宿州' },
+            { name: '六安', fullPath: '华东地区 > 安徽省 > 六安' },
+            { name: '亳州', fullPath: '华东地区 > 安徽省 > 亳州' },
+            { name: '池州', fullPath: '华东地区 > 安徽省 > 池州' },
+            { name: '宣城', fullPath: '华东地区 > 安徽省 > 宣城' },
+            { name: '福州', fullPath: '华东地区 > 福建省 > 福州' },
+            { name: '厦门', fullPath: '华东地区 > 福建省 > 厦门' },
+            { name: '莆田', fullPath: '华东地区 > 福建省 > 莆田' },
+            { name: '三明', fullPath: '华东地区 > 福建省 > 三明' },
+            { name: '泉州', fullPath: '华东地区 > 福建省 > 泉州' },
+            { name: '漳州', fullPath: '华东地区 > 福建省 > 漳州' },
+            { name: '南平', fullPath: '华东地区 > 福建省 > 南平' },
+            { name: '龙岩', fullPath: '华东地区 > 福建省 > 龙岩' },
+            { name: '宁德', fullPath: '华东地区 > 福建省 > 宁德' },
+            { name: '南昌', fullPath: '华东地区 > 江西省 > 南昌' },
+            { name: '景德镇', fullPath: '华东地区 > 江西省 > 景德镇' },
+            { name: '萍乡', fullPath: '华东地区 > 江西省 > 萍乡' },
+            { name: '九江', fullPath: '华东地区 > 江西省 > 九江' },
+            { name: '新余', fullPath: '华东地区 > 江西省 > 新余' },
+            { name: '鹰潭', fullPath: '华东地区 > 江西省 > 鹰潭' },
+            { name: '赣州', fullPath: '华东地区 > 江西省 > 赣州' },
+            { name: '吉安', fullPath: '华东地区 > 江西省 > 吉安' },
+            { name: '宜春', fullPath: '华东地区 > 江西省 > 宜春' },
+            { name: '抚州', fullPath: '华东地区 > 江西省 > 抚州' },
+            { name: '上饶', fullPath: '华东地区 > 江西省 > 上饶' },
+            { name: '济南', fullPath: '华东地区 > 山东省 > 济南' },
+            { name: '青岛', fullPath: '华东地区 > 山东省 > 青岛' },
+            { name: '淄博', fullPath: '华东地区 > 山东省 > 淄博' },
+            { name: '枣庄', fullPath: '华东地区 > 山东省 > 枣庄' },
+            { name: '东营', fullPath: '华东地区 > 山东省 > 东营' },
+            { name: '烟台', fullPath: '华东地区 > 山东省 > 烟台' },
+            { name: '潍坊', fullPath: '华东地区 > 山东省 > 潍坊' },
+            { name: '济宁', fullPath: '华东地区 > 山东省 > 济宁' },
+            { name: '泰安', fullPath: '华东地区 > 山东省 > 泰安' },
+            { name: '威海', fullPath: '华东地区 > 山东省 > 威海' },
+            { name: '日照', fullPath: '华东地区 > 山东省 > 日照' },
+            { name: '临沂', fullPath: '华东地区 > 山东省 > 临沂' },
+            { name: '德州', fullPath: '华东地区 > 山东省 > 德州' },
+            { name: '聊城', fullPath: '华东地区 > 山东省 > 聊城' },
+            { name: '滨州', fullPath: '华东地区 > 山东省 > 滨州' },
+            { name: '菏泽', fullPath: '华东地区 > 山东省 > 菏泽' }
+        ];
+
         // 获取所有可用的地区列表
         function getAllLocations() {
             const locations = [];
-            if (!precipitationData) return locations;
 
-            for (const region in precipitationData.regions) {
-                for (const province in precipitationData.regions[region]) {
-                    for (const city in precipitationData.regions[region][province]) {
-                        locations.push({
-                            name: city,
-                            fullPath: `${region} > ${province} > ${city}`
-                        });
+            // 首先尝试从API数据获取
+            if (precipitationData && precipitationData.regions) {
+                for (const region in precipitationData.regions) {
+                    for (const province in precipitationData.regions[region]) {
+                        for (const city in precipitationData.regions[region][province]) {
+                            locations.push({
+                                name: city,
+                                fullPath: `${region} > ${province} > ${city}`
+                            });
+                        }
                     }
                 }
             }
+
+            // 如果API数据不可用，使用静态数据
+            if (locations.length === 0) {
+                return staticLocations;
+            }
+
             return locations;
         }
 
@@ -1128,6 +1535,7 @@
 
             if (!query.trim()) {
                 suggestionsContainer.style.display = 'none';
+                suggestionsContainer.innerHTML = '';
                 return;
             }
 
@@ -1138,6 +1546,7 @@
 
             if (filteredLocations.length === 0) {
                 suggestionsContainer.style.display = 'none';
+                suggestionsContainer.innerHTML = '';
                 return;
             }
 
@@ -1152,12 +1561,15 @@
 
             // 绑定点击事件
             suggestionsContainer.querySelectorAll('.suggestion-item').forEach(item => {
-                item.addEventListener('click', function() {
+                item.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
                     const locationName = this.getAttribute('data-location');
                     document.getElementById('location-search').value = locationName;
                     currentLocation = locationName;
                     updatePrecipitationChart();
                     suggestionsContainer.style.display = 'none';
+                    suggestionsContainer.innerHTML = '';
                 });
             });
         }
@@ -1165,7 +1577,9 @@
         // 隐藏搜索建议
         function hideSearchSuggestions() {
             setTimeout(() => {
-                document.getElementById('search-suggestions').style.display = 'none';
+                const suggestionsContainer = document.getElementById('search-suggestions');
+                suggestionsContainer.style.display = 'none';
+                suggestionsContainer.innerHTML = '';
             }, 200);
         }
 
@@ -1177,6 +1591,7 @@
             // 绑定搜索和年份选择事件
             const searchInput = document.getElementById('location-search');
             const yearSelector = document.getElementById('year-selector');
+            const solarYearInput = document.getElementById('solar-year-input');
 
             // 搜索输入事件
             searchInput.addEventListener('input', function() {
@@ -1208,10 +1623,38 @@
                 updatePrecipitationChart();
             });
 
+            // 节气年份输入事件
+            solarYearInput.addEventListener('input', function() {
+                const year = parseInt(this.value);
+                if (!isNaN(year) && year >= 1900 && year <= 2100) {
+                    currentSolarYear = year;
+                    // 如果当前有显示的tooltip，更新它
+                    const tooltip = document.getElementById('term-tooltip');
+                    if (tooltip && tooltip.style.opacity === '1') {
+                        // 重新触发当前高亮的节气显示
+                        const currentTerm = solarTermsData.find(t => t.name === activeTerm);
+                        if (currentTerm) {
+                            const day = getTermDay(currentTerm.date);
+                            showTooltip(currentTerm, day);
+                        }
+                    }
+                }
+            });
+
+            solarYearInput.addEventListener('change', function() {
+                const year = parseInt(this.value);
+                if (isNaN(year) || year < 1900 || year > 2100) {
+                    this.value = currentSolarYear;
+                    alert('请输入1900-2100年之间的有效年份');
+                }
+            });
+
             // 点击页面其他地方隐藏搜索建议
             document.addEventListener('click', function(e) {
                 if (!e.target.closest('.search-container')) {
-                    document.getElementById('search-suggestions').style.display = 'none';
+                    const suggestionsContainer = document.getElementById('search-suggestions');
+                    suggestionsContainer.style.display = 'none';
+                    suggestionsContainer.innerHTML = '';
                 }
             });
         });

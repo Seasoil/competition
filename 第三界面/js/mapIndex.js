@@ -992,6 +992,10 @@ var userHovering = false;
 mapChart.on('mouseover', function(params) {
   if (params.seriesIndex === 0) {
     userHovering = true;
+    // 当悬停在省份上时，更新农业发展走势图
+    if (params.name && typeof window.updateTrendChart === 'function') {
+      window.updateTrendChart(params.name);
+    }
   }
 });
 
@@ -1453,16 +1457,17 @@ function setVal() {
     }, 1500); // tooltip显示1.5秒
     */
 
-    if (mapChart.currentIndex === hasData[monthIndex]) {
+    // 检查是否需要切换到下一个月份的数据
+    if (mapChart.currentIndex >= mapData[Month[monthIndex]].length - 1) {
         mapChart.currentIndex = -1;
         monthIndex++;
-        
+
         if(monthIndex > 11){
             monthIndex = monthIndex%12;
         }
 
         option.series[0].data = mapData[Month[monthIndex]];
-      
+
         mapChart.setOption(option);
 
         // transition过渡动画
@@ -1509,64 +1514,64 @@ for(var i = 0, len = allDefProvince.length; i < len; i++){
    var sglProvinceName = sglProvinceProperties.name;
    switch(sglProvinceName){
         case '湖北省':
-            sglProvinceProperties.cp[0] = 128.642464;
-			sglProvinceProperties.cp[1] = 34.756967;
+            sglProvinceProperties.cp[0] = 114.298572;
+            sglProvinceProperties.cp[1] = 30.584355;
             break;
         case '湖南省':
-            sglProvinceProperties.cp[0] = 128.642464;
-			sglProvinceProperties.cp[1] = 34.756967;
-            break;        
+            sglProvinceProperties.cp[0] = 112.982279;
+            sglProvinceProperties.cp[1] = 28.19409;
+            break;
         case '江西省':
-            sglProvinceProperties.cp[0] = 128.642464;
-			sglProvinceProperties.cp[1] = 34.756967;
-            break;        
+            sglProvinceProperties.cp[0] = 115.892151;
+            sglProvinceProperties.cp[1] = 28.676493;
+            break;
         case '甘肃省':
-            sglProvinceProperties.cp[0] = 128.642464;
-			sglProvinceProperties.cp[1] = 34.756967;
-            break;        
+            sglProvinceProperties.cp[0] = 103.823557;
+            sglProvinceProperties.cp[1] = 36.058039;
+            break;
         case '新疆维吾尔自治区':
-            sglProvinceProperties.cp[0] = 128.642464;
-			sglProvinceProperties.cp[1] = 34.756967;
-            break;        
+            sglProvinceProperties.cp[0] = 87.617733;
+            sglProvinceProperties.cp[1] = 43.792818;
+            break;
         case '上海市':
-            sglProvinceProperties.cp[0] = 128.642464;
-			sglProvinceProperties.cp[1] = 34.756967;
-            break;        
+            sglProvinceProperties.cp[0] = 121.472644;
+            sglProvinceProperties.cp[1] = 31.231706;
+            break;
         case '江苏省':
-            sglProvinceProperties.cp[0] = 128.642464;
-			sglProvinceProperties.cp[1] = 34.756967;
-            break;        
+            sglProvinceProperties.cp[0] = 118.767413;
+            sglProvinceProperties.cp[1] = 32.041544;
+            break;
         case '云南省':
-            sglProvinceProperties.cp[0] = 128.642464;
-			sglProvinceProperties.cp[1] = 34.756967;
-            break;        
+            sglProvinceProperties.cp[0] = 102.712251;
+            sglProvinceProperties.cp[1] = 25.040609;
+            break;
         case '广东省':
-            sglProvinceProperties.cp[0] = 128.642464;
-			sglProvinceProperties.cp[1] = 34.756967;
-            break;        
+            sglProvinceProperties.cp[0] = 113.280637;
+            sglProvinceProperties.cp[1] = 23.125178;
+            break;
         case '浙江省':
-            sglProvinceProperties.cp[0] = 128.642464;
-			sglProvinceProperties.cp[1] = 34.756967;
-            break;        
+            sglProvinceProperties.cp[0] = 120.153576;
+            sglProvinceProperties.cp[1] = 30.287459;
+            break;
         case '河北省':
-            sglProvinceProperties.cp[0] = 128.642464;
-			sglProvinceProperties.cp[1] = 34.756967;
-            break;        
-        case '山东省':            
-            sglProvinceProperties.cp[0] = 128.642464;
-			sglProvinceProperties.cp[1] = 34.756967;
-            break;        
+            sglProvinceProperties.cp[0] = 114.502461;
+            sglProvinceProperties.cp[1] = 38.045474;
+            break;
+        case '山东省':
+            sglProvinceProperties.cp[0] = 117.000923;
+            sglProvinceProperties.cp[1] = 36.675807;
+            break;
         case '河南省':
-            sglProvinceProperties.cp[0] = 128.642464;
-			sglProvinceProperties.cp[1] = 34.756967;
-            break;        
+            sglProvinceProperties.cp[0] = 113.665412;
+            sglProvinceProperties.cp[1] = 34.757975;
+            break;
         case '四川省':
-            sglProvinceProperties.cp[0] = 128.642464;
-			sglProvinceProperties.cp[1] = 34.756967;
-            break;        
+            sglProvinceProperties.cp[0] = 104.065735;
+            sglProvinceProperties.cp[1] = 30.659462;
+            break;
         case '内蒙古自治区':
- sglProvinceProperties.cp[0] = 128.642464;
-			sglProvinceProperties.cp[1] = 34.756967;
+            sglProvinceProperties.cp[0] = 111.670801;
+            sglProvinceProperties.cp[1] = 40.818311;
             break;
     }
 }
