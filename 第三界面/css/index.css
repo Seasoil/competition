@@ -183,8 +183,8 @@ header:before {
 }
 .left-top {
   position: relative;
-  opacity: 0.9;
-  background: rgba(156, 229, 10, 0.162) !important;
+  opacity: 1;
+  background: transparent !important;
 }
 .left-top:after {
   position: absolute;
@@ -212,7 +212,7 @@ header:before {
 .left-bottom {
   position: absolute;
   bottom: 0;
-  opacity: 0.9;
+  opacity: 1;
 }
 .left-bottom:before {
   content: "";
@@ -249,11 +249,11 @@ header:before {
 .middle-map .map-wrap {
   position: relative;
   padding-bottom: 80px; /* 增加底部空间 */
-  opacity: 0.9;
+  opacity: 1;
   height: 100%;
   border-top: 4px solid #0ab90a !important;
   border-bottom: 4px solid #12d81217 !important;
-  background: rgba(2, 106, 16, 0.336) !important;
+  background: transparent !important;
   background-size: 100% 100%;
 }
 .middle-map .map-wrap h3 {
@@ -513,8 +513,8 @@ header:before {
 }
 .left-top {
   position: relative;
-  opacity: 0.9;
-  background: rgba(28, 64, 18, 0.5) !important;
+  opacity: 1;
+  background: transparent !important;
 }
 .left-top:after {
   position: absolute;
@@ -542,7 +542,7 @@ header:before {
 .left-bottom {
   position: absolute;
   bottom: 0;
-  opacity: 0.9;
+  opacity: 1;
 }
 .left-bottom:before {
   content: "";
@@ -578,11 +578,11 @@ header:before {
 }
 .middle-map .map-wrap {
   position: relative;
-  opacity: 0.9;
+  opacity: 1;
   height: 100%;
   border-top: 1px solid #02772b !important;
   border-bottom: 4px solid #0903019a;
-  background: rgba(4, 97, 26, 0.341) !important;
+  background: transparent !important;
   background-size: 100% 100%;
 }
 .middle-map .map-wrap h3 {
@@ -869,7 +869,7 @@ h3 {
 }
 .main .aside-left .top .con li.active {
   height: auto;
-  background: rgba(239, 231, 217, 0.375) !important;
+  background: rgba(239, 231, 217, 0.1) !important;
 }
 .main .aside-left .top .con li.active .book-rank {
   border-bottom: none;
@@ -948,7 +948,7 @@ h3 {
   font-family: Rubik;
   font-size: 1.125em;
   font-weight: 300;
-  color: #fff;
+  color: #000;
 }
 .main .aside-right .keys .con .middle {
   position: relative;
