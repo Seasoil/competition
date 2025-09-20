@@ -392,33 +392,59 @@
             generateWordCloudData(item) {
                 const words = [];
                 const addWord = (text, value) => {
-                    if (text && text.length > 0) {
+                    if (text && text.length > 0 && !words.some(w => w.name === text)) {
                         words.push({ name: text, value: value });
                     }
                 };
 
                 // 从tags中添加关键词（高权重）
                 if (item.tags) {
-                    item.tags.forEach(tag => addWord(tag, Math.random() * 20 + 180));
+                    item.tags.forEach(tag => addWord(tag, Math.random() * 15 + 85));
                 }
 
                 // 从谚语文本中提取关键词
                 const proverbKeywords = this.extractKeywords(item.text);
-                proverbKeywords.forEach(keyword => addWord(keyword, Math.random() * 15 + 165));
+                proverbKeywords.forEach(keyword => addWord(keyword, Math.random() * 12 + 75));
 
                 // 从描述中提取关键词
                 const descKeywords = this.extractKeywords(item.desc);
-                descKeywords.forEach(keyword => addWord(keyword, Math.random() * 15 + 150));
+                descKeywords.forEach(keyword => addWord(keyword, Math.random() * 10 + 65));
 
                 // 添加更多相关词汇
                 const relatedWords = this.getRelatedWords(item);
-                relatedWords.forEach(word => addWord(word, Math.random() * 10 + 140));
+                relatedWords.forEach(word => addWord(word, Math.random() * 8 + 55));
 
                 // 添加基础农业词汇
                 const baseWords = ['农业', '种植', '收获', '季节', '气候', '土壤', '水分', '阳光', '温度', '湿度', '播种', '施肥', '除草', '灌溉', '收割'];
-                baseWords.forEach(word => addWord(word, Math.random() * 10 + 30));
+                baseWords.forEach(word => addWord(word, Math.random() * 6 + 45));
 
-                return words.slice(0, 45); // 恢复到45个词
+                // 添加更多填充词汇以实现密集效果
+                const fillWords = [
+                    '农民', '田地', '庄稼', '收成', '经验', '智慧', '传统', '自然',
+                    '春耕', '夏种', '秋收', '冬藏', '节气', '物候', '农时', '农事',
+                    '雨水', '阳光', '风霜', '雪花', '露水', '霜降', '立春', '立夏',
+                    '立秋', '立冬', '春分', '秋分', '夏至', '冬至', '小满', '芒种',
+                    '白露', '寒露', '小雪', '大雪', '小寒', '大寒', '惊蛰', '清明',
+                    '谷雨', '小暑', '大暑', '处暑', '霜降', '麦子', '稻谷', '玉米',
+                    '棉花', '大豆', '花生', '红薯', '高粱', '谷子', '蔬菜', '瓜果',
+                    '牲畜', '家禽', '农具', '耕牛', '犁耙', '锄头', '镰刀', '扁担',
+                    '粮仓', '晒场', '菜园', '果园', '池塘', '水井', '沟渠', '田埂',
+                    '丰收', '歉收', '增产', '减产', '肥沃', '贫瘠', '干旱', '洪涝',
+                    '虫害', '病害', '防治', '管理', '技术', '方法', '窍门', '秘诀'
+                ];
+                fillWords.forEach(word => addWord(word, Math.random() * 5 + 25));
+
+                // 添加更多细节词汇
+                const detailWords = [
+                    '早', '晚', '迟', '快', '慢', '多', '少', '大', '小', '高', '低',
+                    '深', '浅', '粗', '细', '厚', '薄', '新', '老', '好', '坏',
+                    '东', '南', '西', '北', '上', '下', '前', '后', '左', '右',
+                    '天', '地', '人', '和', '顺', '逆', '正', '反', '阴', '阳',
+                    '冷', '热', '暖', '凉', '干', '湿', '润', '燥', '清', '浊'
+                ];
+                detailWords.forEach(word => addWord(word, Math.random() * 3 + 15));
+
+                return words.slice(0, 120); // 增加到120个词以实现密集效果
             },
             extractKeywords(text) {
                 if (!text) return [];
@@ -704,31 +730,45 @@
                 },
                 series: [{
                     type: 'wordCloud',
-                    gridSize: 10,
-                    sizeRange: [20, 60],
-                    rotationRange: [-30, 30],
-                    rotationStep: 40,
-                    shape: 'circle',
-                    width: '98%',
-                    height: '98%',
+                    gridSize: 2,  // 减小网格大小，让文字更紧密
+                    sizeRange: [14, 32],  // 减小字体大小范围
+                    rotationRange: [0, 0],  // 不旋转，保持水平
+                    rotationStep: 0,
+                    shape: 'square',  // 使用方形布局
+                    width: '100%',
+                    height: '100%',
                     left: 'center',
                     top: 'center',
                     drawOutOfBound: false,
+                    layoutAnimation: true,  // 启用布局动画
+                    textPadding: 0,  // 减少文字间距
+                    autoSize: {
+                        enable: true,
+                        minSize: 12
+                    },
                     textStyle: {
                         fontFamily: 'Microsoft YaHei, SimHei, sans-serif',
                         fontWeight: function(params) {
                             return params.value > 40 ? 'bold' : 'normal';
                         },
                         color: function() {
-                            const colors = ['#6DA65D', '#8BC34A', '#4A90E2', '#E8C547', '#C44D58', '#9C27B0', '#FF9800'];
+                            const colors = [
+                                '#6DA65D', '#8BC34A', '#4A90E2', '#E8C547',
+                                '#C44D58', '#9C27B0', '#FF9800', '#00BCD4',
+                                '#FFC107', '#E91E63', '#3F51B5', '#009688',
+                                '#FF5722', '#795548', '#607D8B', '#CDDC39'
+                            ];
                             return colors[Math.floor(Math.random() * colors.length)];
                         }
                     },
                     emphasis: {
                         textStyle: {
-                            shadowBlur: 8,
+                            shadowBlur: 6,
                             shadowColor: 'rgba(109, 166, 93, 0.8)',
-                            color: '#8BC34A'
+                            color: '#8BC34A',
+                            fontSize: function(params) {
+                                return params.fontSize * 1.2;  // 悬停时放大
+                            }
                         }
                     },
                     data: data
