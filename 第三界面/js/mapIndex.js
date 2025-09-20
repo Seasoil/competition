@@ -992,6 +992,16 @@ var userHovering = false;
 mapChart.on('mouseover', function(params) {
   if (params.seriesIndex === 0) {
     userHovering = true;
+    // 当用户悬停到省份时，更新饼图、农畜排行和趋势图显示该省份数据
+    if (params.data && params.data.name && typeof window.updateChartsByProvince === 'function') {
+      window.updateChartsByProvince(params.data.name);
+    }
+    if (params.data && params.data.name && typeof window.updateLivestockRankByProvince === 'function') {
+      window.updateLivestockRankByProvince(params.data.name);
+    }
+    if (params.data && params.data.name && typeof window.updateTrendByProvince === 'function') {
+      window.updateTrendByProvince(params.data.name);
+    }
   }
 });
 
@@ -1433,7 +1443,19 @@ function setVal() {
       seriesIndex: 0,
       dataIndex: currentSystemHighlightIndex
     });
-    
+
+    // 获取当前高亮省份的名称并更新饼图、农畜排行和趋势图
+    var currentProvinceName = mapData["Jan"][currentSystemHighlightIndex].name;
+    if (currentProvinceName && typeof window.updateChartsByProvince === 'function') {
+      window.updateChartsByProvince(currentProvinceName);
+    }
+    if (currentProvinceName && typeof window.updateLivestockRankByProvince === 'function') {
+      window.updateLivestockRankByProvince(currentProvinceName);
+    }
+    if (currentProvinceName && typeof window.updateTrendByProvince === 'function') {
+      window.updateTrendByProvince(currentProvinceName);
+    }
+
     // 还原数据，这样鼠标悬停时仍然是深橙色
     setTimeout(function() {
       mapData["Jan"][currentSystemHighlightIndex].itemStyle.emphasis.areaColor = "rgb(244, 71, 13)";
