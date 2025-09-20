@@ -128,11 +128,11 @@ button {
 
 /* ===== 页面标题区域 ===== */
 .page-header {
-  padding: 10px 0;
+  padding: 0px 0;
   text-align: center;
   position: relative;
   flex-shrink: 0;
-  height: 50px;
+  height: 15px;
 }
 
 .header-content {
@@ -148,7 +148,7 @@ button {
   margin: 0;
   text-shadow: 2px 2px 4px rgba(139, 69, 19, 0.3);
   text-align: center;
-  line-height: 50px;
+  line-height: 40px;
 }
 
 /* ===== 主要内容布局 ===== */
